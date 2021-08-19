@@ -252,27 +252,25 @@ class TestZonedDateTime
   }
 
   test("now_Clock_allSecsInDay_utc") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant    = Instant.ofEpochSecond(i).plusNanos(123456789L)
-          val clock: Clock        = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: ZonedDateTime = ZonedDateTime.now(clock)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-          assertEquals(test.getHour, (i / (60 * 60)) % 24)
-          assertEquals(test.getMinute, (i / 60)      % 60)
-          assertEquals(test.getSecond, i             % 60)
-          assertEquals(test.getNano, 123456789)
-          assertEquals(test.getOffset, ZoneOffset.UTC)
-          assertEquals(test.getZone, ZoneOffset.UTC)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant    = Instant.ofEpochSecond(i).plusNanos(123456789L)
+        val clock: Clock        = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: ZonedDateTime = ZonedDateTime.now(clock)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
+        assertEquals(test.getHour, (i / (60 * 60)) % 24)
+        assertEquals(test.getMinute, (i / 60)      % 60)
+        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getNano, 123456789)
+        assertEquals(test.getOffset, ZoneOffset.UTC)
+        assertEquals(test.getZone, ZoneOffset.UTC)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
@@ -503,23 +501,21 @@ class TestZonedDateTime
   }
 
   test("factory_ofInstant_allSecsInDay") {
-    {
-      var i: Int = 0
-      while (i < (24 * 60 * 60)) {
-        {
-          val instant: Instant    = Instant.ofEpochSecond(i)
-          val test: ZonedDateTime = ZonedDateTime.ofInstant(instant, TestZonedDateTime.OFFSET_0100)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
-          assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
-          assertEquals(test.getMinute, (i / 60)            % 60)
-          assertEquals(test.getSecond, i                   % 60)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (24 * 60 * 60)) {
+      {
+        val instant: Instant    = Instant.ofEpochSecond(i)
+        val test: ZonedDateTime = ZonedDateTime.ofInstant(instant, TestZonedDateTime.OFFSET_0100)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
+        assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
+        assertEquals(test.getMinute, (i / 60)            % 60)
+        assertEquals(test.getSecond, i                   % 60)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

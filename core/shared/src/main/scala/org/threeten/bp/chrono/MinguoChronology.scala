@@ -75,28 +75,22 @@ object MinguoChronology {
 /**
  * The Minguo calendar system.
  *
- * This chronology defines the rules of the Minguo calendar system.
- * This calendar system is primarily used in the Republic of China, often known as Taiwan.
- * Dates are aligned such that {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
+ * This chronology defines the rules of the Minguo calendar system. This calendar system is
+ * primarily used in the Republic of China, often known as Taiwan. Dates are aligned such that
+ * {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
  *
- * The fields are defined as follows:
- * <ul>
- * <li>era - There are two eras, the current 'Republic' (ROC) and the previous era (BEFORE_ROC).
- * <li>year-of-era - The year-of-era for the current era increases uniformly from the epoch at year one.
- * For the previous era the year increases from one as time goes backwards.
- * The value for the current era is equal to the ISO proleptic-year minus 1911.
- * <li>proleptic-year - The proleptic year is the same as the year-of-era for the
- * current era. For the previous era, years have zero, then negative values.
- * The value is equal to the ISO proleptic-year minus 1911.
- * <li>month-of-year - The Minguo month-of-year exactly matches ISO.
- * <li>day-of-month - The Minguo day-of-month exactly matches ISO.
- * <li>day-of-year - The Minguo day-of-year exactly matches ISO.
- * <li>leap-year - The Minguo leap-year pattern exactly matches ISO, such that the two calendars
- * are never out of step.
- * </ul><p>
+ * The fields are defined as follows: <ul> <li>era - There are two eras, the current 'Republic'
+ * (ROC) and the previous era (BEFORE_ROC). <li>year-of-era - The year-of-era for the current era
+ * increases uniformly from the epoch at year one. For the previous era the year increases from one
+ * as time goes backwards. The value for the current era is equal to the ISO proleptic-year minus
+ * 1911. <li>proleptic-year - The proleptic year is the same as the year-of-era for the current era.
+ * For the previous era, years have zero, then negative values. The value is equal to the ISO
+ * proleptic-year minus 1911. <li>month-of-year - The Minguo month-of-year exactly matches ISO.
+ * <li>day-of-month - The Minguo day-of-month exactly matches ISO. <li>day-of-year - The Minguo
+ * day-of-year exactly matches ISO. <li>leap-year - The Minguo leap-year pattern exactly matches
+ * ISO, such that the two calendars are never out of step. </ul><p>
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */
 @SerialVersionUID(1039765215346859963L)
 final class MinguoChronology private () extends Chronology with Serializable {
@@ -104,32 +98,36 @@ final class MinguoChronology private () extends Chronology with Serializable {
   /**
    * Resolve singleton.
    *
-   * @return the singleton instance, not null
+   * @return
+   *   the singleton instance, not null
    */
   private def readResolve: AnyRef = MinguoChronology.INSTANCE
 
   /**
    * Gets the ID of the chronology - 'Minguo'.
    *
-   * The ID uniquely identifies the {@code Chronology}.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)}.
    *
-   * @return the chronology ID - 'Minguo'
-   * @see #getCalendarType()
+   * @return
+   *   the chronology ID - 'Minguo'
+   * @see
+   *   #getCalendarType()
    */
   def getId: String = "Minguo"
 
   /**
    * Gets the calendar type of the underlying calendar system - 'roc'.
    *
-   * The calendar type is an identifier defined by the
-   * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
-   * It can also be used as part of a locale, accessible via
-   * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
+   * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
+   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * #of(String)}. It can also be used as part of a locale, accessible via {@link
+   * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *
-   * @return the calendar system type - 'roc'
-   * @see #getId()
+   * @return
+   *   the calendar system type - 'roc'
+   * @see
+   *   #getId()
    */
   def getCalendarType: String =
     "roc"
@@ -179,12 +177,13 @@ final class MinguoChronology private () extends Chronology with Serializable {
   /**
    * Checks if the specified year is a leap year.
    *
-   * Minguo leap years occur exactly in line with ISO leap years.
-   * This method does not validate the year passed in, and only has a
-   * well-defined result for years in the supported range.
+   * Minguo leap years occur exactly in line with ISO leap years. This method does not validate the
+   * year passed in, and only has a well-defined result for years in the supported range.
    *
-   * @param prolepticYear  the proleptic-year to check, not validated for range
-   * @return true if the year is a leap year
+   * @param prolepticYear
+   *   the proleptic-year to check, not validated for range
+   * @return
+   *   true if the year is a leap year
    */
   def isLeapYear(prolepticYear: Long): Boolean =
     IsoChronology.INSTANCE.isLeapYear(prolepticYear + MinguoChronology.YEARS_DIFFERENCE)

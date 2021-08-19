@@ -98,99 +98,31 @@ object HijrahChronology {
  *
  * This chronology defines the rules of the Hijrah calendar system.
  *
- * The implementation follows the Freeman-Grenville algorithm (*1) and has following features.
- * <ul>
- * <li>A year has 12 months.</li>
- * <li>Over a cycle of 30 years there are 11 leap years.</li>
- * <li>There are 30 days in month number 1, 3, 5, 7, 9, and 11,
- * and 29 days in month number 2, 4, 6, 8, 10, and 12.</li>
- * <li>In a leap year month 12 has 30 days.</li>
- * <li>In a 30 year cycle, year 2, 5, 7, 10, 13, 16, 18, 21, 24,
- * 26, and 29 are leap years.</li>
- * <li>Total of 10631 days in a 30 years cycle.</li>
- * </ul><p>
+ * The implementation follows the Freeman-Grenville algorithm (*1) and has following features. <ul>
+ * <li>A year has 12 months.</li> <li>Over a cycle of 30 years there are 11 leap years.</li>
+ * <li>There are 30 days in month number 1, 3, 5, 7, 9, and 11, and 29 days in month number 2, 4, 6,
+ * 8, 10, and 12.</li> <li>In a leap year month 12 has 30 days.</li> <li>In a 30 year cycle, year 2,
+ * 5, 7, 10, 13, 16, 18, 21, 24, 26, and 29 are leap years.</li> <li>Total of 10631 days in a 30
+ * years cycle.</li> </ul><p>
  *
- * The table shows the features described above.
- * <blockquote>
- * <table border="1">
- * <tbody>
- * <tr>
- * <th># of month</th>
- * <th>Name of month</th>
- * <th>Number of days</th>
- * </tr>
- * <tr>
- * <td>1</td>
- * <td>Muharram</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>2</td>
- * <td>Safar</td>
- * <td>29</td>
- * </tr>
- * <tr>
- * <td>3</td>
- * <td>Rabi'al-Awwal</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>4</td>
- * <td>Rabi'ath-Thani</td>
- * <td>29</td>
- * </tr>
- * <tr>
- * <td>5</td>
- * <td>Jumada l-Ula</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>6</td>
- * <td>Jumada t-Tania</td>
- * <td>29</td>
- * </tr>
- * <tr>
- * <td>7</td>
- * <td>Rajab</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>8</td>
- * <td>Sha`ban</td>
- * <td>29</td>
- * </tr>
- * <tr>
- * <td>9</td>
- * <td>Ramadan</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>10</td>
- * <td>Shawwal</td>
- * <td>29</td>
- * </tr>
- * <tr>
- * <td>11</td>
- * <td>Dhu 'l-Qa`da</td>
- * <td>30</td>
- * </tr>
- * <tr>
- * <td>12</td>
- * <td>Dhu 'l-Hijja</td>
- * <td>29, but 30 days in years 2, 5, 7, 10,<br>
- * 13, 16, 18, 21, 24, 26, and 29</td>
- * </tr>
- * </tbody>
- * </table>
- * </blockquote>
+ * The table shows the features described above. <blockquote> <table border="1"> <tbody> <tr> <th>#
+ * of month</th> <th>Name of month</th> <th>Number of days</th> </tr> <tr> <td>1</td>
+ * <td>Muharram</td> <td>30</td> </tr> <tr> <td>2</td> <td>Safar</td> <td>29</td> </tr> <tr>
+ * <td>3</td> <td>Rabi'al-Awwal</td> <td>30</td> </tr> <tr> <td>4</td> <td>Rabi'ath-Thani</td>
+ * <td>29</td> </tr> <tr> <td>5</td> <td>Jumada l-Ula</td> <td>30</td> </tr> <tr> <td>6</td>
+ * <td>Jumada t-Tania</td> <td>29</td> </tr> <tr> <td>7</td> <td>Rajab</td> <td>30</td> </tr> <tr>
+ * <td>8</td> <td>Sha`ban</td> <td>29</td> </tr> <tr> <td>9</td> <td>Ramadan</td> <td>30</td> </tr>
+ * <tr> <td>10</td> <td>Shawwal</td> <td>29</td> </tr> <tr> <td>11</td> <td>Dhu 'l-Qa`da</td>
+ * <td>30</td> </tr> <tr> <td>12</td> <td>Dhu 'l-Hijja</td> <td>29, but 30 days in years 2, 5, 7,
+ * 10,<br> 13, 16, 18, 21, 24, 26, and 29</td> </tr> </tbody> </table> </blockquote>
  *
- * (*1) The algorithm is taken from the book,
- * The Muslim and Christian Calendars by G.S.P. Freeman-Grenville.
+ * (*1) The algorithm is taken from the book, The Muslim and Christian Calendars by G.S.P.
+ * Freeman-Grenville.
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * @constructor Restrictive constructor.
+ * @constructor
+ *   Restrictive constructor.
  */
 @SerialVersionUID(3127340209035924785L)
 final class HijrahChronology private () extends Chronology with Serializable {
@@ -198,32 +130,36 @@ final class HijrahChronology private () extends Chronology with Serializable {
   /**
    * Resolve singleton.
    *
-   * @return the singleton instance, not null
+   * @return
+   *   the singleton instance, not null
    */
   private def readResolve: AnyRef = HijrahChronology.INSTANCE
 
   /**
    * Gets the ID of the chronology - 'Hijrah-umalqura'.
    *
-   * The ID uniquely identifies the {@code Chronology}.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)}.
    *
-   * @return the chronology ID - 'Hijrah-umalqura'
-   * @see #getCalendarType()
+   * @return
+   *   the chronology ID - 'Hijrah-umalqura'
+   * @see
+   *   #getCalendarType()
    */
   def getId: String = "Hijrah-umalqura"
 
   /**
    * Gets the calendar type of the underlying calendar system - 'islamic-umalqura'.
    *
-   * The calendar type is an identifier defined by the
-   * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
-   * It can also be used as part of a locale, accessible via
-   * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
+   * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
+   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * #of(String)}. It can also be used as part of a locale, accessible via {@link
+   * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *
-   * @return the calendar system type - 'islamic-umalqura'
-   * @see #getId()
+   * @return
+   *   the calendar system type - 'islamic-umalqura'
+   * @see
+   *   #getId()
    */
   def getCalendarType: String = "islamic-umalqura"
 

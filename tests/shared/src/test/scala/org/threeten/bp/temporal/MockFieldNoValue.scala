@@ -51,12 +51,12 @@ final class MockFieldNoValue(name: String, ordinal: Int)
   def range: ValueRange          = ValueRange.of(1, 20)
   def isDateBased: Boolean       = true
   def isTimeBased: Boolean       = false
-  def isSupportedBy(dateTime:             TemporalAccessor): Boolean    = true
+  def isSupportedBy(dateTime:             TemporalAccessor): Boolean = true
   def rangeRefinedBy(dateTime:            TemporalAccessor): ValueRange = ValueRange.of(1, 20)
   def getFrom(dateTime:                   TemporalAccessor): Long = throw new DateTimeException("Mock")
   def adjustInto[R <: Temporal](dateTime: R, newValue: Long): R =
     throw new DateTimeException("Mock")
-  override def getDisplayName(locale:     Locale): String               = "Mock"
+  override def getDisplayName(locale:     Locale): String = "Mock"
   override def resolve(
     fieldValues:                          java.util.Map[TemporalField, java.lang.Long],
     partialTemporal:                      TemporalAccessor,

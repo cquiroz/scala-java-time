@@ -29,8 +29,10 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Returns a copy of this printer-parser with the optional flag changed.
      *
-     * @param optional  the optional flag to set in the copy
-     * @return the new printer-parser, not null
+     * @param optional
+     *   the optional flag to set in the copy
+     * @return
+     *   the new printer-parser, not null
      */
     def withOptional(optional: Boolean): CompositePrinterParser =
       if (optional == this.optional)
@@ -94,9 +96,12 @@ object TTBPDateTimeFormatterBuilder {
    *
    * @constructor
    *
-   * @param printerParser  the printer, not null
-   * @param padWidth  the width to pad to, 1 or greater
-   * @param padChar  the pad character
+   * @param printerParser
+   *   the printer, not null
+   * @param padWidth
+   *   the width to pad to, 1 or greater
+   * @param padChar
+   *   the pad character
    */
   private[format] final class PadPrinterParserDecorator private[format] (
     private val printerParser: DateTimePrinterParser,
@@ -265,12 +270,17 @@ object TTBPDateTimeFormatterBuilder {
   /**
    * @constructor
    *
-   * @param field  the field to print, not null
-   * @param minWidth  the minimum field width, from 1 to 19
-   * @param maxWidth  the maximum field width, from minWidth to 19
-   * @param signStyle  the positive/negative sign style, not null
-   * @param subsequentWidth  the width of subsequent non-negative numbers, 0 or greater,
-   *                         -1 if fixed width due to active adjacent parsing
+   * @param field
+   *   the field to print, not null
+   * @param minWidth
+   *   the minimum field width, from 1 to 19
+   * @param maxWidth
+   *   the maximum field width, from minWidth to 19
+   * @param signStyle
+   *   the positive/negative sign style, not null
+   * @param subsequentWidth
+   *   the width of subsequent non-negative numbers, 0 or greater,
+   * -1 if fixed width due to active adjacent parsing
    */
   private[format] class NumberPrinterParser private[format] (
     private[format] val field:           TemporalField,
@@ -283,10 +293,14 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * @constructor
      *
-     * @param field  the field to print, not null
-     * @param minWidth  the minimum field width, from 1 to 19
-     * @param maxWidth  the maximum field width, from minWidth to 19
-     * @param signStyle  the positive/negative sign style, not null
+     * @param field
+     *   the field to print, not null
+     * @param minWidth
+     *   the minimum field width, from 1 to 19
+     * @param maxWidth
+     *   the maximum field width, from minWidth to 19
+     * @param signStyle
+     *   the positive/negative sign style, not null
      */
     private[format] def this(
       field:     TemporalField,
@@ -298,7 +312,8 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Returns a new instance with fixed width flag set.
      *
-     * @return a new updated printer-parser, not null
+     * @return
+     *   a new updated printer-parser, not null
      */
     private[format] def withFixedWidth: NumberPrinterParser =
       if (subsequentWidth == -1)
@@ -309,8 +324,10 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Returns a new instance with an updated subsequent width.
      *
-     * @param subsequentWidth  the width of subsequent non-negative numbers, 0 or greater
-     * @return a new updated printer-parser, not null
+     * @param subsequentWidth
+     *   the width of subsequent non-negative numbers, 0 or greater
+     * @return
+     *   a new updated printer-parser, not null
      */
     private[format] def withSubsequentWidth(subsequentWidth: Int): NumberPrinterParser =
       new NumberPrinterParser(field,
@@ -368,9 +385,12 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Gets the value to output.
      *
-     * @param context  the context
-     * @param value  the value of the field, not null
-     * @return the value
+     * @param context
+     *   the context
+     * @param value
+     *   the value of the field, not null
+     * @return
+     *   the value
      */
     protected[format] def getValue(context: TTBPDateTimePrintContext, value: Long): Long =
       if (context != null) value else value
@@ -480,11 +500,16 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Stores the value.
      *
-     * @param context  the context to store into, not null
-     * @param value  the value
-     * @param errorPos  the position of the field being parsed
-     * @param successPos  the position after the field being parsed
-     * @return the new position
+     * @param context
+     *   the context to store into, not null
+     * @param value
+     *   the value
+     * @param errorPos
+     *   the position of the field being parsed
+     * @param successPos
+     *   the position after the field being parsed
+     * @return
+     *   the new position
      */
     private[format] def setValue(
       context:    TTBPDateTimeParseContext,
@@ -511,11 +536,16 @@ object TTBPDateTimeFormatterBuilder {
   /**
    * @constructor
    *
-   * @param field  the field to print, validated not null
-   * @param minWidth  the field width, from 1 to 10
-   * @param maxWidth  the field max width, from 1 to 10
-   * @param baseValue  the base value
-   * @param baseDate  the base date
+   * @param field
+   *   the field to print, validated not null
+   * @param minWidth
+   *   the field width, from 1 to 10
+   * @param maxWidth
+   *   the field max width, from 1 to 10
+   * @param baseValue
+   *   the base value
+   * @param baseDate
+   *   the base date
    */
   private[format] final class ReducedPrinterParser private[format] (
     field:                 TemporalField,
@@ -632,10 +662,14 @@ object TTBPDateTimeFormatterBuilder {
    *
    * @constructor
    *
-   * @param field  the field to output, not null
-   * @param minWidth  the minimum width to output, from 0 to 9
-   * @param maxWidth  the maximum width to output, from 0 to 9
-   * @param decimalPoint  whether to output the localized decimal point symbol
+   * @param field
+   *   the field to output, not null
+   * @param minWidth
+   *   the minimum width to output, from 0 to 9
+   * @param maxWidth
+   *   the maximum width to output, from 0 to 9
+   * @param decimalPoint
+   *   whether to output the localized decimal point symbol
    */
   private[format] final class FractionPrinterParser private[format] (
     private val field:        TemporalField,
@@ -728,18 +762,21 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Converts a value for this field to a fraction between 0 and 1.
      *
-     * The fractional value is between 0 (inclusive) and 1 (exclusive).
-     * It can only be returned if the {@link TemporalField#range() value range} is fixed.
-     * The fraction is obtained by calculation from the field range using 9 decimal
-     * places and a rounding mode of {@link RoundingMode#FLOOR FLOOR}.
-     * The calculation is inaccurate if the values do not run continuously from smallest to largest.
+     * The fractional value is between 0 (inclusive) and 1 (exclusive). It can only be returned if
+     * the {@link TemporalField#range() value range} is fixed. The fraction is obtained by
+     * calculation from the field range using 9 decimal places and a rounding mode of {@link
+     * RoundingMode#FLOOR FLOOR}. The calculation is inaccurate if the values do not run
+     * continuously from smallest to largest.
      *
-     * For example, the second-of-minute value of 15 would be returned as 0.25,
-     * assuming the standard definition of 60 seconds in a minute.
+     * For example, the second-of-minute value of 15 would be returned as 0.25, assuming the
+     * standard definition of 60 seconds in a minute.
      *
-     * @param value  the value to convert, must be valid for this rule
-     * @return the value as a fraction within the range, from 0 to 1, not null
-     * @throws DateTimeException if the value cannot be converted to a fraction
+     * @param value
+     *   the value to convert, must be valid for this rule
+     * @return
+     *   the value as a fraction within the range, from 0 to 1, not null
+     * @throws DateTimeException
+     *   if the value cannot be converted to a fraction
      */
     private def convertToFraction(value: Long): BigDecimal = {
       val range: ValueRange    = field.range
@@ -755,18 +792,20 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Converts a fraction from 0 to 1 for this field to a value.
      *
-     * The fractional value must be between 0 (inclusive) and 1 (exclusive).
-     * It can only be returned if the {@link TemporalField#range() value range} is fixed.
-     * The value is obtained by calculation from the field range and a rounding
-     * mode of {@link RoundingMode#FLOOR FLOOR}.
-     * The calculation is inaccurate if the values do not run continuously from smallest to largest.
+     * The fractional value must be between 0 (inclusive) and 1 (exclusive). It can only be returned
+     * if the {@link TemporalField#range() value range} is fixed. The value is obtained by
+     * calculation from the field range and a rounding mode of {@link RoundingMode#FLOOR FLOOR}. The
+     * calculation is inaccurate if the values do not run continuously from smallest to largest.
      *
-     * For example, the fractional second-of-minute of 0.25 would be converted to 15,
-     * assuming the standard definition of 60 seconds in a minute.
+     * For example, the fractional second-of-minute of 0.25 would be converted to 15, assuming the
+     * standard definition of 60 seconds in a minute.
      *
-     * @param fraction  the fraction to convert, not null
-     * @return the value of the field, valid for this rule
-     * @throws DateTimeException if the value cannot be converted
+     * @param fraction
+     *   the fraction to convert, not null
+     * @return
+     *   the value of the field, valid for this rule
+     * @throws DateTimeException
+     *   if the value cannot be converted
      */
     private def convertFromFraction(fraction: BigDecimal): Long = {
       val range: ValueRange   = field.range
@@ -787,9 +826,12 @@ object TTBPDateTimeFormatterBuilder {
    *
    * @constructor
    *
-   * @param field  the field to output, not null
-   * @param textStyle  the text style, not null
-   * @param provider  the text provider, not null
+   * @param field
+   *   the field to output, not null
+   * @param textStyle
+   *   the text style, not null
+   * @param provider
+   *   the text provider, not null
    */
   private[format] final class TextPrinterParser private[format] (
     private val field:     TemporalField,
@@ -798,8 +840,7 @@ object TTBPDateTimeFormatterBuilder {
   ) extends DateTimePrinterParser {
 
     /**
-     * The cached number printer parser.
-     * Immutable and volatile, so no synchronization needed.
+     * The cached number printer parser. Immutable and volatile, so no synchronization needed.
      */
     @volatile
     private var _numberPrinterParser: NumberPrinterParser = null
@@ -836,7 +877,8 @@ object TTBPDateTimeFormatterBuilder {
 
     /**
      * Create and cache a number printer parser.
-     * @return the number printer parser for this field, not null
+     * @return
+     *   the number printer parser for this field, not null
      */
     private def numberPrinterParser: NumberPrinterParser = {
       if (_numberPrinterParser == null)
@@ -1009,8 +1051,10 @@ object TTBPDateTimeFormatterBuilder {
   /**
    * @constructor
    *
-   * @param noOffsetText  the text to use for UTC, not null
-   * @param pattern  the pattern
+   * @param noOffsetText
+   *   the text to use for UTC, not null
+   * @param pattern
+   *   the pattern
    */
   private[format] final class OffsetIdPrinterParser private[format] (
     private val noOffsetText: String,
@@ -1119,11 +1163,16 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Parse a two digit zero-prefixed number.
      *
-     * @param array  the array of parsed data, 0=pos,1=hours,2=mins,3=secs, not null
-     * @param arrayIndex  the index to parse the value into
-     * @param parseText  the offset ID, not null
-     * @param required  whether this number is required
-     * @return true if an error occurred
+     * @param array
+     *   the array of parsed data, 0=pos,1=hours,2=mins,3=secs, not null
+     * @param arrayIndex
+     *   the index to parse the value into
+     * @param parseText
+     *   the offset ID, not null
+     * @param required
+     *   whether this number is required
+     * @return
+     *   true if an error occurred
      */
     private def parseNumber(
       array:      Array[Int],
@@ -1378,30 +1427,28 @@ object TTBPDateTimeFormatterBuilder {
     private var cachedSubstringTree: java.util.Map.Entry[Integer, SubstringTree] = null
 
     /**
-     * Model a tree of substrings to make the parsing easier. Due to the nature
-     * of time-zone names, it can be faster to parse based in unique substrings
-     * rather than just a character by character match.
+     * Model a tree of substrings to make the parsing easier. Due to the nature of time-zone names,
+     * it can be faster to parse based in unique substrings rather than just a character by
+     * character match.
      *
-     * For example, to parse America/Denver we can look at the first two
-     * character "Am". We then notice that the shortest time-zone that starts
-     * with Am is America/Nome which is 12 characters long. Checking the first
-     * 12 characters of America/Denver gives America/Denv which is a substring
-     * of only 1 time-zone: America/Denver. Thus, with just 3 comparisons that
-     * match can be found.
+     * For example, to parse America/Denver we can look at the first two character "Am". We then
+     * notice that the shortest time-zone that starts with Am is America/Nome which is 12 characters
+     * long. Checking the first 12 characters of America/Denver gives America/Denv which is a
+     * substring of only 1 time-zone: America/Denver. Thus, with just 3 comparisons that match can
+     * be found.
      *
-     * This structure maps substrings to substrings of a longer length. Each
-     * node of the tree contains a length and a map of valid substrings to
-     * sub-nodes. The parser gets the length from the root node. It then
-     * extracts a substring of that length from the parseText. If the map
-     * contains the substring, it is set as the possible time-zone and the
-     * sub-node for that substring is retrieved. The process continues until the
-     * substring is no longer found, at which point the matched text is checked
-     * against the real time-zones.
+     * This structure maps substrings to substrings of a longer length. Each node of the tree
+     * contains a length and a map of valid substrings to sub-nodes. The parser gets the length from
+     * the root node. It then extracts a substring of that length from the parseText. If the map
+     * contains the substring, it is set as the possible time-zone and the sub-node for that
+     * substring is retrieved. The process continues until the substring is no longer found, at
+     * which point the matched text is checked against the real time-zones.
      *
      * @constructor
      *
-     * @param length  The length of the substring this node of the tree contains.
-     *                Subtrees will have a longer length.
+     * @param length
+     *   The length of the substring this node of the tree contains. Subtrees will have a longer
+     *   length.
      */
     private final class SubstringTree(val length: Int) {
 
@@ -1421,7 +1468,8 @@ object TTBPDateTimeFormatterBuilder {
       /**
        * Values must be added from shortest to longest.
        *
-       * @param newSubstring  the substring to add, not null
+       * @param newSubstring
+       *   the substring to add, not null
        */
       @tailrec
       private[format] def add(newSubstring: String): Unit = {
@@ -1448,8 +1496,10 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Builds an optimized parsing tree.
      *
-     * @param availableIDs  the available IDs, not null, not empty
-     * @return the tree, not null
+     * @param availableIDs
+     *   the available IDs, not null, not empty
+     * @return
+     *   the tree, not null
      */
     private def prepareParser(availableIDs: java.util.Set[String]): SubstringTree = {
       val ids: java.util.List[String] = new java.util.ArrayList[String](availableIDs)
@@ -1480,14 +1530,12 @@ object TTBPDateTimeFormatterBuilder {
     }
 
     /**
-     * This implementation looks for the longest matching string.
-     * For example, parsing Etc/GMT-2 will return Etc/GMC-2 rather than just
-     * Etc/GMC although both are valid.
+     * This implementation looks for the longest matching string. For example, parsing Etc/GMT-2
+     * will return Etc/GMC-2 rather than just Etc/GMC although both are valid.
      *
-     * This implementation uses a tree to search for valid time-zone names in
-     * the parseText. The top level node of the tree has a length equal to the
-     * length of the shortest time-zone as well as the beginning characters of
-     * all other time-zones.
+     * This implementation uses a tree to search for valid time-zone names in the parseText. The top
+     * level node of the tree has a length equal to the length of the shortest time-zone as well as
+     * the beginning characters of all other time-zones.
      */
     def parse(context: TTBPDateTimeParseContext, text: CharSequence, position: Int): Int = {
       val length: Int                                         = text.length
@@ -1610,7 +1658,8 @@ object TTBPDateTimeFormatterBuilder {
   /**
    * Prints or parses a chronology.
    *
-   * @param textStyle The text style to output, null means the ID.
+   * @param textStyle
+   *   The text style to output, null means the ID.
    */
   private[format] final class ChronoPrinterParser private[format] (private val textStyle: TextStyle)
       extends DateTimePrinterParser {
@@ -1666,8 +1715,10 @@ object TTBPDateTimeFormatterBuilder {
    *
    * @constructor
    *
-   * @param dateStyle  the date style to use, may be null
-   * @param timeStyle  the time style to use, may be null
+   * @param dateStyle
+   *   the date style to use, may be null
+   * @param timeStyle
+   *   the time style to use, may be null
    */
   private[format] final class LocalizedPrinterParser private[format] (
     private val dateStyle: FormatStyle,
@@ -1687,9 +1738,12 @@ object TTBPDateTimeFormatterBuilder {
     /**
      * Gets the formatter to use.
      *
-     * @param locale  the locale to use, not null
-     * @return the formatter, not null
-     * @throws IllegalArgumentException if the formatter cannot be found
+     * @param locale
+     *   the locale to use, not null
+     * @return
+     *   the formatter, not null
+     * @throws IllegalArgumentException
+     *   if the formatter cannot be found
      */
     private def formatter(locale: Locale, chrono: Chronology): DateTimeFormatter =
       DateTimeFormatStyleProvider.getInstance.getFormatter(dateStyle, timeStyle, chrono, locale)

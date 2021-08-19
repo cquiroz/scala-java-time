@@ -44,74 +44,70 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
   }
 
   test("factory_seconds_long") {
-    {
-      var i: Long = -2
-      while (i <= 2) {
-        {
-          val t: Duration = Duration.ofSeconds(i)
-          assertEquals(t.getSeconds, i)
-          assertEquals(t.getNano, 0)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Long = -2
+    while (i <= 2) {
+      {
+        val t: Duration = Duration.ofSeconds(i)
+        assertEquals(t.getSeconds, i)
+        assertEquals(t.getNano, 0)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("factory_seconds_long_long") {
-    {
-      var i: Long = -2
-      while (i <= 2) {
+    var i: Long = -2
+    while (i <= 2) {
+      {
         {
-          {
-            var j: Int = 0
-            while (j < 10) {
-              {
-                val t: Duration = Duration.ofSeconds(i, j)
-                assertEquals(t.getSeconds, i)
-                assertEquals(t.getNano, j)
-              }
-              {
-                j += 1
-                j - 1
-              }
+          var j: Int = 0
+          while (j < 10) {
+            {
+              val t: Duration = Duration.ofSeconds(i, j)
+              assertEquals(t.getSeconds, i)
+              assertEquals(t.getNano, j)
             }
-          }
-          {
-            var j: Int = -10
-            while (j < 0) {
-              {
-                val t: Duration = Duration.ofSeconds(i, j)
-                assertEquals(t.getSeconds, i - 1)
-                assertEquals(t.getNano, j + 1000000000)
-              }
-              {
-                j += 1
-                j - 1
-              }
-            }
-          }
-          {
-            var j: Int = 999999990
-            while (j < 1000000000) {
-              {
-                val t: Duration = Duration.ofSeconds(i, j)
-                assertEquals(t.getSeconds, i)
-                assertEquals(t.getNano, j)
-              }
-              {
-                j += 1
-                j - 1
-              }
+            {
+              j += 1
+              j - 1
             }
           }
         }
         {
-          i += 1
-          i - 1
+          var j: Int = -10
+          while (j < 0) {
+            {
+              val t: Duration = Duration.ofSeconds(i, j)
+              assertEquals(t.getSeconds, i - 1)
+              assertEquals(t.getNano, j + 1000000000)
+            }
+            {
+              j += 1
+              j - 1
+            }
+          }
         }
+        {
+          var j: Int = 999999990
+          while (j < 1000000000) {
+            {
+              val t: Duration = Duration.ofSeconds(i, j)
+              assertEquals(t.getSeconds, i)
+              assertEquals(t.getNano, j)
+            }
+            {
+              j += 1
+              j - 1
+            }
+          }
+        }
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

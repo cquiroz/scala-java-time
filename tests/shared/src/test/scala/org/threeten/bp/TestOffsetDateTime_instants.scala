@@ -55,24 +55,22 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
   }
 
   test("factory_ofInstant_allSecsInDay") {
-    {
-      var i: Int = 0
-      while (i < (24 * 60 * 60)) {
-        {
-          val instant: Instant     = Instant.ofEpochSecond(i)
-          val test: OffsetDateTime =
-            OffsetDateTime.ofInstant(instant, TestOffsetDateTime_instants.OFFSET_PONE)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
-          assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
-          assertEquals(test.getMinute, (i / 60)            % 60)
-          assertEquals(test.getSecond, i                   % 60)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (24 * 60 * 60)) {
+      {
+        val instant: Instant     = Instant.ofEpochSecond(i)
+        val test: OffsetDateTime =
+          OffsetDateTime.ofInstant(instant, TestOffsetDateTime_instants.OFFSET_PONE)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
+        assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
+        assertEquals(test.getMinute, (i / 60)            % 60)
+        assertEquals(test.getSecond, i                   % 60)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

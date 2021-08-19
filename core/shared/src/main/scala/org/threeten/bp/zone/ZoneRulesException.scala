@@ -36,16 +36,16 @@ import org.threeten.bp.DateTimeException
 /**
  * Thrown to indicate a problem with time-zone configuration.
  *
- * This exception is used to indicate a problems with the configured
- * time-zone rules.
+ * This exception is used to indicate a problems with the configured time-zone rules.
  *
- * <h3>Specification for implementors</h3>
- * This class is intended for use in a single thread.
+ * <h3>Specification for implementors</h3> This class is intended for use in a single thread.
  *
  * Constructs a new date-time exception with the specified message and cause.
  *
- * @param message  the message to use for this exception, may be null
- * @param cause  the cause of the exception, may be null
+ * @param message
+ *   the message to use for this exception, may be null
+ * @param cause
+ *   the cause of the exception, may be null
  */
 @SerialVersionUID(-1632418723876261839L)
 class ZoneRulesException(message: String, cause: Throwable)
@@ -54,7 +54,8 @@ class ZoneRulesException(message: String, cause: Throwable)
   /**
    * Constructs a new date-time exception with the specified message.
    *
-   * @param message  the message to use for this exception, may be null
+   * @param message
+   *   the message to use for this exception, may be null
    */
   def this(message: String) = this(message, null)
 }

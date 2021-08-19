@@ -36,8 +36,8 @@ import org.threeten.bp.DateTimeException
 object ThaiBuddhistEra {
 
   /**
-   * The singleton instance for the era before the current one, 'Before Buddhist Era',
-   * which has the value 0.
+   * The singleton instance for the era before the current one, 'Before Buddhist Era', which has the
+   * value 0.
    */
   lazy val BEFORE_BE = new ThaiBuddhistEra("BEFORE_BE", 0)
 
@@ -49,12 +49,14 @@ object ThaiBuddhistEra {
   /**
    * Obtains an instance of {@code ThaiBuddhistEra} from a value.
    *
-   * The current era (from ISO year -543 onwards) has the value 1
-   * The previous era has the value 0.
+   * The current era (from ISO year -543 onwards) has the value 1 The previous era has the value 0.
    *
-   * @param thaiBuddhistEra  the era to represent, from 0 to 1
-   * @return the BuddhistEra singleton, never null
-   * @throws DateTimeException if the era is invalid
+   * @param thaiBuddhistEra
+   *   the era to represent, from 0 to 1
+   * @return
+   *   the BuddhistEra singleton, never null
+   * @throws DateTimeException
+   *   if the era is invalid
    */
   def of(thaiBuddhistEra: Int): ThaiBuddhistEra =
     thaiBuddhistEra match {
@@ -70,11 +72,10 @@ object ThaiBuddhistEra {
  *
  * The Thai Buddhist calendar system has two eras.
  *
- * <b>Do not use ordinal() to obtain the numeric representation of a ThaiBuddhistEra
- * instance. Use getValue() instead.</b>
+ * <b>Do not use ordinal() to obtain the numeric representation of a ThaiBuddhistEra instance. Use
+ * getValue() instead.</b>
  *
- * <h3>Specification for implementors</h3>
- * This is an immutable and thread-safe enum.
+ * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
  */
 final class ThaiBuddhistEra(name: String, ordinal: Int)
     extends Enum[ThaiBuddhistEra](name, ordinal)
@@ -83,10 +84,10 @@ final class ThaiBuddhistEra(name: String, ordinal: Int)
   /**
    * Gets the era numeric value.
    *
-   * The current era (from ISO year -543 onwards) has the value 1
-   * The previous era has the value 0.
+   * The current era (from ISO year -543 onwards) has the value 1 The previous era has the value 0.
    *
-   * @return the era value, from 0 (BEFORE_BE) to 1 (BE)
+   * @return
+   *   the era value, from 0 (BEFORE_BE) to 1 (BE)
    */
   def getValue: Int = ordinal
 

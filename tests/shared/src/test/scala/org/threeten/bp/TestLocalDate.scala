@@ -161,64 +161,58 @@ class TestLocalDate
   }
 
   test("now_Clock_allSecsInDay_utc") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i)
-          val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: LocalDate  = LocalDate.now(clock)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i)
+        val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: LocalDate  = LocalDate.now(clock)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("now_Clock_allSecsInDay_offset") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i)
-          val clock: Clock     =
-            Clock.fixed(instant.minusSeconds(TestLocalDate.OFFSET_PONE.getTotalSeconds),
-                        TestLocalDate.OFFSET_PONE
-            )
-          val test: LocalDate  = LocalDate.now(clock)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i)
+        val clock: Clock     =
+          Clock.fixed(instant.minusSeconds(TestLocalDate.OFFSET_PONE.getTotalSeconds),
+                      TestLocalDate.OFFSET_PONE
+          )
+        val test: LocalDate  = LocalDate.now(clock)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("now_Clock_allSecsInDay_beforeEpoch") {
-    {
-      var i: Int = -1
-      while (i >= -(2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i)
-          val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: LocalDate  = LocalDate.now(clock)
-          assertEquals(test.getYear, 1969)
-          assertEquals(test.getMonth, Month.DECEMBER)
-          assertEquals(test.getDayOfMonth, if (i >= -24 * 60 * 60) 31 else 30)
-        }
-        {
-          i -= 1
-          i + 1
-        }
+    var i: Int = -1
+    while (i >= -(2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i)
+        val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: LocalDate  = LocalDate.now(clock)
+        assertEquals(test.getYear, 1969)
+        assertEquals(test.getMonth, Month.DECEMBER)
+        assertEquals(test.getDayOfMonth, if (i >= -24 * 60 * 60) 31 else 30)
+      }
+      {
+        i -= 1
+        i + 1
       }
     }
   }

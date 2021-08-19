@@ -32,341 +32,332 @@
 package org.threeten.bp.temporal
 
 /**
- * Framework-level interface defining read-write access to a temporal object,
- * such as a date, time, offset or some combination of these.
+ * Framework-level interface defining read-write access to a temporal object, such as a date, time,
+ * offset or some combination of these.
  *
- * This is the base interface type for date, time and offset objects that
- * are complete enough to be manipulated using plus and minus.
- * It is implemented by those classes that can provide and manipulate information
- * as {@link TemporalField fields} or {@link TemporalQuery queries}.
- * See {@link TemporalAccessor} for the read-only version of this interface.
+ * This is the base interface type for date, time and offset objects that are complete enough to be
+ * manipulated using plus and minus. It is implemented by those classes that can provide and
+ * manipulate information as {@link TemporalField fields} or {@link TemporalQuery queries}. See
+ * {@link TemporalAccessor} for the read-only version of this interface.
  *
- * Most date and time information can be represented as a number.
- * These are modeled using {@code TemporalField} with the number held using
- * a {@code long} to handle large values. Year, month and day-of-month are
- * simple examples of fields, but they also include instant and offsets.
- * See {@link ChronoField} for the standard set of fields.
+ * Most date and time information can be represented as a number. These are modeled using {@code
+ * TemporalField} with the number held using a {@code long} to handle large values. Year, month and
+ * day-of-month are simple examples of fields, but they also include instant and offsets. See {@link
+ * ChronoField} for the standard set of fields.
  *
- * Two pieces of date/time information cannot be represented by numbers,
- * the {@link Chronology chronology} and the {@link ZoneId time-zone}.
- * These can be accessed via {@link #query(TemporalQuery) queries} using
- * the static methods defined on {@link TemporalQueries}.
+ * Two pieces of date/time information cannot be represented by numbers, the {@link Chronology
+ * chronology} and the {@link ZoneId time-zone}. These can be accessed via {@link
+ * #query(TemporalQuery) queries} using the static methods defined on {@link TemporalQueries}.
  *
- * This interface is a framework-level interface that should not be widely
- * used in application code. Instead, applications should create and pass
- * around instances of concrete types, such as {@code LocalDate}.
- * There are many reasons for this, part of which is that implementations
- * of this interface may be in calendar systems other than ISO.
- * See {@link ChronoLocalDate} for a fuller discussion of the issues.
+ * This interface is a framework-level interface that should not be widely used in application code.
+ * Instead, applications should create and pass around instances of concrete types, such as {@code
+ * LocalDate}. There are many reasons for this, part of which is that implementations of this
+ * interface may be in calendar systems other than ISO. See {@link ChronoLocalDate} for a fuller
+ * discussion of the issues.
  *
  * <h3>When to implement</h3>
  *
- * A class should implement this interface if it meets three criteria:
- * <ul>
- * <li>it provides access to date/time/offset information, as per {@code TemporalAccessor}
- * <li>the set of fields are contiguous from the largest to the smallest
- * <li>the set of fields are complete, such that no other field is needed to define the
- * valid range of values for the fields that are represented
+ * A class should implement this interface if it meets three criteria: <ul> <li>it provides access
+ * to date/time/offset information, as per {@code TemporalAccessor} <li>the set of fields are
+ * contiguous from the largest to the smallest <li>the set of fields are complete, such that no
+ * other field is needed to define the valid range of values for the fields that are represented
  * </ul><p>
  *
- * Four examples make this clear:
- * <ul>
- * <li>{@code LocalDate} implements this interface as it represents a set of fields
- * that are contiguous from days to forever and require no external information to determine
- * the validity of each date. It is therefore able to implement plus/minus correctly.
- * <li>{@code LocalTime} implements this interface as it represents a set of fields
- * that are contiguous from nanos to within days and require no external information to determine
- * validity. It is able to implement plus/minus correctly, by wrapping around the day.
- * <li>{@code MonthDay}, the combination of month-of-year and day-of-month, does not implement
- * this interface.  While the combination is contiguous, from days to months within years,
- * the combination does not have sufficient information to define the valid range of values
- * for day-of-month.  As such, it is unable to implement plus/minus correctly.
- * <li>The combination day-of-week and day-of-month ("Friday the 13th") should not implement
- * this interface. It does not represent a contiguous set of fields, as days to weeks overlaps
- * days to months.
- * </ul><p>
+ * Four examples make this clear: <ul> <li>{@code LocalDate} implements this interface as it
+ * represents a set of fields that are contiguous from days to forever and require no external
+ * information to determine the validity of each date. It is therefore able to implement plus/minus
+ * correctly. <li>{@code LocalTime} implements this interface as it represents a set of fields that
+ * are contiguous from nanos to within days and require no external information to determine
+ * validity. It is able to implement plus/minus correctly, by wrapping around the day. <li>{@code
+ * MonthDay}, the combination of month-of-year and day-of-month, does not implement this interface.
+ * While the combination is contiguous, from days to months within years, the combination does not
+ * have sufficient information to define the valid range of values for day-of-month. As such, it is
+ * unable to implement plus/minus correctly. <li>The combination day-of-week and day-of-month
+ * ("Friday the 13th") should not implement this interface. It does not represent a contiguous set
+ * of fields, as days to weeks overlaps days to months. </ul><p>
  *
- * <h3>Specification for implementors</h3>
- * This interface places no restrictions on the mutability of implementations,
- * however immutability is strongly recommended.
- * All implementations must be {@link Comparable}.
+ * <h3>Specification for implementors</h3> This interface places no restrictions on the mutability
+ * of implementations, however immutability is strongly recommended. All implementations must be
+ * {@link Comparable}.
  */
 trait Temporal extends TemporalAccessor {
 
   /**
    * Checks if the specified unit is supported.
    *
-   * This checks if the date-time can be queried for the specified unit.
-   * If false, then calling the {@link #plus(TemporalAmount) plus} and {@link #minus(TemporalAmount) minus}
-   * methods will throw an exception.
+   * This checks if the date-time can be queried for the specified unit. If false, then calling the
+   * {@link #plus(TemporalAmount) plus} and {@link #minus(TemporalAmount) minus} methods will throw
+   * an exception.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must check and handle all fields defined in {@link ChronoUnit}.
-   * If the field is supported, then true is returned, otherwise false
+   * <h3>Specification for implementors</h3> Implementations must check and handle all fields
+   * defined in {@link ChronoUnit}. If the field is supported, then true is returned, otherwise
+   * false
    *
-   * If the field is not a {@code ChronoUnit}, then the result of this method
-   * is obtained by invoking {@code TemporalUnit.isSupportedBy(Temporal)}
-   * passing {@code this} as the argument.
+   * If the field is not a {@code ChronoUnit}, then the result of this method is obtained by
+   * invoking {@code TemporalUnit.isSupportedBy(Temporal)} passing {@code this} as the argument.
    *
    * Implementations must not alter this object.
    *
-   * @param unit  the unit to check, null returns false
-   * @return true if this date-time can be queried for the unit, false if not
+   * @param unit
+   *   the unit to check, null returns false
+   * @return
+   *   true if this date-time can be queried for the unit, false if not
    */
   def isSupported(unit: TemporalUnit): Boolean
 
   /**
    * Returns an adjusted object of the same type as this object with the adjustment made.
    *
-   * This adjusts this date-time according to the rules of the specified adjuster.
-   * A simple adjuster might simply set the one of the fields, such as the year field.
-   * A more complex adjuster might set the date to the last day of the month.
-   * A selection of common adjustments is provided in {@link TemporalAdjusters}.
-   * These include finding the "last day of the month" and "next Wednesday".
-   * The adjuster is responsible for handling special cases, such as the varying
-   * lengths of month and leap years.
+   * This adjusts this date-time according to the rules of the specified adjuster. A simple adjuster
+   * might simply set the one of the fields, such as the year field. A more complex adjuster might
+   * set the date to the last day of the month. A selection of common adjustments is provided in
+   * {@link TemporalAdjusters}. These include finding the "last day of the month" and "next
+   * Wednesday". The adjuster is responsible for handling special cases, such as the varying lengths
+   * of month and leap years.
    *
-   * Some example code indicating how and why this method is used:
-   * <pre>
-   * date = date.with(Month.JULY);        // most key classes implement TemporalAdjuster
-   * date = date.with(lastDayOfMonth());  // static import from TemporalAdjusters
-   * date = date.with(next(WEDNESDAY));   // static import from TemporalAdjusters and DayOfWeek
-   * </pre>
+   * Some example code indicating how and why this method is used: <pre> date =
+   * date.with(Month.JULY); // most key classes implement TemporalAdjuster date =
+   * date.with(lastDayOfMonth()); // static import from TemporalAdjusters date =
+   * date.with(next(WEDNESDAY)); // static import from TemporalAdjusters and DayOfWeek </pre>
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must not alter either this object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * <h3>Specification for implementors</h3> Implementations must not alter either this object.
+   * Instead, an adjusted copy of the original must be returned. This provides equivalent, safe
+   * behavior for immutable and mutable implementations.
    *
-   * @param adjuster  the adjuster to use, not null
-   * @return an object of the same type with the specified adjustment made, not null
-   * @throws DateTimeException if unable to make the adjustment
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param adjuster
+   *   the adjuster to use, not null
+   * @return
+   *   an object of the same type with the specified adjustment made, not null
+   * @throws DateTimeException
+   *   if unable to make the adjustment
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def `with`(adjuster: TemporalAdjuster): Temporal = adjuster.adjustInto(this)
 
   /**
    * Returns an object of the same type as this object with the specified field altered.
    *
-   * This returns a new object based on this one with the value for the specified field changed.
-   * For example, on a {@code LocalDate}, this could be used to set the year, month or day-of-month.
-   * The returned object will have the same observable type as this object.
+   * This returns a new object based on this one with the value for the specified field changed. For
+   * example, on a {@code LocalDate}, this could be used to set the year, month or day-of-month. The
+   * returned object will have the same observable type as this object.
    *
-   * In some cases, changing a field is not fully defined. For example, if the target object is
-   * a date representing the 31st January, then changing the month to February would be unclear.
-   * In cases like this, the field is responsible for resolving the result. Typically it will choose
+   * In some cases, changing a field is not fully defined. For example, if the target object is a
+   * date representing the 31st January, then changing the month to February would be unclear. In
+   * cases like this, the field is responsible for resolving the result. Typically it will choose
    * the previous valid date, which would be the last valid day of February in this example.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must check and handle all fields defined in {@link ChronoField}.
-   * If the field is supported, then the adjustment must be performed.
-   * If unsupported, then a {@code DateTimeException} must be thrown.
+   * <h3>Specification for implementors</h3> Implementations must check and handle all fields
+   * defined in {@link ChronoField}. If the field is supported, then the adjustment must be
+   * performed. If unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method
-   * is obtained by invoking {@code TemporalField.adjustInto(Temporal, long)}
-   * passing {@code this} as the first argument.
+   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the first
+   * argument.
    *
-   * Implementations must not alter either this object or the specified temporal object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * Implementations must not alter either this object or the specified temporal object. Instead, an
+   * adjusted copy of the original must be returned. This provides equivalent, safe behavior for
+   * immutable and mutable implementations.
    *
-   * @param field  the field to set in the result, not null
-   * @param newValue  the new value of the field in the result
-   * @return an object of the same type with the specified field set, not null
-   * @throws DateTimeException if the field cannot be set
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param field
+   *   the field to set in the result, not null
+   * @param newValue
+   *   the new value of the field in the result
+   * @return
+   *   an object of the same type with the specified field set, not null
+   * @throws DateTimeException
+   *   if the field cannot be set
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def `with`(field: TemporalField, newValue: Long): Temporal
 
   /**
    * Returns an object of the same type as this object with an amount added.
    *
-   * This adjusts this temporal, adding according to the rules of the specified amount.
-   * The amount is typically a {@link Period} but may be any other type implementing
-   * the {@link TemporalAmount} interface, such as {@link Duration}.
+   * This adjusts this temporal, adding according to the rules of the specified amount. The amount
+   * is typically a {@link Period} but may be any other type implementing the {@link TemporalAmount}
+   * interface, such as {@link Duration}.
    *
-   * Some example code indicating how and why this method is used:
-   * <pre>
-   * date = date.plus(period);                  // add a Period instance
-   * date = date.plus(duration);                // add a Duration instance
-   * date = date.plus(workingDays(6));          // example user-written workingDays method
-   * </pre>
+   * Some example code indicating how and why this method is used: <pre> date = date.plus(period);
+   * // add a Period instance date = date.plus(duration); // add a Duration instance date =
+   * date.plus(workingDays(6)); // example user-written workingDays method </pre>
    *
-   * Note that calling {@code plus} followed by {@code minus} is not guaranteed to
-   * return the same date-time.
+   * Note that calling {@code plus} followed by {@code minus} is not guaranteed to return the same
+   * date-time.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must not alter either this object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * <h3>Specification for implementors</h3> Implementations must not alter either this object.
+   * Instead, an adjusted copy of the original must be returned. This provides equivalent, safe
+   * behavior for immutable and mutable implementations.
    *
-   * @param amount  the amount to add, not null
-   * @return an object of the same type with the specified adjustment made, not null
-   * @throws DateTimeException if the addition cannot be made
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param amount
+   *   the amount to add, not null
+   * @return
+   *   an object of the same type with the specified adjustment made, not null
+   * @throws DateTimeException
+   *   if the addition cannot be made
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def plus(amount: TemporalAmount): Temporal = amount.addTo(this)
 
   /**
    * Returns an object of the same type as this object with the specified period added.
    *
-   * This method returns a new object based on this one with the specified period added.
-   * For example, on a {@code LocalDate}, this could be used to add a number of years, months or days.
+   * This method returns a new object based on this one with the specified period added. For
+   * example, on a {@code LocalDate}, this could be used to add a number of years, months or days.
    * The returned object will have the same observable type as this object.
    *
-   * In some cases, changing a field is not fully defined. For example, if the target object is
-   * a date representing the 31st January, then adding one month would be unclear.
-   * In cases like this, the field is responsible for resolving the result. Typically it will choose
-   * the previous valid date, which would be the last valid day of February in this example.
+   * In some cases, changing a field is not fully defined. For example, if the target object is a
+   * date representing the 31st January, then adding one month would be unclear. In cases like this,
+   * the field is responsible for resolving the result. Typically it will choose the previous valid
+   * date, which would be the last valid day of February in this example.
    *
    * If the implementation represents a date-time that has boundaries, such as {@code LocalTime},
    * then the permitted units must include the boundary unit, but no multiples of the boundary unit.
-   * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code MONTHS}.
+   * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code
+   * MONTHS}.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must check and handle all units defined in {@link ChronoUnit}.
-   * If the unit is supported, then the addition must be performed.
-   * If unsupported, then a {@code DateTimeException} must be thrown.
+   * <h3>Specification for implementors</h3> Implementations must check and handle all units defined
+   * in {@link ChronoUnit}. If the unit is supported, then the addition must be performed. If
+   * unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method
-   * is obtained by invoking {@code TemporalUnit.addTo(Temporal, long)}
-   * passing {@code this} as the first argument.
+   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
+   * {@code TemporalUnit.addTo(Temporal, long)} passing {@code this} as the first argument.
    *
-   * Implementations must not alter either this object or the specified temporal object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * Implementations must not alter either this object or the specified temporal object. Instead, an
+   * adjusted copy of the original must be returned. This provides equivalent, safe behavior for
+   * immutable and mutable implementations.
    *
-   * @param amountToAdd  the amount of the specified unit to add, may be negative
-   * @param unit  the unit of the period to add, not null
-   * @return an object of the same type with the specified period added, not null
-   * @throws DateTimeException if the unit cannot be added
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param amountToAdd
+   *   the amount of the specified unit to add, may be negative
+   * @param unit
+   *   the unit of the period to add, not null
+   * @return
+   *   an object of the same type with the specified period added, not null
+   * @throws DateTimeException
+   *   if the unit cannot be added
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): Temporal
 
   /**
    * Returns an object of the same type as this object with an amount subtracted.
    *
-   * This adjusts this temporal, subtracting according to the rules of the specified amount.
-   * The amount is typically a {@link Period} but may be any other type implementing
-   * the {@link TemporalAmount} interface, such as {@link Duration}.
+   * This adjusts this temporal, subtracting according to the rules of the specified amount. The
+   * amount is typically a {@link Period} but may be any other type implementing the {@link
+   * TemporalAmount} interface, such as {@link Duration}.
    *
-   * Some example code indicating how and why this method is used:
-   * <pre>
-   * date = date.minus(period);                  // subtract a Period instance
-   * date = date.minus(duration);                // subtract a Duration instance
-   * date = date.minus(workingDays(6));          // example user-written workingDays method
-   * </pre>
+   * Some example code indicating how and why this method is used: <pre> date = date.minus(period);
+   * // subtract a Period instance date = date.minus(duration); // subtract a Duration instance date
+   * = date.minus(workingDays(6)); // example user-written workingDays method </pre>
    *
-   * Note that calling {@code plus} followed by {@code minus} is not guaranteed to
-   * return the same date-time.
+   * Note that calling {@code plus} followed by {@code minus} is not guaranteed to return the same
+   * date-time.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must not alter either this object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * <h3>Specification for implementors</h3> Implementations must not alter either this object.
+   * Instead, an adjusted copy of the original must be returned. This provides equivalent, safe
+   * behavior for immutable and mutable implementations.
    *
-   * @param amount  the amount to subtract, not null
-   * @return an object of the same type with the specified adjustment made, not null
-   * @throws DateTimeException if the subtraction cannot be made
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param amount
+   *   the amount to subtract, not null
+   * @return
+   *   an object of the same type with the specified adjustment made, not null
+   * @throws DateTimeException
+   *   if the subtraction cannot be made
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def minus(amount: TemporalAmount): Temporal = amount.subtractFrom(this)
 
   /**
    * Returns an object of the same type as this object with the specified period subtracted.
    *
-   * This method returns a new object based on this one with the specified period subtracted.
-   * For example, on a {@code LocalDate}, this could be used to subtract a number of years, months or days.
-   * The returned object will have the same observable type as this object.
+   * This method returns a new object based on this one with the specified period subtracted. For
+   * example, on a {@code LocalDate}, this could be used to subtract a number of years, months or
+   * days. The returned object will have the same observable type as this object.
    *
-   * In some cases, changing a field is not fully defined. For example, if the target object is
-   * a date representing the 31st March, then subtracting one month would be unclear.
-   * In cases like this, the field is responsible for resolving the result. Typically it will choose
-   * the previous valid date, which would be the last valid day of February in this example.
+   * In some cases, changing a field is not fully defined. For example, if the target object is a
+   * date representing the 31st March, then subtracting one month would be unclear. In cases like
+   * this, the field is responsible for resolving the result. Typically it will choose the previous
+   * valid date, which would be the last valid day of February in this example.
    *
    * If the implementation represents a date-time that has boundaries, such as {@code LocalTime},
    * then the permitted units must include the boundary unit, but no multiples of the boundary unit.
-   * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code MONTHS}.
+   * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code
+   * MONTHS}.
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must behave in a manor equivalent to the default method behavior.
+   * <h3>Specification for implementors</h3> Implementations must behave in a manor equivalent to
+   * the default method behavior.
    *
-   * Implementations must not alter either this object or the specified temporal object.
-   * Instead, an adjusted copy of the original must be returned.
-   * This provides equivalent, safe behavior for immutable and mutable implementations.
+   * Implementations must not alter either this object or the specified temporal object. Instead, an
+   * adjusted copy of the original must be returned. This provides equivalent, safe behavior for
+   * immutable and mutable implementations.
    *
-   * @param amountToSubtract  the amount of the specified unit to subtract, may be negative
-   * @param unit  the unit of the period to subtract, not null
-   * @return an object of the same type with the specified period subtracted, not null
-   * @throws DateTimeException if the unit cannot be subtracted
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param amountToSubtract
+   *   the amount of the specified unit to subtract, may be negative
+   * @param unit
+   *   the unit of the period to subtract, not null
+   * @return
+   *   an object of the same type with the specified period subtracted, not null
+   * @throws DateTimeException
+   *   if the unit cannot be subtracted
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def minus(amountToSubtract: Long, unit: TemporalUnit): Temporal =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
     else plus(-amountToSubtract, unit)
 
   /**
-   * Calculates the period between this temporal and another temporal in
-   * terms of the specified unit.
+   * Calculates the period between this temporal and another temporal in terms of the specified
+   * unit.
    *
-   * This calculates the period between two temporals in terms of a single unit.
-   * The start and end points are {@code this} and the specified temporal.
-   * The result will be negative if the end is before the start.
-   * For example, the period in hours between two temporal objects can be
+   * This calculates the period between two temporals in terms of a single unit. The start and end
+   * points are {@code this} and the specified temporal. The result will be negative if the end is
+   * before the start. For example, the period in hours between two temporal objects can be
    * calculated using {@code startTime.until(endTime, HOURS)}.
    *
-   * The calculation returns a whole number, representing the number of
-   * complete units between the two temporals.
-   * For example, the period in hours between the times 11:30 and 13:29
-   * will only be one hour as it is one minute short of two hours.
+   * The calculation returns a whole number, representing the number of complete units between the
+   * two temporals. For example, the period in hours between the times 11:30 and 13:29 will only be
+   * one hour as it is one minute short of two hours.
    *
-   * There are two equivalent ways of using this method.
-   * The first is to invoke this method directly.
-   * The second is to use {@link TemporalUnit#between(Temporal, Temporal)}:
-   * <pre>
-   * // these two lines are equivalent
-   * between = thisUnit.between(start, end);
-   * between = start.until(end, thisUnit);
-   * </pre>
-   * The choice should be made based on which makes the code more readable.
+   * There are two equivalent ways of using this method. The first is to invoke this method
+   * directly. The second is to use {@link TemporalUnit#between(Temporal, Temporal)}: <pre> // these
+   * two lines are equivalent between = thisUnit.between(start, end); between = start.until(end,
+   * thisUnit); </pre> The choice should be made based on which makes the code more readable.
    *
-   * For example, this method allows the number of days between two dates to be calculated:
-   * <pre>
-   * val daysBetween: Long = DAYS.between(start, end);
-   * // or alternatively
-   * val daysBetween: Long = start.until(end, DAYS);
-   * </pre>
+   * For example, this method allows the number of days between two dates to be calculated: <pre>
+   * val daysBetween: Long = DAYS.between(start, end); // or alternatively val daysBetween: Long =
+   * start.until(end, DAYS); </pre>
    *
-   * <h3>Specification for implementors</h3>
-   * Implementations must begin by checking to ensure that the input temporal
-   * object is of the same observable type as the implementation.
-   * They must then perform the calculation for all instances of {@link ChronoUnit}.
-   * A {@code DateTimeException} must be thrown for {@code ChronoUnit}
-   * instances that are unsupported.
+   * <h3>Specification for implementors</h3> Implementations must begin by checking to ensure that
+   * the input temporal object is of the same observable type as the implementation. They must then
+   * perform the calculation for all instances of {@link ChronoUnit}. A {@code DateTimeException}
+   * must be thrown for {@code ChronoUnit} instances that are unsupported.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method
-   * is obtained by invoking {@code TemporalUnit.between(Temporal, Temporal)}
-   * passing {@code this} as the first argument and the input temporal as
-   * the second argument.
+   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
+   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
+   * the input temporal as the second argument.
    *
-   * In summary, implementations must behave in a manner equivalent to this code:
-   * <pre>
-   * // check input temporal is the same type as this class
-   * if (unit instanceof ChronoUnit) {
-   * // if unit is supported, then calculate and return result
-   * // else throw DateTimeException for unsupported units
-   * }
-   * return unit.between(this, endTemporal);
-   * </pre>
+   * In summary, implementations must behave in a manner equivalent to this code: <pre> // check
+   * input temporal is the same type as this class if (unit instanceof ChronoUnit) { // if unit is
+   * supported, then calculate and return result // else throw DateTimeException for unsupported
+   * units } return unit.between(this, endTemporal); </pre>
    *
    * The target object must not be altered by this method.
    *
-   * @param endTemporal  the end temporal, of the same type as this object, not null
-   * @param unit  the unit to measure the period in, not null
-   * @return the amount of the period between this and the end
-   * @throws DateTimeException if the period cannot be calculated
-   * @throws ArithmeticException if numeric overflow occurs
+   * @param endTemporal
+   *   the end temporal, of the same type as this object, not null
+   * @param unit
+   *   the unit to measure the period in, not null
+   * @return
+   *   the amount of the period between this and the end
+   * @throws DateTimeException
+   *   if the period cannot be calculated
+   * @throws ArithmeticException
+   *   if numeric overflow occurs
    */
   def until(endTemporal: Temporal, unit: TemporalUnit): Long
 }

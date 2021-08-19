@@ -40,49 +40,53 @@ private[format] object TTBPDateTimeTextProvider {
 }
 
 /**
- * The Service Provider Interface (SPI) to be implemented by classes providing
- * the textual form of a date-time field.
+ * The Service Provider Interface (SPI) to be implemented by classes providing the textual form of a
+ * date-time field.
  *
- * <h3>Specification for implementors</h3>
- * This interface is a service provider that can be called by multiple threads.
- * Implementations must be thread-safe.
- * Implementations should cache the textual information.
- * <p>
- * This class has been made pubilc primarily for the benefit of Android.
+ * <h3>Specification for implementors</h3> This interface is a service provider that can be called
+ * by multiple threads. Implementations must be thread-safe. Implementations should cache the
+ * textual information. <p> This class has been made pubilc primarily for the benefit of Android.
  */
 abstract class TTBPDateTimeTextProvider {
 
   /**
-   * Gets the text for the specified field, locale and style
-   * for the purpose of printing.
+   * Gets the text for the specified field, locale and style for the purpose of printing.
    *
-   * The text associated with the value is returned.
-   * The null return value should be used if there is no applicable text, or
-   * if the text would be a numeric representation of the value.
+   * The text associated with the value is returned. The null return value should be used if there
+   * is no applicable text, or if the text would be a numeric representation of the value.
    *
-   * @param field  the field to get text for, not null
-   * @param value  the field value to get text for, not null
-   * @param style  the style to get text for, not null
-   * @param locale  the locale to get text for, not null
-   * @return the text for the field value, null if no text found
+   * @param field
+   *   the field to get text for, not null
+   * @param value
+   *   the field value to get text for, not null
+   * @param style
+   *   the style to get text for, not null
+   * @param locale
+   *   the locale to get text for, not null
+   * @return
+   *   the text for the field value, null if no text found
    */
   def getText(field: TemporalField, value: Long, style: TextStyle, locale: Locale): String
 
   /**
-   * Gets an iterator of text to field for the specified field, locale and style
-   * for the purpose of parsing.
+   * Gets an iterator of text to field for the specified field, locale and style for the purpose of
+   * parsing.
    *
    * The iterator must be returned in order from the longest text to the shortest.
    *
-   * The null return value should be used if there is no applicable parsable text, or
-   * if the text would be a numeric representation of the value.
-   * Text can only be parsed if all the values for that field-style-locale combination are unique.
+   * The null return value should be used if there is no applicable parsable text, or if the text
+   * would be a numeric representation of the value. Text can only be parsed if all the values for
+   * that field-style-locale combination are unique.
    *
-   * @param field  the field to get text for, not null
-   * @param style  the style to get text for, null for all parsable text
-   * @param locale  the locale to get text for, not null
-   * @return the iterator of text to field pairs, in order from longest text to shortest text,
-   *         null if the field or style is not parsable
+   * @param field
+   *   the field to get text for, not null
+   * @param style
+   *   the style to get text for, null for all parsable text
+   * @param locale
+   *   the locale to get text for, not null
+   * @return
+   *   the iterator of text to field pairs, in order from longest text to shortest text, null if the
+   *   field or style is not parsable
    */
   def getTextIterator(
     field:  TemporalField,

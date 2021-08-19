@@ -125,45 +125,41 @@ class TestOffsetTime
   }
 
   test("now_Clock_allSecsInDay") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i, 8)
-          val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: OffsetTime = OffsetTime.now(clock)
-          assertEquals(test.getHour, (i / (60 * 60)) % 24)
-          assertEquals(test.getMinute, (i / 60)      % 60)
-          assertEquals(test.getSecond, i             % 60)
-          assertEquals(test.getNano, 8)
-          assertEquals(test.getOffset, ZoneOffset.UTC)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i, 8)
+        val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: OffsetTime = OffsetTime.now(clock)
+        assertEquals(test.getHour, (i / (60 * 60)) % 24)
+        assertEquals(test.getMinute, (i / 60)      % 60)
+        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getNano, 8)
+        assertEquals(test.getOffset, ZoneOffset.UTC)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("now_Clock_beforeEpoch") {
-    {
-      var i: Int = -1
-      while (i >= -(24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i, 8)
-          val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: OffsetTime = OffsetTime.now(clock)
-          assertEquals(test.getHour, ((i + 24 * 60 * 60) / (60 * 60)) % 24)
-          assertEquals(test.getMinute, ((i + 24 * 60 * 60) / 60)      % 60)
-          assertEquals(test.getSecond, (i + 24 * 60 * 60)             % 60)
-          assertEquals(test.getNano, 8)
-          assertEquals(test.getOffset, ZoneOffset.UTC)
-        }
-        {
-          i -= 1
-          i + 1
-        }
+    var i: Int = -1
+    while (i >= -(24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i, 8)
+        val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: OffsetTime = OffsetTime.now(clock)
+        assertEquals(test.getHour, ((i + 24 * 60 * 60) / (60 * 60)) % 24)
+        assertEquals(test.getMinute, ((i + 24 * 60 * 60) / 60)      % 60)
+        assertEquals(test.getSecond, (i + 24 * 60 * 60)             % 60)
+        assertEquals(test.getNano, 8)
+        assertEquals(test.getOffset, ZoneOffset.UTC)
+      }
+      {
+        i -= 1
+        i + 1
       }
     }
   }
@@ -264,41 +260,37 @@ class TestOffsetTime
   }
 
   test("factory_ofInstant_allSecsInDay") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i, 8)
-          val test: OffsetTime = OffsetTime.ofInstant(instant, ZoneOffset.UTC)
-          assertEquals(test.getHour, (i / (60 * 60)) % 24)
-          assertEquals(test.getMinute, (i / 60)      % 60)
-          assertEquals(test.getSecond, i             % 60)
-          assertEquals(test.getNano, 8)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i, 8)
+        val test: OffsetTime = OffsetTime.ofInstant(instant, ZoneOffset.UTC)
+        assertEquals(test.getHour, (i / (60 * 60)) % 24)
+        assertEquals(test.getMinute, (i / 60)      % 60)
+        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getNano, 8)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("factory_ofInstant_beforeEpoch") {
-    {
-      var i: Int = -1
-      while (i >= -(24 * 60 * 60)) {
-        {
-          val instant: Instant = Instant.ofEpochSecond(i, 8)
-          val test: OffsetTime = OffsetTime.ofInstant(instant, ZoneOffset.UTC)
-          assertEquals(test.getHour, ((i + 24 * 60 * 60) / (60 * 60)) % 24)
-          assertEquals(test.getMinute, ((i + 24 * 60 * 60) / 60)      % 60)
-          assertEquals(test.getSecond, (i + 24 * 60 * 60)             % 60)
-          assertEquals(test.getNano, 8)
-        }
-        {
-          i -= 1
-          i + 1
-        }
+    var i: Int = -1
+    while (i >= -(24 * 60 * 60)) {
+      {
+        val instant: Instant = Instant.ofEpochSecond(i, 8)
+        val test: OffsetTime = OffsetTime.ofInstant(instant, ZoneOffset.UTC)
+        assertEquals(test.getHour, ((i + 24 * 60 * 60) / (60 * 60)) % 24)
+        assertEquals(test.getMinute, ((i + 24 * 60 * 60) / 60)      % 60)
+        assertEquals(test.getSecond, (i + 24 * 60 * 60)             % 60)
+        assertEquals(test.getNano, 8)
+      }
+      {
+        i -= 1
+        i + 1
       }
     }
   }

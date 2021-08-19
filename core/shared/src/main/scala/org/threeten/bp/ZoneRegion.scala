@@ -47,11 +47,16 @@ private object ZoneRegion {
   /**
    * Obtains an instance of {@code ZoneId} from an identifier.
    *
-   * @param zoneId  the time-zone ID, not null
-   * @param checkAvailable  whether to check if the zone ID is available
-   * @return the zone ID, not null
-   * @throws DateTimeException if the ID format is invalid
-   * @throws DateTimeException if checking availability and the ID cannot be found
+   * @param zoneId
+   *   the time-zone ID, not null
+   * @param checkAvailable
+   *   whether to check if the zone ID is available
+   * @return
+   *   the zone ID, not null
+   * @throws DateTimeException
+   *   if the ID format is invalid
+   * @throws DateTimeException
+   *   if checking availability and the ID cannot be found
    */
   private[bp] def ofId(zoneId: String, checkAvailable: Boolean): ZoneRegion = {
     Objects.requireNonNull(zoneId, "zoneId")
@@ -74,24 +79,23 @@ private object ZoneRegion {
 /**
  * A geographical region where the same time-zone rules apply.
  *
- * Time-zone information is categorized as a set of rules defining when and
- * how the offset from UTC/Greenwich changes. These rules are accessed using
- * identifiers based on geographical regions, such as countries or states.
- * The most common region classification is the Time Zone Database (TZDB),
- * which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
+ * Time-zone information is categorized as a set of rules defining when and how the offset from
+ * UTC/Greenwich changes. These rules are accessed using identifiers based on geographical regions,
+ * such as countries or states. The most common region classification is the Time Zone Database
+ * (TZDB), which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
  *
- * The region identifier, modeled by this class, is distinct from the
- * underlying rules, modeled by {@link ZoneRules}.
- * The rules are defined by governments and change frequently.
- * By contrast, the region identifier is well-defined and long-lived.
- * This separation also allows rules to be shared between regions if appropriate.
+ * The region identifier, modeled by this class, is distinct from the underlying rules, modeled by
+ * {@link ZoneRules}. The rules are defined by governments and change frequently. By contrast, the
+ * region identifier is well-defined and long-lived. This separation also allows rules to be shared
+ * between regions if appropriate.
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
  * @constructor
- * @param id  the time-zone ID, not null
- * @param rules  the rules, null for lazy lookup
+ * @param id
+ *   the time-zone ID, not null
+ * @param rules
+ *   the rules, null for lazy lookup
  */
 final class ZoneRegion private[bp] (
   private val id:                        String,

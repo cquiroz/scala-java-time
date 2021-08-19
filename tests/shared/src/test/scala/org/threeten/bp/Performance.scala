@@ -74,7 +74,8 @@ object Performance {
   /**
    * Main.
    *
-   * @param args  the arguments
+   * @param args
+   *   the arguments
    */
   def main(args: Array[String]): Unit = {
     {

@@ -158,54 +158,50 @@ class TestOffsetDateTime
   }
 
   test("now_Clock_allSecsInDay_utc") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
-          val clock: Clock         = Clock.fixed(instant, ZoneOffset.UTC)
-          val test: OffsetDateTime = OffsetDateTime.now(clock)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-          assertEquals(test.getHour, (i / (60 * 60)) % 24)
-          assertEquals(test.getMinute, (i / 60)      % 60)
-          assertEquals(test.getSecond, i             % 60)
-          assertEquals(test.getNano, 123456789)
-          assertEquals(test.getOffset, ZoneOffset.UTC)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
+        val clock: Clock         = Clock.fixed(instant, ZoneOffset.UTC)
+        val test: OffsetDateTime = OffsetDateTime.now(clock)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
+        assertEquals(test.getHour, (i / (60 * 60)) % 24)
+        assertEquals(test.getMinute, (i / 60)      % 60)
+        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getNano, 123456789)
+        assertEquals(test.getOffset, ZoneOffset.UTC)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("now_Clock_allSecsInDay_offset") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
-          val clock: Clock         =
-            Clock.fixed(instant.minusSeconds(TestOffsetDateTime.OFFSET_PONE.getTotalSeconds),
-                        TestOffsetDateTime.OFFSET_PONE
-            )
-          val test: OffsetDateTime = OffsetDateTime.now(clock)
-          assertEquals(test.getYear, 1970)
-          assertEquals(test.getMonth, Month.JANUARY)
-          assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-          assertEquals(test.getHour, (i / (60 * 60)) % 24)
-          assertEquals(test.getMinute, (i / 60)      % 60)
-          assertEquals(test.getSecond, i             % 60)
-          assertEquals(test.getNano, 123456789)
-          assertEquals(test.getOffset, TestOffsetDateTime.OFFSET_PONE)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
+        val clock: Clock         =
+          Clock.fixed(instant.minusSeconds(TestOffsetDateTime.OFFSET_PONE.getTotalSeconds),
+                      TestOffsetDateTime.OFFSET_PONE
+          )
+        val test: OffsetDateTime = OffsetDateTime.now(clock)
+        assertEquals(test.getYear, 1970)
+        assertEquals(test.getMonth, Month.JANUARY)
+        assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
+        assertEquals(test.getHour, (i / (60 * 60)) % 24)
+        assertEquals(test.getMinute, (i / 60)      % 60)
+        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getNano, 123456789)
+        assertEquals(test.getOffset, TestOffsetDateTime.OFFSET_PONE)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
@@ -1224,37 +1220,33 @@ class TestOffsetDateTime
   }
 
   test("test_toEpochSecond_afterEpoch") {
-    {
-      var i: Int = 0
-      while (i < 100000) {
-        {
-          val a: OffsetDateTime = OffsetDateTime
-            .of(LocalDate.of(1970, 1, 1), LocalTime.of(0, 0), ZoneOffset.UTC)
-            .plusSeconds(i)
-          assertEquals(a.toEpochSecond, i)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < 100000) {
+      {
+        val a: OffsetDateTime = OffsetDateTime
+          .of(LocalDate.of(1970, 1, 1), LocalTime.of(0, 0), ZoneOffset.UTC)
+          .plusSeconds(i)
+        assertEquals(a.toEpochSecond, i)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("test_toEpochSecond_beforeEpoch") {
-    {
-      var i: Int = 0
-      while (i < 100000) {
-        {
-          val a: OffsetDateTime = OffsetDateTime
-            .of(LocalDate.of(1970, 1, 1), LocalTime.of(0, 0), ZoneOffset.UTC)
-            .minusSeconds(i)
-          assertEquals(a.toEpochSecond, -i)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < 100000) {
+      {
+        val a: OffsetDateTime = OffsetDateTime
+          .of(LocalDate.of(1970, 1, 1), LocalTime.of(0, 0), ZoneOffset.UTC)
+          .minusSeconds(i)
+        assertEquals(a.toEpochSecond, -i)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

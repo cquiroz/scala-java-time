@@ -3,8 +3,8 @@ import sbtcrossproject.CrossPlugin.autoImport.{ CrossType, crossProject }
 import sbt._
 import sbt.io.Using
 
-val scalaVer    = "3.0.1"
-val tzdbVersion = "2019c"
+val scalaVer                = "3.0.1"
+val tzdbVersion             = "2019c"
 val scalajavaLocalesVersion = "1.2.1"
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -19,16 +19,16 @@ addCommandAlias("demo", ";clean;demo/fastOptJS;demo/fullOptJS")
 inThisBuild(
   List(
     organization := "io.github.cquiroz",
-    homepage := Some(url("https://github.com/cquiroz/scala-java-time")),
-    licenses := Seq("BSD 3-Clause License" -> url("https://opensource.org/licenses/BSD-3-Clause")),
-    developers := List(
+    homepage     := Some(url("https://github.com/cquiroz/scala-java-time")),
+    licenses     := Seq("BSD 3-Clause License" -> url("https://opensource.org/licenses/BSD-3-Clause")),
+    developers   := List(
       Developer("cquiroz",
                 "Carlos Quiroz",
                 "carlos.m.quiroz@gmail.com",
                 url("https://github.com/cquiroz")
       )
     ),
-    scmInfo := Some(
+    scmInfo      := Some(
       ScmInfo(
         url("https://github.com/cquiroz/scala-java-time"),
         "scm:git:git@github.com:cquiroz/scala-java-time.git"
@@ -51,12 +51,12 @@ def scalaVersionSpecificFolders(srcName: String, srcBaseDir: java.io.File, scala
 }
 
 lazy val commonSettings = Seq(
-  description := "java.time API implementation in Scala and Scala.js",
-  scalaVersion := scalaVer,
-  crossScalaVersions := Seq("2.11.12", "2.12.13", "2.13.6", "3.0.1"),
+  description                     := "java.time API implementation in Scala and Scala.js",
+  scalaVersion                    := scalaVer,
+  crossScalaVersions              := Seq("2.11.12", "2.12.13", "2.13.6", "3.0.1"),
   // Don't include threeten on the binaries
-  Compile / packageBin / mappings := (Compile / packageBin / mappings).value.filter {
-    case (f, s) => !s.contains("threeten")
+  Compile / packageBin / mappings := (Compile / packageBin / mappings).value.filter { case (f, s) =>
+    !s.contains("threeten")
   },
   Compile / scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
@@ -66,11 +66,11 @@ lazy val commonSettings = Seq(
         Seq.empty
     }
   },
-  Compile / doc / scalacOptions := {
+  Compile / doc / scalacOptions   := {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, scalaMajor)) if scalaMajor >= 11 =>
         Seq("-deprecation:false")
-      case _                              =>
+      case _                                         =>
         Seq.empty
     }
   },
@@ -82,10 +82,10 @@ lazy val commonSettings = Seq(
                                                                     baseDirectory.value,
                                                                     scalaVersion.value
   ),
-  scalacOptions ++= {if (isDotty.value) Seq.empty else Seq("-target:jvm-1.8")},
+  scalacOptions ++= { if (isDotty.value) Seq.empty else Seq("-target:jvm-1.8") },
   javaOptions ++= Seq("-Dfile.encoding=UTF8"),
-  autoAPIMappings := true,
-  Compile / doc / sources := { if (isDotty.value) Seq() else (Compile / doc / sources).value }
+  autoAPIMappings                 := true,
+  Compile / doc / sources         := { if (isDotty.value) Seq() else (Compile / doc / sources).value }
 )
 
 /**
@@ -182,7 +182,7 @@ lazy val scalajavatimeTZDB = crossProject(JVMPlatform, JSPlatform)
     name := "scala-java-time-tzdb"
   )
   .jsSettings(
-    dbVersion := TzdbPlugin.Version(tzdbVersion),
+    dbVersion   := TzdbPlugin.Version(tzdbVersion),
     includeTTBP := true,
     Compile / sourceGenerators += Def.task {
       val srcDirs        = (Compile / sourceManaged).value
@@ -204,14 +204,14 @@ lazy val scalajavatimeTests = crossProject(JVMPlatform, JSPlatform)
   .in(file("tests"))
   .settings(commonSettings: _*)
   .settings(
-    name := "scala-java-time-tests",
+    name               := "scala-java-time-tests",
     // No, SBT, we don't want any artifacts for root.
     // No, not even an empty jar.
-    publish := {},
-    publishLocal := {},
-    publishArtifact := false,
-    Keys.`package` := file(""),
-    Compile / skip := isDotty.value,
+    publish            := {},
+    publishLocal       := {},
+    publishArtifact    := false,
+    Keys.`package`     := file(""),
+    Compile / skip     := isDotty.value,
     libraryDependencies +=
       "org.scalatest" %%% "scalatest" % "3.2.9" % "test",
     scalacOptions ~= (_.filterNot(
@@ -220,13 +220,13 @@ lazy val scalajavatimeTests = crossProject(JVMPlatform, JSPlatform)
   )
   .jvmSettings(
     // Fork the JVM test to ensure that the custom flags are set
-    Test / fork := true,
+    Test / fork          := true,
     Test / baseDirectory := baseDirectory.value.getParentFile,
     // Use CLDR provider for locales
     // https://docs.oracle.com/javase/8/docs/technotes/guides/intl/enhancements.8.html#cldr
     Test / javaOptions ++= Seq("-Duser.language=en",
-                                "-Duser.country=US",
-                                "-Djava.locale.providers=CLDR"
+                               "-Duser.country=US",
+                               "-Djava.locale.providers=CLDR"
     )
   )
   .jsSettings(
@@ -242,9 +242,7 @@ lazy val scalajavatimeTests = crossProject(JVMPlatform, JSPlatform)
   )
   .dependsOn(scalajavatime, scalajavatimeTZDB)
 
-val zonesFilterFn = (x: String) => {
-  x == "Europe/Helsinki" || x == "America/Santiago"
-}
+val zonesFilterFn = (x: String) => x == "Europe/Helsinki" || x == "America/Santiago"
 
 lazy val demo = project
   .in(file("demo"))
@@ -252,16 +250,16 @@ lazy val demo = project
   .enablePlugins(ScalaJSPlugin)
   .enablePlugins(TzdbPlugin)
   .settings(
-    scalaVersion := scalaVer,
-    name := "demo",
-    publish := {},
-    publishLocal := {},
-    publishArtifact := false,
-    Keys.`package` := file(""),
+    scalaVersion                    := scalaVer,
+    name                            := "demo",
+    publish                         := {},
+    publishLocal                    := {},
+    publishArtifact                 := false,
+    Keys.`package`                  := file(""),
     // scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) },
     // scalaJSLinkerConfig ~= (_.withModuleSplitStyle(ModuleSplitStyle.SmallestModules)),
     scalaJSUseMainModuleInitializer := true,
-    zonesFilter := zonesFilterFn
+    zonesFilter                     := zonesFilterFn
   )
 
 // lazy val docs = project

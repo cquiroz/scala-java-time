@@ -34,13 +34,14 @@ package org.threeten.bp
 /**
  * Provides classes to print and parse dates and times.
  *
- * Printing and parsing is based around the {@link org.threeten.bp.format.DateTimeFormatter DateTimeFormatter} class.
- * That class contains common formatters and factory methods.
- * The {@link org.threeten.bp.format.DateTimeFormatterBuilder DateTimeFormatterBuilder} class is available
- * for advanced and complex use cases.
+ * Printing and parsing is based around the {@link org.threeten.bp.format.DateTimeFormatter
+ * DateTimeFormatter} class. That class contains common formatters and factory methods. The {@link
+ * org.threeten.bp.format.DateTimeFormatterBuilder DateTimeFormatterBuilder} class is available for
+ * advanced and complex use cases.
  *
- * Localization occurs by calling {@link org.threeten.bp.format.DateTimeFormatter#withLocale(java.util.Locale) withLocale(Locale)}
- * on the formatter. Further customization is possible using
- * {@link org.threeten.bp.format.DecimalStyle DecimalStyle}.
+ * Localization occurs by calling {@link
+ * org.threeten.bp.format.DateTimeFormatter#withLocale(java.util.Locale) withLocale(Locale)} on the
+ * formatter. Further customization is possible using {@link org.threeten.bp.format.DecimalStyle
+ * DecimalStyle}.
  */
 package object format

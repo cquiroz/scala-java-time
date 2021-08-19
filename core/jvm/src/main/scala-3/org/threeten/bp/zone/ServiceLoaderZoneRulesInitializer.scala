@@ -36,6 +36,5 @@ package org.threeten.bp.zone
  */
 class ServiceLoaderZoneRulesInitializer extends ZoneRulesInitializer {
 
-  override def initializeProviders(): Unit = {
-  }
+  override def initializeProviders(): Unit = {}
 }

@@ -34,52 +34,41 @@ package org.threeten.bp
 /**
  * Support for calendar systems other than the default ISO.
  *
- * The main API is based around the calendar system defined in ISO-8601.
- * This package provides support for alternate systems.
+ * The main API is based around the calendar system defined in ISO-8601. This package provides
+ * support for alternate systems.
  *
  * The supported calendar systems includes:
  *
- *   -{@linkplain org.threeten.bp.chrono.HijrahChronology Hijrah calendar}
- *   -{@linkplain org.threeten.bp.chrono.JapaneseChronology Japanese calendar}
- *   -{@linkplain org.threeten.bp.chrono.MinguoChronology Minguo calendar}
- *   -{@linkplain org.threeten.bp.chrono.ThaiBuddhistChronology Thai Buddhist calendar}
+ * -{@linkplain org.threeten.bp.chrono.HijrahChronology Hijrah calendar}
+ * -{@linkplain org.threeten.bp.chrono.JapaneseChronology Japanese calendar}
+ * -{@linkplain org.threeten.bp.chrono.MinguoChronology Minguo calendar}
+ * -{@linkplain org.threeten.bp.chrono.ThaiBuddhistChronology Thai Buddhist calendar}
  *
- * It is intended that applications use the main API whenever possible, including code to read and write
- * from a persistent data store, such as a database, and to send dates and times across a network.
- * This package is then used at the user interface level to deal with localized input/output.
- * See {@link org.threeten.bp.chrono.ChronoLocalDate ChronoLocalDate} for a full discussion of the issues.
+ * It is intended that applications use the main API whenever possible, including code to read and
+ * write from a persistent data store, such as a database, and to send dates and times across a
+ * network. This package is then used at the user interface level to deal with localized
+ * input/output. See {@link org.threeten.bp.chrono.ChronoLocalDate ChronoLocalDate} for a full
+ * discussion of the issues.
  *
- * == Example ==
+ * ==Example==
  *
  * This example creates and uses a date in a non-ISO calendar system.
  *
- * <pre>
- *         // Print the Thai Buddhist date
- *         ChronoLocalDate now1 = ThaiBuddhistChronology.INSTANCE.now();
- *         int day = now1.get(ChronoField.DAY_OF_MONTH);
- *         int dow = now1.get(ChronoField.DAY_OF_WEEK);
- *         int month = now1.get(ChronoField.MONTH_OF_YEAR);
- *         int year = now1.get(ChronoField.YEAR);
- *         System.out.printf("  Today is %s %s %d-%s-%d%n", now1.getChronology().getId(),
- *                 dow, day, month, year);
+ * <pre> // Print the Thai Buddhist date ChronoLocalDate now1 =
+ * ThaiBuddhistChronology.INSTANCE.now(); int day = now1.get(ChronoField.DAY_OF_MONTH); int dow =
+ * now1.get(ChronoField.DAY_OF_WEEK); int month = now1.get(ChronoField.MONTH_OF_YEAR); int year =
+ * now1.get(ChronoField.YEAR); System.out.printf(" Today is %s %s %d-%s-%d%n",
+ * now1.getChronology().getId(), dow, day, month, year);
  *
- *         // Enumerate the list of available calendars and print today for each
- *         Set&lt;String&gt; names = Chronology.getAvailableIds();
- *         for (String name : names) {
- *             Chronology&lt;?&gt; chrono = Chronology.of(name);
- *             ChronoLocalDate&lt;?&gt; date = chrono.now();
- *             System.out.printf("   %20s: %s%n", chrono.getId(), date.toString());
- *         }
+ * // Enumerate the list of available calendars and print today for each Set&lt;String&gt; names =
+ * Chronology.getAvailableIds(); for (String name : names) { Chronology&lt;?&gt; chrono =
+ * Chronology.of(name); ChronoLocalDate&lt;?&gt; date = chrono.now(); System.out.printf(" %20s:
+ * %s%n", chrono.getId(), date.toString()); }
  *
- *         // Print today's date and the last day of the year for the Thai Buddhist Calendar.
- *         ChronoLocalDate first = now1
- *                 .with(ChronoField.DAY_OF_MONTH, 1)
- *                 .with(ChronoField.MONTH_OF_YEAR, 1);
- *         ChronoLocalDate last = first
- *                 .plus(1, ChronoUnit.YEARS)
- *                 .minus(1, ChronoUnit.DAYS);
- *         System.out.printf("  %s: 1st of year: %s; end of year: %s%n", last.getChronology().getId(),
- *                 first, last);
- * </pre>
+ * // Print today's date and the last day of the year for the Thai Buddhist Calendar.
+ * ChronoLocalDate first = now1 .with(ChronoField.DAY_OF_MONTH, 1) .with(ChronoField.MONTH_OF_YEAR,
+ * 1); ChronoLocalDate last = first .plus(1, ChronoUnit.YEARS) .minus(1, ChronoUnit.DAYS);
+ * System.out.printf(" %s: 1st of year: %s; end of year: %s%n", last.getChronology().getId(), first,
+ * last); </pre>
  */
 package object chrono

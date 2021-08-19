@@ -138,10 +138,9 @@ object TTBPDateTimePrintContext {
  *
  * This class provides a single wrapper to items used in the print.
  *
- * <h3>Specification for implementors</h3>
- * This class is a mutable context intended for use from a single thread.
- * Usage of the class is thread-safe within standard printing as the framework creates
- * a new instance of the class for each print and printing is single-threaded.
+ * <h3>Specification for implementors</h3> This class is a mutable context intended for use from a
+ * single thread. Usage of the class is thread-safe within standard printing as the framework
+ * creates a new instance of the class for each print and printing is single-threaded.
  */
 final class TTBPDateTimePrintContext(
   private var temporal: TemporalAccessor,
@@ -155,8 +154,10 @@ final class TTBPDateTimePrintContext(
   /**
    * Creates a new instance of the context.
    *
-   * @param temporal  the temporal object being output, not null
-   * @param formatter  the formatter controlling the print, not null
+   * @param temporal
+   *   the temporal object being output, not null
+   * @param formatter
+   *   the formatter controlling the print, not null
    */
   def this(temporal: TemporalAccessor, formatter: DateTimeFormatter) = {
     this(TTBPDateTimePrintContext.adjust(temporal, formatter),
@@ -168,17 +169,19 @@ final class TTBPDateTimePrintContext(
   /**
    * Gets the temporal object being output.
    *
-   * @return the temporal object, not null
+   * @return
+   *   the temporal object, not null
    */
   def getTemporal: TemporalAccessor = temporal
 
   /**
    * Gets the locale.
    *
-   * This locale is used to control localization in the print output except
-   * where localization is controlled by the symbols.
+   * This locale is used to control localization in the print output except where localization is
+   * controlled by the symbols.
    *
-   * @return the locale, not null
+   * @return
+   *   the locale, not null
    */
   def getLocale: Locale = locale
 
@@ -187,7 +190,8 @@ final class TTBPDateTimePrintContext(
    *
    * The symbols control the localization of numeric output.
    *
-   * @return the formatting symbols, not null
+   * @return
+   *   the formatting symbols, not null
    */
   def getSymbols: DecimalStyle = symbols
 
@@ -200,9 +204,12 @@ final class TTBPDateTimePrintContext(
   /**
    * Gets a value using a query.
    *
-   * @param query  the query to use, not null
-   * @return the result, null if not found and optional is true
-   * @throws DateTimeException if the type is not available and the section is not optional
+   * @param query
+   *   the query to use, not null
+   * @return
+   *   the result, null if not found and optional is true
+   * @throws DateTimeException
+   *   if the type is not available and the section is not optional
    */
   def getValue[R >: Null](query: TemporalQuery[R]): R = {
     val result: R = temporal.query(query)
@@ -217,9 +224,12 @@ final class TTBPDateTimePrintContext(
    *
    * This will return the value for the specified field.
    *
-   * @param field  the field to find, not null
-   * @return the value, null if not found and optional is true
-   * @throws DateTimeException if the field is not available and the section is not optional
+   * @param field
+   *   the field to find, not null
+   * @return
+   *   the value, null if not found and optional is true
+   * @throws DateTimeException
+   *   if the field is not available and the section is not optional
    */
   def getValue(field: TemporalField): java.lang.Long =
     try temporal.getLong(field)
@@ -230,14 +240,16 @@ final class TTBPDateTimePrintContext(
   /**
    * Returns a string version of the context for debugging.
    *
-   * @return a string representation of the context, not null
+   * @return
+   *   a string representation of the context, not null
    */
   override def toString: String = temporal.toString
 
   /**
    * Sets the date-time being output.
    *
-   * @param temporal  the date-time object, not null
+   * @param temporal
+   *   the date-time object, not null
    */
   def setDateTime(temporal: TemporalAccessor): Unit = {
     Objects.requireNonNull(temporal, "temporal")
@@ -247,10 +259,11 @@ final class TTBPDateTimePrintContext(
   /**
    * Sets the locale.
    *
-   * This locale is used to control localization in the print output except
-   * where localization is controlled by the symbols.
+   * This locale is used to control localization in the print output except where localization is
+   * controlled by the symbols.
    *
-   * @param locale  the locale, not null
+   * @param locale
+   *   the locale, not null
    */
   def setLocale(locale: Locale): Unit = {
     Objects.requireNonNull(locale, "locale")

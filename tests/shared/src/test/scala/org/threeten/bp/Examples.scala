@@ -49,7 +49,8 @@ object Examples {
 
   /**
    * Main method.
-   * @param args  no arguments needed
+   * @param args
+   *   no arguments needed
    */
   def main(args: Array[String]): Unit = {
     val clock: Clock              = Clock.systemDefaultZone

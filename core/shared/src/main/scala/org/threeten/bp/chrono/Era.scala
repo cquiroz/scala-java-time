@@ -48,55 +48,50 @@ import org.threeten.bp.temporal.UnsupportedTemporalTypeException
 /**
  * An era of the time-line.
  *
- * Most calendar systems have a single epoch dividing the time-line into two eras.
- * However, some calendar systems, have multiple eras, such as one for the reign
- * of each leader.
- * In all cases, the era is conceptually the largest division of the time-line.
- * Each chronology defines the Era's that are known Eras and a
- * {@link Chronology#eras Chrono.eras} to get the valid eras.
+ * Most calendar systems have a single epoch dividing the time-line into two eras. However, some
+ * calendar systems, have multiple eras, such as one for the reign of each leader. In all cases, the
+ * era is conceptually the largest division of the time-line. Each chronology defines the Era's that
+ * are known Eras and a {@link Chronology#eras Chrono.eras} to get the valid eras.
  *
- * For example, the Thai Buddhist calendar system divides time into two eras,
- * before and after a single date. By contrast, the Japanese calendar system
- * has one era for the reign of each Emperor.
+ * For example, the Thai Buddhist calendar system divides time into two eras, before and after a
+ * single date. By contrast, the Japanese calendar system has one era for the reign of each Emperor.
  *
  * Instances of {@code Era} may be compared using the {@code ==} operator.
  *
- * <h3>Specification for implementors</h3>
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations must be singletons - final, immutable and thread-safe.
- * It is recommended to use an enum whenever possible.
+ * <h3>Specification for implementors</h3> This interface must be implemented with care to ensure
+ * other classes operate correctly. All implementations must be singletons - final, immutable and
+ * thread-safe. It is recommended to use an enum whenever possible.
  */
 trait Era extends TemporalAccessor with TemporalAdjuster {
 
   /**
-   * Gets the numeric value associated with the era as defined by the chronology.
-   * Each chronology defines the predefined Eras and methods to list the Eras
-   * of the chronology.
+   * Gets the numeric value associated with the era as defined by the chronology. Each chronology
+   * defines the predefined Eras and methods to list the Eras of the chronology.
    *
-   * All fields, including eras, have an associated numeric value.
-   * The meaning of the numeric value for era is determined by the chronology
-   * according to these principles:
-   * <ul>
-   * <li>The era in use at the epoch 1970-01-01 (ISO) has the value 1.
-   * <li>Later eras have sequentially higher values.
-   * <li>Earlier eras have sequentially lower values, which may be negative.
-   * </ul><p>
+   * All fields, including eras, have an associated numeric value. The meaning of the numeric value
+   * for era is determined by the chronology according to these principles: <ul> <li>The era in use
+   * at the epoch 1970-01-01 (ISO) has the value 1. <li>Later eras have sequentially higher values.
+   * <li>Earlier eras have sequentially lower values, which may be negative. </ul><p>
    *
-   * @return the numeric era value
+   * @return
+   *   the numeric era value
    */
   def getValue: Int
 
   /**
    * Gets the textual representation of this era.
    *
-   * This returns the textual name used to identify the era.
-   * The parameters control the style of the returned text and the locale.
+   * This returns the textual name used to identify the era. The parameters control the style of the
+   * returned text and the locale.
    *
    * If no textual mapping is found then the {@link #getValue() numeric value} is returned.
    *
-   * @param style  the style of the text required, not null
-   * @param locale  the locale to use, not null
-   * @return the text value of the era, not null
+   * @param style
+   *   the style of the text required, not null
+   * @param locale
+   *   the locale to use, not null
+   * @return
+   *   the text value of the era, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
     new DateTimeFormatterBuilder().appendText(ERA, style).toFormatter(locale).format(this)

@@ -39,27 +39,28 @@ private[format] object DateTimeFormatStyleProvider {
   /**
    * Gets the provider.
    *
-   * @return the provider, not null
+   * @return
+   *   the provider, not null
    */
   private[format] def getInstance: DateTimeFormatStyleProvider =
     new SimpleDateTimeFormatStyleProvider
 }
 
 /**
- * The Service Provider Interface (SPI) to be implemented by classes providing
- * date-time formatting information.
+ * The Service Provider Interface (SPI) to be implemented by classes providing date-time formatting
+ * information.
  *
- * <h3>Specification for implementors</h3>
- * This interface is a service provider that can be called by multiple threads.
- * Implementations must be thread-safe.
- * Implementations should cache the returned formatters.
+ * <h3>Specification for implementors</h3> This interface is a service provider that can be called
+ * by multiple threads. Implementations must be thread-safe. Implementations should cache the
+ * returned formatters.
  */
 abstract class DateTimeFormatStyleProvider {
 
   /**
    * Gets the available locales.
    *
-   * @return the locales
+   * @return
+   *   the locales
    */
   def getAvailableLocales: Array[Locale] = throw new UnsupportedOperationException
 
@@ -69,13 +70,20 @@ abstract class DateTimeFormatStyleProvider {
    * The formatter will be the most appropriate to use for the date and time style in the locale.
    * For example, some locales will use the month name while others will use the number.
    *
-   * @param dateStyle  the date formatter style to obtain, null to obtain a time formatter
-   * @param timeStyle  the time formatter style to obtain, null to obtain a date formatter
-   * @param chrono  the chronology to use, not null
-   * @param locale  the locale to use, not null
-   * @return the date-time formatter, not null
-   * @throws IllegalArgumentException if both format styles are null
-   * @throws IllegalArgumentException if the locale is not a recognized locale
+   * @param dateStyle
+   *   the date formatter style to obtain, null to obtain a time formatter
+   * @param timeStyle
+   *   the time formatter style to obtain, null to obtain a date formatter
+   * @param chrono
+   *   the chronology to use, not null
+   * @param locale
+   *   the locale to use, not null
+   * @return
+   *   the date-time formatter, not null
+   * @throws IllegalArgumentException
+   *   if both format styles are null
+   * @throws IllegalArgumentException
+   *   if the locale is not a recognized locale
    */
   def getFormatter(
     dateStyle: FormatStyle,

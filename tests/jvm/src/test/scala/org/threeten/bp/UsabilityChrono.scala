@@ -142,8 +142,10 @@ object UsabilityChrono {
 
   /**
    * Print a month calendar with complete week rows.
-   * @param date A date in some calendar
-   * @param out a PrintStream
+   * @param date
+   *   A date in some calendar
+   * @param out
+   *   a PrintStream
    */
   private def printMonthCal(date: ChronoLocalDate, out: PrintStream): Unit = {
     val lengthOfMonth: Int     = date.lengthOfMonth.toInt

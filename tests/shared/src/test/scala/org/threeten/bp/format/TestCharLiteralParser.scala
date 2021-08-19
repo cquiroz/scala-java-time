@@ -43,23 +43,13 @@ class TestCharLiteralParser extends AnyFunSuite with GenTestPrinterParser with A
     List(
       List(new CharLiteralPrinterParser('a'), true, "a", 0, 1),
       List(new CharLiteralPrinterParser('a'), true, "aOTHER", 0, 1),
-      List(new CharLiteralPrinterParser('a'),
-           true,
-           "OTHERaOTHER",
-           5,
-           6
-      ),
+      List(new CharLiteralPrinterParser('a'), true, "OTHERaOTHER", 5, 6),
       List(new CharLiteralPrinterParser('a'), true, "OTHERa", 5, 6),
       List(new CharLiteralPrinterParser('a'), true, "", 0, ~0),
       List(new CharLiteralPrinterParser('a'), true, "a", 1, ~1),
       List(new CharLiteralPrinterParser('a'), true, "A", 0, ~0),
       List(new CharLiteralPrinterParser('a'), true, "b", 0, ~0),
-      List(new CharLiteralPrinterParser('a'),
-           true,
-           "OTHERbOTHER",
-           5,
-           ~5
-      ),
+      List(new CharLiteralPrinterParser('a'), true, "OTHERbOTHER", 5, ~5),
       List(new CharLiteralPrinterParser('a'), true, "OTHERb", 5, ~5),
       List(new CharLiteralPrinterParser('a'), false, "a", 0, 1),
       List(new CharLiteralPrinterParser('a'), false, "A", 0, 1)
@@ -73,23 +63,15 @@ class TestCharLiteralParser extends AnyFunSuite with GenTestPrinterParser with A
         assertEquals(result, expectedPos)
         assertEquals(parseContext.toParsed.query(TemporalQueries.chronology), null)
         assertEquals(parseContext.toParsed.query(TemporalQueries.zoneId), null)
-      case _                                                                                                                                                 =>
+      case _                                                                                                                    =>
         fail()
     }
   }
 
   val data_error: List[List[Any]] =
     List[List[Any]](
-      List(new CharLiteralPrinterParser('a'),
-           "a",
-           -1,
-           classOf[IndexOutOfBoundsException]
-      ),
-      List(new CharLiteralPrinterParser('a'),
-           "a",
-           2,
-           classOf[IndexOutOfBoundsException]
-      )
+      List(new CharLiteralPrinterParser('a'), "a", -1, classOf[IndexOutOfBoundsException]),
+      List(new CharLiteralPrinterParser('a'), "a", 2, classOf[IndexOutOfBoundsException])
     )
 
   test("parse_error") {

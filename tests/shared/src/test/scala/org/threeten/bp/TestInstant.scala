@@ -105,110 +105,102 @@ class TestInstant
   }
 
   test("now_Clock_allSecsInDay_utc") {
-    {
-      var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
-        {
-          val expected: Instant = Instant.ofEpochSecond(i).plusNanos(123456789L)
-          val clock: Clock      = Clock.fixed(expected, ZoneOffset.UTC)
-          val test: Instant     = Instant.now(clock)
-          assertEquals(test, expected)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < (2 * 24 * 60 * 60)) {
+      {
+        val expected: Instant = Instant.ofEpochSecond(i).plusNanos(123456789L)
+        val clock: Clock      = Clock.fixed(expected, ZoneOffset.UTC)
+        val test: Instant     = Instant.now(clock)
+        assertEquals(test, expected)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("now_Clock_allSecsInDay_beforeEpoch") {
-    {
-      var i: Int = -1
-      while (i >= -(24 * 60 * 60)) {
-        {
-          val expected: Instant = Instant.ofEpochSecond(i).plusNanos(123456789L)
-          val clock: Clock      = Clock.fixed(expected, ZoneOffset.UTC)
-          val test: Instant     = Instant.now(clock)
-          assertEquals(test, expected)
-        }
-        {
-          i -= 1
-          i + 1
-        }
+    var i: Int = -1
+    while (i >= -(24 * 60 * 60)) {
+      {
+        val expected: Instant = Instant.ofEpochSecond(i).plusNanos(123456789L)
+        val clock: Clock      = Clock.fixed(expected, ZoneOffset.UTC)
+        val test: Instant     = Instant.now(clock)
+        assertEquals(test, expected)
+      }
+      {
+        i -= 1
+        i + 1
       }
     }
   }
 
   test("factory_seconds_long") {
-    {
-      var i: Long = -2
-      while (i <= 2) {
-        {
-          val t: Instant = Instant.ofEpochSecond(i)
-          assertEquals(t.getEpochSecond, i)
-          assertEquals(t.getNano, 0)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Long = -2
+    while (i <= 2) {
+      {
+        val t: Instant = Instant.ofEpochSecond(i)
+        assertEquals(t.getEpochSecond, i)
+        assertEquals(t.getNano, 0)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("factory_seconds_long_long") {
-    {
-      var i: Long = -2
-      while (i <= 2) {
+    var i: Long = -2
+    while (i <= 2) {
+      {
         {
-          {
-            var j: Int = 0
-            while (j < 10) {
-              {
-                val t: Instant = Instant.ofEpochSecond(i, j)
-                assertEquals(t.getEpochSecond, i)
-                assertEquals(t.getNano, j)
-              }
-              {
-                j += 1
-                j - 1
-              }
+          var j: Int = 0
+          while (j < 10) {
+            {
+              val t: Instant = Instant.ofEpochSecond(i, j)
+              assertEquals(t.getEpochSecond, i)
+              assertEquals(t.getNano, j)
             }
-          }
-          {
-            var j: Int = -10
-            while (j < 0) {
-              {
-                val t: Instant = Instant.ofEpochSecond(i, j)
-                assertEquals(t.getEpochSecond, i - 1)
-                assertEquals(t.getNano, j + 1000000000)
-              }
-              {
-                j += 1
-                j - 1
-              }
-            }
-          }
-          {
-            var j: Int = 999999990
-            while (j < 1000000000) {
-              {
-                val t: Instant = Instant.ofEpochSecond(i, j)
-                assertEquals(t.getEpochSecond, i)
-                assertEquals(t.getNano, j)
-              }
-              {
-                j += 1
-                j - 1
-              }
+            {
+              j += 1
+              j - 1
             }
           }
         }
         {
-          i += 1
-          i - 1
+          var j: Int = -10
+          while (j < 0) {
+            {
+              val t: Instant = Instant.ofEpochSecond(i, j)
+              assertEquals(t.getEpochSecond, i - 1)
+              assertEquals(t.getNano, j + 1000000000)
+            }
+            {
+              j += 1
+              j - 1
+            }
+          }
         }
+        {
+          var j: Int = 999999990
+          while (j < 1000000000) {
+            {
+              val t: Instant = Instant.ofEpochSecond(i, j)
+              assertEquals(t.getEpochSecond, i)
+              assertEquals(t.getNano, j)
+            }
+            {
+              j += 1
+              j - 1
+            }
+          }
+        }
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

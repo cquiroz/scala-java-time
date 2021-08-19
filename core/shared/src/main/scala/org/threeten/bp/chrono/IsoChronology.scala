@@ -73,30 +73,25 @@ object IsoChronology {
 /**
  * The ISO calendar system.
  *
- * This chronology defines the rules of the ISO calendar system.
- * This calendar system is based on the ISO-8601 standard, which is the
- * <i>de facto</i> world calendar.
+ * This chronology defines the rules of the ISO calendar system. This calendar system is based on
+ * the ISO-8601 standard, which is the <i>de facto</i> world calendar.
  *
- * The fields are defined as follows:
- * <ul>
- * <li>era - There are two eras, 'Current Era' (CE) and 'Before Current Era' (BCE).
- * <li>year-of-era - The year-of-era is the same as the proleptic-year for the current CE era.
- * For the BCE era before the ISO epoch the year increases from 1 upwards as time goes backwards.
- * <li>proleptic-year - The proleptic year is the same as the year-of-era for the
- * current era. For the previous era, years have zero, then negative values.
- * <li>month-of-year - There are 12 months in an ISO year, numbered from 1 to 12.
- * <li>day-of-month - There are between 28 and 31 days in each of the ISO month, numbered from 1 to 31.
- * Months 4, 6, 9 and 11 have 30 days, Months 1, 3, 5, 7, 8, 10 and 12 have 31 days.
- * Month 2 has 28 days, or 29 in a leap year.
- * <li>day-of-year - There are 365 days in a standard ISO year and 366 in a leap year.
- * The days are numbered from 1 to 365 or 1 to 366.
- * <li>leap-year - Leap years occur every 4 years, except where the year is divisble by 100 and not divisble by 400.
- * </ul><p>
+ * The fields are defined as follows: <ul> <li>era - There are two eras, 'Current Era' (CE) and
+ * 'Before Current Era' (BCE). <li>year-of-era - The year-of-era is the same as the proleptic-year
+ * for the current CE era. For the BCE era before the ISO epoch the year increases from 1 upwards as
+ * time goes backwards. <li>proleptic-year - The proleptic year is the same as the year-of-era for
+ * the current era. For the previous era, years have zero, then negative values. <li>month-of-year -
+ * There are 12 months in an ISO year, numbered from 1 to 12. <li>day-of-month - There are between
+ * 28 and 31 days in each of the ISO month, numbered from 1 to 31. Months 4, 6, 9 and 11 have 30
+ * days, Months 1, 3, 5, 7, 8, 10 and 12 have 31 days. Month 2 has 28 days, or 29 in a leap year.
+ * <li>day-of-year - There are 365 days in a standard ISO year and 366 in a leap year. The days are
+ * numbered from 1 to 365 or 1 to 366. <li>leap-year - Leap years occur every 4 years, except where
+ * the year is divisble by 100 and not divisble by 400. </ul><p>
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * @constructor Restricted constructor.
+ * @constructor
+ *   Restricted constructor.
  */
 @SerialVersionUID(-1440403870442975015L)
 final class IsoChronology private () extends Chronology with Serializable {
@@ -104,60 +99,73 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Resolve singleton.
    *
-   * @return the singleton instance, not null
+   * @return
+   *   the singleton instance, not null
    */
   private def readResolve: AnyRef = IsoChronology.INSTANCE
 
   /**
    * Gets the ID of the chronology - 'ISO'.
    *
-   * The ID uniquely identifies the {@code Chronology}.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)}.
    *
-   * @return the chronology ID - 'ISO'
-   * @see #getCalendarType()
+   * @return
+   *   the chronology ID - 'ISO'
+   * @see
+   *   #getCalendarType()
    */
   def getId: String = "ISO"
 
   /**
    * Gets the calendar type of the underlying calendar system - 'iso8601'.
    *
-   * The calendar type is an identifier defined by the
-   * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
-   * It can also be used as part of a locale, accessible via
-   * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
+   * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
+   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * #of(String)}. It can also be used as part of a locale, accessible via {@link
+   * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *
-   * @return the calendar system type - 'iso8601'
-   * @see #getId()
+   * @return
+   *   the calendar system type - 'iso8601'
+   * @see
+   *   #getId()
    */
   def getCalendarType: String = "iso8601"
 
   /**
-   * Obtains an ISO local date from the era, year-of-era, month-of-year
-   * and day-of-month fields.
+   * Obtains an ISO local date from the era, year-of-era, month-of-year and day-of-month fields.
    *
-   * @param era  the ISO era, not null
-   * @param yearOfEra  the ISO year-of-era
-   * @param month  the ISO month-of-year
-   * @param dayOfMonth  the ISO day-of-month
-   * @return the ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param era
+   *   the ISO era, not null
+   * @param yearOfEra
+   *   the ISO year-of-era
+   * @param month
+   *   the ISO month-of-year
+   * @param dayOfMonth
+   *   the ISO day-of-month
+   * @return
+   *   the ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   override def date(era: Era, yearOfEra: Int, month: Int, dayOfMonth: Int): LocalDate =
     date(prolepticYear(era, yearOfEra), month, dayOfMonth)
 
   /**
-   * Obtains an ISO local date from the proleptic-year, month-of-year
-   * and day-of-month fields.
+   * Obtains an ISO local date from the proleptic-year, month-of-year and day-of-month fields.
    *
    * This is equivalent to {@link LocalDate#of(int, int, int)}.
    *
-   * @param prolepticYear  the ISO proleptic-year
-   * @param month  the ISO month-of-year
-   * @param dayOfMonth  the ISO day-of-month
-   * @return the ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param prolepticYear
+   *   the ISO proleptic-year
+   * @param month
+   *   the ISO month-of-year
+   * @param dayOfMonth
+   *   the ISO day-of-month
+   * @return
+   *   the ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   def date(prolepticYear: Int, month: Int, dayOfMonth: Int): LocalDate =
     LocalDate.of(prolepticYear, month, dayOfMonth)
@@ -165,11 +173,16 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO local date from the era, year-of-era and day-of-year fields.
    *
-   * @param era  the ISO era, not null
-   * @param yearOfEra  the ISO year-of-era
-   * @param dayOfYear  the ISO day-of-year
-   * @return the ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param era
+   *   the ISO era, not null
+   * @param yearOfEra
+   *   the ISO year-of-era
+   * @param dayOfYear
+   *   the ISO day-of-year
+   * @return
+   *   the ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   override def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): LocalDate =
     dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
@@ -179,10 +192,14 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This is equivalent to {@link LocalDate#ofYearDay(int, int)}.
    *
-   * @param prolepticYear  the ISO proleptic-year
-   * @param dayOfYear  the ISO day-of-year
-   * @return the ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param prolepticYear
+   *   the ISO proleptic-year
+   * @param dayOfYear
+   *   the ISO day-of-year
+   * @return
+   *   the ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   def dateYearDay(prolepticYear: Int, dayOfYear: Int): LocalDate =
     LocalDate.ofYearDay(prolepticYear, dayOfYear)
@@ -194,9 +211,12 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This is equivalent to {@link LocalDate#from(TemporalAccessor)}.
    *
-   * @param temporal  the date-time object to convert, not null
-   * @return the ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param temporal
+   *   the date-time object to convert, not null
+   * @return
+   *   the ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   def date(temporal: TemporalAccessor): LocalDate = LocalDate.from(temporal)
 
@@ -205,9 +225,12 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This is equivalent to {@link LocalDateTime#from(TemporalAccessor)}.
    *
-   * @param temporal  the date-time object to convert, not null
-   * @return the ISO local date-time, not null
-   * @throws DateTimeException if unable to create the date-time
+   * @param temporal
+   *   the date-time object to convert, not null
+   * @return
+   *   the ISO local date-time, not null
+   * @throws DateTimeException
+   *   if unable to create the date-time
    */
   override def localDateTime(temporal: TemporalAccessor): LocalDateTime =
     LocalDateTime.from(temporal)
@@ -217,9 +240,12 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This is equivalent to {@link ZonedDateTime#from(TemporalAccessor)}.
    *
-   * @param temporal  the date-time object to convert, not null
-   * @return the ISO zoned date-time, not null
-   * @throws DateTimeException if unable to create the date-time
+   * @param temporal
+   *   the date-time object to convert, not null
+   * @return
+   *   the ISO zoned date-time, not null
+   * @throws DateTimeException
+   *   if unable to create the date-time
    */
   override def zonedDateTime(temporal: TemporalAccessor): ZonedDateTime =
     ZonedDateTime.from(temporal)
@@ -229,10 +255,14 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This is equivalent to {@link ZonedDateTime#ofInstant(Instant, ZoneId)}.
    *
-   * @param instant  the instant to convert, not null
-   * @param zone  the zone to use, not null
-   * @return the ISO zoned date-time, not null
-   * @throws DateTimeException if unable to create the date-time
+   * @param instant
+   *   the instant to convert, not null
+   * @param zone
+   *   the zone to use, not null
+   * @return
+   *   the ISO zoned date-time, not null
+   * @throws DateTimeException
+   *   if unable to create the date-time
    */
   override def zonedDateTime(instant: Instant, zone: ZoneId): ZonedDateTime =
     ZonedDateTime.ofInstant(instant, zone)
@@ -240,14 +270,16 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains the current ISO local date from the system clock in the default time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default
-   * time-zone to obtain the current date.
+   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * obtain the current date.
    *
-   * Using this method will prevent the ability to use an alternate clock for testing
-   * because the clock is hard-coded.
+   * Using this method will prevent the ability to use an alternate clock for testing because the
+   * clock is hard-coded.
    *
-   * @return the current ISO local date using the system clock and default time-zone, not null
-   * @throws DateTimeException if unable to create the date
+   * @return
+   *   the current ISO local date using the system clock and default time-zone, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   override def dateNow: LocalDate = dateNow(Clock.systemDefaultZone)
 
@@ -257,24 +289,29 @@ final class IsoChronology private () extends Chronology with Serializable {
    * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
    * Specifying the time-zone avoids dependence on the default time-zone.
    *
-   * Using this method will prevent the ability to use an alternate clock for testing
-   * because the clock is hard-coded.
+   * Using this method will prevent the ability to use an alternate clock for testing because the
+   * clock is hard-coded.
    *
-   * @return the current ISO local date using the system clock, not null
-   * @throws DateTimeException if unable to create the date
+   * @return
+   *   the current ISO local date using the system clock, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   override def dateNow(zone: ZoneId): LocalDate = dateNow(Clock.system(zone))
 
   /**
    * Obtains the current ISO local date from the specified clock.
    *
-   * This will query the specified clock to obtain the current date - today.
-   * Using this method allows the use of an alternate clock for testing.
-   * The alternate clock may be introduced using {@link Clock dependency injection}.
+   * This will query the specified clock to obtain the current date - today. Using this method
+   * allows the use of an alternate clock for testing. The alternate clock may be introduced using
+   * {@link Clock dependency injection}.
    *
-   * @param clock  the clock to use, not null
-   * @return the current ISO local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param clock
+   *   the clock to use, not null
+   * @return
+   *   the current ISO local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   override def dateNow(clock: Clock): LocalDate = {
     Objects.requireNonNull(clock, "clock")
@@ -282,23 +319,22 @@ final class IsoChronology private () extends Chronology with Serializable {
   }
 
   /**
-   * Checks if the year is a leap year, according to the ISO proleptic
-   * calendar system rules.
+   * Checks if the year is a leap year, according to the ISO proleptic calendar system rules.
    *
-   * This method applies the current rules for leap years across the whole time-line.
-   * In general, a year is a leap year if it is divisible by four without
-   * remainder. However, years divisible by 100, are not leap years, with
-   * the exception of years divisible by 400 which are.
+   * This method applies the current rules for leap years across the whole time-line. In general, a
+   * year is a leap year if it is divisible by four without remainder. However, years divisible by
+   * 100, are not leap years, with the exception of years divisible by 400 which are.
    *
-   * For example, 1904 is a leap year it is divisible by 4.
-   * 1900 was not a leap year as it is divisible by 100, however 2000 was a
-   * leap year as it is divisible by 400.
+   * For example, 1904 is a leap year it is divisible by 4. 1900 was not a leap year as it is
+   * divisible by 100, however 2000 was a leap year as it is divisible by 400.
    *
-   * The calculation is proleptic - applying the same rules into the far future and far past.
-   * This is historically inaccurate, but is correct for the ISO-8601 standard.
+   * The calculation is proleptic - applying the same rules into the far future and far past. This
+   * is historically inaccurate, but is correct for the ISO-8601 standard.
    *
-   * @param prolepticYear  the ISO proleptic year to check
-   * @return true if the year is leap, false otherwise
+   * @param prolepticYear
+   *   the ISO proleptic year to check
+   * @return
+   *   true if the year is leap, false otherwise
    */
   def isLeapYear(prolepticYear: Long): Boolean =
     ((prolepticYear & 3) == 0) && ((prolepticYear % 100) != 0 || (prolepticYear % 400) == 0)

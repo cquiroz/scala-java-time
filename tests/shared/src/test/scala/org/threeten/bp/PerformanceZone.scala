@@ -55,7 +55,8 @@ object PerformanceZone {
 
   /**
    * Main.
-   * @param args  the arguments
+   * @param args
+   *   the arguments
    */
   def main(args: Array[String]): Unit = {
     val time: LocalTime = LocalTime.of(12, 30, 20)

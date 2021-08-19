@@ -52,9 +52,12 @@ object TTBPDateTimeParseContext {
   /**
    * Compares two characters ignoring case.
    *
-   * @param c1  the first
-   * @param c2  the second
-   * @return true if equal
+   * @param c1
+   *   the first
+   * @param c2
+   *   the second
+   * @return
+   *   true if equal
    */
   def charEqualsIgnoreCase(c1: Char, c2: Char): Boolean =
     c1 == c2 || Character.toUpperCase(c1) == Character.toUpperCase(c2) || Character.toLowerCase(
@@ -66,17 +69,16 @@ object TTBPDateTimeParseContext {
 /**
  * Context object used during date and time parsing.
  *
- * This class represents the current state of the parse.
- * It has the ability to store and retrieve the parsed values and manage optional segments.
- * It also provides key information to the parsing methods.
+ * This class represents the current state of the parse. It has the ability to store and retrieve
+ * the parsed values and manage optional segments. It also provides key information to the parsing
+ * methods.
  *
- * Once parsing is complete, the {@link #toBuilder()} is typically used
- * to obtain a builder that can combine the separate parsed fields into meaningful values.
+ * Once parsing is complete, the {@link #toBuilder()} is typically used to obtain a builder that can
+ * combine the separate parsed fields into meaningful values.
  *
- * <h3>Specification for implementors</h3>
- * This class is a mutable context intended for use from a single thread.
- * Usage of the class is thread-safe within standard parsing as a new instance of this class
- * is automatically created for each parse and parsing is single-threaded
+ * <h3>Specification for implementors</h3> This class is a mutable context intended for use from a
+ * single thread. Usage of the class is thread-safe within standard parsing as a new instance of
+ * this class is automatically created for each parse and parsing is single-threaded
  */
 final class TTBPDateTimeParseContext(
   private var locale:             Locale,
@@ -99,7 +101,8 @@ final class TTBPDateTimeParseContext(
   /**
    * Creates a new instance of the context.
    *
-   * @param formatter  the formatter controlling the parse, not null
+   * @param formatter
+   *   the formatter controlling the parse, not null
    */
   def this(formatter: DateTimeFormatter) =
     this(formatter.getLocale, formatter.getDecimalStyle, formatter.getChronology, formatter.getZone)
@@ -125,10 +128,11 @@ final class TTBPDateTimeParseContext(
   /**
    * Gets the locale.
    *
-   * This locale is used to control localization in the parse except
-   * where localization is controlled by the symbols.
+   * This locale is used to control localization in the parse except where localization is
+   * controlled by the symbols.
    *
-   * @return the locale, not null
+   * @return
+   *   the locale, not null
    */
   def getLocale: Locale = locale
 
@@ -137,14 +141,16 @@ final class TTBPDateTimeParseContext(
    *
    * The symbols control the localization of numeric parsing.
    *
-   * @return the formatting symbols, not null
+   * @return
+   *   the formatting symbols, not null
    */
   def getSymbols: DecimalStyle = symbols
 
   /**
    * Gets the effective chronology during parsing.
    *
-   * @return the effective parsing chronology, not null
+   * @return
+   *   the effective parsing chronology, not null
    */
   def getEffectiveChronology: Chronology = {
     var chrono: Chronology = currentParsed.chrono
@@ -159,27 +165,34 @@ final class TTBPDateTimeParseContext(
   /**
    * Checks if parsing is case sensitive.
    *
-   * @return true if parsing is case sensitive, false if case insensitive
+   * @return
+   *   true if parsing is case sensitive, false if case insensitive
    */
   def isCaseSensitive: Boolean = caseSensitive
 
   /**
    * Sets whether the parsing is case sensitive or not.
    *
-   * @param caseSensitive  changes the parsing to be case sensitive or not from now on
+   * @param caseSensitive
+   *   changes the parsing to be case sensitive or not from now on
    */
   def setCaseSensitive(caseSensitive: Boolean): Unit = this.caseSensitive = caseSensitive
 
   /**
-   * Helper to compare two {@code CharSequence} instances.
-   * This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@code CharSequence} instances. This uses {@link #isCaseSensitive()}.
    *
-   * @param cs1  the first character sequence, not null
-   * @param offset1  the offset into the first sequence, valid
-   * @param cs2  the second character sequence, not null
-   * @param offset2  the offset into the second sequence, valid
-   * @param length  the length to check, valid
-   * @return true if equal
+   * @param cs1
+   *   the first character sequence, not null
+   * @param offset1
+   *   the offset into the first sequence, valid
+   * @param cs2
+   *   the second character sequence, not null
+   * @param offset2
+   *   the offset into the second sequence, valid
+   * @param length
+   *   the length to check, valid
+   * @return
+   *   true if equal
    */
   def subSequenceEquals(
     cs1:     CharSequence,
@@ -216,12 +229,14 @@ final class TTBPDateTimeParseContext(
   }
 
   /**
-   * Helper to compare two {@code char}.
-   * This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@code char}. This uses {@link #isCaseSensitive()}.
    *
-   * @param ch1  the first character
-   * @param ch2  the second character
-   * @return true if equal
+   * @param ch1
+   *   the first character
+   * @param ch2
+   *   the second character
+   * @return
+   *   true if equal
    */
   def charEquals(ch1: Char, ch2: Char): Boolean =
     if (isCaseSensitive)
@@ -234,14 +249,16 @@ final class TTBPDateTimeParseContext(
    *
    * Strict parsing requires exact matching of the text and sign styles.
    *
-   * @return true if parsing is strict, false if lenient
+   * @return
+   *   true if parsing is strict, false if lenient
    */
   def isStrict: Boolean = strict
 
   /**
    * Sets whether parsing is strict or lenient.
    *
-   * @param strict  changes the parsing to be strict or lenient from now on
+   * @param strict
+   *   changes the parsing to be strict or lenient from now on
    */
   def setStrict(strict: Boolean): Unit = this.strict = strict
 
@@ -256,7 +273,8 @@ final class TTBPDateTimeParseContext(
   /**
    * Ends the parsing of an optional segment of the input.
    *
-   * @param successful  whether the optional segment was successfully parsed
+   * @param successful
+   *   whether the optional segment was successfully parsed
    */
   def endOptional(successful: Boolean): Unit =
     if (successful) {
@@ -270,34 +288,41 @@ final class TTBPDateTimeParseContext(
   /**
    * Gets the currently active temporal objects.
    *
-   * @return the current temporal objects, not null
+   * @return
+   *   the current temporal objects, not null
    */
   private def currentParsed: TTBPDateTimeParseContext#Parsed = parsed.get(parsed.size - 1)
 
   /**
    * Gets the first value that was parsed for the specified field.
    *
-   * This searches the results of the parse, returning the first value found
-   * for the specified field. No attempt is made to derive a value.
-   * The field may have an out of range value.
-   * For example, the day-of-month might be set to 50, or the hour to 1000.
+   * This searches the results of the parse, returning the first value found for the specified
+   * field. No attempt is made to derive a value. The field may have an out of range value. For
+   * example, the day-of-month might be set to 50, or the hour to 1000.
    *
-   * @param field  the field to query from the map, null returns null
-   * @return the value mapped to the specified field, null if field was not parsed
+   * @param field
+   *   the field to query from the map, null returns null
+   * @return
+   *   the value mapped to the specified field, null if field was not parsed
    */
   def getParsed(field: TemporalField): java.lang.Long = currentParsed.fieldValues.get(field)
 
   /**
    * Stores the parsed field.
    *
-   * This stores a field-value pair that has been parsed.
-   * The value stored may be out of range for the field - no checks are performed.
+   * This stores a field-value pair that has been parsed. The value stored may be out of range for
+   * the field - no checks are performed.
    *
-   * @param field  the field to set in the field-value map, not null
-   * @param value  the value to set in the field-value map
-   * @param errorPos  the position of the field being parsed
-   * @param successPos  the position after the field being parsed
-   * @return the new position
+   * @param field
+   *   the field to set in the field-value map, not null
+   * @param value
+   *   the value to set in the field-value map
+   * @param errorPos
+   *   the position of the field being parsed
+   * @param successPos
+   *   the position after the field being parsed
+   * @return
+   *   the new position
    */
   def setParsedField(field: TemporalField, value: Long, errorPos: Int, successPos: Int): Int = {
     Objects.requireNonNull(field, "field")
@@ -308,10 +333,11 @@ final class TTBPDateTimeParseContext(
   /**
    * Stores the parsed chronology.
    *
-   * This stores the chronology that has been parsed.
-   * No validation is performed other than ensuring it is not null.
+   * This stores the chronology that has been parsed. No validation is performed other than ensuring
+   * it is not null.
    *
-   * @param chrono  the parsed chronology, not null
+   * @param chrono
+   *   the parsed chronology, not null
    */
   def setParsed(chrono: Chronology): Unit = {
     Objects.requireNonNull(chrono, "chrono")
@@ -355,10 +381,11 @@ final class TTBPDateTimeParseContext(
   /**
    * Stores the parsed zone.
    *
-   * This stores the zone that has been parsed.
-   * No validation is performed other than ensuring it is not null.
+   * This stores the zone that has been parsed. No validation is performed other than ensuring it is
+   * not null.
    *
-   * @param zone  the parsed zone, not null
+   * @param zone
+   *   the parsed zone, not null
    */
   def setParsed(zone: ZoneId): Unit = {
     Objects.requireNonNull(zone, "zone")
@@ -371,17 +398,18 @@ final class TTBPDateTimeParseContext(
   def setParsedLeapSecond(): Unit = currentParsed.leapSecond = true
 
   /**
-   * Returns a {@code TemporalAccessor} that can be used to interpret
-   * the results of the parse.
+   * Returns a {@code TemporalAccessor} that can be used to interpret the results of the parse.
    *
-   * @return an accessor with the results of the parse, not null
+   * @return
+   *   an accessor with the results of the parse, not null
    */
   def toParsed: TTBPDateTimeParseContext#Parsed = currentParsed
 
   /**
    * Returns a string version of the context for debugging.
    *
-   * @return a string representation of the context data, not null
+   * @return
+   *   a string representation of the context data, not null
    */
   override def toString: String = currentParsed.toString
 
@@ -432,16 +460,15 @@ final class TTBPDateTimeParseContext(
         super.query(query)
 
     /**
-     * Returns a {@code DateTimeBuilder} that can be used to interpret
-     * the results of the parse.
+     * Returns a {@code DateTimeBuilder} that can be used to interpret the results of the parse.
      *
-     * This method is typically used once parsing is complete to obtain the parsed data.
-     * Parsing will typically result in separate fields, such as year, month and day.
-     * The returned builder can be used to combine the parsed data into meaningful
-     * objects such as {@code LocalDate}, potentially applying complex processing
-     * to handle invalid parsed data.
+     * This method is typically used once parsing is complete to obtain the parsed data. Parsing
+     * will typically result in separate fields, such as year, month and day. The returned builder
+     * can be used to combine the parsed data into meaningful objects such as {@code LocalDate},
+     * potentially applying complex processing to handle invalid parsed data.
      *
-     * @return a new builder with the results of the parse, not null
+     * @return
+     *   a new builder with the results of the parse, not null
      */
     def toBuilder: DateTimeBuilder = {
       val builder: DateTimeBuilder = new DateTimeBuilder
@@ -462,10 +489,11 @@ final class TTBPDateTimeParseContext(
   /**
    * Sets the locale.
    *
-   * This locale is used to control localization in the print output except
-   * where localization is controlled by the symbols.
+   * This locale is used to control localization in the print output except where localization is
+   * controlled by the symbols.
    *
-   * @param locale  the locale, not null
+   * @param locale
+   *   the locale, not null
    */
   def setLocale(locale: Locale): Unit = {
     Objects.requireNonNull(locale, "locale")

@@ -38,15 +38,18 @@ import org.threeten.bp.DateTimeException
  *
  * This exception includes the text being parsed and the error index.
  *
- * <h3>Specification for implementors</h3>
- * This class is intended for use in a single thread.
+ * <h3>Specification for implementors</h3> This class is intended for use in a single thread.
  *
  * Constructs a new exception with the specified message and cause.
  *
- * @param message  the message to use for this exception, may be null
- * @param parsedData  the parsed text, should not be null
- * @param errorIndex  the index in the parsed string that was invalid, should be a valid index
- * @param cause  the cause exception, may be null
+ * @param message
+ *   the message to use for this exception, may be null
+ * @param parsedData
+ *   the parsed text, should not be null
+ * @param errorIndex
+ *   the index in the parsed string that was invalid, should be a valid index
+ * @param cause
+ *   the cause exception, may be null
  */
 @SerialVersionUID(4304633501674722597L)
 class DateTimeParseException(
@@ -64,14 +67,16 @@ class DateTimeParseException(
   /**
    * Returns the string that was being parsed.
    *
-   * @return the string that was being parsed, should not be null.
+   * @return
+   *   the string that was being parsed, should not be null.
    */
   def getParsedString: String = parsedString
 
   /**
    * Returns the index where the error was found.
    *
-   * @return the index in the parsed string that was invalid, should be a valid index
+   * @return
+   *   the index in the parsed string that was invalid, should be a valid index
    */
   def getErrorIndex: Int = errorIndex
 }

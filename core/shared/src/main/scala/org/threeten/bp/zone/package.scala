@@ -34,8 +34,8 @@ package org.threeten.bp
 /**
  * Support for time-zones and their rules.
  *
- * Daylight Saving Time and Time-Zones are concepts used by Governments to alter local time.
- * This package provides support for time-zones, their rules and the resulting gaps and overlaps
- * in the local time-line typically caused by Daylight Saving Time.
+ * Daylight Saving Time and Time-Zones are concepts used by Governments to alter local time. This
+ * package provides support for time-zones, their rules and the resulting gaps and overlaps in the
+ * local time-line typically caused by Daylight Saving Time.
  */
 package object zone

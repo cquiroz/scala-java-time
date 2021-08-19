@@ -1,6 +1,6 @@
 package org.threeten.bp.zone
 
-import java.util.{ Collection => JCollection, Map => JMap, SortedMap => JSortedMap, Set => JSet }
+import java.util.{ Collection => JCollection, Map => JMap, Set => JSet, SortedMap => JSortedMap }
 import java.util.AbstractMap
 import java.util.AbstractMap.SimpleEntry
 import java.util.Comparator

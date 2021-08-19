@@ -111,32 +111,21 @@ object JapaneseChronology {
 /**
  * The Japanese Imperial calendar system.
  *
- * This chronology defines the rules of the Japanese Imperial calendar system.
- * This calendar system is primarily used in Japan.
- * The Japanese Imperial calendar system is the same as the ISO calendar system
- * apart from the era-based year numbering.
+ * This chronology defines the rules of the Japanese Imperial calendar system. This calendar system
+ * is primarily used in Japan. The Japanese Imperial calendar system is the same as the ISO calendar
+ * system apart from the era-based year numbering.
  *
- * Japan introduced the Gregorian calendar starting with Meiji 6.
- * Only Meiji and later eras are supported;
- * dates before Meiji 6, January 1 are not supported.
+ * Japan introduced the Gregorian calendar starting with Meiji 6. Only Meiji and later eras are
+ * supported; dates before Meiji 6, January 1 are not supported.
  *
- * The supported {@code ChronoField} instances are:
- * <ul>
- * <li>{@code DAY_OF_WEEK}
- * <li>{@code DAY_OF_MONTH}
- * <li>{@code DAY_OF_YEAR}
- * <li>{@code EPOCH_DAY}
- * <li>{@code MONTH_OF_YEAR}
- * <li>{@code PROLEPTIC_MONTH}
- * <li>{@code YEAR_OF_ERA}
- * <li>{@code YEAR}
- * <li>{@code ERA}
- * </ul>
+ * The supported {@code ChronoField} instances are: <ul> <li>{@code DAY_OF_WEEK} <li>{@code
+ * DAY_OF_MONTH} <li>{@code DAY_OF_YEAR} <li>{@code EPOCH_DAY} <li>{@code MONTH_OF_YEAR} <li>{@code
+ * PROLEPTIC_MONTH} <li>{@code YEAR_OF_ERA} <li>{@code YEAR} <li>{@code ERA} </ul>
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * @constructor Restricted constructor.
+ * @constructor
+ *   Restricted constructor.
  */
 @SerialVersionUID(459996390165777884L)
 final class JapaneseChronology private () extends Chronology with Serializable {
@@ -144,32 +133,36 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Resolve singleton.
    *
-   * @return the singleton instance, not null
+   * @return
+   *   the singleton instance, not null
    */
   private def readResolve: AnyRef = JapaneseChronology.INSTANCE
 
   /**
    * Gets the ID of the chronology - 'Japanese'.
    *
-   * The ID uniquely identifies the {@code Chronology}.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)}.
    *
-   * @return the chronology ID - 'Japanese'
-   * @see #getCalendarType()
+   * @return
+   *   the chronology ID - 'Japanese'
+   * @see
+   *   #getCalendarType()
    */
   def getId: String = "Japanese"
 
   /**
    * Gets the calendar type of the underlying calendar system - 'japanese'.
    *
-   * The calendar type is an identifier defined by the
-   * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-   * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
-   * It can also be used as part of a locale, accessible via
-   * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
+   * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
+   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * #of(String)}. It can also be used as part of a locale, accessible via {@link
+   * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *
-   * @return the calendar system type - 'japanese'
-   * @see #getId()
+   * @return
+   *   the calendar system type - 'japanese'
+   * @see
+   *   #getId()
    */
   def getCalendarType: String = "japanese"
 
@@ -181,43 +174,48 @@ final class JapaneseChronology private () extends Chronology with Serializable {
     new JapaneseDate(LocalDate.of(prolepticYear, month, dayOfMonth))
 
   /**
-   * Obtains a local date in Japanese calendar system from the
-   * era, year-of-era and day-of-year fields.
+   * Obtains a local date in Japanese calendar system from the era, year-of-era and day-of-year
+   * fields.
    *
-   * The day-of-year in this factory is expressed relative to the start of the year-of-era.
-   * This definition changes the normal meaning of day-of-year only in those years
-   * where the year-of-era is reset to one due to a change in the era.
-   * For example:
-   * <pre>
-   * 6th Jan Showa 64 = day-of-year 6
-   * 7th Jan Showa 64 = day-of-year 7
-   * 8th Jan Heisei 1 = day-of-year 1
-   * 9th Jan Heisei 1 = day-of-year 2
-   * </pre>
+   * The day-of-year in this factory is expressed relative to the start of the year-of-era. This
+   * definition changes the normal meaning of day-of-year only in those years where the year-of-era
+   * is reset to one due to a change in the era. For example: <pre> 6th Jan Showa 64 = day-of-year 6
+   * 7th Jan Showa 64 = day-of-year 7 8th Jan Heisei 1 = day-of-year 1 9th Jan Heisei 1 =
+   * day-of-year 2 </pre>
    *
-   * @param era  the Japanese era, not null
-   * @param yearOfEra  the year-of-era
-   * @param dayOfYear  the day-of-year
-   * @return the Japanese local date, not null
-   * @throws DateTimeException if unable to create the date
-   * @throws ClassCastException if the { @code era} is not a { @code JapaneseEra}
+   * @param era
+   *   the Japanese era, not null
+   * @param yearOfEra
+   *   the year-of-era
+   * @param dayOfYear
+   *   the day-of-year
+   * @return
+   *   the Japanese local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
+   * @throws ClassCastException
+   *   if the { @code era} is not a { @code JapaneseEra}
    */
   override def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): JapaneseDate =
     if (!era.isInstanceOf[JapaneseEra]) throw new ClassCastException("Era must be JapaneseEra")
     else JapaneseDate.ofYearDay(era.asInstanceOf[JapaneseEra], yearOfEra, dayOfYear)
 
   /**
-   * Obtains a local date in Japanese calendar system from the
-   * proleptic-year and day-of-year fields.
+   * Obtains a local date in Japanese calendar system from the proleptic-year and day-of-year
+   * fields.
    *
-   * The day-of-year in this factory is expressed relative to the start of the proleptic year.
-   * The Japanese proleptic year and day-of-year are the same as those in the ISO calendar system.
-   * They are not reset when the era changes.
+   * The day-of-year in this factory is expressed relative to the start of the proleptic year. The
+   * Japanese proleptic year and day-of-year are the same as those in the ISO calendar system. They
+   * are not reset when the era changes.
    *
-   * @param prolepticYear  the proleptic-year
-   * @param dayOfYear  the day-of-year
-   * @return the Japanese local date, not null
-   * @throws DateTimeException if unable to create the date
+   * @param prolepticYear
+   *   the proleptic-year
+   * @param dayOfYear
+   *   the day-of-year
+   * @return
+   *   the Japanese local date, not null
+   * @throws DateTimeException
+   *   if unable to create the date
    */
   def dateYearDay(prolepticYear: Int, dayOfYear: Int): JapaneseDate = {
     val localDate: LocalDate = LocalDate.ofYearDay(prolepticYear, dayOfYear)
@@ -253,12 +251,14 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Checks if the specified year is a leap year.
    *
-   * Japanese calendar leap years occur exactly in line with ISO leap years.
-   * This method does not validate the year passed in, and only has a
-   * well-defined result for years in the supported range.
+   * Japanese calendar leap years occur exactly in line with ISO leap years. This method does not
+   * validate the year passed in, and only has a well-defined result for years in the supported
+   * range.
    *
-   * @param prolepticYear  the proleptic-year to check, not validated for range
-   * @return true if the year is a leap year
+   * @param prolepticYear
+   *   the proleptic-year to check, not validated for range
+   * @return
+   *   true if the year is a leap year
    */
   def isLeapYear(prolepticYear: Long): Boolean = IsoChronology.INSTANCE.isLeapYear(prolepticYear)
 
@@ -276,13 +276,16 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Returns the calendar system era object from the given numeric value.
    *
-   * See the description of each Era for the numeric values of:
-   * {@link JapaneseEra#HEISEI}, {@link JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO},
-   * {@link JapaneseEra#MEIJI}), only Meiji and later eras are supported.
+   * See the description of each Era for the numeric values of: {@link JapaneseEra#HEISEI}, {@link
+   * JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO}, {@link JapaneseEra#MEIJI}), only Meiji and later
+   * eras are supported.
    *
-   * @param eraValue  the era value
-   * @return the Japanese { @code Era} for the given numeric era value
-   * @throws DateTimeException if { @code eraValue} is invalid
+   * @param eraValue
+   *   the era value
+   * @return
+   *   the Japanese { @code Era} for the given numeric era value
+   * @throws DateTimeException
+   *   if { @code eraValue} is invalid
    */
   def eraOf(eraValue: Int): JapaneseEra = JapaneseEra.of(eraValue)
 

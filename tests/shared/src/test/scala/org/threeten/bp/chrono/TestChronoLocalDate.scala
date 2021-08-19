@@ -52,8 +52,8 @@ import org.threeten.bp.temporal.ValueRange
 object TestChronoLocalDate {
 
   /**
-   * FixedAdjusted returns a fixed DateTime in all adjustments.
-   * Construct an adjuster with the DateTime that should be returned.
+   * FixedAdjusted returns a fixed DateTime in all adjustments. Construct an adjuster with the
+   * DateTime that should be returned.
    */
   private[chrono] class FixedAdjuster private[chrono] (private var datetime: Temporal)
       extends TemporalAdjuster
@@ -73,8 +73,8 @@ object TestChronoLocalDate {
   }
 
   /**
-   * FixedPeriodUnit returns a fixed DateTime in all adjustments.
-   * Construct an FixedPeriodUnit with the DateTime that should be returned.
+   * FixedPeriodUnit returns a fixed DateTime in all adjustments. Construct an FixedPeriodUnit with
+   * the DateTime that should be returned.
    */
   private[chrono] class FixedPeriodUnit private[chrono] (private var dateTime: Temporal)
       extends TemporalUnit {
@@ -107,8 +107,8 @@ object TestChronoLocalDate {
   }
 
   /**
-   * FixedDateTimeField returns a fixed DateTime in all adjustments.
-   * Construct an FixedDateTimeField with the DateTime that should be returned from doSet.
+   * FixedDateTimeField returns a fixed DateTime in all adjustments. Construct an FixedDateTimeField
+   * with the DateTime that should be returned from doSet.
    */
   private[chrono] class FixedDateTimeField private[chrono] (private var dateTime: Temporal)
       extends TemporalField {

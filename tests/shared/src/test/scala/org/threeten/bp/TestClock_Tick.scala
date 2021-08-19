@@ -45,61 +45,55 @@ object TestClock_Tick {
 
 class TestClock_Tick extends AnyFunSuite with AssertionsHelper {
   test("tick_ClockDuration_250millis") {
-    {
-      var i: Int = 0
-      while (i < 1000) {
-        {
-          val test: Clock = Clock.tick(
-            Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000000).toInstant, TestClock_Tick.PARIS),
-            Duration.ofMillis(250)
-          )
-          assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000000).toInstant)
-          assertEquals(test.getZone, TestClock_Tick.PARIS)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < 1000) {
+      {
+        val test: Clock = Clock.tick(
+          Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000000).toInstant, TestClock_Tick.PARIS),
+          Duration.ofMillis(250)
+        )
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000000).toInstant)
+        assertEquals(test.getZone, TestClock_Tick.PARIS)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("tick_ClockDuration_250micros") {
-    {
-      var i: Int = 0
-      while (i < 1000) {
-        {
-          val test: Clock = Clock.tick(
-            Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000).toInstant, TestClock_Tick.PARIS),
-            Duration.ofNanos(250000)
-          )
-          assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000).toInstant)
-          assertEquals(test.getZone, TestClock_Tick.PARIS)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < 1000) {
+      {
+        val test: Clock = Clock.tick(
+          Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000).toInstant, TestClock_Tick.PARIS),
+          Duration.ofNanos(250000)
+        )
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000).toInstant)
+        assertEquals(test.getZone, TestClock_Tick.PARIS)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }
 
   test("tick_ClockDuration_20nanos") {
-    {
-      var i: Int = 0
-      while (i < 1000) {
-        {
-          val test: Clock =
-            Clock.tick(Clock.fixed(TestClock_Tick.ZDT.withNano(i).toInstant, TestClock_Tick.PARIS),
-                       Duration.ofNanos(20)
-            )
-          assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 20) * 20).toInstant)
-          assertEquals(test.getZone, TestClock_Tick.PARIS)
-        }
-        {
-          i += 1
-          i - 1
-        }
+    var i: Int = 0
+    while (i < 1000) {
+      {
+        val test: Clock =
+          Clock.tick(Clock.fixed(TestClock_Tick.ZDT.withNano(i).toInstant, TestClock_Tick.PARIS),
+                     Duration.ofNanos(20)
+          )
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 20) * 20).toInstant)
+        assertEquals(test.getZone, TestClock_Tick.PARIS)
+      }
+      {
+        i += 1
+        i - 1
       }
     }
   }

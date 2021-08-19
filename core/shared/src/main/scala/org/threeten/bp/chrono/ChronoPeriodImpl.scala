@@ -155,7 +155,7 @@ final class ChronoPeriodImpl(
     chronology.hashCode + Integer.rotateLeft(years, 16) + Integer.rotateLeft(months, 8) + days
 
   override def toString: String =
-    if (isZero) s"${chronology} P0D"
+    if (isZero) s"$chronology P0D"
     else {
       val buf: StringBuilder = new StringBuilder
       buf.append(chronology).append(' ').append('P')

@@ -51,10 +51,14 @@ private[chrono] object ChronoZonedDateTimeImpl {
   /**
    * Obtains an instance from a local date-time using the preferred offset if possible.
    *
-   * @param localDateTime  the local date-time, not null
-   * @param zone  the zone identifier, not null
-   * @param preferredOffset  the zone offset, null if no preference
-   * @return the zoned date-time, not null
+   * @param localDateTime
+   *   the local date-time, not null
+   * @param zone
+   *   the zone identifier, not null
+   * @param preferredOffset
+   *   the zone offset, null if no preference
+   * @return
+   *   the zoned date-time, not null
    */
   private[chrono] def ofBest[R <: ChronoLocalDate](
     localDateTime:   ChronoLocalDateTimeImpl[R],
@@ -89,10 +93,14 @@ private[chrono] object ChronoZonedDateTimeImpl {
   /**
    * Obtains an instance from an instant using the specified time-zone.
    *
-   * @param chrono  the chronology, not null
-   * @param instant  the instant, not null
-   * @param zone  the zone identifier, not null
-   * @return the zoned date-time, not null
+   * @param chrono
+   *   the chronology, not null
+   * @param instant
+   *   the instant, not null
+   * @param zone
+   *   the zone identifier, not null
+   * @return
+   *   the zoned date-time, not null
    */
   private[chrono] def ofInstant[R <: ChronoLocalDate](
     chrono:  Chronology,
@@ -114,22 +122,25 @@ private[chrono] object ChronoZonedDateTimeImpl {
 /**
  * A date-time with a time-zone in the calendar neutral API.
  *
- * {@code ZoneChronoDateTime} is an immutable representation of a date-time with a time-zone.
- * This class stores all date and time fields, to a precision of nanoseconds,
- * as well as a time-zone and zone offset.
+ * {@code ZoneChronoDateTime} is an immutable representation of a date-time with a time-zone. This
+ * class stores all date and time fields, to a precision of nanoseconds, as well as a time-zone and
+ * zone offset.
  *
- * The purpose of storing the time-zone is to distinguish the ambiguous case where
- * the local time-line overlaps, typically as a result of the end of daylight time.
- * Information about the local-time can be obtained using methods on the time-zone.
+ * The purpose of storing the time-zone is to distinguish the ambiguous case where the local
+ * time-line overlaps, typically as a result of the end of daylight time. Information about the
+ * local-time can be obtained using methods on the time-zone.
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * @tparam D the date type
+ * @tparam D
+ *   the date type
  * @constructor
- * @param dateTime  the date-time, not null
- * @param offset  the zone offset, not null
- * @param zone  the zone ID, not null
+ * @param dateTime
+ *   the date-time, not null
+ * @param offset
+ *   the zone offset, not null
+ * @param zone
+ *   the zone ID, not null
  */
 @SerialVersionUID(-5261813987200935591L)
 final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
@@ -145,9 +156,12 @@ final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
   /**
    * Obtains an instance from an {@code Instant}.
    *
-   * @param instant  the instant to create the date-time from, not null
-   * @param zone  the time-zone to use, validated not null
-   * @return the zoned date-time, validated not null
+   * @param instant
+   *   the instant to create the date-time from, not null
+   * @param zone
+   *   the time-zone to use, validated not null
+   * @return
+   *   the zoned date-time, validated not null
    */
   private def create(instant: Instant, zone: ZoneId): ChronoZonedDateTimeImpl[D] =
     ChronoZonedDateTimeImpl.ofInstant(toLocalDate.getChronology, instant, zone)

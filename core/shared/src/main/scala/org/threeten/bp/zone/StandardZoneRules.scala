@@ -52,11 +52,16 @@ object StandardZoneRules {
   /**
    * Creates an instance.
    *
-   * @param baseStandardOffset  the standard offset to use before legal rules were set, not null
-   * @param baseWallOffset  the wall offset to use before legal rules were set, not null
-   * @param standardOffsetTransitionList  the list of changes to the standard offset, not null
-   * @param transitionList  the list of transitions, not null
-   * @param lastRules  the recurring last rules, size 15 or less, not null
+   * @param baseStandardOffset
+   *   the standard offset to use before legal rules were set, not null
+   * @param baseWallOffset
+   *   the wall offset to use before legal rules were set, not null
+   * @param standardOffsetTransitionList
+   *   the list of changes to the standard offset, not null
+   * @param transitionList
+   *   the list of transitions, not null
+   * @param lastRules
+   *   the recurring last rules, size 15 or less, not null
    */
   def apply(
     baseStandardOffset:           ZoneOffset,
@@ -124,19 +129,24 @@ object StandardZoneRules {
  *
  * This class is used by the TZDB time-zone rules.
  *
- * <h3>Specification for implementors</h3>
- * This class is immutable and thread-safe.
+ * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * @constructor Utility constructor.
+ * @constructor
+ *   Utility constructor.
  *
- * @param standardTransitions  the standard transitions, not null
- * @param standardOffsets  the standard offsets, not null
- * @param savingsInstantTransitions  the standard transitions, not null
- * @param wallOffsets  the wall offsets, not null
- * @param lastRules  the recurring last rules, size 15 or less, not null
- * @param savingsLocalTransitions The transitions between local date-times, sorted.
- *                                This is a paired array, where the first entry is the start of the transition
- *                                and the second entry is the end of the transition.
+ * @param standardTransitions
+ *   the standard transitions, not null
+ * @param standardOffsets
+ *   the standard offsets, not null
+ * @param savingsInstantTransitions
+ *   the standard transitions, not null
+ * @param wallOffsets
+ *   the wall offsets, not null
+ * @param lastRules
+ *   the recurring last rules, size 15 or less, not null
+ * @param savingsLocalTransitions
+ *   The transitions between local date-times, sorted. This is a paired array, where the first entry
+ *   is the start of the transition and the second entry is the end of the transition.
  */
 @SerialVersionUID(3044319355680032515L)
 final class StandardZoneRules private (
@@ -166,11 +176,16 @@ final class StandardZoneRules private (
   /**
    * @constructor
    *
-   * @param standardTransitions  the standard transitions, not null
-   * @param standardOffsets  the standard offsets, not null
-   * @param savingsInstantTransitions  the standard transitions, not null
-   * @param wallOffsets  the wall offsets, not null
-   * @param lastRules  the recurring last rules, size 15 or less, not null
+   * @param standardTransitions
+   *   the standard transitions, not null
+   * @param standardOffsets
+   *   the standard offsets, not null
+   * @param savingsInstantTransitions
+   *   the standard transitions, not null
+   * @param wallOffsets
+   *   the wall offsets, not null
+   * @param lastRules
+   *   the recurring last rules, size 15 or less, not null
    */
   private[zone] def this(
     standardTransitions:       Array[Long],
@@ -298,9 +313,12 @@ final class StandardZoneRules private (
   /**
    * Finds the offset info for a local date-time and transition.
    *
-   * @param dt  the date-time, not null
-   * @param trans  the transition, not null
-   * @return the offset info, not null
+   * @param dt
+   *   the date-time, not null
+   * @param trans
+   *   the transition, not null
+   * @return
+   *   the offset info, not null
    */
   private def findOffsetInfo(dt: LocalDateTime, trans: ZoneOffsetTransition): AnyRef = {
     val localTransition: LocalDateTime = trans.getDateTimeBefore
@@ -325,8 +343,10 @@ final class StandardZoneRules private (
   /**
    * Finds the appropriate transition array for the given year.
    *
-   * @param year  the year, not null
-   * @return the transition array, not null
+   * @param year
+   *   the year, not null
+   * @return
+   *   the transition array, not null
    */
   private def findTransitionArray(year: Int): Array[ZoneOffsetTransition] = {
     val yearObj: Integer                           = year
@@ -483,7 +503,8 @@ final class StandardZoneRules private (
   /**
    * Returns a string describing this object.
    *
-   * @return a string for debugging, not null
+   * @return
+   *   a string for debugging, not null
    */
   override def toString: String =
     s"StandardZoneRules[currentStandardOffset=${standardOffsets(standardOffsets.length - 1)}]"
