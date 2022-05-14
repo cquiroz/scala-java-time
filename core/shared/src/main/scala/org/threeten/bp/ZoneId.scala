@@ -203,7 +203,7 @@ object ZoneId {
       throw new DateTimeException(s"Invalid ID for ZoneOffset, invalid format: $zoneId")
     else if (zoneId.startsWith("+") || zoneId.startsWith("-"))
       ZoneOffset.of(zoneId)
-    else if ((zoneId == "UTC") || (zoneId == "GMT") || (zoneId == "UT"))
+    else if (zoneId == "UTC" || zoneId == "GMT" || zoneId == "UT")
       new ZoneRegion(zoneId, ZoneOffset.UTC.getRules)
     else if (
       zoneId.startsWith("UTC+") || zoneId.startsWith("GMT+") || zoneId.startsWith("UTC-") || zoneId
@@ -244,7 +244,7 @@ object ZoneId {
     Objects.requireNonNull(offset, "offset")
     if (prefix.length == 0)
       return offset
-    if ((prefix == "GMT") || (prefix == "UTC") || (prefix == "UT")) {
+    if (prefix == "GMT" || prefix == "UTC" || prefix == "UT") {
       if (offset.getTotalSeconds == 0)
         return new ZoneRegion(prefix, offset.getRules)
       return new ZoneRegion(prefix + offset.getId, offset.getRules)
@@ -349,7 +349,7 @@ object ZoneId {
  *   Constructor only accessible within the package.
  */
 @SerialVersionUID(8352817235686L)
-abstract class ZoneId private[bp] () extends Serializable {
+abstract class ZoneId private[bp] extends Serializable {
   if ((getClass ne classOf[ZoneOffset]) && (getClass ne classOf[ZoneRegion]))
     throw new AssertionError("Invalid subclass")
 
@@ -403,10 +403,10 @@ abstract class ZoneId private[bp] () extends Serializable {
    *   the text value of the zone, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendZoneText(style)
       .toFormatter(locale)
-      .format(new TemporalAccessor() {
+      .format(new TemporalAccessor {
         def isSupported(field: TemporalField): Boolean    = false
         def getLong(field: TemporalField): Long           =
           throw new UnsupportedTemporalTypeException(s"Unsupported field: $field")
@@ -454,7 +454,7 @@ abstract class ZoneId private[bp] () extends Serializable {
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: ZoneId => (this eq other) || (getId == other.getId)
+      case other: ZoneId => (this eq other) || getId == other.getId
       case _             => false
     }
 

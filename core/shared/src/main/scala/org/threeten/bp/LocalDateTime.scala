@@ -1084,14 +1084,14 @@ final class LocalDateTime private (private val date: LocalDate, private val time
         f match {
           case NANOS     => plusNanos(amountToAdd)
           case MICROS    =>
-            plusDays(amountToAdd / MICROS_PER_DAY).plusNanos((amountToAdd % MICROS_PER_DAY) * 1000)
+            plusDays(amountToAdd / MICROS_PER_DAY).plusNanos(amountToAdd % MICROS_PER_DAY * 1000)
           case MILLIS    =>
             plusDays(amountToAdd / MILLIS_PER_DAY)
-              .plusNanos((amountToAdd % MILLIS_PER_DAY) * 1000000)
+              .plusNanos(amountToAdd % MILLIS_PER_DAY * 1000000)
           case SECONDS   => plusSeconds(amountToAdd)
           case MINUTES   => plusMinutes(amountToAdd)
           case HOURS     => plusHours(amountToAdd)
-          case HALF_DAYS => plusDays(amountToAdd / 256).plusHours((amountToAdd % 256) * 12)
+          case HALF_DAYS => plusDays(amountToAdd / 256).plusHours(amountToAdd % 256 * 12)
           case _         => `with`(date.plus(amountToAdd, unit), time)
         }
       case _             =>
@@ -1477,7 +1477,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
       nanos / NANOS_PER_DAY + seconds / SECONDS_PER_DAY + minutes / MINUTES_PER_DAY + hours / HOURS_PER_DAY
     totDays *= sign
     var totNanos: Long =
-      nanos % NANOS_PER_DAY + (seconds % SECONDS_PER_DAY) * NANOS_PER_SECOND + (minutes % MINUTES_PER_DAY) * NANOS_PER_MINUTE + (hours % HOURS_PER_DAY) * NANOS_PER_HOUR
+      nanos % NANOS_PER_DAY + seconds % SECONDS_PER_DAY * NANOS_PER_SECOND + minutes % MINUTES_PER_DAY * NANOS_PER_MINUTE + hours % HOURS_PER_DAY * NANOS_PER_HOUR
     val curNoD: Long       = time.toNanoOfDay
     totNanos = totNanos * sign + curNoD
     totDays += Math.floorDiv(totNanos, NANOS_PER_DAY)
@@ -1822,7 +1822,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: LocalDateTime => (this eq other) || ((date == other.date) && (time == other.time))
+      case other: LocalDateTime => (this eq other) || date == other.date && time == other.time
       case _                    => false
     }
 

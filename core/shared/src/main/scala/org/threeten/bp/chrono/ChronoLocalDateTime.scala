@@ -318,7 +318,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
   def isAfter(other: ChronoLocalDateTime[_ <: ChronoLocalDate]): Boolean = {
     val thisEpDay: Long  = this.toLocalDate.toEpochDay
     val otherEpDay: Long = other.toLocalDate.toEpochDay
-    thisEpDay > otherEpDay || (thisEpDay == otherEpDay && this.toLocalTime.toNanoOfDay > other.toLocalTime.toNanoOfDay)
+    thisEpDay > otherEpDay || thisEpDay == otherEpDay && this.toLocalTime.toNanoOfDay > other.toLocalTime.toNanoOfDay
   }
 
   /**
@@ -336,7 +336,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
   def isBefore(other: ChronoLocalDateTime[_ <: ChronoLocalDate]): Boolean = {
     val thisEpDay: Long  = this.toLocalDate.toEpochDay
     val otherEpDay: Long = other.toLocalDate.toEpochDay
-    thisEpDay < otherEpDay || (thisEpDay == otherEpDay && this.toLocalTime.toNanoOfDay < other.toLocalTime.toNanoOfDay)
+    thisEpDay < otherEpDay || thisEpDay == otherEpDay && this.toLocalTime.toNanoOfDay < other.toLocalTime.toNanoOfDay
   }
 
   /**
@@ -366,7 +366,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: ChronoLocalDateTime[_] => (this eq other) || (compareTo(other) == 0)
+      case other: ChronoLocalDateTime[_] => (this eq other) || compareTo(other) == 0
       case _                             => false
     }
 

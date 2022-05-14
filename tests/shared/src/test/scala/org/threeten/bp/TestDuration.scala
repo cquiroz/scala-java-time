@@ -188,13 +188,13 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
 
   test("factory_minutes_max") {
     val test: Duration = Duration.ofMinutes(Long.MaxValue / 60)
-    assertEquals(test.getSeconds, (Long.MaxValue / 60) * 60)
+    assertEquals(test.getSeconds, Long.MaxValue / 60 * 60)
     assertEquals(test.getNano, 0)
   }
 
   test("factory_minutes_min") {
     val test: Duration = Duration.ofMinutes(Long.MinValue / 60)
-    assertEquals(test.getSeconds, (Long.MinValue / 60) * 60)
+    assertEquals(test.getSeconds, Long.MinValue / 60 * 60)
     assertEquals(test.getNano, 0)
   }
 
@@ -218,13 +218,13 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
 
   test("factory_hours_max") {
     val test: Duration = Duration.ofHours(Long.MaxValue / 3600)
-    assertEquals(test.getSeconds, (Long.MaxValue / 3600) * 3600)
+    assertEquals(test.getSeconds, Long.MaxValue / 3600 * 3600)
     assertEquals(test.getNano, 0)
   }
 
   test("factory_hours_min") {
     val test: Duration = Duration.ofHours(Long.MinValue / 3600)
-    assertEquals(test.getSeconds, (Long.MinValue / 3600) * 3600)
+    assertEquals(test.getSeconds, Long.MinValue / 3600 * 3600)
     assertEquals(test.getNano, 0)
   }
 
@@ -248,13 +248,13 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
 
   test("factory_days_max") {
     val test: Duration = Duration.ofDays(Long.MaxValue / 86400)
-    assertEquals(test.getSeconds, (Long.MaxValue / 86400) * 86400)
+    assertEquals(test.getSeconds, Long.MaxValue / 86400 * 86400)
     assertEquals(test.getNano, 0)
   }
 
   test("factory_days_min") {
     val test: Duration = Duration.ofDays(Long.MinValue / 86400)
-    assertEquals(test.getSeconds, (Long.MinValue / 86400) * 86400)
+    assertEquals(test.getSeconds, Long.MinValue / 86400 * 86400)
     assertEquals(test.getNano, 0)
   }
 
@@ -318,17 +318,13 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
            Long.MinValue / 1000000000 - 1,
            (Long.MinValue                                                   % 1000000000 + 1000000000).toInt
       ),
-      List(Long.MaxValue,
-           MICROS,
-           Long.MaxValue / 1000000,
-           ((Long.MaxValue                                                  % 1000000) * 1000).toInt
-      ),
+      List(Long.MaxValue, MICROS, Long.MaxValue / 1000000, (Long.MaxValue   % 1000000 * 1000).toInt),
       List(Long.MinValue,
            MICROS,
            Long.MinValue / 1000000 - 1,
            ((Long.MinValue                                                  % 1000000 + 1000000) * 1000).toInt
       ),
-      List(Long.MaxValue, MILLIS, Long.MaxValue / 1000, ((Long.MaxValue     % 1000) * 1000000).toInt),
+      List(Long.MaxValue, MILLIS, Long.MaxValue / 1000, (Long.MaxValue      % 1000 * 1000000).toInt),
       List(Long.MinValue,
            MILLIS,
            Long.MinValue / 1000 - 1,
@@ -336,12 +332,12 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
       ),
       List(Long.MaxValue, SECONDS, Long.MaxValue, 0),
       List(Long.MinValue, SECONDS, Long.MinValue, 0),
-      List(Long.MaxValue / 60, MINUTES, (Long.MaxValue / 60) * 60, 0),
-      List(Long.MinValue / 60, MINUTES, (Long.MinValue / 60) * 60, 0),
-      List(Long.MaxValue / 3600, HOURS, (Long.MaxValue / 3600) * 3600, 0),
-      List(Long.MinValue / 3600, HOURS, (Long.MinValue / 3600) * 3600, 0),
-      List(Long.MaxValue / 43200, HALF_DAYS, (Long.MaxValue / 43200) * 43200, 0),
-      List(Long.MinValue / 43200, HALF_DAYS, (Long.MinValue / 43200) * 43200, 0)
+      List(Long.MaxValue / 60, MINUTES, Long.MaxValue / 60 * 60, 0),
+      List(Long.MinValue / 60, MINUTES, Long.MinValue / 60 * 60, 0),
+      List(Long.MaxValue / 3600, HOURS, Long.MaxValue / 3600 * 3600, 0),
+      List(Long.MinValue / 3600, HOURS, Long.MinValue / 3600 * 3600, 0),
+      List(Long.MaxValue / 43200, HALF_DAYS, Long.MaxValue / 43200 * 43200, 0),
+      List(Long.MinValue / 43200, HALF_DAYS, Long.MinValue / 43200 * 43200, 0)
     )
 
   test("factory_of_longTemporalUnit") {
@@ -1864,14 +1860,14 @@ class TestDuration extends AnyFunSuite with AssertionsHelper {
   }
 
   test("test_toMillis_max") {
-    val test: Duration = Duration.ofSeconds(Long.MaxValue / 1000, (Long.MaxValue % 1000) * 1000000)
+    val test: Duration = Duration.ofSeconds(Long.MaxValue / 1000, Long.MaxValue % 1000 * 1000000)
     assertEquals(test.toMillis, Long.MaxValue)
   }
 
   test("test_toMillis_tooBig") {
     assertThrows[ArithmeticException] {
       val test: Duration =
-        Duration.ofSeconds(Long.MaxValue / 1000, ((Long.MaxValue % 1000) + 1) * 1000000)
+        Duration.ofSeconds(Long.MaxValue / 1000, (Long.MaxValue % 1000 + 1) * 1000000)
       test.toMillis
     }
   }

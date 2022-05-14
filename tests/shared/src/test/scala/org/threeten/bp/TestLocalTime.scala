@@ -215,14 +215,14 @@ class TestLocalTime
 
   test("now_Clock_allSecsInDay") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant = Instant.ofEpochSecond(i, 8)
         val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
         val test: LocalTime  = LocalTime.now(clock)
-        assertEquals(test.getHour, (i / (60 * 60)) % 24)
-        assertEquals(test.getMinute, (i / 60)      % 60)
-        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getHour, i / (60 * 60) % 24)
+        assertEquals(test.getMinute, i / 60      % 60)
+        assertEquals(test.getSecond, i           % 60)
         assertEquals(test.getNano, 8)
       }
       {
@@ -239,9 +239,9 @@ class TestLocalTime
         val instant: Instant = Instant.ofEpochSecond(i, 8)
         val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
         val test: LocalTime  = LocalTime.now(clock)
-        assertEquals(test.getHour, ((i + 24 * 60 * 60) / (60 * 60)) % 24)
-        assertEquals(test.getMinute, ((i + 24 * 60 * 60) / 60)      % 60)
-        assertEquals(test.getSecond, (i + 24 * 60 * 60)             % 60)
+        assertEquals(test.getHour, (i + 24 * 60 * 60) / (60 * 60) % 24)
+        assertEquals(test.getMinute, (i + 24 * 60 * 60) / 60      % 60)
+        assertEquals(test.getSecond, (i + 24 * 60 * 60)           % 60)
         assertEquals(test.getNano, 8)
       }
       {
@@ -596,7 +596,7 @@ class TestLocalTime
     assertEquals(test.getLong(ChronoField.SECOND_OF_MINUTE), 40)
     assertEquals(test.getLong(ChronoField.NANO_OF_SECOND), 987654321)
     assertEquals(test.getLong(ChronoField.NANO_OF_DAY),
-                 ((12 * 3600 + 30 * 60 + 40) * 1000000000L) + 987654321
+                 (12 * 3600 + 30 * 60 + 40) * 1000000000L + 987654321
     )
     assertEquals(test.getLong(ChronoField.SECOND_OF_DAY), 12 * 3600 + 30 * 60 + 40)
     assertEquals(test.getLong(ChronoField.MINUTE_OF_DAY), 12 * 60 + 30)
@@ -861,7 +861,7 @@ class TestLocalTime
     }
   }
 
-  private val NINETY_MINS: TemporalUnit      = new TemporalUnit() {
+  private val NINETY_MINS: TemporalUnit      = new TemporalUnit {
     override def toString: String =
       "NinetyMins"
 
@@ -886,7 +886,7 @@ class TestLocalTime
     def between(r: Temporal, r2: Temporal): Long =
       throw new UnsupportedOperationException
   }
-  private val NINETY_FIVE_MINS: TemporalUnit = new TemporalUnit() {
+  private val NINETY_FIVE_MINS: TemporalUnit = new TemporalUnit {
     override def toString: String =
       "NinetyFiveMins"
 
@@ -1256,7 +1256,7 @@ class TestLocalTime
   }
 
   val plusSeconds_fromZero: java.util.Iterator[List[Int]] =
-    new java.util.Iterator[List[Int]]() {
+    new java.util.Iterator[List[Int]] {
       private[bp] var delta: Int = 30
       private[bp] var i: Int     = -3660
       private[bp] var hour: Int  = 22
@@ -1348,7 +1348,7 @@ class TestLocalTime
   }
 
   val plusNanos_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Long = 7500000000L
       private[bp] var i: Long     = -3660 * 1000000000L
       private[bp] var hour: Int   = 22
@@ -1509,7 +1509,7 @@ class TestLocalTime
       while (i < 50) {
         {
           t = t.minusHours(1)
-          assertEquals(t.getHour, (((-i + 23) % 24) + 24) % 24, String.valueOf(i))
+          assertEquals(t.getHour, ((-i + 23) % 24 + 24) % 24, String.valueOf(i))
         }
         {
           i += 1
@@ -1527,7 +1527,7 @@ class TestLocalTime
       while (i < 50) {
         {
           val t: LocalTime = base.minusHours(i)
-          assertEquals(t.getHour, ((-i % 24) + 24) % 24)
+          assertEquals(t.getHour, (-i % 24 + 24) % 24)
         }
         {
           i += 1
@@ -1545,7 +1545,7 @@ class TestLocalTime
       while (i < 50) {
         {
           val t: LocalTime = base.minusHours(i)
-          assertEquals(t.getHour, (1 + (-i % 24) + 24) % 24)
+          assertEquals(t.getHour, (1 + -i % 24 + 24) % 24)
         }
         {
           i += 1
@@ -1693,7 +1693,7 @@ class TestLocalTime
   }
 
   val minusSeconds_fromZero: java.util.Iterator[List[Int]] =
-    new java.util.Iterator[List[Int]]() {
+    new java.util.Iterator[List[Int]] {
       private[bp] var delta: Int = 30
       private[bp] var i: Int     = 3660
       private[bp] var hour: Int  = 22
@@ -1798,7 +1798,7 @@ class TestLocalTime
   }
 
   val minusNanos_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Long = 7500000000L
       private[bp] var i: Long     = 3660 * 1000000000L
       private[bp] var hour: Int   = 22

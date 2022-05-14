@@ -251,7 +251,7 @@ final class ZoneOffsetTransition private[zone] (
    *   true if the offset is valid during the transition
    */
   def isValidOffset(offset: ZoneOffset): Boolean =
-    if (isGap) false else (getOffsetBefore == offset) || (getOffsetAfter == offset)
+    if (isGap) false else getOffsetBefore == offset || getOffsetAfter == offset
 
   /**
    * Gets the valid offsets during this transition.
@@ -296,7 +296,7 @@ final class ZoneOffsetTransition private[zone] (
   override def equals(other: Any): Boolean =
     other match {
       case zot: ZoneOffsetTransition =>
-        (this eq zot) || ((transition == zot.transition) && (offsetBefore == zot.offsetBefore) && (offsetAfter == zot.offsetAfter))
+        (this eq zot) || transition == zot.transition && offsetBefore == zot.offsetBefore && offsetAfter == zot.offsetAfter
       case _                         => false
     }
 

@@ -305,7 +305,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    *   the zone offset to create with, not null
    */
   private def `with`(time: LocalTime, offset: ZoneOffset): OffsetTime =
-    if ((this.time eq time) && (this.offset == offset)) this
+    if ((this.time eq time) && this.offset == offset) this
     else new OffsetTime(time, offset)
 
   /**
@@ -457,7 +457,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    *   an { @code OffsetTime} based on this time with the requested offset, not null
    */
   def withOffsetSameLocal(offset: ZoneOffset): OffsetTime =
-    if (offset != null && (offset == this.offset)) this
+    if (offset != null && offset == this.offset) this
     else new OffsetTime(time, offset)
 
   /**
@@ -1164,7 +1164,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: OffsetTime => (this eq other) || (time == other.time) && (offset == other.offset)
+      case other: OffsetTime => (this eq other) || time == other.time && offset == other.offset
       case _                 => false
     }
 

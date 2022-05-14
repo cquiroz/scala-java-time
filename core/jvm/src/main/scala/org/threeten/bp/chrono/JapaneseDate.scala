@@ -385,7 +385,7 @@ final class JapaneseDate private[chrono] (
               case DAY_OF_YEAR => `with`(isoDate.plusDays(nvalue - getDayOfYear))
               case YEAR_OF_ERA => this.withYear(nvalue)
               case ERA         => this.withYear(JapaneseEra.of(nvalue), yearOfEra)
-              case _           => throw new UnsupportedOperationException()
+              case _           => throw new UnsupportedOperationException
             }
           case _                               => `with`(isoDate.`with`(field, newValue))
         }
@@ -465,7 +465,7 @@ final class JapaneseDate private[chrono] (
 
   override def equals(obj: Any): Boolean =
     obj match {
-      case otherDate: JapaneseDate => (this eq otherDate) || (this.isoDate == otherDate.isoDate)
+      case otherDate: JapaneseDate => (this eq otherDate) || this.isoDate == otherDate.isoDate
       case _                       => false
     }
 

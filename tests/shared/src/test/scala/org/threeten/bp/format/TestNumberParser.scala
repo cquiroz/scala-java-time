@@ -276,9 +276,9 @@ class TestNumberParser extends AnyFunSuite with GenTestPrinterParser with Assert
 
   test("parseSignsStrict") {
     provider_parseSignsStrict.foreach {
-      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) ::(Some(
+      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) :: Some(
             parseVal: Int
-          )) :: Nil =>
+          ) :: Nil =>
         super.beforeEach()
         val pp: TTBPDateTimeFormatterBuilder.NumberPrinterParser =
           new TTBPDateTimeFormatterBuilder.NumberPrinterParser(DAY_OF_MONTH, min, max, style)
@@ -382,9 +382,9 @@ class TestNumberParser extends AnyFunSuite with GenTestPrinterParser with Assert
 
   test("parseSignsLenient") {
     provider_parseSignsLenient.foreach {
-      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) ::(Some(
+      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) :: Some(
             parseVal: Int
-          )) :: Nil =>
+          ) :: Nil =>
         super.beforeEach()
         parseContext.setStrict(false)
         val pp: TTBPDateTimeFormatterBuilder.NumberPrinterParser =

@@ -625,9 +625,9 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
     if (unitDur.getSeconds > LocalTime.SECONDS_PER_DAY)
       throw new DateTimeException("Unit is too large to be used for truncation")
     val dur: Long         = unitDur.toNanos
-    if ((LocalTime.NANOS_PER_DAY % dur) != 0)
+    if (LocalTime.NANOS_PER_DAY % dur != 0)
       throw new DateTimeException("Unit must divide into a standard day without remainder")
-    val nod: Long    = (seconds % LocalTime.SECONDS_PER_DAY) * LocalTime.NANOS_PER_SECOND + nanos
+    val nod: Long    = seconds % LocalTime.SECONDS_PER_DAY * LocalTime.NANOS_PER_SECOND + nanos
     val result: Long = Math.floorDiv(nod, dur) * dur
 
     plusNanos(result - nod)
@@ -657,7 +657,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
           case NANOS     =>
             return plusNanos(amountToAdd)
           case MICROS    =>
-            return plus(amountToAdd / 1000000, (amountToAdd % 1000000) * 1000)
+            return plus(amountToAdd / 1000000, amountToAdd % 1000000 * 1000)
           case MILLIS    =>
             return plusMillis(amountToAdd)
           case SECONDS   =>
@@ -709,7 +709,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    *   if numeric overflow occurs
    */
   def plusMillis(millisToAdd: Long): Instant =
-    plus(millisToAdd / 1000, (millisToAdd % 1000) * Instant.NANOS_PER_MILLI)
+    plus(millisToAdd / 1000, millisToAdd % 1000 * Instant.NANOS_PER_MILLI)
 
   /**
    * Returns a copy of this instant with the specified duration in nanoseconds added.
@@ -1112,7 +1112,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   override def equals(other: Any): Boolean =
     other match {
       case otherInstant: Instant =>
-        (this eq otherInstant) || (this.seconds == otherInstant.seconds && this.nanos == otherInstant.nanos)
+        (this eq otherInstant) || this.seconds == otherInstant.seconds && this.nanos == otherInstant.nanos
       case _                     => false
     }
 
@@ -1122,7 +1122,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @return
    *   a suitable hash code
    */
-  override def hashCode: Int = (seconds ^ (seconds >>> 32)).toInt + 51 * nanos
+  override def hashCode: Int = (seconds ^ seconds >>> 32).toInt + 51 * nanos
 
   /**
    * A string representation of this instant using ISO-8601 representation.

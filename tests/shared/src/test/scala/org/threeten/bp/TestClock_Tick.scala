@@ -52,7 +52,7 @@ class TestClock_Tick extends AnyFunSuite with AssertionsHelper {
           Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000000).toInstant, TestClock_Tick.PARIS),
           Duration.ofMillis(250)
         )
-        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000000).toInstant)
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano(i / 250 * 250000000).toInstant)
         assertEquals(test.getZone, TestClock_Tick.PARIS)
       }
       {
@@ -70,7 +70,7 @@ class TestClock_Tick extends AnyFunSuite with AssertionsHelper {
           Clock.fixed(TestClock_Tick.ZDT.withNano(i * 1000).toInstant, TestClock_Tick.PARIS),
           Duration.ofNanos(250000)
         )
-        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 250) * 250000).toInstant)
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano(i / 250 * 250000).toInstant)
         assertEquals(test.getZone, TestClock_Tick.PARIS)
       }
       {
@@ -88,7 +88,7 @@ class TestClock_Tick extends AnyFunSuite with AssertionsHelper {
           Clock.tick(Clock.fixed(TestClock_Tick.ZDT.withNano(i).toInstant, TestClock_Tick.PARIS),
                      Duration.ofNanos(20)
           )
-        assertEquals(test.instant, TestClock_Tick.ZDT.withNano((i / 20) * 20).toInstant)
+        assertEquals(test.instant, TestClock_Tick.ZDT.withNano(i / 20 * 20).toInstant)
         assertEquals(test.getZone, TestClock_Tick.PARIS)
       }
       {

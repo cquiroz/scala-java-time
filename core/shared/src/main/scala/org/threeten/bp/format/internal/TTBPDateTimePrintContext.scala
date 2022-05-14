@@ -100,7 +100,7 @@ object TTBPDateTimePrintContext {
           }
         else
           null
-      new TemporalAccessor() {
+      new TemporalAccessor {
         def isSupported(field: TemporalField): Boolean =
           if (effectiveDate != null && field.isDateBased)
             effectiveDate.isSupported(field)

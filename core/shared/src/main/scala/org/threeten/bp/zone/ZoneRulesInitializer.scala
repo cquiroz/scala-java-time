@@ -62,11 +62,11 @@ object ZoneRulesInitializer {
    * An instance that does nothing. Call {@link #setInitializer(ZoneRulesInitializer)} with this
    * instance to block the service loader search. This will leave the system with no providers.
    */
-  lazy val DO_NOTHING: ZoneRulesInitializer = new DoNothingZoneRulesInitializer()
+  lazy val DO_NOTHING: ZoneRulesInitializer = new DoNothingZoneRulesInitializer
 
   private lazy val INITIALIZED: AtomicBoolean                         = new AtomicBoolean(false)
   private lazy val INITIALIZER: AtomicReference[ZoneRulesInitializer] =
-    new AtomicReference[ZoneRulesInitializer]()
+    new AtomicReference[ZoneRulesInitializer]
 
   // -----------------------------------------------------------------------
   // initialize the providers
@@ -74,7 +74,7 @@ object ZoneRulesInitializer {
     if (INITIALIZED.getAndSet(true))
       throw new IllegalStateException("Already initialized")
     // Set the default initializer if none has been provided yet.
-    INITIALIZER.compareAndSet(null, new ServiceLoaderZoneRulesInitializer())
+    INITIALIZER.compareAndSet(null, new ServiceLoaderZoneRulesInitializer)
     INITIALIZER.get().initializeProviders()
   }
 

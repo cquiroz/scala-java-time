@@ -162,7 +162,7 @@ class TestLocalDate
 
   test("now_Clock_allSecsInDay_utc") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant = Instant.ofEpochSecond(i)
         val clock: Clock     = Clock.fixed(instant, ZoneOffset.UTC)
@@ -180,7 +180,7 @@ class TestLocalDate
 
   test("now_Clock_allSecsInDay_offset") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant = Instant.ofEpochSecond(i)
         val clock: Clock     =
@@ -753,7 +753,7 @@ class TestLocalDate
 
   test("with_adjustment") {
     val sample: LocalDate          = LocalDate.of(2012, 3, 4)
-    val adjuster: TemporalAdjuster = new TemporalAdjuster() {
+    val adjuster: TemporalAdjuster = new TemporalAdjuster {
       def adjustInto(dateTime: Temporal): Temporal =
         sample
     }

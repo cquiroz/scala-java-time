@@ -71,7 +71,7 @@ object Year {
 
   /** Parser. */
   private lazy val PARSER: DateTimeFormatter =
-    new DateTimeFormatterBuilder().appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD).toFormatter
+    new DateTimeFormatterBuilder.appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD).toFormatter
 
   /**
    * Obtains the current year from the system clock in the default time-zone.
@@ -235,7 +235,7 @@ object Year {
    * @return
    *   true if the year is leap, false otherwise
    */
-  def isLeap(year: Long): Boolean = ((year & 3) == 0) && ((year % 100) != 0 || (year % 400) == 0)
+  def isLeap(year: Long): Boolean = (year & 3) == 0 && (year % 100 != 0 || year % 400 == 0)
 
 }
 
@@ -870,7 +870,7 @@ final class Year private (private val year: Int)
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case thatYear: Year => (this eq thatYear) || (year == thatYear.year)
+      case thatYear: Year => (this eq thatYear) || year == thatYear.year
       case _              => false
     }
 

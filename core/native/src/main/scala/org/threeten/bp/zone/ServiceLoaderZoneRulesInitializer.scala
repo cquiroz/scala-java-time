@@ -43,7 +43,7 @@ class ServiceLoaderZoneRulesInitializer extends ZoneRulesInitializer {
     val packageName  = this.getClass.getName.split("\\.").init.mkString(".")
     val optClassData = Reflect.lookupInstantiatableClass(s"$packageName.TzdbZoneRulesProvider")
     optClassData
-      .fold(List[ZoneRulesProvider](new DefaultTzdbZoneRulesProvider())) { c =>
+      .fold(List[ZoneRulesProvider](new DefaultTzdbZoneRulesProvider)) { c =>
         val instance = c.newInstance().asInstanceOf[ZoneRulesProvider]
         List[ZoneRulesProvider](instance)
       }

@@ -128,7 +128,7 @@ class UsabilityBasic {
   }
 
   private def print1(): Unit = {
-    val f: DateTimeFormatter = new DateTimeFormatterBuilder()
+    val f: DateTimeFormatter = new DateTimeFormatterBuilder
       .appendText(ChronoField.AMPM_OF_DAY)
       .appendLiteral(' ')
       .appendValue(ChronoField.AMPM_OF_DAY)
@@ -138,7 +138,7 @@ class UsabilityBasic {
   }
 
   private def print2(): Unit = {
-    val f: DateTimeFormatter = new DateTimeFormatterBuilder()
+    val f: DateTimeFormatter = new DateTimeFormatterBuilder
       .appendText(ChronoField.MONTH_OF_YEAR)
       .appendLiteral(' ')
       .appendValue(ChronoField.YEAR)

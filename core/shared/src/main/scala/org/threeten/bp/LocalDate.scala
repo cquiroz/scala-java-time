@@ -87,7 +87,7 @@ object LocalDate {
    * The number of days from year zero to year 1970. There are five 400 year cycles from year zero
    * to 2000. There are 7 leap years from 1970 to 2000.
    */
-  private[bp] val DAYS_0000_TO_1970: Long = (DAYS_PER_CYCLE * 5L) - (30L * 365L + 7L)
+  private[bp] val DAYS_0000_TO_1970: Long = DAYS_PER_CYCLE * 5L - (30L * 365L + 7L)
 
   /**
    * Obtains the current date from the system clock in the default time-zone.
@@ -549,13 +549,13 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
   private def get0(field: TemporalField): Long =
     field.asInstanceOf[ChronoField] match {
       case DAY_OF_WEEK                  => getDayOfWeek.getValue.toLong
-      case ALIGNED_DAY_OF_WEEK_IN_MONTH => ((day - 1L)          % 7) + 1
-      case ALIGNED_DAY_OF_WEEK_IN_YEAR  => ((getDayOfYear - 1L) % 7) + 1
+      case ALIGNED_DAY_OF_WEEK_IN_MONTH => (day - 1L)          % 7 + 1
+      case ALIGNED_DAY_OF_WEEK_IN_YEAR  => (getDayOfYear - 1L) % 7 + 1
       case DAY_OF_MONTH                 => day.toLong
       case DAY_OF_YEAR                  => getDayOfYear.toLong
       case EPOCH_DAY                    => throw new DateTimeException(s"Field too large for an int: $field")
-      case ALIGNED_WEEK_OF_MONTH        => ((day - 1L) / 7) + 1
-      case ALIGNED_WEEK_OF_YEAR         => ((getDayOfYear - 1L) / 7) + 1
+      case ALIGNED_WEEK_OF_MONTH        => (day - 1L) / 7 + 1
+      case ALIGNED_WEEK_OF_YEAR         => (getDayOfYear - 1L) / 7 + 1
       case MONTH_OF_YEAR                => month.toLong
       case PROLEPTIC_MONTH              => throw new DateTimeException(s"Field too large for an int: $field")
       case YEAR_OF_ERA                  => if (year >= 1) year.toLong else 1 - year.toLong
@@ -564,7 +564,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
       case _                            => throw new UnsupportedTemporalTypeException(s"Unsupported field: $field")
     }
 
-  private def getProlepticMonth: Long = (year * 12L) + (month - 1)
+  private def getProlepticMonth: Long = year * 12L + (month - 1)
 
   /**
    * Gets the chronology of this date, which is the ISO calendar system.
@@ -1554,7 +1554,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
       total += (y + 3) / 4 - (y + 99) / 100 + (y + 399) / 400
     else
       total -= y / -4 - y / -100 + y / -400
-    total += ((367 * m - 362) / 12)
+    total += (367 * m - 362) / 12
     total += day - 1
     if (m > 2) {
       total -= 1
@@ -1672,7 +1672,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case otherDate: LocalDate => (this eq otherDate) || (compareTo0(otherDate) == 0)
+      case otherDate: LocalDate => (this eq otherDate) || compareTo0(otherDate) == 0
       case _                    => false
     }
 
@@ -1686,7 +1686,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
     val yearValue: Int  = year
     val monthValue: Int = month.toInt
     val dayValue: Int   = day.toInt
-    (yearValue & 0xfffff800) ^ ((yearValue << 11) + (monthValue << 6) + dayValue)
+    yearValue & 0xfffff800 ^ (yearValue << 11) + (monthValue << 6) + dayValue
   }
 
   /**

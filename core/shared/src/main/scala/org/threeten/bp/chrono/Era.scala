@@ -94,7 +94,7 @@ trait Era extends TemporalAccessor with TemporalAdjuster {
    *   the text value of the era, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
-    new DateTimeFormatterBuilder().appendText(ERA, style).toFormatter(locale).format(this)
+    new DateTimeFormatterBuilder.appendText(ERA, style).toFormatter(locale).format(this)
 
   def isSupported(field: TemporalField): Boolean =
     if (field.isInstanceOf[ChronoField]) field eq ERA

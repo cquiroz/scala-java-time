@@ -55,39 +55,39 @@ object TestDateTimeParsing {
   private val PARIS: ZoneId                                    = ZoneId.of("Europe/Paris")
   private val OFFSET_0230: ZoneOffset                          = ZoneOffset.ofHoursMinutes(2, 30)
   private val LOCALFIELDS: DateTimeFormatter                   =
-    new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd HH:mm:ss").toFormatter
+    new DateTimeFormatterBuilder.appendPattern("yyyy-MM-dd HH:mm:ss").toFormatter
   private val LOCALFIELDS_ZONEID: DateTimeFormatter            =
-    new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd HH:mm:ss ").appendZoneId.toFormatter
+    new DateTimeFormatterBuilder.appendPattern("yyyy-MM-dd HH:mm:ss ").appendZoneId.toFormatter
   private val LOCALFIELDS_OFFSETID: DateTimeFormatter          =
-    new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd HH:mm:ss ").appendOffsetId.toFormatter
+    new DateTimeFormatterBuilder.appendPattern("yyyy-MM-dd HH:mm:ss ").appendOffsetId.toFormatter
   private val LOCALFIELDS_WITH_PARIS: DateTimeFormatter        = LOCALFIELDS.withZone(PARIS)
   private val LOCALFIELDS_WITH_0230: DateTimeFormatter         = LOCALFIELDS.withZone(OFFSET_0230)
-  private val INSTANT: DateTimeFormatter                       = new DateTimeFormatterBuilder().appendInstant.toFormatter
+  private val INSTANT: DateTimeFormatter                       = new DateTimeFormatterBuilder.appendInstant.toFormatter
   private val INSTANT_WITH_PARIS: DateTimeFormatter            = INSTANT.withZone(PARIS)
   private val INSTANT_WITH_0230: DateTimeFormatter             = INSTANT.withZone(OFFSET_0230)
   private val INSTANT_OFFSETID: DateTimeFormatter              =
-    new DateTimeFormatterBuilder().appendInstant.appendLiteral(' ').appendOffsetId.toFormatter
+    new DateTimeFormatterBuilder.appendInstant.appendLiteral(' ').appendOffsetId.toFormatter
   private val INSTANT_OFFSETSECONDS: DateTimeFormatter         =
-    new DateTimeFormatterBuilder().appendInstant
+    new DateTimeFormatterBuilder.appendInstant
       .appendLiteral(' ')
       .appendValue(OFFSET_SECONDS)
       .toFormatter
   private val INSTANTSECONDS: DateTimeFormatter                =
-    new DateTimeFormatterBuilder().appendValue(INSTANT_SECONDS).toFormatter
+    new DateTimeFormatterBuilder.appendValue(INSTANT_SECONDS).toFormatter
   private val INSTANTSECONDS_WITH_PARIS: DateTimeFormatter     = INSTANTSECONDS.withZone(PARIS)
-  private val INSTANTSECONDS_NOS: DateTimeFormatter            = new DateTimeFormatterBuilder()
+  private val INSTANTSECONDS_NOS: DateTimeFormatter            = new DateTimeFormatterBuilder
     .appendValue(INSTANT_SECONDS)
     .appendLiteral('.')
     .appendValue(NANO_OF_SECOND)
     .toFormatter
   private val INSTANTSECONDS_NOS_WITH_PARIS: DateTimeFormatter = INSTANTSECONDS_NOS.withZone(PARIS)
-  private val INSTANTSECONDS_OFFSETSECONDS: DateTimeFormatter  = new DateTimeFormatterBuilder()
+  private val INSTANTSECONDS_OFFSETSECONDS: DateTimeFormatter  = new DateTimeFormatterBuilder
     .appendValue(INSTANT_SECONDS)
     .appendLiteral(' ')
     .appendValue(OFFSET_SECONDS)
     .toFormatter
   private val INSTANT_OFFSETSECONDS_ZONE: DateTimeFormatter    =
-    new DateTimeFormatterBuilder().appendInstant
+    new DateTimeFormatterBuilder.appendInstant
       .appendLiteral(' ')
       .appendValue(OFFSET_SECONDS)
       .appendLiteral(' ')
@@ -279,7 +279,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
 
   test("test_parse_fromField_InstantSeconds") {
     val fmt: DateTimeFormatter =
-      new DateTimeFormatterBuilder().appendValue(INSTANT_SECONDS).toFormatter
+      new DateTimeFormatterBuilder.appendValue(INSTANT_SECONDS).toFormatter
     val acc: TemporalAccessor  = fmt.parse("86402")
     val expected: Instant      = Instant.ofEpochSecond(86402)
     assertEquals(acc.isSupported(INSTANT_SECONDS), true)
@@ -294,7 +294,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
   }
 
   test("test_parse_fromField_InstantSeconds_NanoOfSecond") {
-    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder()
+    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder
       .appendValue(INSTANT_SECONDS)
       .appendLiteral('.')
       .appendValue(NANO_OF_SECOND)
@@ -314,7 +314,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
 
   test("test_parse_fromField_SecondOfDay") {
     val fmt: DateTimeFormatter =
-      new DateTimeFormatterBuilder().appendValue(SECOND_OF_DAY).toFormatter
+      new DateTimeFormatterBuilder.appendValue(SECOND_OF_DAY).toFormatter
     val acc: TemporalAccessor  = fmt.parse("864")
     assertEquals(acc.isSupported(SECOND_OF_DAY), true)
     assertEquals(acc.isSupported(NANO_OF_SECOND), true)
@@ -327,7 +327,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
   }
 
   test("test_parse_fromField_SecondOfDay_NanoOfSecond") {
-    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder()
+    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder
       .appendValue(SECOND_OF_DAY)
       .appendLiteral('.')
       .appendValue(NANO_OF_SECOND)
@@ -345,7 +345,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
 
   test("test_parse_fromField_SecondOfMinute") {
     val fmt: DateTimeFormatter =
-      new DateTimeFormatterBuilder().appendValue(SECOND_OF_MINUTE).toFormatter
+      new DateTimeFormatterBuilder.appendValue(SECOND_OF_MINUTE).toFormatter
     val acc: TemporalAccessor  = fmt.parse("32")
     assertEquals(acc.isSupported(SECOND_OF_MINUTE), true)
     assertEquals(acc.isSupported(NANO_OF_SECOND), true)
@@ -358,7 +358,7 @@ class TestDateTimeParsing extends AnyFunSuite with GenTestPrinterParser with Ass
   }
 
   test("test_parse_fromField_SecondOfMinute_NanoOfSecond") {
-    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder()
+    val fmt: DateTimeFormatter = new DateTimeFormatterBuilder
       .appendValue(SECOND_OF_MINUTE)
       .appendLiteral('.')
       .appendValue(NANO_OF_SECOND)

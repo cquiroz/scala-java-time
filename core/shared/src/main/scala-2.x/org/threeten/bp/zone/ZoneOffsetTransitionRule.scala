@@ -139,14 +139,14 @@ object ZoneOffsetTransitionRule {
   private[zone] def readExternal(in: DataInput): ZoneOffsetTransitionRule = {
     val data: Int                                     = in.readInt
     val month: Month                                  = Month.of(data >>> 28)
-    val dom: Int                                      = ((data & (63 << 22)) >>> 22) - 32
-    val dowByte: Int                                  = (data & (7 << 19)) >>> 19
+    val dom: Int                                      = ((data & 63 << 22) >>> 22) - 32
+    val dowByte: Int                                  = (data & 7 << 19) >>> 19
     val dow: DayOfWeek                                = if (dowByte == 0) null else DayOfWeek.of(dowByte)
-    val timeByte: Int                                 = (data & (31 << 14)) >>> 14
+    val timeByte: Int                                 = (data & 31 << 14) >>> 14
     val defn: ZoneOffsetTransitionRule.TimeDefinition =
-      ZoneOffsetTransitionRule.TimeDefinition.values((data & (3 << 12)) >>> 12)
-    val stdByte: Int                                  = (data & (255 << 4)) >>> 4
-    val beforeByte: Int                               = (data & (3 << 2)) >>> 2
+      ZoneOffsetTransitionRule.TimeDefinition.values((data & 3 << 12) >>> 12)
+    val stdByte: Int                                  = (data & 255 << 4) >>> 4
+    val beforeByte: Int                               = (data & 3 << 2) >>> 2
     val afterByte: Int                                = data & 3
     val time: LocalTime                               =
       if (timeByte == 31) LocalTime.ofSecondOfDay(in.readInt.toLong)
@@ -422,7 +422,7 @@ final class ZoneOffsetTransitionRule private[zone] (
   override def equals(otherRule: Any): Boolean =
     otherRule match {
       case other: ZoneOffsetTransitionRule =>
-        (this eq other) || ((month eq other.month) && (dom == other.dom) && (dayOfWeek eq other.dayOfWeek) && (timeDefinition eq other.timeDefinition) && (time == other.time) && (timeEndOfDay == other.timeEndOfDay) && (standardOffset == other.standardOffset) && (offsetBefore == other.offsetBefore) && (offsetAfter == other.offsetAfter))
+        (this eq other) || (month eq other.month) && dom == other.dom && (dayOfWeek eq other.dayOfWeek) && (timeDefinition eq other.timeDefinition) && time == other.time && timeEndOfDay == other.timeEndOfDay && standardOffset == other.standardOffset && offsetBefore == other.offsetBefore && offsetAfter == other.offsetAfter
       case _                               => false
     }
 
@@ -434,14 +434,14 @@ final class ZoneOffsetTransitionRule private[zone] (
    */
   override def hashCode: Int = {
     val hash: Int =
-      ((time.toSecondOfDay + (if (timeEndOfDay) 1
-                              else
-                                0)) << 15) + (month.ordinal << 11) + ((dom + 32) << 5) + ((if (
-                                                                                             dayOfWeek == null
-                                                                                           )
-                                                                                             7
-                                                                                           else
-                                                                                             dayOfWeek.ordinal) << 2) + timeDefinition.ordinal
+      (time.toSecondOfDay + (if (timeEndOfDay) 1
+                             else
+                               0) << 15) + (month.ordinal << 11) + (dom + 32 << 5) + ((if (
+                                                                                         dayOfWeek == null
+                                                                                       )
+                                                                                         7
+                                                                                       else
+                                                                                         dayOfWeek.ordinal) << 2) + timeDefinition.ordinal
     hash ^ standardOffset.hashCode ^ offsetBefore.hashCode ^ offsetAfter.hashCode
   }
 

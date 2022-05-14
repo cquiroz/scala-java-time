@@ -209,7 +209,7 @@ final class DayOfWeek(name: String, ordinal: Int)
    *   the text value of the day-of-week, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
-    new DateTimeFormatterBuilder().appendText(DAY_OF_WEEK, style).toFormatter(locale).format(this)
+    new DateTimeFormatterBuilder.appendText(DAY_OF_WEEK, style).toFormatter(locale).format(this)
 
   /**
    * Checks if the specified field is supported.

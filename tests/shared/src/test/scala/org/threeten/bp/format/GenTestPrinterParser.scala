@@ -47,7 +47,7 @@ import org.threeten.bp.format.internal.TTBPDateTimePrintContext
 
 /** Abstract PrinterParser test. */
 object GenTestPrinterParser {
-  private val EMPTY: TemporalAccessor = new TemporalAccessor() {
+  private val EMPTY: TemporalAccessor = new TemporalAccessor {
     def isSupported(field: TemporalField): Boolean       = true
     def getLong(field: TemporalField): Long              = throw new DateTimeException("Mock")
     override def get(field: TemporalField): Int          =

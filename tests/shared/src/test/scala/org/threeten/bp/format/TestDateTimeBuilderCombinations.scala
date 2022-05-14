@@ -57,7 +57,7 @@ import org.threeten.bp.temporal.TemporalQuery
 object TestDateTimeBuilderCombinations {
   private val PARIS: ZoneId = ZoneId.of("Europe/Paris")
 
-  private val localDateFrom = new TemporalQuery[LocalDate]() {
+  private val localDateFrom = new TemporalQuery[LocalDate] {
     def queryFrom(temporal: TemporalAccessor): LocalDate = LocalDate.from(temporal)
   }
 }

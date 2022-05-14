@@ -28,20 +28,20 @@ object TimeZone {
   private var default: TimeZone = {
     // This is supported since EcmaScript 1
     def offsetInMillis: Int = {
-      val browserDate = new scalajs.js.Date()
+      val browserDate = new scalajs.js.Date
       browserDate.getTimezoneOffset().toInt * 60 * 1000
     }
 
     def timeZone: String = {
       def browserTZ: Try[String] =
         Try {
-          val browserDate = new scalajs.js.Date()
+          val browserDate = new scalajs.js.Date
           browserDate.toTimeString().split(' ')(1).takeWhile(e => e != ' ')
         }
 
       Try {
         // First try with the intl API
-        new DateTimeFormat().resolvedOptions().timeZone.getOrElse(browserTZ.getOrElse("UTC"))
+        new DateTimeFormat.resolvedOptions().timeZone.getOrElse(browserTZ.getOrElse("UTC"))
       }.orElse {
         // If it fails try to parse it from the date string
         browserTZ

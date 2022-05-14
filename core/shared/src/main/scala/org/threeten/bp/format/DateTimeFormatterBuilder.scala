@@ -749,7 +749,7 @@ final class DateTimeFormatterBuilder private (
     val map: Map[TextStyle, Map[scala.Long, String]]      = Map(TextStyle.FULL -> copy)
     val store: TTBPSimpleDateTimeTextProvider.LocaleStore =
       new TTBPSimpleDateTimeTextProvider.LocaleStore(map)
-    val provider: TTBPDateTimeTextProvider                = new TTBPDateTimeTextProvider() {
+    val provider: TTBPDateTimeTextProvider                = new TTBPDateTimeTextProvider {
       override def getText(
         field:  TemporalField,
         value:  scala.Long,
@@ -1362,7 +1362,7 @@ final class DateTimeFormatterBuilder private (
     var pos: Int = 0
     while (pos < pattern.length) {
       var cur: Char = pattern.charAt(pos)
-      if ((cur >= 'A' && cur <= 'Z') || (cur >= 'a' && cur <= 'z')) {
+      if (cur >= 'A' && cur <= 'Z' || cur >= 'a' && cur <= 'z') {
         var start: Int           = pos
         pos += 1
         while (pos < pattern.length && pattern.charAt(pos) == cur)
@@ -1372,7 +1372,7 @@ final class DateTimeFormatterBuilder private (
           var pad: Int = 0
           if (pos < pattern.length) {
             cur = pattern.charAt(pos)
-            if ((cur >= 'A' && cur <= 'Z') || (cur >= 'a' && cur <= 'z')) {
+            if (cur >= 'A' && cur <= 'Z' || cur >= 'a' && cur <= 'z') {
               pad = count
               start = pos
               pos += 1

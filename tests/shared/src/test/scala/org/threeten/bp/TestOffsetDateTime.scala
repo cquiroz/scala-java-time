@@ -159,7 +159,7 @@ class TestOffsetDateTime
 
   test("now_Clock_allSecsInDay_utc") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
         val clock: Clock         = Clock.fixed(instant, ZoneOffset.UTC)
@@ -167,9 +167,9 @@ class TestOffsetDateTime
         assertEquals(test.getYear, 1970)
         assertEquals(test.getMonth, Month.JANUARY)
         assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-        assertEquals(test.getHour, (i / (60 * 60)) % 24)
-        assertEquals(test.getMinute, (i / 60)      % 60)
-        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getHour, i / (60 * 60) % 24)
+        assertEquals(test.getMinute, i / 60      % 60)
+        assertEquals(test.getSecond, i           % 60)
         assertEquals(test.getNano, 123456789)
         assertEquals(test.getOffset, ZoneOffset.UTC)
       }
@@ -182,7 +182,7 @@ class TestOffsetDateTime
 
   test("now_Clock_allSecsInDay_offset") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant     = Instant.ofEpochSecond(i).plusNanos(123456789L)
         val clock: Clock         =
@@ -193,9 +193,9 @@ class TestOffsetDateTime
         assertEquals(test.getYear, 1970)
         assertEquals(test.getMonth, Month.JANUARY)
         assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-        assertEquals(test.getHour, (i / (60 * 60)) % 24)
-        assertEquals(test.getMinute, (i / 60)      % 60)
-        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getHour, i / (60 * 60) % 24)
+        assertEquals(test.getMinute, i / 60      % 60)
+        assertEquals(test.getSecond, i           % 60)
         assertEquals(test.getNano, 123456789)
         assertEquals(test.getOffset, TestOffsetDateTime.OFFSET_PONE)
       }

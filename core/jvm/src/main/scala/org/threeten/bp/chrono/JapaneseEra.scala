@@ -187,9 +187,9 @@ object JapaneseEra {
  *   the date representing the first date of the era, validated not null
  */
 final class JapaneseEra private[chrono] (
-  private val eraValue:                          Int,
-  @(transient @field) private[chrono] val since: LocalDate,
-  @(transient @field) private val name:          String
+  private val eraValue:                        Int,
+  @transient @field private[chrono] val since: LocalDate,
+  @transient @field private val name:          String
 ) extends Era
     with Serializable {
 

@@ -76,7 +76,7 @@ class TestYear extends GenDateTimeTest {
     var expected: Year = Year.now(Clock.systemDefaultZone)
     var test: Year     = Year.now
     var i: Int         = 0
-    while (i < 100 && (expected != test)) {
+    while (i < 100 && expected != test) {
       expected = Year.now(Clock.systemDefaultZone)
       test = Year.now
       i += 1
@@ -95,7 +95,7 @@ class TestYear extends GenDateTimeTest {
     var expected: Year = Year.now(Clock.system(zone))
     var test: Year     = Year.now(zone)
     var i: Int         = 0
-    while (i < 100 && (expected == test)) {
+    while (i < 100 && expected == test) {
       expected = Year.now(Clock.system(zone))
       test = Year.now(zone)
       i += 1

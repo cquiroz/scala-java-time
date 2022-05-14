@@ -94,7 +94,7 @@ object IsoChronology {
  *   Restricted constructor.
  */
 @SerialVersionUID(-1440403870442975015L)
-final class IsoChronology private () extends Chronology with Serializable {
+final class IsoChronology private extends Chronology with Serializable {
 
   /**
    * Resolve singleton.
@@ -337,7 +337,7 @@ final class IsoChronology private () extends Chronology with Serializable {
    *   true if the year is leap, false otherwise
    */
   def isLeapYear(prolepticYear: Long): Boolean =
-    ((prolepticYear & 3) == 0) && ((prolepticYear % 100) != 0 || (prolepticYear % 400) == 0)
+    (prolepticYear & 3) == 0 && (prolepticYear % 100 != 0 || prolepticYear % 400 == 0)
 
   def prolepticYear(era: Era, yearOfEra: Int): Int =
     if (!era.isInstanceOf[IsoEra]) throw new ClassCastException("Era must be IsoEra")
@@ -429,7 +429,7 @@ final class IsoChronology private () extends Chronology with Serializable {
             )
             val date: LocalDate =
               LocalDate.of(y, moy, 1).plusDays((aw.toLong - 1) * 7 + (ad.toLong - 1))
-            if ((resolverStyle eq ResolverStyle.STRICT) && (date.get(MONTH_OF_YEAR) != moy))
+            if ((resolverStyle eq ResolverStyle.STRICT) && date.get(MONTH_OF_YEAR) != moy)
               throw new DateTimeException("Strict mode rejected date parsed to a different month")
             return date
           }
@@ -447,7 +447,7 @@ final class IsoChronology private () extends Chronology with Serializable {
             val dow: Int        = DAY_OF_WEEK.checkValidIntValue(fieldValues.remove(DAY_OF_WEEK))
             val date: LocalDate =
               LocalDate.of(y, moy, 1).plusWeeks(aw.toLong - 1).`with`(nextOrSame(DayOfWeek.of(dow)))
-            if ((resolverStyle eq ResolverStyle.STRICT) && (date.get(MONTH_OF_YEAR) != moy))
+            if ((resolverStyle eq ResolverStyle.STRICT) && date.get(MONTH_OF_YEAR) != moy)
               throw new DateTimeException("Strict mode rejected date parsed to a different month")
             return date
           }
@@ -476,7 +476,7 @@ final class IsoChronology private () extends Chronology with Serializable {
             fieldValues.remove(ALIGNED_DAY_OF_WEEK_IN_YEAR)
           )
           val date: LocalDate = LocalDate.of(y, 1, 1).plusDays((aw.toLong - 1) * 7 + (ad - 1))
-          if ((resolverStyle eq ResolverStyle.STRICT) && (date.get(YEAR) != y))
+          if ((resolverStyle eq ResolverStyle.STRICT) && date.get(YEAR) != y)
             throw new DateTimeException("Strict mode rejected date parsed to a different year")
           return date
         }
@@ -492,7 +492,7 @@ final class IsoChronology private () extends Chronology with Serializable {
           val dow: Int        = DAY_OF_WEEK.checkValidIntValue(fieldValues.remove(DAY_OF_WEEK))
           val date: LocalDate =
             LocalDate.of(y, 1, 1).plusWeeks(aw.toLong - 1).`with`(nextOrSame(DayOfWeek.of(dow)))
-          if ((resolverStyle eq ResolverStyle.STRICT) && (date.get(YEAR) != y))
+          if ((resolverStyle eq ResolverStyle.STRICT) && date.get(YEAR) != y)
             throw new DateTimeException("Strict mode rejected date parsed to a different month")
           return date
         }

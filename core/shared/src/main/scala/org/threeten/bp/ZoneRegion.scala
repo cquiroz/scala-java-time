@@ -98,8 +98,8 @@ private object ZoneRegion {
  *   the rules, null for lazy lookup
  */
 final class ZoneRegion private[bp] (
-  private val id:                        String,
-  @(transient @field) private val rules: ZoneRules
+  private val id:                      String,
+  @transient @field private val rules: ZoneRules
 ) extends ZoneId
     with Serializable {
 

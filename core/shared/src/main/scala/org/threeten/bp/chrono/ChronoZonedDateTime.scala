@@ -446,7 +446,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
   def isAfter(other: ChronoZonedDateTime[_]): Boolean = {
     val thisEpochSec: Long  = toEpochSecond
     val otherEpochSec: Long = other.toEpochSecond
-    thisEpochSec > otherEpochSec || (thisEpochSec == otherEpochSec && toLocalTime.getNano > other.toLocalTime.getNano)
+    thisEpochSec > otherEpochSec || thisEpochSec == otherEpochSec && toLocalTime.getNano > other.toLocalTime.getNano
   }
 
   /**
@@ -464,7 +464,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
   def isBefore(other: ChronoZonedDateTime[_]): Boolean = {
     val thisEpochSec: Long  = toEpochSecond
     val otherEpochSec: Long = other.toEpochSecond
-    thisEpochSec < otherEpochSec || (thisEpochSec == otherEpochSec && toLocalTime.getNano < other.toLocalTime.getNano)
+    thisEpochSec < otherEpochSec || thisEpochSec == otherEpochSec && toLocalTime.getNano < other.toLocalTime.getNano
   }
 
   /**
@@ -496,7 +496,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: ChronoZonedDateTime[_] => (this eq other) || (compareTo(other) == 0)
+      case other: ChronoZonedDateTime[_] => (this eq other) || compareTo(other) == 0
       case _                             => false
     }
 

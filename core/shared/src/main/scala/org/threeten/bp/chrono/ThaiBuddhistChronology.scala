@@ -123,7 +123,7 @@ object ThaiBuddhistChronology {
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */
 @SerialVersionUID(2775954514031616474L)
-final class ThaiBuddhistChronology private () extends Chronology with Serializable {
+final class ThaiBuddhistChronology private extends Chronology with Serializable {
 
   /**
    * Resolve singleton.

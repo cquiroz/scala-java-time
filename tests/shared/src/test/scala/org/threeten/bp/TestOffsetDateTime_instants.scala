@@ -56,7 +56,7 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
 
   test("factory_ofInstant_allSecsInDay") {
     var i: Int = 0
-    while (i < (24 * 60 * 60)) {
+    while (i < 24 * 60 * 60) {
       {
         val instant: Instant     = Instant.ofEpochSecond(i)
         val test: OffsetDateTime =
@@ -64,9 +64,9 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
         assertEquals(test.getYear, 1970)
         assertEquals(test.getMonth, Month.JANUARY)
         assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
-        assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
-        assertEquals(test.getMinute, (i / 60)            % 60)
-        assertEquals(test.getSecond, i                   % 60)
+        assertEquals(test.getHour, (i / (60 * 60) + 1) % 24)
+        assertEquals(test.getMinute, i / 60            % 60)
+        assertEquals(test.getSecond, i                 % 60)
       }
       {
         i += 1
@@ -106,9 +106,9 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
 
   test("factory_ofInstant_tooLow") {
     assertThrows[DateTimeException] {
-      val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+      val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
       val year: Int               = Year.MIN_VALUE - 1
-      val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+      val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
       val instant: Instant        = Instant.ofEpochSecond(days * 24L * 60L * 60L)
       OffsetDateTime.ofInstant(instant, ZoneOffset.UTC)
     }
@@ -120,18 +120,18 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
 
   test("factory_ofInstant_tooBig") {
     assertThrows[DateTimeException] {
-      val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+      val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
       val year: Long              = Year.MAX_VALUE + 1L
-      val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+      val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
       val instant: Instant        = Instant.ofEpochSecond(days * 24L * 60L * 60L)
       OffsetDateTime.ofInstant(instant, ZoneOffset.UTC)
     }
   }
 
   test("factory_ofInstant_minWithMinOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MIN_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       days * 24L * 60L * 60L - TestOffsetDateTime_instants.OFFSET_MIN.getTotalSeconds
     )
@@ -148,9 +148,9 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
   }
 
   test("factory_ofInstant_minWithMaxOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MIN_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       days * 24L * 60L * 60L - TestOffsetDateTime_instants.OFFSET_MAX.getTotalSeconds
     )
@@ -167,9 +167,9 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
   }
 
   test("factory_ofInstant_maxWithMinOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MAX_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) + 365 - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) + 365 - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       (days + 1) * 24L * 60L * 60L - 1 - TestOffsetDateTime_instants.OFFSET_MIN.getTotalSeconds
     )
@@ -186,9 +186,9 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
   }
 
   test("factory_ofInstant_maxWithMaxOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MAX_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) + 365 - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) + 365 - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       (days + 1) * 24L * 60L * 60L - 1 - TestOffsetDateTime_instants.OFFSET_MAX.getTotalSeconds
     )
@@ -219,13 +219,13 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
   }
 
   private def doTest_factory_ofInstant_all(minYear: Long, maxYear: Long): Unit = {
-    val days_0000_to_1970: Long  = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long  = 146097 * 5 - (30 * 365 + 7)
     val minOffset: Int           = if (minYear <= 0) 0 else 3
     val maxOffset: Int           = if (maxYear <= 0) 0 else 3
     val minDays: Long            =
-      (minYear * 365L + ((minYear + minOffset) / 4L - (minYear + minOffset) / 100L + (minYear + minOffset) / 400L)) - days_0000_to_1970
+      minYear * 365L + ((minYear + minOffset) / 4L - (minYear + minOffset) / 100L + (minYear + minOffset) / 400L) - days_0000_to_1970
     val maxDays: Long            =
-      (maxYear * 365L + ((maxYear + maxOffset) / 4L - (maxYear + maxOffset) / 100L + (maxYear + maxOffset) / 400L)) + 365L - days_0000_to_1970
+      maxYear * 365L + ((maxYear + maxOffset) / 4L - (maxYear + maxOffset) / 100L + (maxYear + maxOffset) / 400L) + 365L - days_0000_to_1970
     val maxDate: LocalDate       = LocalDate.of(Year.MAX_VALUE, 12, 31)
     var expected: OffsetDateTime =
       OffsetDateTime.of(LocalDate.of(minYear.toInt, 1, 1), LocalTime.of(0, 0, 0, 0), ZoneOffset.UTC)
@@ -238,7 +238,7 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
           try {
             val test: OffsetDateTime = OffsetDateTime.ofInstant(instant, ZoneOffset.UTC)
             assertEquals(test, expected)
-            if ((expected.toLocalDate == maxDate) == false)
+            if (expected.toLocalDate == maxDate == false)
               expected = expected.plusDays(1)
           } catch {
             case ex: RuntimeException =>

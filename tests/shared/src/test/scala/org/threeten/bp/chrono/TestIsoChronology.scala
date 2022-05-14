@@ -124,7 +124,7 @@ class TestIsoChronology extends AnyFunSuite with AssertionsHelper {
     assertEquals(test.get(ChronoField.YEAR_OF_ERA), year)
     assertEquals(test.get(ChronoField.MONTH_OF_YEAR), month)
     assertEquals(test.get(ChronoField.DAY_OF_MONTH), dayOfMonth)
-    assertEquals(test.get(YEAR), 1 + (-1 * year))
+    assertEquals(test.get(YEAR), 1 + -1 * year)
     assertEquals(test.get(ERA), 0)
     assertEquals(test.get(YEAR_OF_ERA), year)
   }

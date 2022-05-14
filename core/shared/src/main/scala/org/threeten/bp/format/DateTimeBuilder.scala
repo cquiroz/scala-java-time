@@ -114,7 +114,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    *   the value to add, not null
    */
   def this(field: TemporalField, value: Long) = {
-    this()
+    this
     addFieldValue(field, value)
   }
 
@@ -343,8 +343,8 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
       if (resolverStyle ne ResolverStyle.LENIENT)
         SECOND_OF_DAY.checkValidValue(sod)
       addFieldValue(HOUR_OF_DAY, sod / 3600)
-      addFieldValue(MINUTE_OF_HOUR, (sod / 60) % 60)
-      addFieldValue(SECOND_OF_MINUTE, sod      % 60)
+      addFieldValue(MINUTE_OF_HOUR, sod / 60 % 60)
+      addFieldValue(SECOND_OF_MINUTE, sod    % 60)
     }
     if (fieldValues.containsKey(MINUTE_OF_DAY)) {
       val mod: Long = fieldValues.remove(MINUTE_OF_DAY)
@@ -362,7 +362,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
     if (fieldValues.containsKey(MILLI_OF_SECOND) && fieldValues.containsKey(MICRO_OF_SECOND)) {
       val los: Long = fieldValues.remove(MILLI_OF_SECOND)
       val cos: Long = fieldValues.get(MICRO_OF_SECOND)
-      addFieldValue(MICRO_OF_SECOND, los * 1000 + (cos % 1000))
+      addFieldValue(MICRO_OF_SECOND, los * 1000 + cos % 1000)
     }
     if (fieldValues.containsKey(MICRO_OF_SECOND) && fieldValues.containsKey(NANO_OF_SECOND)) {
       val nos: Long = fieldValues.get(NANO_OF_SECOND)
@@ -399,7 +399,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
     if (resolverStyle ne ResolverStyle.LENIENT) {
       if (hod != null) {
         if (
-          (resolverStyle eq ResolverStyle.SMART) && (hod.longValue == 24) && (moh == null || moh.longValue == 0) && (som == null || som.longValue == 0) && (nos == null || nos.longValue == 0)
+          (resolverStyle eq ResolverStyle.SMART) && hod.longValue == 24 && (moh == null || moh.longValue == 0) && (som == null || som.longValue == 0) && (nos == null || nos.longValue == 0)
         ) {
           hod = 0L
           excessDays = Period.ofDays(1)
@@ -567,8 +567,8 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
       false
     else
       fieldValues
-        .containsKey(field) || (date != null && date.isSupported(field)) || (time != null && time
-        .isSupported(field))
+        .containsKey(field) || date != null && date.isSupported(field) || time != null && time
+        .isSupported(field)
 
   def getLong(field: TemporalField): Long = {
     Objects.requireNonNull(field, "field")

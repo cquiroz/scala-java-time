@@ -125,7 +125,7 @@ object HijrahChronology {
  *   Restrictive constructor.
  */
 @SerialVersionUID(3127340209035924785L)
-final class HijrahChronology private () extends Chronology with Serializable {
+final class HijrahChronology private extends Chronology with Serializable {
 
   /**
    * Resolve singleton.

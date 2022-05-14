@@ -76,7 +76,7 @@ object DateTimeFormatter {
    * by zero to ensure two digits. <li>A dash <li>Two digits for the {@link ChronoField#DAY_OF_MONTH
    * day-of-month}. This is pre-padded by zero to ensure two digits. </ul><p>
    */
-  lazy val ISO_LOCAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder()
+  lazy val ISO_LOCAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder
     .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
     .appendLiteral('-')
     .appendValue(MONTH_OF_YEAR, 2)
@@ -94,7 +94,7 @@ object DateTimeFormatter {
    * ZoneOffset#getId() offset ID}. If the offset has seconds then they will be handled even though
    * this is not part of the ISO-8601 standard. Parsing is case insensitive. </ul><p>
    */
-  lazy val ISO_OFFSET_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_OFFSET_DATE: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .append(ISO_LOCAL_DATE)
     .appendOffsetId
     .toFormatter(ResolverStyle.STRICT)
@@ -111,7 +111,7 @@ object DateTimeFormatter {
    * ISO-8601 standard. Parsing is case insensitive. </ul><p> As this formatter has an optional
    * element, it may be necessary to parse using {@link DateTimeFormatter#parseBest}.
    */
-  lazy val ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .append(ISO_LOCAL_DATE)
     .optionalStart()
     .appendOffsetId
@@ -133,7 +133,7 @@ object DateTimeFormatter {
    * <li>One to nine digits for the {@link ChronoField#NANO_OF_SECOND nano-of-second}. As many
    * digits will be printed as required. </ul><p>
    */
-  lazy val ISO_LOCAL_TIME: DateTimeFormatter = new DateTimeFormatterBuilder()
+  lazy val ISO_LOCAL_TIME: DateTimeFormatter = new DateTimeFormatterBuilder
     .appendValue(HOUR_OF_DAY, 2)
     .appendLiteral(':')
     .appendValue(MINUTE_OF_HOUR, 2)
@@ -153,7 +153,7 @@ object DateTimeFormatter {
    * ZoneOffset#getId() offset ID}. If the offset has seconds then they will be handled even though
    * this is not part of the ISO-8601 standard. Parsing is case insensitive. </ul><p>
    */
-  lazy val ISO_OFFSET_TIME: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_OFFSET_TIME: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .append(ISO_LOCAL_TIME)
     .appendOffsetId
     .toFormatter(ResolverStyle.STRICT)
@@ -170,7 +170,7 @@ object DateTimeFormatter {
    * formatter has an optional element, it may be necessary to parse using {@link
    * DateTimeFormatter#parseBest}.
    */
-  lazy val ISO_TIME: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_TIME: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .append(ISO_LOCAL_TIME)
     .optionalStart()
     .appendOffsetId
@@ -185,7 +185,7 @@ object DateTimeFormatter {
    * letter 'T'. Parsing is case insensitive. <li>The {@link #ISO_LOCAL_TIME} </ul><p>
    */
   lazy val ISO_LOCAL_DATE_TIME: DateTimeFormatter =
-    new DateTimeFormatterBuilder().parseCaseInsensitive
+    new DateTimeFormatterBuilder.parseCaseInsensitive
       .append(ISO_LOCAL_DATE)
       .appendLiteral('T')
       .append(ISO_LOCAL_TIME)
@@ -203,7 +203,7 @@ object DateTimeFormatter {
    * </ul><p>
    */
   lazy val ISO_OFFSET_DATE_TIME: DateTimeFormatter =
-    new DateTimeFormatterBuilder().parseCaseInsensitive
+    new DateTimeFormatterBuilder.parseCaseInsensitive
       .append(ISO_LOCAL_DATE_TIME)
       .appendOffsetId
       .toFormatter(ResolverStyle.STRICT)
@@ -220,7 +220,7 @@ object DateTimeFormatter {
    * ZoneId#getId() zone ID}. This is not part of the ISO-8601 standard. Parsing is case sensitive.
    * <li>A close square bracket ']'. </ul><p>
    */
-  lazy val ISO_ZONED_DATE_TIME: DateTimeFormatter = new DateTimeFormatterBuilder()
+  lazy val ISO_ZONED_DATE_TIME: DateTimeFormatter = new DateTimeFormatterBuilder
     .append(ISO_OFFSET_DATE_TIME)
     .optionalStart()
     .appendLiteral('[')
@@ -245,7 +245,7 @@ object DateTimeFormatter {
    * <li>A close square bracket ']'. </ul><p> As this formatter has an optional element, it may be
    * necessary to parse using {@link DateTimeFormatter#parseBest}.
    */
-  lazy val ISO_DATE_TIME: DateTimeFormatter = new DateTimeFormatterBuilder()
+  lazy val ISO_DATE_TIME: DateTimeFormatter = new DateTimeFormatterBuilder
     .append(ISO_LOCAL_DATE_TIME)
     .optionalStart()
     .appendOffsetId
@@ -272,7 +272,7 @@ object DateTimeFormatter {
    * case insensitive. </ul><p> As this formatter has an optional element, it may be necessary to
    * parse using {@link DateTimeFormatter#parseBest}.
    */
-  lazy val ISO_ORDINAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_ORDINAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
     .appendLiteral('-')
     .appendValue(DAY_OF_YEAR, 3)
@@ -298,7 +298,7 @@ object DateTimeFormatter {
    * standard. Parsing is case insensitive. </ul><p> As this formatter has an optional element, it
    * may be necessary to parse using {@link DateTimeFormatter#parseBest}.
    */
-  lazy val ISO_WEEK_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val ISO_WEEK_DATE: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .appendValue(IsoFields.WEEK_BASED_YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
     .appendLiteral("-W")
     .appendValue(IsoFields.WEEK_OF_WEEK_BASED_YEAR, 2)
@@ -334,7 +334,7 @@ object DateTimeFormatter {
    * ResolverStyle#STRICT STRICT} resolver style.
    */
   lazy val ISO_INSTANT: DateTimeFormatter =
-    new DateTimeFormatterBuilder().parseCaseInsensitive.appendInstant
+    new DateTimeFormatterBuilder.parseCaseInsensitive.appendInstant
       .toFormatter(ResolverStyle.STRICT)
 
   /**
@@ -351,7 +351,7 @@ object DateTimeFormatter {
    * Parsing is case insensitive. </ul><p> As this formatter has an optional element, it may be
    * necessary to parse using {@link DateTimeFormatter#parseBest}.
    */
-  lazy val BASIC_ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
+  lazy val BASIC_ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder.parseCaseInsensitive
     .appendValue(YEAR, 4)
     .appendValue(MONTH_OF_YEAR, 2)
     .appendValue(DAY_OF_MONTH, 2)
@@ -406,7 +406,7 @@ object DateTimeFormatter {
     moy.put(10L, "Oct")
     moy.put(11L, "Nov")
     moy.put(12L, "Dec")
-    new DateTimeFormatterBuilder().parseCaseInsensitive.parseLenient
+    new DateTimeFormatterBuilder.parseCaseInsensitive.parseLenient
       .optionalStart()
       .appendText(DAY_OF_WEEK, dow)
       .appendLiteral(", ")
@@ -544,7 +544,7 @@ object DateTimeFormatter {
    *   DateTimeFormatterBuilder#appendPattern(String)
    */
   def ofPattern(pattern: String): DateTimeFormatter =
-    new DateTimeFormatterBuilder().appendPattern(pattern).toFormatter
+    new DateTimeFormatterBuilder.appendPattern(pattern).toFormatter
 
   /**
    * Creates a formatter using the specified pattern.
@@ -569,7 +569,7 @@ object DateTimeFormatter {
    *   DateTimeFormatterBuilder#appendPattern(String)
    */
   def ofPattern(pattern: String, locale: Locale): DateTimeFormatter =
-    new DateTimeFormatterBuilder().appendPattern(pattern).toFormatter(locale)
+    new DateTimeFormatterBuilder.appendPattern(pattern).toFormatter(locale)
 
   /**
    * Returns a locale specific date format.
@@ -591,7 +591,7 @@ object DateTimeFormatter {
    */
   def ofLocalizedDate(dateStyle: FormatStyle): DateTimeFormatter = {
     Objects.requireNonNull(dateStyle, "dateStyle")
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendLocalized(dateStyle, null)
       .toFormatter
       .withChronology(IsoChronology.INSTANCE)
@@ -617,7 +617,7 @@ object DateTimeFormatter {
    */
   def ofLocalizedTime(timeStyle: FormatStyle): DateTimeFormatter = {
     Objects.requireNonNull(timeStyle, "timeStyle")
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendLocalized(null, timeStyle)
       .toFormatter
       .withChronology(IsoChronology.INSTANCE)
@@ -643,7 +643,7 @@ object DateTimeFormatter {
    */
   def ofLocalizedDateTime(dateTimeStyle: FormatStyle): DateTimeFormatter = {
     Objects.requireNonNull(dateTimeStyle, "dateTimeStyle")
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendLocalized(dateTimeStyle, dateTimeStyle)
       .toFormatter
       .withChronology(IsoChronology.INSTANCE)
@@ -672,7 +672,7 @@ object DateTimeFormatter {
   def ofLocalizedDateTime(dateStyle: FormatStyle, timeStyle: FormatStyle): DateTimeFormatter = {
     Objects.requireNonNull(dateStyle, "dateStyle")
     Objects.requireNonNull(timeStyle, "timeStyle")
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendLocalized(dateStyle, timeStyle)
       .toFormatter
       .withChronology(IsoChronology.INSTANCE)
@@ -1453,7 +1453,7 @@ final class DateTimeFormatter private[format] (
     val pos: ParsePosition                      = if (position != null) position else new ParsePosition(0)
     val result: TTBPDateTimeParseContext#Parsed = parseUnresolved0(text, pos)
     if (
-      result == null || pos.getErrorIndex >= 0 || (position == null && pos.getIndex < text.length)
+      result == null || pos.getErrorIndex >= 0 || position == null && pos.getIndex < text.length
     ) {
       val abbr =
         if (text.length > 64)

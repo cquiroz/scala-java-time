@@ -53,13 +53,13 @@ class TestJulianFields extends AnyFunSuite with AssertionsHelper {
       List(JulianFields.JULIAN_DAY, TestJulianFields.DEC31_1969, 2400001L + 40586L),
       List(JulianFields.MODIFIED_JULIAN_DAY, TestJulianFields.DEC31_1969, 40586L),
       List(JulianFields.RATA_DIE, TestJulianFields.DEC31_1969, 710347L + (40586L - 31771L)),
-      List(ChronoField.EPOCH_DAY, TestJulianFields.NOV12_1945, (-24 * 365 - 6) - 31 - 30 + 11),
+      List(ChronoField.EPOCH_DAY, TestJulianFields.NOV12_1945, -24 * 365 - 6 - 31 - 30 + 11),
       List(JulianFields.JULIAN_DAY, TestJulianFields.NOV12_1945, 2431772L),
       List(JulianFields.MODIFIED_JULIAN_DAY, TestJulianFields.NOV12_1945, 31771L),
       List(JulianFields.RATA_DIE, TestJulianFields.NOV12_1945, 710347L),
       List(ChronoField.EPOCH_DAY,
            TestJulianFields.JAN01_0001,
-           (-24 * 365 - 6) - 31 - 30 + 11 - 710346L
+           -24 * 365 - 6 - 31 - 30 + 11 - 710346L
       ),
       List(JulianFields.JULIAN_DAY, TestJulianFields.JAN01_0001, 2431772L - 710346L),
       List(JulianFields.MODIFIED_JULIAN_DAY, TestJulianFields.JAN01_0001, 31771L - 710346L),

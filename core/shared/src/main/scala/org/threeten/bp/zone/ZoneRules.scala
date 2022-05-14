@@ -159,11 +159,11 @@ object ZoneRules {
       obj match {
         case fixed: Fixed             => (this eq fixed) || offset == fixed.offset
         case rules: StandardZoneRules =>
-          rules.isFixedOffset && (offset == rules.getOffset(Instant.EPOCH))
+          rules.isFixedOffset && offset == rules.getOffset(Instant.EPOCH)
         case _                        => false
       }
 
-    override def hashCode: Int = 1 ^ (31 + offset.hashCode) ^ 1 ^ (31 + offset.hashCode) ^ 1
+    override def hashCode: Int = 1 ^ 31 + offset.hashCode ^ 1 ^ 31 + offset.hashCode ^ 1
 
     override def toString: String = s"FixedRules:$offset"
   }
@@ -171,7 +171,7 @@ object ZoneRules {
 }
 
 /** @constructor Restricted constructor. */
-abstract class ZoneRules private[zone] () {
+abstract class ZoneRules private[zone] {
 
   /**
    * Checks of the zone rules are fixed, such that the offset never varies.

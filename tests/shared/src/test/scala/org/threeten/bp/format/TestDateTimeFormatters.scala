@@ -128,7 +128,7 @@ object TestDateTimeFormatters {
     override def toString: String = fields + (if (zoneId != null) " " + zoneId else "")
   }
 
-  private[format] class Expected private[format] () {
+  private[format] class Expected private[format] {
     private[format] var fieldValues: java.util.Map[TemporalField, Long] =
       new java.util.HashMap[TemporalField, Long]
     private[format] var zone: ZoneId                                    = null
@@ -140,7 +140,7 @@ object TestDateTimeFormatters {
       field2: TemporalField,
       value2: Long
     ) = {
-      this()
+      this
       fieldValues.put(field1, value1)
       fieldValues.put(field2, value2)
     }
@@ -1132,7 +1132,7 @@ class TestDateTimeFormatters extends AnyFunSuite with GenTestPrinterParser with 
   }
 
   test("test_print_isoOrdinalDate_fields") {
-    val test: TemporalAccessor = new TemporalAccessor() {
+    val test: TemporalAccessor = new TemporalAccessor {
       def isSupported(field: TemporalField): Boolean = (field eq YEAR) || (field eq DAY_OF_YEAR)
 
       def getLong(field: TemporalField): Long = {
@@ -1240,7 +1240,7 @@ class TestDateTimeFormatters extends AnyFunSuite with GenTestPrinterParser with 
   }
 
   val weekDate: java.util.Iterator[(TemporalAccessor, String)] =
-    new java.util.Iterator[(TemporalAccessor, String)]() {
+    new java.util.Iterator[(TemporalAccessor, String)] {
       private var date: ZonedDateTime    =
         ZonedDateTime.of(LocalDateTime.of(2003, 12, 29, 11, 5, 30), ZoneId.of("Europe/Paris"))
       private val endDate: ZonedDateTime = date.withYear(2005).withMonth(1).withDayOfMonth(2)

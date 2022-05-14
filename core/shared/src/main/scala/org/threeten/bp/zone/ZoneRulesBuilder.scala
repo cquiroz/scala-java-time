@@ -79,7 +79,7 @@ class ZoneRulesBuilder() {
    */
   private var deduplicateMap: java.util.Map[AnyRef, AnyRef] = null
 
-  private val ruleComparator = new TZRuleComparator()
+  private val ruleComparator = new TZRuleComparator
 
   /**
    * Adds a window to the builder that can be used to filter a set of rules.
@@ -445,12 +445,12 @@ class ZoneRulesBuilder() {
           rule.toTransition(loopStandardOffset, loopSavings)
         )
         if (
-          (trans.toEpochSecond >= loopWindowStart.toEpochSecond(
+          trans.toEpochSecond >= loopWindowStart.toEpochSecond(
             loopWindowOffset
-          )) && (trans.toEpochSecond < window
+          ) && trans.toEpochSecond < window
             .createDateTimeEpochSecond(
               loopSavings
-            )) && (trans.getOffsetBefore != trans.getOffsetAfter)
+            ) && trans.getOffsetBefore != trans.getOffsetAfter
         ) {
           transitionList.add(trans)
           loopSavings = rule.savingAmountSecs
@@ -691,7 +691,7 @@ class ZoneRulesBuilder() {
      *   true if the window is only a standard offset
      */
     private[zone] def isSingleWindowStandardOffset: Boolean =
-      (windowEnd == LocalDateTime.MAX) && (timeDefinition eq ZoneOffsetTransitionRule.TimeDefinition.WALL) && fixedSavingAmountSecs == null && lastRuleList.isEmpty && ruleList.isEmpty
+      windowEnd == LocalDateTime.MAX && (timeDefinition eq ZoneOffsetTransitionRule.TimeDefinition.WALL) && fixedSavingAmountSecs == null && lastRuleList.isEmpty && ruleList.isEmpty
 
     /**
      * Creates the wall offset for the local date-time at the end of the window.

@@ -93,7 +93,7 @@ object MinguoChronology {
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */
 @SerialVersionUID(1039765215346859963L)
-final class MinguoChronology private () extends Chronology with Serializable {
+final class MinguoChronology private extends Chronology with Serializable {
 
   /**
    * Resolve singleton.

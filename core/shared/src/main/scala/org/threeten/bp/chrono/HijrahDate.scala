@@ -1266,13 +1266,13 @@ final class HijrahDate private (private val gregorianEpochDay: Long)
       case chronoField: ChronoField =>
         chronoField match {
           case DAY_OF_WEEK                  => dayOfWeek.getValue.toLong
-          case ALIGNED_DAY_OF_WEEK_IN_MONTH => ((dayOfMonth.toLong - 1) % 7) + 1
-          case ALIGNED_DAY_OF_WEEK_IN_YEAR  => ((dayOfYear.toLong - 1)  % 7) + 1
+          case ALIGNED_DAY_OF_WEEK_IN_MONTH => (dayOfMonth.toLong - 1) % 7 + 1
+          case ALIGNED_DAY_OF_WEEK_IN_YEAR  => (dayOfYear.toLong - 1)  % 7 + 1
           case DAY_OF_MONTH                 => this.dayOfMonth.toLong
           case DAY_OF_YEAR                  => this.dayOfYear.toLong
           case EPOCH_DAY                    => toEpochDay.toLong
-          case ALIGNED_WEEK_OF_MONTH        => ((dayOfMonth.toLong - 1) / 7) + 1
-          case ALIGNED_WEEK_OF_YEAR         => ((dayOfYear.toLong - 1) / 7) + 1
+          case ALIGNED_WEEK_OF_MONTH        => (dayOfMonth.toLong - 1) / 7 + 1
+          case ALIGNED_WEEK_OF_YEAR         => (dayOfYear.toLong - 1) / 7 + 1
           case MONTH_OF_YEAR                => monthOfYear.toLong
           case YEAR_OF_ERA                  => yearOfEra.toLong
           case YEAR                         => yearOfEra.toLong
@@ -1298,10 +1298,7 @@ final class HijrahDate private (private val gregorianEpochDay: Long)
           plusDays(newValue - getLong(ALIGNED_DAY_OF_WEEK_IN_YEAR))
         case DAY_OF_MONTH                 => HijrahDate.resolvePreviousValid(yearOfEra, monthOfYear, nvalue)
         case DAY_OF_YEAR                  =>
-          HijrahDate.resolvePreviousValid(yearOfEra,
-                                          ((nvalue - 1) / 30) + 1,
-                                          ((nvalue - 1) % 30) + 1
-          )
+          HijrahDate.resolvePreviousValid(yearOfEra, (nvalue - 1) / 30 + 1, (nvalue - 1) % 30 + 1)
         case EPOCH_DAY                    => new HijrahDate(nvalue.toLong)
         case ALIGNED_WEEK_OF_MONTH        => plusDays((newValue - getLong(ALIGNED_WEEK_OF_MONTH)) * 7)
         case ALIGNED_WEEK_OF_YEAR         => plusDays((newValue - getLong(ALIGNED_WEEK_OF_YEAR)) * 7)

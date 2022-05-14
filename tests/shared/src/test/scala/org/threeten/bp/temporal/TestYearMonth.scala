@@ -88,7 +88,7 @@ class TestYearMonth extends GenDateTimeTest with BeforeAndAfter {
     var expected: YearMonth = YearMonth.now(Clock.systemDefaultZone)
     var test: YearMonth     = YearMonth.now
     var i: Int              = 0
-    while (i < 100 && (expected != test)) {
+    while (i < 100 && expected != test) {
       expected = YearMonth.now(Clock.systemDefaultZone)
       test = YearMonth.now
       i += 1
@@ -108,7 +108,7 @@ class TestYearMonth extends GenDateTimeTest with BeforeAndAfter {
     var test: YearMonth     = YearMonth.now(zone)
 
     var i: Int = 0
-    while (i < 100 && (expected != test)) {
+    while (i < 100 && expected != test) {
       expected = YearMonth.now(Clock.system(zone))
       test = YearMonth.now(zone)
       i += 1

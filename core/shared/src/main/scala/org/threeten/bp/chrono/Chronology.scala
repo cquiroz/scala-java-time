@@ -58,11 +58,11 @@ object Chronology {
 
   /** Map of available calendars by ID. */
   private lazy val CHRONOS_BY_ID: Map[String, Chronology] =
-    new HashMap[String, Chronology]()
+    new HashMap[String, Chronology]
 
   /** Map of available calendars by calendar type. */
   private lazy val CHRONOS_BY_TYPE: Map[String, Chronology] =
-    new HashMap[String, Chronology]()
+    new HashMap[String, Chronology]
 
   /**
    * Obtains an instance of {@code Chronology} from a temporal object.
@@ -134,7 +134,7 @@ object Chronology {
     init()
     Objects.requireNonNull(locale, "locale")
     val localeType: String = locale.getUnicodeLocaleType("ca")
-    if (localeType == null || ("iso" == localeType) || ("iso8601" == localeType))
+    if (localeType == null || "iso" == localeType || "iso8601" == localeType)
       IsoChronology.INSTANCE
     else {
       val chrono: Chronology = CHRONOS_BY_TYPE.get(localeType)
@@ -754,10 +754,10 @@ trait Chronology extends Ordered[Chronology] {
    *   the text value of the chronology, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
-    new DateTimeFormatterBuilder()
+    new DateTimeFormatterBuilder
       .appendChronologyText(style)
       .toFormatter(locale)
-      .format(new TemporalAccessor() {
+      .format(new TemporalAccessor {
         def isSupported(field: TemporalField): Boolean = false
 
         def getLong(field: TemporalField): Long =

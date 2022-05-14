@@ -42,7 +42,7 @@ private object SimpleDateTimeFormatStyleProvider {
 
   /** Cache of formatters. */
   private lazy val FORMATTER_CACHE: Map[String, AnyRef] =
-    new HashMap[String, AnyRef]()
+    new HashMap[String, AnyRef]
 }
 
 /**
@@ -80,7 +80,7 @@ final class SimpleDateTimeFormatStyleProvider extends DateTimeFormatStyleProvide
         case format: SimpleDateFormat =>
           val pattern: String              = format.toPattern
           val formatter: DateTimeFormatter =
-            new DateTimeFormatterBuilder().appendPattern(pattern).toFormatter(locale)
+            new DateTimeFormatterBuilder.appendPattern(pattern).toFormatter(locale)
           SimpleDateTimeFormatStyleProvider.FORMATTER_CACHE.put(key, formatter)
           formatter
         case _                        =>

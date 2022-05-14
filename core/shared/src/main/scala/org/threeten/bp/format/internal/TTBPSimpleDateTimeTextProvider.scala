@@ -52,9 +52,9 @@ object TTBPSimpleDateTimeTextProvider {
     valueTextMap: Map[TextStyle, Map[Long, String]]
   ): TTBPSimpleDateTimeTextProvider.LocaleStore = {
     val tmp1 =
-      (valueTextMap + (TextStyle.FULL_STANDALONE -> valueTextMap
+      valueTextMap + (TextStyle.FULL_STANDALONE -> valueTextMap
         .get(TextStyle.FULL)
-        .orNull)) + (TextStyle.SHORT_STANDALONE  -> valueTextMap.get(TextStyle.SHORT).orNull)
+        .orNull) + (TextStyle.SHORT_STANDALONE  -> valueTextMap.get(TextStyle.SHORT).orNull)
     val tmp2 =
       if (
         valueTextMap.contains(TextStyle.NARROW) && !valueTextMap
@@ -95,10 +95,10 @@ object TTBPSimpleDateTimeTextProvider {
               val continue = !acc.contains(v)
               (continue, acc + (v -> (v -> k)))
           }
-        val list    = reverse._2.values.toList.sortBy(x => (-x._1.length))
+        val list    = reverse._2.values.toList.sortBy(x => -x._1.length)
         (all ::: list, map + (style -> list))
       }
-      (u._1.sortBy(x => (-x._1.length)), u._2)
+      (u._1.sortBy(x => -x._1.length), u._2)
     }
 
     /**
@@ -141,7 +141,7 @@ final class TTBPSimpleDateTimeTextProvider extends TTBPDateTimeTextProvider {
 
   /** Cache. */
   private val cache: JMap[(TemporalField, Locale), AnyRef] =
-    new HashMap[(TemporalField, Locale), AnyRef]()
+    new HashMap[(TemporalField, Locale), AnyRef]
 
   override def getText(
     field:  TemporalField,

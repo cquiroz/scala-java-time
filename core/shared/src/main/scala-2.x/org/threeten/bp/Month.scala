@@ -259,7 +259,7 @@ final class Month private (name: String, ordinal: Int)
    *   the text value of the month-of-year, not null
    */
   def getDisplayName(style: TextStyle, locale: Locale): String =
-    new DateTimeFormatterBuilder().appendText(MONTH_OF_YEAR, style).toFormatter(locale).format(this)
+    new DateTimeFormatterBuilder.appendText(MONTH_OF_YEAR, style).toFormatter(locale).format(this)
 
   /**
    * Checks if the specified field is supported.
@@ -505,7 +505,7 @@ final class Month private (name: String, ordinal: Int)
    * @return
    *   the first month of the quarter corresponding to this month, not null
    */
-  def firstMonthOfQuarter: Month = Month.ENUMS((ordinal / 3) * 3)
+  def firstMonthOfQuarter: Month = Month.ENUMS(ordinal / 3 * 3)
 
   /**
    * Queries this month-of-year using the specified query.

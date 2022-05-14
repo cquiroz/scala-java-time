@@ -253,7 +253,7 @@ class TestZonedDateTime
 
   test("now_Clock_allSecsInDay_utc") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val instant: Instant    = Instant.ofEpochSecond(i).plusNanos(123456789L)
         val clock: Clock        = Clock.fixed(instant, ZoneOffset.UTC)
@@ -261,9 +261,9 @@ class TestZonedDateTime
         assertEquals(test.getYear, 1970)
         assertEquals(test.getMonth, Month.JANUARY)
         assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-        assertEquals(test.getHour, (i / (60 * 60)) % 24)
-        assertEquals(test.getMinute, (i / 60)      % 60)
-        assertEquals(test.getSecond, i             % 60)
+        assertEquals(test.getHour, i / (60 * 60) % 24)
+        assertEquals(test.getMinute, i / 60      % 60)
+        assertEquals(test.getSecond, i           % 60)
         assertEquals(test.getNano, 123456789)
         assertEquals(test.getOffset, ZoneOffset.UTC)
         assertEquals(test.getZone, ZoneOffset.UTC)
@@ -280,7 +280,7 @@ class TestZonedDateTime
 
     {
       var i: Int = 0
-      while (i < (2 * 24 * 60 * 60)) {
+      while (i < 2 * 24 * 60 * 60) {
         {
           val instant: Instant        = Instant.ofEpochSecond(i).plusNanos(123456789L)
           val expected: ZonedDateTime = ZonedDateTime.ofInstant(instant, zone)
@@ -502,16 +502,16 @@ class TestZonedDateTime
 
   test("factory_ofInstant_allSecsInDay") {
     var i: Int = 0
-    while (i < (24 * 60 * 60)) {
+    while (i < 24 * 60 * 60) {
       {
         val instant: Instant    = Instant.ofEpochSecond(i)
         val test: ZonedDateTime = ZonedDateTime.ofInstant(instant, TestZonedDateTime.OFFSET_0100)
         assertEquals(test.getYear, 1970)
         assertEquals(test.getMonth, Month.JANUARY)
         assertEquals(test.getDayOfMonth, 1 + (if (i >= 23 * 60 * 60) 1 else 0))
-        assertEquals(test.getHour, ((i / (60 * 60)) + 1) % 24)
-        assertEquals(test.getMinute, (i / 60)            % 60)
-        assertEquals(test.getSecond, i                   % 60)
+        assertEquals(test.getHour, (i / (60 * 60) + 1) % 24)
+        assertEquals(test.getMinute, i / 60            % 60)
+        assertEquals(test.getSecond, i                 % 60)
       }
       {
         i += 1
@@ -541,9 +541,9 @@ class TestZonedDateTime
   }
 
   test("factory_ofInstant_minWithMinOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MIN_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
     val instant: Instant        =
       Instant.ofEpochSecond(days * 24L * 60L * 60L - TestZonedDateTime.OFFSET_MIN.getTotalSeconds)
     val test: ZonedDateTime     = ZonedDateTime.ofInstant(instant, TestZonedDateTime.OFFSET_MIN)
@@ -558,9 +558,9 @@ class TestZonedDateTime
   }
 
   test("factory_ofInstant_minWithMaxOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MIN_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
     val instant: Instant        =
       Instant.ofEpochSecond(days * 24L * 60L * 60L - TestZonedDateTime.OFFSET_MAX.getTotalSeconds)
     val test: ZonedDateTime     = ZonedDateTime.ofInstant(instant, TestZonedDateTime.OFFSET_MAX)
@@ -575,9 +575,9 @@ class TestZonedDateTime
   }
 
   test("factory_ofInstant_maxWithMinOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MAX_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) + 365 - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) + 365 - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       (days + 1) * 24L * 60L * 60L - 1 - TestZonedDateTime.OFFSET_MIN.getTotalSeconds
     )
@@ -593,9 +593,9 @@ class TestZonedDateTime
   }
 
   test("factory_ofInstant_maxWithMaxOffset") {
-    val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+    val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
     val year: Int               = Year.MAX_VALUE
-    val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) + 365 - days_0000_to_1970
+    val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) + 365 - days_0000_to_1970
     val instant: Instant        = Instant.ofEpochSecond(
       (days + 1) * 24L * 60L * 60L - 1 - TestZonedDateTime.OFFSET_MAX.getTotalSeconds
     )
@@ -626,9 +626,9 @@ class TestZonedDateTime
 
   test("factory_ofInstant_tooBig") {
     assertThrows[DateTimeException] {
-      val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+      val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
       val year: Long              = Year.MAX_VALUE + 1L
-      val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+      val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
       val instant: Instant        = Instant.ofEpochSecond(days * 24L * 60L * 60L)
       ZonedDateTime.ofInstant(instant, ZoneOffset.UTC)
     }
@@ -636,9 +636,9 @@ class TestZonedDateTime
 
   test("factory_ofInstant_tooLow") {
     assertThrows[DateTimeException] {
-      val days_0000_to_1970: Long = (146097 * 5) - (30 * 365 + 7)
+      val days_0000_to_1970: Long = 146097 * 5 - (30 * 365 + 7)
       val year: Int               = Year.MIN_VALUE - 1
-      val days: Long              = (year * 365L + (year / 4 - year / 100 + year / 400)) - days_0000_to_1970
+      val days: Long              = year * 365L + (year / 4 - year / 100 + year / 400) - days_0000_to_1970
       val instant: Instant        = Instant.ofEpochSecond(days * 24L * 60L * 60L)
       ZonedDateTime.ofInstant(instant, ZoneOffset.UTC)
     }
@@ -748,7 +748,7 @@ class TestZonedDateTime
 
   test("factory_from_DateTimeAccessor_LDT_ZoneId") {
     assertEquals(
-      ZonedDateTime.from(new TemporalAccessor() {
+      ZonedDateTime.from(new TemporalAccessor {
         def isSupported(field: TemporalField): Boolean =
           TEST_DATE_TIME_PARIS.toLocalDateTime.isSupported(field)
 
@@ -778,7 +778,7 @@ class TestZonedDateTime
 
   test("factory_from_DateTimeAccessor_Instant_ZoneId") {
     assertEquals(
-      ZonedDateTime.from(new TemporalAccessor() {
+      ZonedDateTime.from(new TemporalAccessor {
         def isSupported(field: TemporalField): Boolean =
           (field eq INSTANT_SECONDS) || (field eq NANO_OF_SECOND)
 

@@ -45,7 +45,7 @@ object TestZoneRulesProvider {
       new java.util.HashSet[String](Collections.singleton("FooLocation"))
 
     protected def provideVersions(zoneId: String): java.util.NavigableMap[String, ZoneRules] = {
-      val result: java.util.NavigableMap[String, ZoneRules] = new ZoneMap()
+      val result: java.util.NavigableMap[String, ZoneRules] = new ZoneMap
       result.put("BarVersion", rules)
       result
     }

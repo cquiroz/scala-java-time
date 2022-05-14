@@ -109,8 +109,8 @@ class TestHijrahChronology extends AnyFunSuite with BeforeAndAfterEach with Asse
     var dom = 1
     while (dom <= 29) {
       var date: HijrahDate = HijrahChronology.INSTANCE.date(1728, 10, dom)
-      assertEquals(date.getLong(ALIGNED_WEEK_OF_MONTH), ((dom - 1) / 7) + 1)
-      assertEquals(date.getLong(ALIGNED_DAY_OF_WEEK_IN_MONTH), ((dom - 1) % 7) + 1)
+      assertEquals(date.getLong(ALIGNED_WEEK_OF_MONTH), (dom - 1) / 7 + 1)
+      assertEquals(date.getLong(ALIGNED_DAY_OF_WEEK_IN_MONTH), (dom - 1) % 7 + 1)
       date = date.plusDays(1)
       dom += 1
     }

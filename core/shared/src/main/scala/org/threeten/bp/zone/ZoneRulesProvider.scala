@@ -44,7 +44,7 @@ object ZoneRulesProvider {
 
   /** The lookup from zone region ID to provider. */
   private lazy val ZONES: Map[String, ZoneRulesProvider] =
-    new HashMap[String, ZoneRulesProvider]()
+    new HashMap[String, ZoneRulesProvider]
 
   /**
    * Gets the set of available zone IDs.
@@ -231,7 +231,7 @@ object ZoneRulesProvider {
  * examined in detail, this is a complex problem. Providers may choose to handle dynamic updates,
  * however the default provider does not.
  */
-abstract class ZoneRulesProvider protected () {
+abstract class ZoneRulesProvider protected {
 
   /**
    * SPI method to get the available zone IDs.

@@ -36,7 +36,7 @@ import org.threeten.bp.temporal.TemporalField
 import org.threeten.bp.format.TextStyle
 
 private[format] object TTBPDateTimeTextProvider {
-  lazy val Provider: TTBPDateTimeTextProvider = new TTBPSimpleDateTimeTextProvider()
+  lazy val Provider: TTBPDateTimeTextProvider = new TTBPSimpleDateTimeTextProvider
 }
 
 /**

@@ -206,7 +206,7 @@ final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
   }
 
   def isSupported(field: TemporalField): Boolean =
-    field.isInstanceOf[ChronoField] || (field != null && field.isSupportedBy(this))
+    field.isInstanceOf[ChronoField] || field != null && field.isSupportedBy(this)
 
   def `with`(field: TemporalField, newValue: Long): ChronoZonedDateTime[D] =
     field match {
@@ -239,7 +239,7 @@ final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
 
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: ChronoZonedDateTime[_] => (this eq other) || (compareTo(other) == 0)
+      case other: ChronoZonedDateTime[_] => (this eq other) || compareTo(other) == 0
       case _                             => false
     }
 

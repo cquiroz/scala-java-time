@@ -316,7 +316,7 @@ class TestFractionPrinterParser
     var _value = value
     if (maxWidth < 9) {
       val power: Int = Math.pow(10, 9 - maxWidth).toInt
-      _value = (_value / power) * power
+      _value = _value / power * power
     }
     _value
   }

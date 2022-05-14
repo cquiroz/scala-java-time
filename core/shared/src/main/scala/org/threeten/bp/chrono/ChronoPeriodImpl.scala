@@ -147,7 +147,7 @@ final class ChronoPeriodImpl(
   override def equals(obj: Any): Boolean =
     obj match {
       case other: ChronoPeriodImpl =>
-        (this eq other) || (years == other.years && months == other.months && days == other.days && (chronology == other.chronology))
+        (this eq other) || years == other.years && months == other.months && days == other.days && chronology == other.chronology
       case _                       => false
     }
 

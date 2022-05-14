@@ -804,7 +804,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   override def equals(obj: Any): Boolean =
     obj match {
       case other: Period =>
-        (this eq other) || (years == other.years && months == other.months && days == other.days)
+        (this eq other) || years == other.years && months == other.months && days == other.days
       case _             => false
     }
 

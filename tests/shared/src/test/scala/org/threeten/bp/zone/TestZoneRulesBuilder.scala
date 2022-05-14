@@ -57,7 +57,7 @@ object TestZoneRulesBuilder {
   private val OFFSET_2_30: ZoneOffset             = ZoneOffset.ofHoursMinutes(2, 30)
   private val PERIOD_0: Int                       = 0
   private val PERIOD_1HOUR: Int                   = 60 * 60
-  private val PERIOD_1HOUR30MIN: Int              = ((1 * 60) + 30) * 60
+  private val PERIOD_1HOUR30MIN: Int              = (1 * 60 + 30) * 60
   private val DATE_TIME_FIRST: LocalDateTime      = dateTime(Year.MIN_VALUE, 1, 1, 0, 0)
   private val DATE_TIME_LAST: LocalDateTime       = dateTime(Year.MAX_VALUE, 12, 31, 23, 59)
   private val DATE_TIME_2008_01_01: LocalDateTime = dateTime(2008, 1, 1, 0, 0)

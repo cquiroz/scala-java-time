@@ -388,7 +388,7 @@ final class OffsetDateTime private (
    *   the zone offset to create with, not null
    */
   private def `with`(dateTime: LocalDateTime, offset: ZoneOffset): OffsetDateTime =
-    if ((this.dateTime eq dateTime) && (this.offset == offset)) this
+    if ((this.dateTime eq dateTime) && this.offset == offset) this
     else new OffsetDateTime(dateTime, offset)
 
   /**
@@ -420,7 +420,7 @@ final class OffsetDateTime private (
    *   true if the field is supported on this date-time, false if not
    */
   def isSupported(field: TemporalField): Boolean =
-    field.isInstanceOf[ChronoField] || (field != null && field.isSupportedBy(this))
+    field.isInstanceOf[ChronoField] || field != null && field.isSupportedBy(this)
 
   def isSupported(unit: TemporalUnit): Boolean =
     if (unit.isInstanceOf[ChronoUnit]) unit.isDateBased || unit.isTimeBased
@@ -1642,7 +1642,7 @@ final class OffsetDateTime private (
   def isAfter(other: OffsetDateTime): Boolean = {
     val thisEpochSec: Long  = toEpochSecond
     val otherEpochSec: Long = other.toEpochSecond
-    thisEpochSec > otherEpochSec || (thisEpochSec == otherEpochSec && toLocalTime.getNano > other.toLocalTime.getNano)
+    thisEpochSec > otherEpochSec || thisEpochSec == otherEpochSec && toLocalTime.getNano > other.toLocalTime.getNano
   }
 
   /**
@@ -1660,7 +1660,7 @@ final class OffsetDateTime private (
   def isBefore(other: OffsetDateTime): Boolean = {
     val thisEpochSec: Long  = toEpochSecond
     val otherEpochSec: Long = other.toEpochSecond
-    thisEpochSec < otherEpochSec || (thisEpochSec == otherEpochSec && toLocalTime.getNano < other.toLocalTime.getNano)
+    thisEpochSec < otherEpochSec || thisEpochSec == otherEpochSec && toLocalTime.getNano < other.toLocalTime.getNano
   }
 
   /**
@@ -1693,7 +1693,7 @@ final class OffsetDateTime private (
   override def equals(obj: Any): Boolean =
     obj match {
       case other: OffsetDateTime =>
-        (this eq other) || ((dateTime == other.dateTime) && (offset == other.offset))
+        (this eq other) || dateTime == other.dateTime && offset == other.offset
       case _                     => false
     }
 

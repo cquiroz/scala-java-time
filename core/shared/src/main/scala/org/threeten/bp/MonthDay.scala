@@ -53,7 +53,7 @@ import org.threeten.bp.temporal.ValueRange
 object MonthDay {
 
   /** Parser. */
-  private lazy val PARSER: DateTimeFormatter = new DateTimeFormatterBuilder()
+  private lazy val PARSER: DateTimeFormatter = new DateTimeFormatterBuilder
     .appendLiteral("--")
     .appendValue(MONTH_OF_YEAR, 2)
     .appendLiteral('-')
@@ -650,7 +650,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: MonthDay => (this eq other) || (month == other.month && day == other.day)
+      case other: MonthDay => (this eq other) || month == other.month && day == other.day
       case _               => false
     }
 

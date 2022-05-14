@@ -53,17 +53,17 @@ object ClassLoaderChecker {
     a.toString
     a = Pattern.compile("hello[a-z][^f]{2}").matcher("goo").matches
     a.toString
-    a = new java.util.HashMap[AnyRef, AnyRef]().entrySet
+    a = new java.util.HashMap[AnyRef, AnyRef].entrySet
     a.toString
-    a = new java.util.HashMap[AnyRef, AnyRef]().values
+    a = new java.util.HashMap[AnyRef, AnyRef].values
     a.toString
-    a = new java.util.HashMap[AnyRef, AnyRef]().keySet
+    a = new java.util.HashMap[AnyRef, AnyRef].keySet
     a.toString
-    a = new java.util.TreeMap[AnyRef, AnyRef]().entrySet
+    a = new java.util.TreeMap[AnyRef, AnyRef].entrySet
     a.toString
-    a = new java.util.TreeMap[AnyRef, AnyRef]().values
+    a = new java.util.TreeMap[AnyRef, AnyRef].values
     a.toString
-    a = new java.util.TreeMap[AnyRef, AnyRef]().keySet
+    a = new java.util.TreeMap[AnyRef, AnyRef].keySet
     a.toString
     a = Collections.unmodifiableMap[AnyRef, AnyRef](new java.util.HashMap[AnyRef, AnyRef]).entrySet
     a.toString

@@ -69,7 +69,7 @@ class TestDateTimeFormatter
     }
 
   override def beforeEach(): Unit =
-    fmt = new DateTimeFormatterBuilder()
+    fmt = new DateTimeFormatterBuilder
       .appendLiteral("ONE")
       .appendValue(DAY_OF_MONTH, 1, 2, SignStyle.NOT_NEGATIVE)
       .toFormatter

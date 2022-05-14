@@ -8,7 +8,7 @@ import org.threeten.bp.ZoneOffset
 final class DefaultTzdbZoneRulesProvider extends ZoneRulesProvider {
 
   override protected def provideZoneIds: java.util.Set[String] = {
-    val zones = new java.util.HashSet[String]()
+    val zones = new java.util.HashSet[String]
     zones.add("UTC")
     zones.add("GMT")
     zones
@@ -17,9 +17,9 @@ final class DefaultTzdbZoneRulesProvider extends ZoneRulesProvider {
   override protected def provideRules(regionId: String, forCaching: Boolean): ZoneRules =
     ZoneRules.of(ZoneOffset.UTC,
                  ZoneOffset.UTC,
-                 new java.util.ArrayList(),
-                 new java.util.ArrayList(),
-                 new java.util.ArrayList()
+                 new java.util.ArrayList,
+                 new java.util.ArrayList,
+                 new java.util.ArrayList
     )
 
   override protected def provideVersions(

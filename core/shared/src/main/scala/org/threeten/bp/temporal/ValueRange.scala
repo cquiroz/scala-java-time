@@ -296,7 +296,7 @@ final class ValueRange private (
   override def equals(obj: Any): Boolean =
     obj match {
       case other: ValueRange =>
-        (this eq other) || (minSmallest == other.minSmallest && minLargest == other.minLargest && maxSmallest == other.maxSmallest && maxLargest == other.maxLargest)
+        (this eq other) || minSmallest == other.minSmallest && minLargest == other.minLargest && maxSmallest == other.maxSmallest && maxLargest == other.maxLargest
       case _                 =>
         false
     }
@@ -310,7 +310,7 @@ final class ValueRange private (
   override def hashCode: Int = {
     val hash: Long =
       minSmallest + minLargest << 16 + minLargest >> 48 + maxSmallest << 32 + maxSmallest >> 32 + maxLargest << 48 + maxLargest >> 16
-    (hash ^ (hash >>> 32)).toInt
+    (hash ^ hash >>> 32).toInt
   }
 
   /**

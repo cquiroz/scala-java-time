@@ -81,7 +81,7 @@ object Examples {
     println("...resolved to valid date-time in Europe/London: " + resolved)
     val formattedRFC: String      = DateTimeFormatter.RFC_1123_DATE_TIME.format(resolved)
     println("...printed as RFC1123: " + formattedRFC)
-    val f: DateTimeFormatter      = new DateTimeFormatterBuilder()
+    val f: DateTimeFormatter      = new DateTimeFormatterBuilder
       .appendValue(YEAR, 4, 10, SignStyle.ALWAYS)
       .appendLiteral(' ')
       .appendText(MONTH_OF_YEAR)

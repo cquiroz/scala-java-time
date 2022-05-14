@@ -566,7 +566,7 @@ object Performance {
       values(5) = Math.min(values(0),
                            Math.min(values(1), Math.min(values(2), Math.min(values(3), values(4))))
       )
-      values(6) = ((values(0) - values(5)) * 1000) / values(0)
+      values(6) = (values(0) - values(5)) * 1000 / values(0)
     }
   }
 }

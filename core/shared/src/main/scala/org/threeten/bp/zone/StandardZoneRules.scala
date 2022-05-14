@@ -161,7 +161,7 @@ final class StandardZoneRules private (
 
   /** The map of recent transitions. */
   private val lastRulesCache: Map[Integer, Array[ZoneOffsetTransition]] =
-    new HashMap[Integer, Array[ZoneOffsetTransition]]()
+    new HashMap[Integer, Array[ZoneOffsetTransition]]
 
   /** Creates an instance. */
   /* // Can't be implemented with Scala's constructor rules. Replaced with apply factory method.
@@ -278,7 +278,7 @@ final class StandardZoneRules private (
       var info: AnyRef                            = null
       for (trans <- transArray) {
         info = findOffsetInfo(dt, trans)
-        if (info.isInstanceOf[ZoneOffsetTransition] || (info == trans.getOffsetBefore))
+        if (info.isInstanceOf[ZoneOffsetTransition] || info == trans.getOffsetBefore)
           return info
       }
       return info
@@ -289,11 +289,11 @@ final class StandardZoneRules private (
     if (index < 0)
       index = -index - 2
     else if (
-      index < savingsLocalTransitions.length - 1 && (savingsLocalTransitions(
+      index < savingsLocalTransitions.length - 1 && savingsLocalTransitions(
         index
       ) == savingsLocalTransitions(
         index + 1
-      ))
+      )
     )
       index += 1
     if ((index & 1) == 0) {
@@ -473,7 +473,7 @@ final class StandardZoneRules private (
   override def equals(obj: Any): Boolean =
     obj match {
       case other: StandardZoneRules =>
-        (this eq other) || (Arrays.equals(standardTransitions, other.standardTransitions) && Arrays
+        (this eq other) || Arrays.equals(standardTransitions, other.standardTransitions) && Arrays
           .equals(standardOffsets.asInstanceOf[Array[AnyRef]],
                   other.standardOffsets.asInstanceOf[Array[AnyRef]]
           ) && Arrays.equals(
@@ -484,11 +484,11 @@ final class StandardZoneRules private (
         ) && Arrays.equals(
           lastRules.asInstanceOf[Array[AnyRef]],
           other.lastRules.asInstanceOf[Array[AnyRef]]
-        ))
+        )
       case _: ZoneRules.Fixed       =>
-        isFixedOffset && (getOffset(Instant.EPOCH) == obj
+        isFixedOffset && getOffset(Instant.EPOCH) == obj
           .asInstanceOf[ZoneRules.Fixed]
-          .getOffset(Instant.EPOCH))
+          .getOffset(Instant.EPOCH)
       case _                        => false
     }
 

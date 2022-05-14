@@ -106,7 +106,7 @@ class TestInstant
 
   test("now_Clock_allSecsInDay_utc") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       {
         val expected: Instant = Instant.ofEpochSecond(i).plusNanos(123456789L)
         val clock: Clock      = Clock.fixed(expected, ZoneOffset.UTC)
@@ -248,22 +248,22 @@ class TestInstant
       ),
       List[Long](Long.MinValue,
                  0,
-                 (Long.MinValue / 1000) - 1,
+                 Long.MinValue / 1000 - 1,
                  (Long.MinValue % 1000).toInt * 1000000 + 1000000000
       ),
       List[Long](Long.MinValue,
                  1,
-                 (Long.MinValue / 1000) - 1,
+                 Long.MinValue / 1000 - 1,
                  (Long.MinValue % 1000).toInt * 1000000 + 1000000000 + 1
       ),
       List[Long](Long.MinValue + 1,
                  0,
-                 ((Long.MinValue + 1) / 1000) - 1,
+                 (Long.MinValue + 1) / 1000 - 1,
                  ((Long.MinValue + 1) % 1000).toInt * 1000000 + 1000000000
       ),
       List[Long](Long.MinValue + 1,
                  1,
-                 ((Long.MinValue + 1) / 1000) - 1,
+                 (Long.MinValue + 1) / 1000 - 1,
                  ((Long.MinValue + 1) % 1000).toInt * 1000000 + 1000000000 + 1
       )
     )
@@ -1443,10 +1443,10 @@ class TestInstant
     assertEquals(Instant.ofEpochSecond(1L, 2000000).toEpochMilli, 1002L)
     assertEquals(Instant.ofEpochSecond(1L, 567).toEpochMilli, 1000L)
     assertEquals(Instant.ofEpochSecond(Long.MaxValue / 1000).toEpochMilli,
-                 (Long.MaxValue / 1000) * 1000
+                 Long.MaxValue / 1000 * 1000
     )
     assertEquals(Instant.ofEpochSecond(Long.MinValue / 1000).toEpochMilli,
-                 (Long.MinValue / 1000) * 1000
+                 Long.MinValue / 1000 * 1000
     )
     assertEquals(Instant.ofEpochSecond(0L, -1000000).toEpochMilli, -1L)
     assertEquals(Instant.ofEpochSecond(0L, 1000000).toEpochMilli, 1)

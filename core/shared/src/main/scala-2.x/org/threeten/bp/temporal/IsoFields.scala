@@ -209,7 +209,7 @@ object IsoFields {
         val moy: Int   = temporal.get(MONTH_OF_YEAR)
         val year: Long = temporal.getLong(YEAR)
         doy.toLong - QUARTER_DAYS(
-          ((moy - 1) / 3) + (if (IsoChronology.INSTANCE.isLeapYear(year)) 4 else 0)
+          (moy - 1) / 3 + (if (IsoChronology.INSTANCE.isLeapYear(year)) 4 else 0)
         ).toInt
       }
       def adjustInto[R <: Temporal](temporal: R, newValue: Long): R = {
@@ -248,7 +248,7 @@ object IsoFields {
             ValueRange.of(1, max.toLong).checkValidValue(doq, this)
           } else
             range.checkValidValue(doq, this)
-          date = LocalDate.of(y, ((qoy - 1) * 3) + 1, 1).plusDays(doq - 1)
+          date = LocalDate.of(y, (qoy - 1) * 3 + 1, 1).plusDays(doq - 1)
         }
         fieldValues.remove(this)
         fieldValues.remove(YEAR)
@@ -321,9 +321,9 @@ object IsoFields {
         if (resolverStyle eq ResolverStyle.LENIENT) {
           val (dow, weeks) =
             if (dowLong > 7)
-              (((dowLong - 1L) % 7) + 1, (dowLong - 1) / 7)
+              ((dowLong - 1L) % 7 + 1, (dowLong - 1) / 7)
             else if (dowLong < 1)
-              ((dowLong % 7L) + 7, (dowLong / 7) - 1)
+              (dowLong % 7L + 7, dowLong / 7 - 1)
             else
               (dowLong, 0L)
           date =
@@ -370,7 +370,7 @@ object IsoFields {
         if (week == 53 && getWeekRange(newWby) == 52)
           week = 52
         val resolved: LocalDate = LocalDate.of(newWby, 1, 4)
-        val days: Int           = (dow - resolved.get(DAY_OF_WEEK)) + ((week - 1) * 7)
+        val days: Int           = dow - resolved.get(DAY_OF_WEEK) + (week - 1) * 7
         temporal.`with`(resolved.plusDays(days.toLong)).asInstanceOf[R]
       }
     }
@@ -387,7 +387,7 @@ object IsoFields {
 
     private def getWeekRange(wby: Int): Int = {
       val date: LocalDate = LocalDate.of(wby, 1, 1)
-      if ((date.getDayOfWeek eq THURSDAY) || ((date.getDayOfWeek eq WEDNESDAY) && date.isLeapYear))
+      if ((date.getDayOfWeek eq THURSDAY) || (date.getDayOfWeek eq WEDNESDAY) && date.isLeapYear)
         53
       else 52
     }
@@ -397,13 +397,13 @@ object IsoFields {
       val doy0: Int         = date.getDayOfYear - 1
       val doyThu0: Int      = doy0 + (3 - dow0)
       val alignedWeek: Int  = doyThu0 / 7
-      val firstThuDoy0: Int = doyThu0 - (alignedWeek * 7)
+      val firstThuDoy0: Int = doyThu0 - alignedWeek * 7
       var firstMonDoy0: Int = firstThuDoy0 - 3
       if (firstMonDoy0 < -3)
         firstMonDoy0 += 7
       if (doy0 < firstMonDoy0)
         return getWeekRange(date.withDayOfYear(180).minusYears(1)).getMaximum.toInt
-      var week: Int         = ((doy0 - firstMonDoy0) / 7) + 1
+      var week: Int         = (doy0 - firstMonDoy0) / 7 + 1
       if (week == 53)
         if (!(firstMonDoy0 == -3 || firstMonDoy0 == -2 && date.isLeapYear))
           week = 1
@@ -477,7 +477,7 @@ object IsoFields {
         case Unit.QUARTER_YEARS    =>
           temporal
             .plus(periodToAdd / 256, YEARS)
-            .plus((periodToAdd % 256) * 3, MONTHS)
+            .plus(periodToAdd % 256 * 3, MONTHS)
             .asInstanceOf[R]
         case _                     => throw new IllegalStateException("Unreachable")
       }

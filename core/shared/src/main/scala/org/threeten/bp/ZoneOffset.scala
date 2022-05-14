@@ -51,11 +51,11 @@ object ZoneOffset {
 
   /** Cache of time-zone offset by offset in seconds. */
   private lazy val SECONDS_CACHE: Map[Integer, ZoneOffset] =
-    new HashMap[Integer, ZoneOffset]()
+    new HashMap[Integer, ZoneOffset]
 
   /** Cache of time-zone offset by ID. */
   private lazy val ID_CACHE: Map[String, ZoneOffset] =
-    new HashMap[String, ZoneOffset]()
+    new HashMap[String, ZoneOffset]
 
   /** The number of seconds per hour. */
   private val SECONDS_PER_HOUR: Int = 60 * 60
@@ -288,7 +288,7 @@ object ZoneOffset {
         throw new DateTimeException(
           msg2("negative")
         )
-    } else if ((minutes > 0 && seconds < 0) || (minutes < 0 && seconds > 0))
+    } else if (minutes > 0 && seconds < 0 || minutes < 0 && seconds > 0)
       throw new DateTimeException("Zone offset minutes and seconds must have the same sign")
     if (Math.abs(minutes) > 59)
       throw new DateTimeException(
@@ -353,14 +353,14 @@ object ZoneOffset {
       val absTotalSeconds: Int = Math.abs(totalSeconds)
       val buf: StringBuilder   = new StringBuilder
       val absHours: Int        = absTotalSeconds / SECONDS_PER_HOUR
-      val absMinutes: Int      = (absTotalSeconds / SECONDS_PER_MINUTE) % MINUTES_PER_HOUR
+      val absMinutes: Int      = absTotalSeconds / SECONDS_PER_MINUTE % MINUTES_PER_HOUR
       buf
         .append(if (totalSeconds < 0) "-" else "+")
         .append(if (absHours < 10) "0" else "")
         .append(absHours)
         .append(if (absMinutes < 10) ":0" else ":")
         .append(absMinutes)
-      val absSeconds: Int      = absTotalSeconds                        % SECONDS_PER_MINUTE
+      val absSeconds: Int      = absTotalSeconds                      % SECONDS_PER_MINUTE
       if (absSeconds != 0)
         buf.append(if (absSeconds < 10) ":0" else ":").append(absSeconds)
       buf.toString
@@ -654,7 +654,7 @@ final class ZoneOffset private (private val totalSeconds: Int)
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case that: ZoneOffset => (this eq that) || (totalSeconds == that.totalSeconds)
+      case that: ZoneOffset => (this eq that) || totalSeconds == that.totalSeconds
       case _                => false
     }
 

@@ -645,8 +645,8 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
         u match {
           case NANOS   => plusNanos(amountToAdd)
           case MICROS  =>
-            plusSeconds((amountToAdd / (1000000L * 1000)) * 1000)
-              .plusNanos((amountToAdd % (1000000L * 1000)) * 1000)
+            plusSeconds(amountToAdd / (1000000L * 1000) * 1000)
+              .plusNanos(amountToAdd % (1000000L * 1000) * 1000)
           case MILLIS  => plusMillis(amountToAdd)
           case SECONDS => plusSeconds(amountToAdd)
           case _       => plusSeconds(Math.multiplyExact(unit.getDuration.seconds, amountToAdd))
@@ -729,7 +729,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    *   if numeric overflow occurs
    */
   def plusMillis(millisToAdd: Long): Duration =
-    plus(millisToAdd / 1000, (millisToAdd % 1000) * Duration.NANOS_PER_MILLI)
+    plus(millisToAdd / 1000, millisToAdd % 1000 * Duration.NANOS_PER_MILLI)
 
   /**
    * Returns a copy of this duration with the specified duration in nanoseconds added.
@@ -1159,7 +1159,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
   override def equals(other: Any): Boolean =
     other match {
       case otherDuration: Duration =>
-        (this eq otherDuration) || (this.seconds == otherDuration.seconds && this.nanos == otherDuration.nanos)
+        (this eq otherDuration) || this.seconds == otherDuration.seconds && this.nanos == otherDuration.nanos
       case _                       => false
     }
 
@@ -1169,7 +1169,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @return
    *   a suitable hash code
    */
-  override def hashCode: Int = (seconds ^ (seconds >>> 32)).toInt + (51 * nanos)
+  override def hashCode: Int = (seconds ^ seconds >>> 32).toInt + 51 * nanos
 
   /**
    * A string representation of this duration using ISO-8601 seconds based representation, such as
@@ -1191,7 +1191,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
     if (this eq Duration.ZERO)
       return "PT0S"
     val hours: Long        = seconds / SECONDS_PER_HOUR
-    val minutes: Int       = ((seconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE).asInstanceOf[Int]
+    val minutes: Int       = (seconds % SECONDS_PER_HOUR / SECONDS_PER_MINUTE).asInstanceOf[Int]
     val secs: Int          = (seconds % SECONDS_PER_MINUTE).asInstanceOf[Int]
     val buf: StringBuilder = new StringBuilder(24)
     buf.append("PT")

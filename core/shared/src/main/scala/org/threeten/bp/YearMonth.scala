@@ -83,7 +83,7 @@ import org.threeten.bp.temporal.ValueRange
 object YearMonth {
 
   /** Parser. */
-  private lazy val PARSER: DateTimeFormatter = new DateTimeFormatterBuilder()
+  private lazy val PARSER: DateTimeFormatter = new DateTimeFormatterBuilder
     .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
     .appendLiteral('-')
     .appendValue(MONTH_OF_YEAR, 2)
@@ -411,7 +411,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
       case _               => field.getFrom(this)
     }
 
-  private def getProlepticMonth: Long = (year * 12L) + (month - 1)
+  private def getProlepticMonth: Long = year * 12L + (month - 1)
 
   /**
    * Gets the year field.
@@ -989,7 +989,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    */
   override def equals(obj: Any): Boolean =
     obj match {
-      case other: YearMonth => (this eq other) || (year == other.year && month == other.month)
+      case other: YearMonth => (this eq other) || year == other.year && month == other.month
       case _                => false
     }
 
@@ -999,7 +999,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @return
    *   a suitable hash code
    */
-  override def hashCode: Int = year ^ (month << 27)
+  override def hashCode: Int = year ^ month << 27
 
   /**
    * Outputs this year-month as a {@code String}, such as {@code 2007-12}.

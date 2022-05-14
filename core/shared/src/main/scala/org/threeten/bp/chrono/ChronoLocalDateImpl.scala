@@ -91,7 +91,7 @@ import org.threeten.bp.temporal.TemporalUnit
  *   the date type
  */
 @SerialVersionUID(6282433883239719096L)
-abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono] ()
+abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono]
     extends ChronoLocalDate
     with Temporal
     with TemporalAdjuster

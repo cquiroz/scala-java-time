@@ -1935,7 +1935,7 @@ final class ZonedDateTime(
   override def equals(obj: Any): Boolean =
     obj match {
       case other: ZonedDateTime =>
-        (this eq other) || ((dateTime == other.dateTime) && (offset == other.offset) && (zone == other.zone))
+        (this eq other) || dateTime == other.dateTime && offset == other.offset && zone == other.zone
       case _                    => false
     }
 

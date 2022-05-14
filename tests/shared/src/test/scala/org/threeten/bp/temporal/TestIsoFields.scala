@@ -86,7 +86,7 @@ class TestIsoFields extends AnyFunSuite with AssertionsHelper {
   test("parse_weeks") {
     data_week.foreach {
       case (date: LocalDate) :: (dow: DayOfWeek) :: (week: Int) :: (wby: Int) :: Nil =>
-        val f: DateTimeFormatter = new DateTimeFormatterBuilder()
+        val f: DateTimeFormatter = new DateTimeFormatterBuilder
           .appendValue(IsoFields.WEEK_BASED_YEAR)
           .appendLiteral('-')
           .appendValue(IsoFields.WEEK_OF_WEEK_BASED_YEAR)
@@ -112,12 +112,12 @@ class TestIsoFields extends AnyFunSuite with AssertionsHelper {
         year = date.getYear
       if (loopDow eq MONDAY) {
         week += 1
-        if ((week == 53 && weekLen == 52) || week == 54) {
+        if (week == 53 && weekLen == 52 || week == 54) {
           week = 1
           val firstDayOfWeekBasedYear: LocalDate = date.plusDays(14).withDayOfYear(1)
           val firstDay: DayOfWeek                = firstDayOfWeekBasedYear.getDayOfWeek
           weekLen = if (
-            (firstDay eq THURSDAY) || ((firstDay eq WEDNESDAY) && firstDayOfWeekBasedYear.isLeapYear)
+            (firstDay eq THURSDAY) || (firstDay eq WEDNESDAY) && firstDayOfWeekBasedYear.isLeapYear
           )
             53
           else 52

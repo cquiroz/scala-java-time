@@ -214,16 +214,16 @@ class TestLocalDateTime
 
   test("now_Clock_allSecsInDay_utc") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       val instant: Instant    = Instant.ofEpochSecond(i).plusNanos(123456789L)
       val clock: Clock        = Clock.fixed(instant, ZoneOffset.UTC)
       val test: LocalDateTime = LocalDateTime.now(clock)
       assertEquals(test.getYear, 1970)
       assertEquals(test.getMonth, Month.JANUARY)
       assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-      assertEquals(test.getHour, (i / (60 * 60)) % 24)
-      assertEquals(test.getMinute, (i / 60)      % 60)
-      assertEquals(test.getSecond, i             % 60)
+      assertEquals(test.getHour, i / (60 * 60) % 24)
+      assertEquals(test.getMinute, i / 60      % 60)
+      assertEquals(test.getSecond, i           % 60)
       assertEquals(test.getNano, 123456789)
       i += 1
     }
@@ -231,7 +231,7 @@ class TestLocalDateTime
 
   test("now_Clock_allSecsInDay_offset") {
     var i: Int = 0
-    while (i < (2 * 24 * 60 * 60)) {
+    while (i < 2 * 24 * 60 * 60) {
       val instant: Instant    = Instant.ofEpochSecond(i).plusNanos(123456789L)
       val clock: Clock        =
         Clock.fixed(instant.minusSeconds(TestLocalDateTime.OFFSET_PONE.getTotalSeconds),
@@ -241,9 +241,9 @@ class TestLocalDateTime
       assertEquals(test.getYear, 1970)
       assertEquals(test.getMonth, Month.JANUARY)
       assertEquals(test.getDayOfMonth, if (i < 24 * 60 * 60) 1 else 2)
-      assertEquals(test.getHour, (i / (60 * 60)) % 24)
-      assertEquals(test.getMinute, (i / 60)      % 60)
-      assertEquals(test.getSecond, i             % 60)
+      assertEquals(test.getHour, i / (60 * 60) % 24)
+      assertEquals(test.getMinute, i / 60      % 60)
+      assertEquals(test.getSecond, i           % 60)
       assertEquals(test.getNano, 123456789)
       i += 1
     }
@@ -1785,7 +1785,7 @@ class TestLocalDateTime
   }
 
   val plusSeconds_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Int      = 30
       private[bp] var i: Int          = -3660
       private[bp] var date: LocalDate = TEST_2007_07_15_12_30_40_987654321.toLocalDate.minusDays(1)
@@ -1874,7 +1874,7 @@ class TestLocalDateTime
   }
 
   val plusNanos_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Long     = 7500000000L
       private[bp] var i: Long         = -3660 * 1000000000L
       private[bp] var date: LocalDate = TEST_2007_07_15_12_30_40_987654321.toLocalDate.minusDays(1)
@@ -2308,10 +2308,10 @@ class TestLocalDateTime
       while (i < 50) {
         {
           t = t.minusHours(1)
-          if (i                               % 24 == 0)
+          if (i                              % 24 == 0)
             d = d.minusDays(1)
           assertEquals(t.toLocalDate, d)
-          assertEquals(t.getHour, (((-i + 23) % 24) + 24) % 24)
+          assertEquals(t.getHour, ((-i + 23) % 24 + 24) % 24)
         }
         {
           i += 1
@@ -2465,7 +2465,7 @@ class TestLocalDateTime
   }
 
   val minusSeconds_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Int      = 30
       private[bp] var i: Int          = 3660
       private[bp] var date: LocalDate = TEST_2007_07_15_12_30_40_987654321.toLocalDate.minusDays(1)
@@ -2546,7 +2546,7 @@ class TestLocalDateTime
   }
 
   val minusNanos_fromZero: java.util.Iterator[List[Any]] =
-    new java.util.Iterator[List[Any]]() {
+    new java.util.Iterator[List[Any]] {
       private[bp] var delta: Long     = 7500000000L
       private[bp] var i: Long         = 3660 * 1000000000L
       private[bp] var date: LocalDate = TEST_2007_07_15_12_30_40_987654321.toLocalDate.minusDays(1)

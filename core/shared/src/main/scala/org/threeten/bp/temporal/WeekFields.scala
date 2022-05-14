@@ -59,7 +59,7 @@ object WeekFields {
    * definition of ISO, etc.
    */
   private lazy val CACHE: Map[String, WeekFields] =
-    new HashMap[String, WeekFields]()
+    new HashMap[String, WeekFields]
 
   /**
    * The ISO-8601 definition, where a week starts on Monday and the first week has a minimum of 4
@@ -370,7 +370,7 @@ object WeekFields {
       if (rangeUnit eq WEEKS) {
         val value: Long   = fieldValues.remove(this)
         val localDow: Int = range.checkValidIntValue(value, this)
-        val isoDow: Int   = Math.floorMod((sow - 1) + (localDow - 1), 7) + 1
+        val isoDow: Int   = Math.floorMod(sow - 1 + (localDow - 1), 7) + 1
         fieldValues.put(DAY_OF_WEEK, isoDow.toLong)
         return null
       }
@@ -841,7 +841,7 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
    */
   override def equals(that: Any): Boolean =
     that match {
-      case that: WeekFields => (this eq that) || (hashCode == that.hashCode)
+      case that: WeekFields => (this eq that) || hashCode == that.hashCode
       case _                => false
     }
 

@@ -128,7 +128,7 @@ object JapaneseChronology {
  *   Restricted constructor.
  */
 @SerialVersionUID(459996390165777884L)
-final class JapaneseChronology private () extends Chronology with Serializable {
+final class JapaneseChronology private extends Chronology with Serializable {
 
   /**
    * Resolve singleton.

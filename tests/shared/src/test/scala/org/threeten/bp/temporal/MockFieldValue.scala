@@ -37,7 +37,7 @@ import org.threeten.bp.DateTimeException
 final class MockFieldValue(private val field: TemporalField, private val value: Long)
     extends TemporalAccessor {
 
-  def isSupported(field: TemporalField): Boolean = field != null && (field == this.field)
+  def isSupported(field: TemporalField): Boolean = field != null && field == this.field
 
   override def range(field: TemporalField): ValueRange =
     if (field.isInstanceOf[ChronoField])

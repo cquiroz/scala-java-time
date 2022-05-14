@@ -57,7 +57,7 @@ object DecimalStyle {
 
   /** The cache of symbols instances. */
   private lazy val CACHE: Map[Locale, DecimalStyle] =
-    new HashMap[Locale, DecimalStyle]()
+    new HashMap[Locale, DecimalStyle]
 
   /**
    * Lists all the locales that are supported.
@@ -287,7 +287,7 @@ final class DecimalStyle private (
   override def equals(obj: Any): Boolean =
     obj match {
       case other: DecimalStyle =>
-        (this eq other) || (zeroDigit == other.zeroDigit && positiveSign == other.positiveSign && negativeSign == other.negativeSign && decimalSeparator == other.decimalSeparator)
+        (this eq other) || zeroDigit == other.zeroDigit && positiveSign == other.positiveSign && negativeSign == other.negativeSign && decimalSeparator == other.decimalSeparator
       case _                   =>
         false
     }

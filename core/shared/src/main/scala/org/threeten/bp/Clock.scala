@@ -292,7 +292,7 @@ object Clock {
 
     override def equals(obj: Any): Boolean =
       obj match {
-        case other: FixedClock => (instant == other.instant) && (zone == other.zone)
+        case other: FixedClock => instant == other.instant && zone == other.zone
         case _                 => false
       }
 
@@ -321,7 +321,7 @@ object Clock {
 
     override def equals(obj: Any): Boolean =
       obj match {
-        case other: OffsetClock => (baseClock == other.baseClock) && (offset == other.offset)
+        case other: OffsetClock => baseClock == other.baseClock && offset == other.offset
         case _                  => false
       }
 
@@ -350,7 +350,7 @@ object Clock {
     }
 
     def instant: Instant = {
-      if ((tickNanos % 1000000) == 0) {
+      if (tickNanos % 1000000 == 0) {
         val millis: Long = baseClock.millis
         return Instant.ofEpochMilli(millis - Math.floorMod(millis, tickNanos / 1000000L))
       }
@@ -362,11 +362,11 @@ object Clock {
 
     override def equals(obj: Any): Boolean =
       obj match {
-        case other: TickClock => (baseClock == other.baseClock) && tickNanos == other.tickNanos
+        case other: TickClock => baseClock == other.baseClock && tickNanos == other.tickNanos
         case _                => false
       }
 
-    override def hashCode: Int = baseClock.hashCode ^ (tickNanos ^ (tickNanos >>> 32)).toInt
+    override def hashCode: Int = baseClock.hashCode ^ (tickNanos ^ tickNanos >>> 32).toInt
 
     override def toString: String = s"TickClock[$baseClock,${Duration.ofNanos(tickNanos)}]"
   }
@@ -411,7 +411,7 @@ object Clock {
  * Implementations should implement {@code Serializable} wherever possible and must document whether
  * or not they do support serialization.
  */
-abstract class Clock protected () {
+abstract class Clock protected {
 
   /**
    * Gets the time-zone being used to create dates and times.

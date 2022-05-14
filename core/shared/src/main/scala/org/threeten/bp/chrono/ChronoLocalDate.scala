@@ -527,7 +527,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
    */
   override def hashCode: Int = {
     val epDay: Long = toEpochDay
-    getChronology.hashCode ^ (epDay ^ (epDay >>> 32)).toInt
+    getChronology.hashCode ^ (epDay ^ epDay >>> 32).toInt
   }
 
   /**

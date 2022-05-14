@@ -227,12 +227,12 @@ final class MinguoDate private[chrono] (private val isoDate: LocalDate)
                 `with`(
                   isoDate.withYear(
                     if (getProlepticYear >= 1) nvalue + YEARS_DIFFERENCE
-                    else (1 - nvalue) + YEARS_DIFFERENCE
+                    else 1 - nvalue + YEARS_DIFFERENCE
                   )
                 )
               case YEAR        => `with`(isoDate.withYear(nvalue + YEARS_DIFFERENCE))
-              case ERA         => `with`(isoDate.withYear((1 - getProlepticYear) + YEARS_DIFFERENCE))
-              case _           => throw new UnsupportedOperationException()
+              case ERA         => `with`(isoDate.withYear(1 - getProlepticYear + YEARS_DIFFERENCE))
+              case _           => throw new UnsupportedOperationException
             }
           case _                        => `with`(isoDate.`with`(field, newValue))
         }

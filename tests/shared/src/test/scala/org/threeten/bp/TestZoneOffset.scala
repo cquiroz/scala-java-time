@@ -210,7 +210,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
     while (i <= 17) {
       var j: Int = -59
       while (j <= 59) {
-        if ((i < 0 && j <= 0) || (i > 0 && j >= 0) || i == 0) {
+        if (i < 0 && j <= 0 || i > 0 && j >= 0 || i == 0) {
           val str: String      = (if (i < 0 || j < 0) "-" else "+") + Integer
             .toString(Math.abs(i) + 100)
             .substring(1) + Integer.toString(Math.abs(j) + 100).substring(1)
@@ -233,7 +233,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
     while (i <= 17) {
       var j: Int = -59
       while (j <= 59) {
-        if ((i < 0 && j <= 0) || (i > 0 && j >= 0) || i == 0) {
+        if (i < 0 && j <= 0 || i > 0 && j >= 0 || i == 0) {
           val str: String      = (if (i < 0 || j < 0) "-" else "+") + Integer
             .toString(Math.abs(i) + 100)
             .substring(1) + ":" + Integer.toString(Math.abs(j) + 100).substring(1)
@@ -259,7 +259,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
         var k: Int = -59
         while (k <= 59) {
           if (
-            (i < 0 && j <= 0 && k <= 0) || (i > 0 && j >= 0 && k >= 0) || (i == 0 && ((j < 0 && k <= 0) || (j > 0 && k >= 0) || j == 0))
+            i < 0 && j <= 0 && k <= 0 || i > 0 && j >= 0 && k >= 0 || i == 0 && (j < 0 && k <= 0 || j > 0 && k >= 0 || j == 0)
           ) {
             val str: String      = (if (i < 0 || j < 0 || k < 0) "-" else "+") + Integer
               .toString(Math.abs(i) + 100)
@@ -290,7 +290,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
         var k: Int = -59
         while (k <= 59) {
           if (
-            (i < 0 && j <= 0 && k <= 0) || (i > 0 && j >= 0 && k >= 0) || (i == 0 && ((j < 0 && k <= 0) || (j > 0 && k >= 0) || j == 0))
+            i < 0 && j <= 0 && k <= 0 || i > 0 && j >= 0 && k >= 0 || i == 0 && (j < 0 && k <= 0 || j > 0 && k >= 0 || j == 0)
           ) {
             val str: String      = (if (i < 0 || j < 0 || k < 0) "-" else "+") + Integer
               .toString(Math.abs(i) + 100)
@@ -339,7 +339,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
     while (i <= 17) {
       var j: Int = -59
       while (j <= 59) {
-        if ((i < 0 && j <= 0) || (i > 0 && j >= 0) || i == 0) {
+        if (i < 0 && j <= 0 || i > 0 && j >= 0 || i == 0) {
           val test: ZoneOffset = ZoneOffset.ofHoursMinutes(i, j)
           doTestOffset(test, i, j, 0)
         }
@@ -374,7 +374,7 @@ class TestZoneOffset extends AnyFunSuite with GenDateTimeTest with AssertionsHel
         var k: Int = -59
         while (k <= 59) {
           if (
-            (i < 0 && j <= 0 && k <= 0) || (i > 0 && j >= 0 && k >= 0) || (i == 0 && ((j < 0 && k <= 0) || (j > 0 && k >= 0) || j == 0))
+            i < 0 && j <= 0 && k <= 0 || i > 0 && j >= 0 && k >= 0 || i == 0 && (j < 0 && k <= 0 || j > 0 && k >= 0 || j == 0)
           ) {
             val test: ZoneOffset = ZoneOffset.ofHoursMinutesSeconds(i, j, k)
             doTestOffset(test, i, j, k)

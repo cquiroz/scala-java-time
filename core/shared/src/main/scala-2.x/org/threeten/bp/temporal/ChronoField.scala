@@ -193,7 +193,7 @@ object ChronoField {
    * for all calendar systems.
    */
   lazy val MINUTE_OF_DAY =
-    new ChronoField("MinuteOfDay", 9, MINUTES, DAYS, ValueRange.of(0, (24 * 60) - 1))
+    new ChronoField("MinuteOfDay", 9, MINUTES, DAYS, ValueRange.of(0, 24 * 60 - 1))
 
   /**
    * The hour-of-am-pm.
