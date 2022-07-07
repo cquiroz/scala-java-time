@@ -374,14 +374,14 @@ final class IsoChronology private () extends Chronology with Serializable {
           if (year != null)
             updateResolveMap(fieldValues,
                              YEAR,
-                             (if (year > 0) yoeLong else Math.subtractExact(1, yoeLong))
+                             if (year > 0) yoeLong else Math.subtractExact(1, yoeLong)
             )
           else fieldValues.put(YEAR_OF_ERA, yoeLong)
         else
           updateResolveMap(
             fieldValues,
             YEAR,
-            (if (year == null || year > 0) yoeLong else Math.subtractExact(1, yoeLong))
+            if (year == null || year > 0) yoeLong else Math.subtractExact(1, yoeLong)
           )
       } else if (era.longValue == 1L)
         updateResolveMap(fieldValues, YEAR, yoeLong)

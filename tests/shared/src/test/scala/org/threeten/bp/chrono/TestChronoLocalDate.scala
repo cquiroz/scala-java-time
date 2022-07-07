@@ -160,11 +160,11 @@ object TestChronoLocalDate {
 
 class TestChronoLocalDate extends AnyFunSuite with AssertionsHelper {
   val data_of_calendars: List[Chronology] =
-    List[Chronology]((HijrahChronology.INSTANCE),
-                     (IsoChronology.INSTANCE),
+    List[Chronology](HijrahChronology.INSTANCE,
+                     IsoChronology.INSTANCE,
                      // (JapaneseChronology.INSTANCE),
-                     (MinguoChronology.INSTANCE),
-                     (ThaiBuddhistChronology.INSTANCE)
+                     MinguoChronology.INSTANCE,
+                     ThaiBuddhistChronology.INSTANCE
     )
 
   test("test_badWithAdjusterChrono") {

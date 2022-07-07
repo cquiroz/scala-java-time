@@ -525,7 +525,7 @@ object HijrahDate {
     }
     if (cycleDays == null)
       cycleDays = java.lang.Long.valueOf(cycleNumber.toLong * 10631)
-    (cycleDays.longValue + dayInCycle + HIJRAH_JAN_1_1_GREGORIAN_DAY - 1)
+    cycleDays.longValue + dayInCycle + HIJRAH_JAN_1_1_GREGORIAN_DAY - 1
   }
 
   /**

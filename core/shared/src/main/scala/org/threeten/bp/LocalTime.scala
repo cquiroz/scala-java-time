@@ -588,7 +588,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
       case MICRO_OF_SECOND    => nano.toLong / 1000L
       case MICRO_OF_DAY       => throw new DateTimeException(s"Field too large for an int: $field")
       case MILLI_OF_SECOND    => nano.toLong / 1000000L
-      case MILLI_OF_DAY       => (toNanoOfDay / 1000000L)
+      case MILLI_OF_DAY       => toNanoOfDay / 1000000L
       case SECOND_OF_MINUTE   => second.toLong
       case SECOND_OF_DAY      => toSecondOfDay.toLong
       case MINUTE_OF_HOUR     => minute.toLong

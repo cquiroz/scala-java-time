@@ -276,7 +276,7 @@ class TestNumberParser extends AnyFunSuite with GenTestPrinterParser with Assert
 
   test("parseSignsStrict") {
     provider_parseSignsStrict.foreach {
-      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) ::(Some(
+      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) :: (Some(
             parseVal: Int
           )) :: Nil =>
         super.beforeEach()
@@ -382,7 +382,7 @@ class TestNumberParser extends AnyFunSuite with GenTestPrinterParser with Assert
 
   test("parseSignsLenient") {
     provider_parseSignsLenient.foreach {
-      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) ::(Some(
+      case (input: String) :: (min: Int) :: (max: Int) :: (style: SignStyle) :: (parseLen: Int) :: (Some(
             parseVal: Int
           )) :: Nil =>
         super.beforeEach()

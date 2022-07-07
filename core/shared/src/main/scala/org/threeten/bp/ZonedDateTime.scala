@@ -615,7 +615,7 @@ final class ZonedDateTime(
     field match {
       case _: ChronoField => true
       case _              =>
-        (field != null && field.isSupportedBy(this))
+        field != null && field.isSupportedBy(this)
     }
 
   def isSupported(unit: TemporalUnit): Boolean =

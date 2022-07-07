@@ -160,11 +160,11 @@ object TestChronoZonedDateTime {
 
 class TestChronoZonedDateTime extends AnyFunSuite with AssertionsHelper {
   val data_of_calendars: List[Chronology] =
-    List((HijrahChronology.INSTANCE),
-         (IsoChronology.INSTANCE),
+    List(HijrahChronology.INSTANCE,
+         IsoChronology.INSTANCE,
          // (JapaneseChronology.INSTANCE),
-         (MinguoChronology.INSTANCE),
-         (ThaiBuddhistChronology.INSTANCE)
+         MinguoChronology.INSTANCE,
+         ThaiBuddhistChronology.INSTANCE
     )
 
   test("test_badWithAdjusterChrono") {

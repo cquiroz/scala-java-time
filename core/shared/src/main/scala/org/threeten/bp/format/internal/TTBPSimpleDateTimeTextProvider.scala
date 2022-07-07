@@ -95,10 +95,10 @@ object TTBPSimpleDateTimeTextProvider {
               val continue = !acc.contains(v)
               (continue, acc + (v -> (v -> k)))
           }
-        val list    = reverse._2.values.toList.sortBy(x => (-x._1.length))
+        val list    = reverse._2.values.toList.sortBy(x => -x._1.length)
         (all ::: list, map + (style -> list))
       }
-      (u._1.sortBy(x => (-x._1.length)), u._2)
+      (u._1.sortBy(x => -x._1.length), u._2)
     }
 
     /**
