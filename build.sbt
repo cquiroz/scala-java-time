@@ -22,7 +22,7 @@ val versions: Map[String, String] = {
 val scalaVer                = versions("2.13")
 val scala3Ver               = versions("3")
 val tzdbVersion             = "2019c"
-val scalajavaLocalesVersion = "1.4.0"
+val scalajavaLocalesVersion = "1.4.1"
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 lazy val downloadFromZip: TaskKey[Unit] =
@@ -248,7 +248,7 @@ lazy val tests = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     publish / skip     := true,
     Keys.`package`     := file(""),
     libraryDependencies +=
-      "org.scalatest" %%% "scalatest" % "3.2.12" % Test,
+      "org.scalatest" %%% "scalatest" % "3.2.13" % Test,
     scalacOptions ~= (_.filterNot(
       Set("-Wnumeric-widen", "-Ywarn-numeric-widen", "-Ywarn-value-discard", "-Wvalue-discard")
     ))
