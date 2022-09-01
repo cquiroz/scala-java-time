@@ -21,6 +21,6 @@ addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.5.5")
 
 addSbtPlugin("org.portable-scala" % "sbt-scala-native-crossproject" % "1.2.0")
 
-addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.4.5")
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.4.6")
 
 libraryDependencies += "org.snakeyaml" % "snakeyaml-engine" % "2.3"
