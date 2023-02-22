@@ -10,7 +10,7 @@ The implementation is based on the original BSD-licensed reference implementatio
 
 #### Usage
 
-The *scala-java-time* library is currently available for Scala (JVM, version 8 and later) and Scala.js (JavaScript).
+The *scala-java-time* library is currently available for Scala (JVM, version 8 and later), Scala.js (JavaScript) and Scala Native (LLVM).
 Scala 2.11, Scala 2.12, Scala 2.13 and Scala 3.0.0 are supported.
 
 To get started with SBT, add one (or both) of these dependencies:
