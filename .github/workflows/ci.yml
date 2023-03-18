@@ -31,9 +31,17 @@ jobs:
         scala: [2.12.17, 2.13.10, 3.2.1]
         java: [temurin@11]
         project: [rootJS, rootJVM, rootNative]
+        include:
+          - scala: 3.2.1
+            java: temurin@11
+            project: rootNative
+            os: macos-latest
         exclude:
           - scala: 3.2.1
             project: rootJVM
+          - scala: 3.2.1
+            project: rootNative
+            os: ubuntu-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout current branch (full)
@@ -220,16 +228,6 @@ jobs:
           name: target-${{ matrix.os }}-${{ matrix.java }}-3.2.1-rootJS
 
       - name: Inflate target directories (3.2.1, rootJS)
-        run: |
-          tar xf targets.tar
-          rm targets.tar
-
-      - name: Download target directories (3.2.1, rootNative)
-        uses: actions/download-artifact@v2
-        with:
-          name: target-${{ matrix.os }}-${{ matrix.java }}-3.2.1-rootNative
-
-      - name: Inflate target directories (3.2.1, rootNative)
         run: |
           tar xf targets.tar
           rm targets.tar
