@@ -1598,8 +1598,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents a point on the local time-line after the other date.
    * <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isAfter(b) == false
-   * a.isAfter(a) == false b.isAfter(a) == true </pre>
+   * a.isAfter(b) == false a.isAfter(a) == false b.isAfter(a) == true </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in
@@ -1619,8 +1618,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents a point on the local time-line before the other
    * date. <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isBefore(b) == true
-   * a.isBefore(a) == false b.isBefore(a) == false </pre>
+   * a.isBefore(b) == true a.isBefore(a) == false b.isBefore(a) == false </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in
@@ -1640,8 +1638,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents the same point on the local time-line as the other
    * date. <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isEqual(b) == false
-   * a.isEqual(a) == true b.isEqual(a) == false </pre>
+   * a.isEqual(b) == false a.isEqual(a) == true b.isEqual(a) == false </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in
