@@ -440,10 +440,9 @@ object DateTimeFormatter {
    * DateTimeFormatter#withLocale(Locale)}.
    *
    * All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The following pattern
-   * letters are defined: <pre> Symbol Meaning Presentation Examples
-   * ------ ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004;
-   * 04 D day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month
-   * number 10
+   * letters are defined: <pre> Symbol Meaning Presentation Examples ------ ------- ------------
+   * ------- G era number/text 1; 01; AD; Anno Domini y year year 2004; 04 D day-of-year number 189
+   * M month-of-year number/text 7; 07; Jul; July; J d day-of-month number 10
    *
    * Q quarter-of-year number/text 3; 03; Q3 Y week-based-year year 1996; 96 w week-of-year number
    * 27 W week-of-month number 27 e localized day-of-week number 2; Tue; Tuesday; T E day-of-week
