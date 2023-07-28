@@ -1739,9 +1739,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents a point on the local time-line after the other
    * date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isAfter(b) == false
-   * a.isAfter(a) == false b.isAfter(a) == true </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isAfter(b) == false a.isAfter(a) == false b.isAfter(a)
+   * \== true </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
@@ -1764,9 +1763,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents a point on the local time-line before the other
    * date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isBefore(b) == true
-   * a.isBefore(a) == false b.isBefore(a) == false </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isBefore(b) == true a.isBefore(a) == false
+   * b.isBefore(a) == false </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
@@ -1789,9 +1787,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents the same point on the local time-line as the
    * other date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isEqual(b) == false
-   * a.isEqual(a) == true b.isEqual(a) == false </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isEqual(b) == false a.isEqual(a) == true b.isEqual(a)
+   * \== false </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
