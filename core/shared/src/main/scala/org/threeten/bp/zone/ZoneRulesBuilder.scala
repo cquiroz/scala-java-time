@@ -553,7 +553,7 @@ class ZoneRulesBuilder() {
      *   the month of the transition, not null
      * @param dayOfMonthIndicator
      *   the day-of-month of the transition, adjusted by dayOfWeek, from 1 to 31 adjusted later, or
-     * -1 to -28 adjusted earlier from the last day of the month
+     *   -1 to -28 adjusted earlier from the last day of the month
      * @param dayOfWeek
      *   the day-of-week to adjust to, null if day-of-month should not be adjusted
      * @param time
