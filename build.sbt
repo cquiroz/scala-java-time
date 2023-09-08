@@ -208,7 +208,7 @@ lazy val tests = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     name               := "tests",
     Keys.`package`     := file(""),
     libraryDependencies +=
-      "org.scalatest" %%% "scalatest" % "3.2.14" % Test,
+      "org.scalatest" %%% "scalatest" % "3.2.17" % Test,
     scalacOptions ~= (_.filterNot(
       Set("-Wnumeric-widen", "-Ywarn-numeric-widen", "-Ywarn-value-discard", "-Wvalue-discard")
     ))
