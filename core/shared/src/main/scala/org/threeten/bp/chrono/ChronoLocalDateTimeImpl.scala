@@ -85,7 +85,7 @@ private[chrono] object ChronoLocalDateTimeImpl {
   private final val NANOS_PER_DAY = NANOS_PER_HOUR * HOURS_PER_DAY
 
   /**
-   * Obtains an instance of {@code ChronoLocalDateTime} from a date and time.
+   * Obtains an instance of {@@codeChronoLocalDateTime} from a date and time.
    *
    * @param date
    *   the local date, not null
@@ -105,13 +105,13 @@ private[chrono] object ChronoLocalDateTimeImpl {
 /**
  * A date-time without a time-zone for the calendar neutral API.
  *
- * {@code ChronoLocalDateTime} is an immutable date-time object that represents a date-time, often
+ * {@@codeChronoLocalDateTime} is an immutable date-time object that represents a date-time, often
  * viewed as year-month-day-hour-minute-second. This object can also access other fields such as
  * day-of-year, day-of-week and week-of-year.
  *
  * This class stores all date and time fields, to a precision of nanoseconds. It does not store or
  * represent a time-zone. For example, the value "2nd October 2007 at 13:45.30.123456789" can be
- * stored in an {@code ChronoLocalDateTime}.
+ * stored in an {@@codeChronoLocalDateTime} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *

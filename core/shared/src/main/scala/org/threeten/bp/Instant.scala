@@ -79,30 +79,30 @@ object Instant {
   private def MILLIS_PER_SEC = 1000
 
   /**
-   * The minimum supported {@code Instant}, '-1000000000-01-01T00:00Z'. This could be used by an
+   * The minimum supported {@@codeInstant} , '-1000000000-01-01T00:00Z'. This could be used by an
    * application as a "far past" instant.
    *
-   * This is one year earlier than the minimum {@code LocalDateTime}. This provides sufficient
-   * values to handle the range of {@code ZoneOffset} which affect the instant in addition to the
+   * This is one year earlier than the minimum {@@codeLocalDateTime} . This provides sufficient
+   * values to handle the range of {@@codeZoneOffset} which affect the instant in addition to the
    * local date-time. The value is also chosen such that the value of the year fits in an {@code
    * int}.
    */
   lazy val MIN: Instant = Instant.ofEpochSecond(MIN_SECOND, 0)
 
   /**
-   * The maximum supported {@code Instant}, '1000000000-12-31T23:59:59.999999999Z'. This could be
+   * The maximum supported {@@codeInstant} , '1000000000-12-31T23:59:59.999999999Z'. This could be
    * used by an application as a "far future" instant.
    *
-   * This is one year later than the maximum {@code LocalDateTime}. This provides sufficient values
-   * to handle the range of {@code ZoneOffset} which affect the instant in addition to the local
-   * date-time. The value is also chosen such that the value of the year fits in an {@code int}.
+   * This is one year later than the maximum {@@codeLocalDateTime} . This provides sufficient values
+   * to handle the range of {@@codeZoneOffset} which affect the instant in addition to the local
+   * date-time. The value is also chosen such that the value of the year fits in an {@@codeint} .
    */
   lazy val MAX: Instant = Instant.ofEpochSecond(MAX_SECOND, 999999999)
 
   /**
    * Obtains the current instant from the system clock.
    *
-   * This will query the {@link Clock#systemUTC() system UTC clock} to obtain the current instant.
+   * This will query the {@@linkClock#systemUTC() system UTC clock} to obtain the current instant.
    *
    * Using this method will prevent the ability to use an alternate time-source for testing because
    * the clock is effectively hard-coded.
@@ -118,7 +118,7 @@ object Instant {
    * This will query the specified clock to obtain the current time.
    *
    * Using this method allows the use of an alternate clock for testing. The alternate clock may be
-   * introduced using {@link Clock dependency injection}.
+   * introduced using {@@linkClock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -131,7 +131,7 @@ object Instant {
   }
 
   /**
-   * Obtains an instance of {@code Instant} using seconds from the epoch of 1970-01-01T00:00:00Z.
+   * Obtains an instance of {@@codeInstant} using seconds from the epoch of 1970-01-01T00:00:00Z.
    *
    * The nanosecond field is set to zero.
    *
@@ -145,7 +145,7 @@ object Instant {
   def ofEpochSecond(epochSecond: Long): Instant = create(epochSecond, 0)
 
   /**
-   * Obtains an instance of {@code Instant} using seconds from the epoch of 1970-01-01T00:00:00Z and
+   * Obtains an instance of {@@codeInstant} using seconds from the epoch of 1970-01-01T00:00:00Z and
    * nanosecond fraction of second.
    *
    * This method allows an arbitrary number of nanoseconds to be passed in. The factory will alter
@@ -173,7 +173,7 @@ object Instant {
   }
 
   /**
-   * Obtains an instance of {@code Instant} using milliseconds from the epoch of
+   * Obtains an instance of {@@codeInstant} using milliseconds from the epoch of
    * 1970-01-01T00:00:00Z.
    *
    * The seconds and nanoseconds are extracted from the specified milliseconds.
@@ -192,23 +192,23 @@ object Instant {
   }
 
   /**
-   * Obtains an instance of {@code Instant} from a temporal object.
+   * Obtains an instance of {@@codeInstant} from a temporal object.
    *
-   * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code Instant}.
+   * A {@@codeTemporalAccessor} represents some form of date and time information. This factory
+   * converts the arbitrary temporal object to an instance of {@@codeInstant} .
    *
-   * The conversion extracts the {@link ChronoField#INSTANT_SECONDS INSTANT_SECONDS} and {@link
+   * The conversion extracts the {@@linkChronoField#INSTANT_SECONDS INSTANT_SECONDS} and {@link
    * ChronoField#NANO_OF_SECOND NANO_OF_SECOND} fields.
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code Instant::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used as a query via method reference, {@@codeInstant::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the instant, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code Instant}
+   *   if unable to convert to an {@@codeInstant}
    */
   def from(temporal: TemporalAccessor): Instant =
     try {
@@ -224,7 +224,7 @@ object Instant {
     }
 
   /**
-   * Obtains an instance of {@code Instant} from a text string such as {@code
+   * Obtains an instance of {@@codeInstant} from a text string such as {@code
    * 2007-12-03T10:15:30.000Z}.
    *
    * The string must represent a valid instant in UTC and is parsed using {@link
@@ -246,7 +246,7 @@ object Instant {
     )
 
   /**
-   * Obtains an instance of {@code Instant} using seconds and nanoseconds.
+   * Obtains an instance of {@@codeInstant} using seconds and nanoseconds.
    *
    * @param seconds
    *   the length of the duration in seconds
@@ -272,13 +272,13 @@ object Instant {
  * event time-stamps in the application.
  *
  * For practicality, the instant is stored with some constraints. The measurable time-line is
- * restricted to the number of seconds that can be held in a {@code long}. This is greater than the
+ * restricted to the number of seconds that can be held in a {@@codelong} . This is greater than the
  * current estimated age of the universe. The instant is stored to nanosecond resolution.
  *
- * The range of an instant requires the storage of a number larger than a {@code long}. To achieve
- * this, the class stores a {@code long} representing epoch-seconds and an {@code int} representing
+ * The range of an instant requires the storage of a number larger than a {@@codelong} . To achieve
+ * this, the class stores a {@@codelong} representing epoch-seconds and an {@@codeint} representing
  * nanosecond-of-second, which will always be between 0 and 999,999,999. The epoch-seconds are
- * measured from the standard Java epoch of {@code 1970-01-01T00:00:00Z} where instants after the
+ * measured from the standard Java epoch of {@@code1970-01-01T00:00:00Z} where instants after the
  * epoch have positive values, and earlier instants have negative values. For both the epoch-second
  * and nanosecond parts, a larger value is always later on the time-line than a smaller value.
  *
@@ -335,17 +335,17 @@ object Instant {
  * 1/1000th longer or shorter than a real SI second.
  *
  * One final problem is the definition of the agreed international civil time before the
- * introduction of modern UTC in 1972. This includes the Java epoch of {@code 1970-01-01}. It is
+ * introduction of modern UTC in 1972. This includes the Java epoch of {@@code1970-01-01} . It is
  * intended that instants before 1972 be interpreted based on the solar day divided into 86400
  * subdivisions.
  *
- * The Java time-scale is used by all date-time classes. This includes {@code Instant}, {@code
- * LocalDate}, {@code LocalTime}, {@code OffsetDateTime}, {@code ZonedDateTime} and {@code
+ * The Java time-scale is used by all date-time classes. This includes {@@codeInstant} , {@code
+ * LocalDate}, {@@codeLocalTime} , {@@codeOffsetDateTime} , {@@codeZonedDateTime} and {@code
  * Duration}.
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
- * Constructs an instance of {@code Instant} using seconds from the epoch of 1970-01-01T00:00:00Z
+ * Constructs an instance of {@@codeInstant} using seconds from the epoch of 1970-01-01T00:00:00Z
  * and nanosecond fraction of second.
  *
  * @param seconds
@@ -365,15 +365,15 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Checks if the specified field is supported.
    *
    * This checks if this instant can be queried for the specified field. If false, then calling the
-   * {@link #range(TemporalField) range} and {@link #get(TemporalField) get} methods will throw an
+   * {@@link#range(TemporalField) range} and {@@link#get(TemporalField) get} methods will throw an
    * exception.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The supported fields
+   * If the field is a {@@linkChronoField} then the query is implemented here. The supported fields
    * are: <ul> <li>{@code NANO_OF_SECOND} <li>{@code MICRO_OF_SECOND} <li>{@code MILLI_OF_SECOND}
-   * <li>{@code INSTANT_SECONDS} </ul> All other {@code ChronoField} instances will return false.
+   * <li>{@code INSTANT_SECONDS} </ul> All other {@@codeChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.isSupportedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the field is supported is determined by the field.
    *
    * @param field
@@ -397,12 +397,12 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * used to enhance the accuracy of the returned range. If it is not possible to return the range,
    * because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.rangeRefinedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
    * @param field
@@ -415,20 +415,20 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   override def range(field: TemporalField): ValueRange = super.range(field)
 
   /**
-   * Gets the value of the specified field from this instant as an {@code int}.
+   * Gets the value of the specified field from this instant as an {@@codeint} .
    *
    * This queries this instant for the value for the specified field. The returned value will always
    * be within the valid range of values for the field. If it is not possible to return the value,
    * because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time,
-   * except {@code INSTANT_SECONDS} which is too large to fit in an {@code int} and throws a {@code
-   * DateTimeException}. All other {@code ChronoField} instances will throw a {@code
+   * except {@@codeINSTANT_SECONDS} which is too large to fit in an {@@codeint} and throws a {@code
+   * DateTimeException}. All other {@@codeChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -453,18 +453,18 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
     }
 
   /**
-   * Gets the value of the specified field from this instant as a {@code long}.
+   * Gets the value of the specified field from this instant as a {@@codelong} .
    *
    * This queries this instant for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
    * thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time.
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -493,7 +493,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Gets the number of seconds from the Java epoch of 1970-01-01T00:00:00Z.
    *
    * The epoch second count is a simple incrementing count of seconds where second 0 is
-   * 1970-01-01T00:00:00Z. The nanosecond part of the day is returned by {@code getNanosOfSecond}.
+   * 1970-01-01T00:00:00Z. The nanosecond part of the day is returned by {@@codegetNanosOfSecond} .
    *
    * @return
    *   the seconds from the epoch of 1970-01-01T00:00:00Z
@@ -504,7 +504,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Gets the number of nanoseconds, later along the time-line, from the start of the second.
    *
    * The nanosecond-of-second value measures the total number of nanoseconds from the second
-   * returned by {@code getEpochSecond}.
+   * returned by {@@codegetEpochSecond} .
    *
    * @return
    *   the nanoseconds within the second, always positive, never exceeds 999,999,999
@@ -514,12 +514,12 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * Returns an adjusted copy of this instant.
    *
-   * This returns a new {@code Instant}, based on this one, with the date adjusted. The adjustment
+   * This returns a new {@@codeInstant} , based on this one, with the date adjusted. The adjustment
    * takes place using the specified adjuster strategy object. Read the documentation of the
    * adjuster to understand what adjustment will be made.
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@code this} as
+   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@@codethis} as
    * the argument.
    *
    * This instance is immutable and unaffected by this method call.
@@ -527,7 +527,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   an { @code Instant} based on { @code this} with the adjustment made, not null
+   *   an {@@codeInstant} based on {@@codethis} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -539,26 +539,26 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * Returns a copy of this instant with the specified field set to a new value.
    *
-   * This returns a new {@code Instant}, based on this one, with the value for the specified field
+   * This returns a new {@@codeInstant} , based on this one, with the value for the specified field
    * changed. If it is not possible to set the value, because the field is not supported or for some
    * other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the adjustment is implemented here. The supported
-   * fields behave as follows: <ul> <li>{@code NANO_OF_SECOND} - Returns an {@code Instant} with the
+   * If the field is a {@@linkChronoField} then the adjustment is implemented here. The supported
+   * fields behave as follows: <ul> <li>{@code NANO_OF_SECOND} - Returns an {@@codeInstant} with the
    * specified nano-of-second. The epoch-second will be unchanged. <li>{@code MICRO_OF_SECOND} -
-   * Returns an {@code Instant} with the nano-of-second replaced by the specified micro-of-second
+   * Returns an {@@codeInstant} with the nano-of-second replaced by the specified micro-of-second
    * multiplied by 1,000. The epoch-second will be unchanged. <li>{@code MILLI_OF_SECOND} - Returns
-   * an {@code Instant} with the nano-of-second replaced by the specified milli-of-second multiplied
+   * an {@@codeInstant} with the nano-of-second replaced by the specified milli-of-second multiplied
    * by 1,000,000. The epoch-second will be unchanged. <li>{@code INSTANT_SECONDS} - Returns an
-   * {@code Instant} with the specified epoch-second. The nano-of-second will be unchanged. </ul>
+   * {@@codeInstant} with the specified epoch-second. The nano-of-second will be unchanged. </ul>
    *
    * In all cases, if the new value is outside the valid range of values for the field then a {@code
    * DateTimeException} will be thrown.
    *
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.adjustInto(Temporal, long)} passing {@@codethis} as the argument.
    * In this case, the field determines whether and how to adjust the instant.
    *
    * This instance is immutable and unaffected by this method call.
@@ -568,7 +568,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   an { @code Instant} based on { @code this} with the specified field set, not null
+   *   an {@@codeInstant} based on {@@codethis} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -598,23 +598,23 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   }
 
   /**
-   * Returns a copy of this {@code Instant} truncated to the specified unit.
+   * Returns a copy of this {@@codeInstant} truncated to the specified unit.
    *
    * Truncating the instant returns a copy of the original with fields smaller than the specified
    * unit set to zero. The fields are calculated on the basis of using a UTC offset as seen in
-   * {@code toString}. For example, truncating with the {@link ChronoUnit#MINUTES MINUTES} unit will
-   * round down to the nearest minute, setting the seconds and nanoseconds to zero.
+   * {@@codetoString} . For example, truncating with the {@@linkChronoUnit#MINUTES MINUTES} unit
+   * will round down to the nearest minute, setting the seconds and nanoseconds to zero.
    *
-   * The unit must have a {@linkplain TemporalUnit#getDuration() duration} that divides into the
+   * The unit must have a {@@linkplainTemporalUnit#getDuration() duration} that divides into the
    * length of a standard day without remainder. This includes all supplied time units on {@link
-   * ChronoUnit} and {@link ChronoUnit#DAYS DAYS}. Other units throw an exception.
+   * ChronoUnit} and {@@linkChronoUnit#DAYS DAYS} . Other units throw an exception.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   an { @code Instant} based on this instant with the time truncated, not null
+   *   an {@@codeInstant} based on this instant with the time truncated, not null
    * @throws DateTimeException
    *   if the unit is invalid for truncation
    */
@@ -634,20 +634,20 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   }
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   override def plus(amount: TemporalAmount): Instant = amount.addTo(this).asInstanceOf[Instant]
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): Instant = {
     unit match {
@@ -686,7 +686,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param secondsToAdd
    *   the seconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds added, not null
+   *   an {@@codeInstant} based on this instant with the specified seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -702,7 +702,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param millisToAdd
    *   the milliseconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified milliseconds added, not null
+   *   an {@@codeInstant} based on this instant with the specified milliseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -719,7 +719,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanoseconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified nanoseconds added, not null
+   *   an {@@codeInstant} based on this instant with the specified nanoseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -737,7 +737,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanos to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds added, not null
+   *   an {@@codeInstant} based on this instant with the specified seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -755,21 +755,21 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   }
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   override def minus(amount: TemporalAmount): Instant =
     amount.subtractFrom(this).asInstanceOf[Instant]
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): Instant =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -783,7 +783,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param secondsToSubtract
    *   the seconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds subtracted, not null
+   *   an {@@codeInstant} based on this instant with the specified seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -803,8 +803,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param millisToSubtract
    *   the milliseconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified milliseconds subtracted, not
-   *   null
+   *   an {@@codeInstant} based on this instant with the specified milliseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -824,7 +823,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToSubtract
    *   the nanoseconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified nanoseconds subtracted, not null
+   *   an {@@codeInstant} based on this instant with the specified nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -839,12 +838,12 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * Queries this instant using the specified query.
    *
-   * This queries this instant using the specified query strategy object. The {@code TemporalQuery}
+   * This queries this instant using the specified query strategy object. The {@@codeTemporalQuery}
    * object defines the logic to be used to obtain the result. Read the documentation of the query
    * to understand what the result of this method will be.
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@code this}
+   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@@codethis}
    * as the argument.
    *
    * @tparam R
@@ -874,8 +873,8 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * This returns a temporal object of the same observable type as the input with the instant
    * changed to be the same as this.
    *
-   * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)} twice, passing
-   * {@link ChronoField#INSTANT_SECONDS} and {@link ChronoField#NANO_OF_SECOND} as the fields.
+   * The adjustment is equivalent to using {@@linkTemporal#with(TemporalField, long)} twice, passing
+   * {@@linkChronoField#INSTANT_SECONDS} and {@@linkChronoField#NANO_OF_SECOND} as the fields.
    *
    * In most cases, it is clearer to reverse the calling pattern by using {@link
    * Temporal#with(TemporalAdjuster)}: <pre> // these two lines are equivalent, but the second
@@ -900,31 +899,31 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Calculates the period between this instant and another instant in terms of the specified unit.
    *
    * This calculates the period between two instants in terms of a single unit. The start and end
-   * points are {@code this} and the specified instant. The result will be negative if the end is
+   * points are {@@codethis} and the specified instant. The result will be negative if the end is
    * before the start. The calculation returns a whole number, representing the number of complete
-   * units between the two instants. The {@code Temporal} passed to this method is converted to a
-   * {@code Instant} using {@link #from(TemporalAccessor)}. For example, the period in days between
-   * two dates can be calculated using {@code startInstant.until(endInstant, SECONDS)}.
+   * units between the two instants. The {@@codeTemporal} passed to this method is converted to a
+   * {@@codeInstant} using {@@link#from(TemporalAccessor)} . For example, the period in days between
+   * two dates can be calculated using {@@codestartInstant.until(endInstant, SECONDS)} .
    *
-   * This method operates in association with {@link TemporalUnit#between}. The result of this
-   * method is a {@code long} representing the amount of the specified unit. By contrast, the result
-   * of {@code between} is an object that can be used directly in addition/subtraction: <pre> long
+   * This method operates in association with {@@linkTemporalUnit#between} . The result of this
+   * method is a {@@codelong} representing the amount of the specified unit. By contrast, the result
+   * of {@@codebetween} is an object that can be used directly in addition/subtraction: <pre> long
    * period = start.until(end, SECONDS); // this method dateTime.plus(SECONDS.between(start, end));
    * // use in plus/minus </pre>
    *
-   * The calculation is implemented in this method for {@link ChronoUnit}. The units {@code NANOS},
-   * {@code MICROS}, {@code MILLIS}, {@code SECONDS}, {@code MINUTES}, {@code HOURS}, {@code
-   * HALF_DAYS} and {@code DAYS} are supported. Other {@code ChronoUnit} values will throw an
+   * The calculation is implemented in this method for {@@linkChronoUnit} . The units {@@codeNANOS}
+   * , {@@codeMICROS} , {@@codeMILLIS} , {@@codeSECONDS} , {@@codeMINUTES} , {@@codeHOURS} , {@code
+   * HALF_DAYS} and {@@codeDAYS} are supported. Other {@@codeChronoUnit} values will throw an
    * exception.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@@codeChronoUnit} , then the result of this method is obtained by
+   * invoking {@@codeTemporalUnit.between(Temporal, Temporal)} passing {@@codethis} as the first
+   * argument and the input temporal as the second argument.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date, which is converted to an { @code Instant}, not null
+   *   the end date, which is converted to an {@@codeInstant} , not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -981,9 +980,9 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   }
 
   /**
-   * Combines this instant with an offset to create an {@code OffsetDateTime}.
+   * Combines this instant with an offset to create an {@@codeOffsetDateTime} .
    *
-   * This returns an {@code OffsetDateTime} formed from this instant at the specified offset from
+   * This returns an {@@codeOffsetDateTime} formed from this instant at the specified offset from
    * UTC/Greenwich. An exception will be thrown if the instant is too large to fit into an offset
    * date-time.
    *
@@ -1000,9 +999,9 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   def atOffset(offset: ZoneOffset): OffsetDateTime = OffsetDateTime.ofInstant(this, offset)
 
   /**
-   * Combines this instant with a time-zone to create a {@code ZonedDateTime}.
+   * Combines this instant with a time-zone to create a {@@codeZonedDateTime} .
    *
-   * This returns an {@code ZonedDateTime} formed from this instant at the specified time-zone. An
+   * This returns an {@@codeZonedDateTime} formed from this instant at the specified time-zone. An
    * exception will be thrown if the instant is too large to fit into a zoned date-time.
    *
    * This method is equivalent to {@link ZonedDateTime#ofInstant(Instant, ZoneId)
@@ -1021,7 +1020,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Converts this instant to the number of milliseconds from the epoch of 1970-01-01T00:00:00Z.
    *
    * If this instant represents a point on the time-line too far in the future or past to fit in a
-   * {@code long} milliseconds, then an exception is thrown.
+   * {@@codelong} milliseconds, then an exception is thrown.
    *
    * If this instant has greater than millisecond precision, then the conversion will drop any
    * excess precision information as though the amount in nanoseconds was subject to integer
@@ -1054,7 +1053,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * Compares this instant to the specified instant.
    *
    * The comparison is based on the time-line position of the instants. It is "consistent with
-   * equals", as defined by {@link Comparable}.
+   * equals", as defined by {@@linkComparable} .
    *
    * @param otherInstant
    *   the other instant to compare to, not null
@@ -1127,7 +1126,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * A string representation of this instant using ISO-8601 representation.
    *
-   * The format used is the same as {@link DateTimeFormatter#ISO_INSTANT}.
+   * The format used is the same as {@@linkDateTimeFormatter#ISO_INSTANT} .
    *
    * @return
    *   an ISO-8601 representation of this instant, not null

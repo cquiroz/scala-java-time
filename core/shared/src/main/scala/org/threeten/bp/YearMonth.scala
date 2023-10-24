@@ -63,14 +63,14 @@ import org.threeten.bp.temporal.UnsupportedTemporalTypeException
 import org.threeten.bp.temporal.ValueRange
 
 /**
- * A year-month in the ISO-8601 calendar system, such as {@code 2007-12}.
+ * A year-month in the ISO-8601 calendar system, such as {@@code2007-12} .
  *
- * {@code YearMonth} is an immutable date-time object that represents the combination of a year and
+ * {@@codeYearMonth} is an immutable date-time object that represents the combination of a year and
  * month. Any field that can be derived from a year and month, such as quarter-of-year, can be
  * obtained.
  *
  * This class does not store or represent a day, time or time-zone. For example, the value "October
- * 2007" can be stored in a {@code YearMonth}.
+ * 2007" can be stored in a {@@codeYearMonth} .
  *
  * The ISO-8601 calendar system is the modern civil calendar system used today in most of the world.
  * It is equivalent to the proleptic Gregorian calendar system, in which today's rules for leap
@@ -92,7 +92,7 @@ object YearMonth {
   /**
    * Obtains the current year-month from the system clock in the default time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * This will query the {@@linkClock#systemDefaultZone() system clock} in the default time-zone to
    * obtain the current year-month. The zone and offset will be set based on the time-zone in the
    * clock.
    *
@@ -107,7 +107,7 @@ object YearMonth {
   /**
    * Obtains the current year-month from the system clock in the specified time-zone.
    *
-   * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current year-month.
+   * This will query the {@@linkClock#system(ZoneId) system clock} to obtain the current year-month.
    * Specifying the time-zone avoids dependence on the default time-zone.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -138,7 +138,7 @@ object YearMonth {
   }
 
   /**
-   * Obtains an instance of {@code YearMonth} from a year and month.
+   * Obtains an instance of {@@codeYearMonth} from a year and month.
    *
    * @param year
    *   the year to represent, from MIN_YEAR to MAX_YEAR
@@ -155,7 +155,7 @@ object YearMonth {
   }
 
   /**
-   * Obtains an instance of {@code YearMonth} from a year and month.
+   * Obtains an instance of {@@codeYearMonth} from a year and month.
    *
    * @param year
    *   the year to represent, from MIN_YEAR to MAX_YEAR
@@ -173,24 +173,24 @@ object YearMonth {
   }
 
   /**
-   * Obtains an instance of {@code YearMonth} from a temporal object.
+   * Obtains an instance of {@@codeYearMonth} from a temporal object.
    *
-   * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code YearMonth}.
+   * A {@@codeTemporalAccessor} represents some form of date and time information. This factory
+   * converts the arbitrary temporal object to an instance of {@@codeYearMonth} .
    *
-   * The conversion extracts the {@link ChronoField#YEAR YEAR} and {@link ChronoField#MONTH_OF_YEAR
+   * The conversion extracts the {@@linkChronoField#YEAR YEAR} and {@link ChronoField#MONTH_OF_YEAR
    * MONTH_OF_YEAR} fields. The extraction is only permitted if the temporal object has an ISO
-   * chronology, or can be converted to a {@code LocalDate}.
+   * chronology, or can be converted to a {@@codeLocalDate} .
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code YearMonth::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used in queries via method reference, {@@codeYearMonth::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the year-month, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code YearMonth}
+   *   if unable to convert to a {@@codeYearMonth}
    */
   def from(temporal: TemporalAccessor): YearMonth = {
     var _temporal = temporal
@@ -209,10 +209,10 @@ object YearMonth {
   }
 
   /**
-   * Obtains an instance of {@code YearMonth} from a text string such as {@code 2007-12}.
+   * Obtains an instance of {@@codeYearMonth} from a text string such as {@@code2007-12} .
    *
-   * The string must represent a valid year-month. The format must be {@code yyyy-MM}. Years outside
-   * the range 0000 to 9999 must be prefixed by the plus or minus symbol.
+   * The string must represent a valid year-month. The format must be {@@codeyyyy-MM} . Years
+   * outside the range 0000 to 9999 must be prefixed by the plus or minus symbol.
    *
    * @param text
    *   the text to parse such as "2007-12", not null
@@ -224,7 +224,7 @@ object YearMonth {
   def parse(text: CharSequence): YearMonth = parse(text, PARSER)
 
   /**
-   * Obtains an instance of {@code YearMonth} from a text string using a specific formatter.
+   * Obtains an instance of {@@codeYearMonth} from a text string using a specific formatter.
    *
    * The text is parsed using the formatter, returning a year-month.
    *
@@ -284,17 +284,17 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * Checks if the specified field is supported.
    *
    * This checks if this year-month can be queried for the specified field. If false, then calling
-   * the {@link #range(TemporalField) range} and {@link #get(TemporalField) get} methods will throw
+   * the {@@link#range(TemporalField) range} and {@@link#get(TemporalField) get} methods will throw
    * an exception.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time.
    * The supported fields are: <ul> <li>{@code MONTH_OF_YEAR} <li>{@code EPOCH_MONTH} <li>{@code
-   * YEAR_OF_ERA} <li>{@code YEAR} <li>{@code ERA} </ul> All other {@code ChronoField} instances
+   * YEAR_OF_ERA} <li>{@code YEAR} <li>{@code ERA} </ul> All other {@@codeChronoField} instances
    * will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.isSupportedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the field is supported is determined by the field.
    *
    * @param field
@@ -321,12 +321,12 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * used to enhance the accuracy of the returned range. If it is not possible to return the range,
    * because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.rangeRefinedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
    * @param field
@@ -347,20 +347,20 @@ final class YearMonth private (private val year: Int, private val month: Int)
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this year-month as an {@code int}.
+   * Gets the value of the specified field from this year-month as an {@@codeint} .
    *
    * This queries this year-month for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If it is not possible to return the
    * value, because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this
-   * year-month, except {@code EPOCH_MONTH} which is too large to fit in an {@code int} and throw a
-   * {@code DateTimeException}. All other {@code ChronoField} instances will throw a {@code
+   * year-month, except {@@codeEPOCH_MONTH} which is too large to fit in an {@@codeint} and throw a
+   * {@@codeDateTimeException} . All other {@@codeChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -376,18 +376,18 @@ final class YearMonth private (private val year: Int, private val month: Int)
     range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field from this year-month as a {@code long}.
+   * Gets the value of the specified field from this year-month as a {@@codelong} .
    *
    * This queries this year-month for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
    * thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this
-   * year-month. All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * year-month. All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -416,9 +416,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
   /**
    * Gets the year field.
    *
-   * This method returns the primitive {@code int} value for the year.
+   * This method returns the primitive {@@codeint} value for the year.
    *
-   * The year returned by this method is proleptic as per {@code get(YEAR)}.
+   * The year returned by this method is proleptic as per {@@codeget(YEAR)} .
    *
    * @return
    *   the year, from MIN_YEAR to MAX_YEAR
@@ -428,8 +428,8 @@ final class YearMonth private (private val year: Int, private val month: Int)
   /**
    * Gets the month-of-year field from 1 to 12.
    *
-   * This method returns the month as an {@code int} from 1 to 12. Application code is frequently
-   * clearer if the enum {@link Month} is used by calling {@link #getMonth()}.
+   * This method returns the month as an {@@codeint} from 1 to 12. Application code is frequently
+   * clearer if the enum {@@linkMonth} is used by calling {@@link#getMonth()} .
    *
    * @return
    *   the month-of-year, from 1 to 12
@@ -439,11 +439,11 @@ final class YearMonth private (private val year: Int, private val month: Int)
   def getMonthValue: Int = month
 
   /**
-   * Gets the month-of-year field using the {@code Month} enum.
+   * Gets the month-of-year field using the {@@codeMonth} enum.
    *
-   * This method returns the enum {@link Month} for the month. This avoids confusion as to what
-   * {@code int} values mean. If you need access to the primitive {@code int} value then the enum
-   * provides the {@link Month#getValue() int value}.
+   * This method returns the enum {@@linkMonth} for the month. This avoids confusion as to what
+   * {@@codeint} values mean. If you need access to the primitive {@@codeint} value then the enum
+   * provides the {@@linkMonth#getValue() int value} .
    *
    * @return
    *   the month-of-year, not null
@@ -503,7 +503,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
   /**
    * Returns an adjusted copy of this year-month.
    *
-   * This returns a new {@code YearMonth}, based on this one, with the year-month adjusted. The
+   * This returns a new {@@codeYearMonth} , based on this one, with the year-month adjusted. The
    * adjustment takes place using the specified adjuster strategy object. Read the documentation of
    * the adjuster to understand what adjustment will be made.
    *
@@ -512,7 +512,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * Earth.
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@code this} as
+   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@@codethis} as
    * the argument.
    *
    * This instance is immutable and unaffected by this method call.
@@ -520,7 +520,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code YearMonth} based on { @code this} with the adjustment made, not null
+   *   a {@@codeYearMonth} based on {@@codethis} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -532,27 +532,27 @@ final class YearMonth private (private val year: Int, private val month: Int)
   /**
    * Returns a copy of this year-month with the specified field set to a new value.
    *
-   * This returns a new {@code YearMonth}, based on this one, with the value for the specified field
-   * changed. This can be used to change any supported field, such as the year or month. If it is
-   * not possible to set the value, because the field is not supported or for some other reason, an
-   * exception is thrown.
+   * This returns a new {@@codeYearMonth} , based on this one, with the value for the specified
+   * field changed. This can be used to change any supported field, such as the year or month. If it
+   * is not possible to set the value, because the field is not supported or for some other reason,
+   * an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the adjustment is implemented here. The supported
-   * fields behave as follows: <ul> <li>{@code MONTH_OF_YEAR} - Returns a {@code YearMonth} with the
+   * If the field is a {@@linkChronoField} then the adjustment is implemented here. The supported
+   * fields behave as follows: <ul> <li>{@code MONTH_OF_YEAR} - Returns a {@@codeYearMonth} with the
    * specified month-of-year. The year will be unchanged. <li>{@code PROLEPTIC_MONTH} - Returns a
-   * {@code YearMonth} with the specified proleptic-month. This completely replaces the year and
-   * month of this object. <li>{@code YEAR_OF_ERA} - Returns a {@code YearMonth} with the specified
-   * year-of-era The month and era will be unchanged. <li>{@code YEAR} - Returns a {@code YearMonth}
+   * {@@codeYearMonth} with the specified proleptic-month. This completely replaces the year and
+   * month of this object. <li>{@code YEAR_OF_ERA} - Returns a {@@codeYearMonth} with the specified
+   * year-of-era The month and era will be unchanged. <li>{@code YEAR} - Returns a {@@codeYearMonth}
    * with the specified year. The month will be unchanged. <li>{@code ERA} - Returns a {@code
    * YearMonth} with the specified era. The month and year-of-era will be unchanged. </ul>
    *
    * In all cases, if the new value is outside the valid range of values for the field then a {@code
    * DateTimeException} will be thrown.
    *
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.adjustInto(Temporal, long)} passing {@@codethis} as the argument.
    * In this case, the field determines whether and how to adjust the instant.
    *
    * This instance is immutable and unaffected by this method call.
@@ -562,7 +562,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code YearMonth} based on { @code this} with the specified field set, not null
+   *   a {@@codeYearMonth} based on {@@codethis} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -591,14 +591,14 @@ final class YearMonth private (private val year: Int, private val month: Int)
   }
 
   /**
-   * Returns a copy of this {@code YearMonth} with the year altered.
+   * Returns a copy of this {@@codeYearMonth} with the year altered.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param year
    *   the year to set in the returned year-month, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code YearMonth} based on this year-month with the requested year, not null
+   *   a {@@codeYearMonth} based on this year-month with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -608,14 +608,14 @@ final class YearMonth private (private val year: Int, private val month: Int)
   }
 
   /**
-   * Returns a copy of this {@code YearMonth} with the month-of-year altered.
+   * Returns a copy of this {@@codeYearMonth} with the month-of-year altered.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param month
    *   the month-of-year to set in the returned year-month, from 1 (January) to 12 (December)
    * @return
-   *   a { @code YearMonth} based on this year-month with the requested month, not null
+   *   a {@@codeYearMonth} based on this year-month with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -628,16 +628,16 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * Returns a copy of this year-month with the specified period added.
    *
    * This method returns a new year-month based on this year-month with the specified period added.
-   * The adder is typically {@link org.threeten.bp.Period Period} but may be any other type
-   * implementing the {@link TemporalAmount} interface. The calculation is delegated to the
-   * specified adjuster, which typically calls back to {@link #plus(long, TemporalUnit)}.
+   * The adder is typically {@@linkorg.threeten.bp.Period Period} but may be any other type
+   * implementing the {@@linkTemporalAmount} interface. The calculation is delegated to the
+   * specified adjuster, which typically calls back to {@@link#plus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code YearMonth} based on this year-month with the addition made, not null
+   *   a {@@codeYearMonth} based on this year-month with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -646,12 +646,12 @@ final class YearMonth private (private val year: Int, private val month: Int)
   override def plus(amount: TemporalAmount): YearMonth = amount.addTo(this).asInstanceOf[YearMonth]
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): YearMonth =
     if (unit.isInstanceOf[ChronoUnit])
@@ -675,7 +675,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param yearsToAdd
    *   the years to add, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the years added, not null
+   *   a {@@codeYearMonth} based on this year-month with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -695,7 +695,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param monthsToAdd
    *   the months to add, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the months added, not null
+   *   a {@@codeYearMonth} based on this year-month with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -713,16 +713,16 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * Returns a copy of this year-month with the specified period subtracted.
    *
    * This method returns a new year-month based on this year-month with the specified period
-   * subtracted. The subtractor is typically {@link org.threeten.bp.Period Period} but may be any
-   * other type implementing the {@link TemporalAmount} interface. The calculation is delegated to
-   * the specified adjuster, which typically calls back to {@link #minus(long, TemporalUnit)}.
+   * subtracted. The subtractor is typically {@@linkorg.threeten.bp.Period Period} but may be any
+   * other type implementing the {@@linkTemporalAmount} interface. The calculation is delegated to
+   * the specified adjuster, which typically calls back to {@@link#minus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to aubtract, not null
    * @return
-   *   a { @code YearMonth} based on this year-month with the subtraction made, not null
+   *   a {@@codeYearMonth} based on this year-month with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -732,12 +732,12 @@ final class YearMonth private (private val year: Int, private val month: Int)
     amount.subtractFrom(this).asInstanceOf[YearMonth]
 
   /**
-   * {@inheritDoc}
+   * {@@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): YearMonth =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -751,7 +751,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param yearsToSubtract
    *   the years to subtract, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the years subtracted, not null
+   *   a {@@codeYearMonth} based on this year-month with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -767,7 +767,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param monthsToSubtract
    *   the months to subtract, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the months subtracted, not null
+   *   a {@@codeYearMonth} based on this year-month with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -783,7 +783,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * of the query to understand what the result of this method will be.
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@code this}
+   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@@codethis}
    * as the argument.
    *
    * @tparam R
@@ -815,9 +815,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * This returns a temporal object of the same observable type as the input with the year and month
    * changed to be the same as this.
    *
-   * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)} passing {@link
+   * The adjustment is equivalent to using {@@linkTemporal#with(TemporalField, long)} passing {@link
    * ChronoField#PROLEPTIC_MONTH} as the field. If the specified temporal object does not use the
-   * ISO calendar system then a {@code DateTimeException} is thrown.
+   * ISO calendar system then a {@@codeDateTimeException} is thrown.
    *
    * In most cases, it is clearer to reverse the calling pattern by using {@link
    * Temporal#with(TemporalAdjuster)}: <pre> // these two lines are equivalent, but the second
@@ -846,8 +846,8 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * unit.
    *
    * This calculates the period between two year-months in terms of a single unit. The start and end
-   * points are {@code this} and the specified year-month. The result will be negative if the end is
-   * before the start. The {@code Temporal} passed to this method must be a {@code YearMonth}. For
+   * points are {@@codethis} and the specified year-month. The result will be negative if the end is
+   * before the start. The {@@codeTemporal} passed to this method must be a {@@codeYearMonth} . For
    * example, the period in years between two year-months can be calculated using {@code
    * startYearMonth.until(endYearMonth, YEARS)}.
    *
@@ -855,26 +855,26 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * two year-months. For example, the period in decades between 2012-06 and 2032-05 will only be
    * one decade as it is one month short of two decades.
    *
-   * This method operates in association with {@link TemporalUnit#between}. The result of this
-   * method is a {@code long} representing the amount of the specified unit. By contrast, the result
-   * of {@code between} is an object that can be used directly in addition/subtraction:
+   * This method operates in association with {@@linkTemporalUnit#between} . The result of this
+   * method is a {@@codelong} representing the amount of the specified unit. By contrast, the result
+   * of {@@codebetween} is an object that can be used directly in addition/subtraction:
    * {{{
    * val period: Long = start.until(end, YEARS);   // this method
    * dateTime.plus(YEARS.between(start, end));     // use in plus/minus
    * }}}
    *
-   * The calculation is implemented in this method for {@link ChronoUnit}. The units {@code MONTHS},
-   * {@code YEARS}, {@code DECADES}, {@code CENTURIES}, {@code MILLENNIA} and {@code ERAS} are
-   * supported. Other {@code ChronoUnit} values will throw an exception.
+   * The calculation is implemented in this method for {@@linkChronoUnit} . The units {@@codeMONTHS}
+   * , {@@codeYEARS} , {@@codeDECADES} , {@@codeCENTURIES} , {@@codeMILLENNIA} and {@@codeERAS} are
+   * supported. Other {@@codeChronoUnit} values will throw an exception.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@@codeChronoUnit} , then the result of this method is obtained by
+   * invoking {@@codeTemporalUnit.between(Temporal, Temporal)} passing {@@codethis} as the first
+   * argument and the input temporal as the second argument.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end year-month, which is converted to a { @code YearMonth}, not null
+   *   the end year-month, which is converted to a {@@codeYearMonth} , not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -903,9 +903,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
   }
 
   /**
-   * Combines this year-month with a day-of-month to create a {@code LocalDate}.
+   * Combines this year-month with a day-of-month to create a {@@codeLocalDate} .
    *
-   * This returns a {@code LocalDate} formed from this year-month and the specified day-of-month.
+   * This returns a {@@codeLocalDate} formed from this year-month and the specified day-of-month.
    *
    * The day-of-month value must be valid for the year-month.
    *
@@ -924,9 +924,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
   def atDay(dayOfMonth: Int): LocalDate = LocalDate.of(year, month, dayOfMonth)
 
   /**
-   * Returns a {@code LocalDate} at the end of the month.
+   * Returns a {@@codeLocalDate} at the end of the month.
    *
-   * This returns a {@code LocalDate} based on this year-month. The day-of-month is set to the last
+   * This returns a {@@codeLocalDate} based on this year-month. The day-of-month is set to the last
    * valid day of the month, taking into account leap years.
    *
    * This method can be used as part of a chain to produce a date: <pre> LocalDate date =
@@ -941,7 +941,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * Compares this year-month to another year-month.
    *
    * The comparison is based first on the value of the year, then on the value of the month. It is
-   * "consistent with equals", as defined by {@link Comparable}.
+   * "consistent with equals", as defined by {@@linkComparable} .
    *
    * @param other
    *   the other year-month to compare to, not null
@@ -1002,9 +1002,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
   override def hashCode: Int = year ^ (month << 27)
 
   /**
-   * Outputs this year-month as a {@code String}, such as {@code 2007-12}.
+   * Outputs this year-month as a {@@codeString} , such as {@@code2007-12} .
    *
-   * The output will be in the format {@code yyyy-MM}:
+   * The output will be in the format {@@codeyyyy-MM} :
    *
    * @return
    *   a string representation of this year-month, not null
@@ -1023,7 +1023,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
   }
 
   /**
-   * Outputs this year-month as a {@code String} using the formatter.
+   * Outputs this year-month as a {@@codeString} using the formatter.
    *
    * This year-month will be passed to the formatter {@link
    * DateTimeFormatter#format(TemporalAccessor) print method}.

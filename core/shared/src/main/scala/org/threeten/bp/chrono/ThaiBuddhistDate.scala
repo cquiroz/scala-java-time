@@ -53,9 +53,9 @@ import org.threeten.bp.temporal.ValueRange
 object ThaiBuddhistDate {
 
   /**
-   * Obtains the current {@code ThaiBuddhistDate} from the system clock in the default time-zone.
+   * Obtains the current {@@codeThaiBuddhistDate} from the system clock in the default time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * This will query the {@@linkClock#systemDefaultZone() system clock} in the default time-zone to
    * obtain the current date.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -67,9 +67,9 @@ object ThaiBuddhistDate {
   def now: ThaiBuddhistDate = now(Clock.systemDefaultZone)
 
   /**
-   * Obtains the current {@code ThaiBuddhistDate} from the system clock in the specified time-zone.
+   * Obtains the current {@@codeThaiBuddhistDate} from the system clock in the specified time-zone.
    *
-   * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
+   * This will query the {@@linkClock#system(ZoneId) system clock} to obtain the current date.
    * Specifying the time-zone avoids dependence on the default time-zone.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -83,11 +83,11 @@ object ThaiBuddhistDate {
   def now(zone: ZoneId): ThaiBuddhistDate = now(Clock.system(zone))
 
   /**
-   * Obtains the current {@code ThaiBuddhistDate} from the specified clock.
+   * Obtains the current {@@codeThaiBuddhistDate} from the specified clock.
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@@linkplainClock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -99,10 +99,10 @@ object ThaiBuddhistDate {
   def now(clock: Clock): ThaiBuddhistDate = new ThaiBuddhistDate(LocalDate.now(clock))
 
   /**
-   * Obtains a {@code ThaiBuddhistDate} representing a date in the Thai Buddhist calendar system
+   * Obtains a {@@codeThaiBuddhistDate} representing a date in the Thai Buddhist calendar system
    * from the proleptic-year, month-of-year and day-of-month fields.
    *
-   * This returns a {@code ThaiBuddhistDate} with the specified fields. The day must be valid for
+   * This returns a {@@codeThaiBuddhistDate} with the specified fields. The day must be valid for
    * the year and month, otherwise an exception will be thrown.
    *
    * @param prolepticYear
@@ -121,24 +121,24 @@ object ThaiBuddhistDate {
     ThaiBuddhistChronology.INSTANCE.date(prolepticYear, month, dayOfMonth)
 
   /**
-   * Obtains a {@code ThaiBuddhistDate} from a temporal object.
+   * Obtains a {@@codeThaiBuddhistDate} from a temporal object.
    *
    * This obtains a date in the Thai Buddhist calendar system based on the specified temporal. A
-   * {@code TemporalAccessor} represents an arbitrary set of date and time information, which this
-   * factory converts to an instance of {@code ThaiBuddhistDate}.
+   * {@@codeTemporalAccessor} represents an arbitrary set of date and time information, which this
+   * factory converts to an instance of {@@codeThaiBuddhistDate} .
    *
-   * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
+   * The conversion typically uses the {@@linkChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code ThaiBuddhistDate::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used as a query via method reference, {@@codeThaiBuddhistDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Thai Buddhist calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ThaiBuddhistDate}
+   *   if unable to convert to a {@@codeThaiBuddhistDate}
    */
   def from(temporal: TemporalAccessor): ThaiBuddhistDate =
     ThaiBuddhistChronology.INSTANCE.date(temporal)
@@ -148,9 +148,9 @@ object ThaiBuddhistDate {
 /**
  * A date in the Thai Buddhist calendar system.
  *
- * This date operates using the {@linkplain ThaiBuddhistChronology Thai Buddhist calendar}. This
+ * This date operates using the {@@linkplainThaiBuddhistChronology Thai Buddhist calendar} . This
  * calendar system is primarily used in Thailand. Dates are aligned such that {@code 2484-01-01
- * (Buddhist)} is {@code 1941-01-01 (ISO)}.
+ * (Buddhist)} is {@@code1941-01-01 (ISO)} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *

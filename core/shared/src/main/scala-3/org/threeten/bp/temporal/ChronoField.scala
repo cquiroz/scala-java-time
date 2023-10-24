@@ -52,7 +52,7 @@ import org.threeten.bp.format.ResolverStyle
  * A standard set of fields.
  *
  * This set of fields provide field-based access to manipulate a date, time or date-time. The
- * standard set of fields can be extended by implementing {@link TemporalField}.
+ * standard set of fields can be extended by implementing {@@linkTemporalField} .
  *
  * These fields are intended to be applicable in multiple calendar systems. For example, most
  * non-ISO calendar systems define dates as a year, month and day, just with slightly different
@@ -79,8 +79,8 @@ enum ChronoField private (
    * meaning for all calendar systems.
    *
    * This field is used to represent the nano-of-second handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_MINUTE} , {@@link#SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should set as much precision as the object
@@ -98,8 +98,8 @@ enum ChronoField private (
    * field has the same meaning for all calendar systems.
    *
    * This field is used to represent the nano-of-day handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_DAY} filling unknown precision with zero.
    */
   case NANO_OF_DAY
       extends ChronoField("NanoOfDay", 1, NANOS, DAYS, ValueRange.of(0, 86400L * 1000000000L - 1))
@@ -111,8 +111,8 @@ enum ChronoField private (
    * meaning for all calendar systems.
    *
    * This field is used to represent the micro-of-second handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_MINUTE} , {@@link#SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
@@ -128,8 +128,8 @@ enum ChronoField private (
    * field has the same meaning for all calendar systems.
    *
    * This field is used to represent the micro-of-day handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_DAY} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
    * #NANO_OF_DAY} with the value multiplied by 1,000.
@@ -144,8 +144,8 @@ enum ChronoField private (
    * for all calendar systems.
    *
    * This field is used to represent the milli-of-second handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_MINUTE} , {@@link#SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
@@ -161,8 +161,8 @@ enum ChronoField private (
    * has the same meaning for all calendar systems.
    *
    * This field is used to represent the milli-of-day handling any fraction of the second.
-   * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_DAY} filling unknown precision with zero.
+   * Implementations of {@@codeTemporalAccessor} should provide a value for this field if they can
+   * return a value for {@@link#SECOND_OF_DAY} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
    * #NANO_OF_DAY} with the value multiplied by 1,000,000.
@@ -251,12 +251,12 @@ enum ChronoField private (
    * The day-of-week, such as Tuesday.
    *
    * This represents the standard concept of the day of the week. In the default ISO calendar
-   * system, this has values from Monday (1) to Sunday (7). The {@link DayOfWeek} class can be used
+   * system, this has values from Monday (1) to Sunday (7). The {@@linkDayOfWeek} class can be used
    * to interpret the result.
    *
    * Most non-ISO calendar systems also define a seven day week that aligns with ISO. Those calendar
    * systems must also use the same numbering system, from Monday (1) to Sunday (7), which allows
-   * {@code DayOfWeek} to be used.
+   * {@@codeDayOfWeek} to be used.
    *
    * Calendar systems that do not have a standard seven day week should implement this field if they
    * have a similar concept of named or numbered days within a period similar to a week. It is
@@ -414,14 +414,14 @@ enum ChronoField private (
    * The year within the era.
    *
    * This represents the concept of the year within the era. This field is typically used with
-   * {@link #ERA}.
+   * {@@link#ERA} .
    *
    * The standard mental model for a date is based on three concepts - year, month and day. These
-   * map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
+   * map onto the {@@codeYEAR} , {@@codeMONTH_OF_YEAR} and {@@codeDAY_OF_MONTH} fields. Note that
    * there is no reference to eras. The full model for a date requires four concepts - era, year,
-   * month and day. These map onto the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and
-   * {@code DAY_OF_MONTH} fields. Whether this field or {@code YEAR} is used depends on which mental
-   * model is being used. See {@link ChronoLocalDate} for more discussion on this topic.
+   * month and day. These map onto the {@@codeERA} , {@@codeYEAR_OF_ERA} , {@@codeMONTH_OF_YEAR} and
+   * {@@codeDAY_OF_MONTH} fields. Whether this field or {@@codeYEAR} is used depends on which mental
+   * model is being used. See {@@linkChronoLocalDate} for more discussion on this topic.
    *
    * In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'. The era 'CE' is
    * the one currently in use and year-of-era runs from 1 to the maximum value. The era 'BCE' is the
@@ -456,15 +456,15 @@ enum ChronoField private (
    * The proleptic year, such as 2012.
    *
    * This represents the concept of the year, counting sequentially and using negative numbers. The
-   * proleptic year is not interpreted in terms of the era. See {@link #YEAR_OF_ERA} for an example
+   * proleptic year is not interpreted in terms of the era. See {@@link#YEAR_OF_ERA} for an example
    * showing the mapping from proleptic year to year-of-era.
    *
    * The standard mental model for a date is based on three concepts - year, month and day. These
-   * map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
+   * map onto the {@@codeYEAR} , {@@codeMONTH_OF_YEAR} and {@@codeDAY_OF_MONTH} fields. Note that
    * there is no reference to eras. The full model for a date requires four concepts - era, year,
-   * month and day. These map onto the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and
-   * {@code DAY_OF_MONTH} fields. Whether this field or {@code YEAR_OF_ERA} is used depends on which
-   * mental model is being used. See {@link ChronoLocalDate} for more discussion on this topic.
+   * month and day. These map onto the {@@codeERA} , {@@codeYEAR_OF_ERA} , {@@codeMONTH_OF_YEAR} and
+   * {@@codeDAY_OF_MONTH} fields. Whether this field or {@@codeYEAR_OF_ERA} is used depends on which
+   * mental model is being used. See {@@linkChronoLocalDate} for more discussion on this topic.
    *
    * Non-ISO calendar systems should implement this field as follows. If the calendar system has
    * only two eras, before and after a fixed date, then the proleptic-year value must be the same as
@@ -484,11 +484,11 @@ enum ChronoField private (
    * The era.
    *
    * This represents the concept of the era, which is the largest division of the time-line. This
-   * field is typically used with {@link #YEAR_OF_ERA}.
+   * field is typically used with {@@link#YEAR_OF_ERA} .
    *
    * In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'. The era 'CE' is
    * the one currently in use and year-of-era runs from 1 to the maximum value. The era 'BCE' is the
-   * previous era, and the year-of-era runs backwards. See {@link #YEAR_OF_ERA} for a full example.
+   * previous era, and the year-of-era runs backwards. See {@@link#YEAR_OF_ERA} for a full example.
    *
    * Non-ISO calendar systems should implement this field to define eras. The value of the era that
    * was active on 1970-01-01 (ISO) must be assigned the value 1. Earlier eras must have
@@ -500,9 +500,9 @@ enum ChronoField private (
    * The instant epoch-seconds.
    *
    * This represents the concept of the sequential count of seconds where 1970-01-01T00:00Z (ISO) is
-   * zero. This field may be used with {@link #NANO_OF_DAY} to represent the fraction of the day.
+   * zero. This field may be used with {@@link#NANO_OF_DAY} to represent the fraction of the day.
    *
-   * An {@link Instant} represents an instantaneous point on the time-line. On their own they have
+   * An {@@linkInstant} represents an instantaneous point on the time-line. On their own they have
    * no elements which allow a local date-time to be obtained. Only when paired with an offset or
    * time-zone can the local date or time be found. This field allows the seconds part of the
    * instant to be queried.
@@ -523,10 +523,10 @@ enum ChronoField private (
    *
    * This represents the concept of the offset in seconds of local time from UTC/Greenwich.
    *
-   * A {@link ZoneOffset} represents the period of time that local time differs from UTC/Greenwich.
+   * A {@@linkZoneOffset} represents the period of time that local time differs from UTC/Greenwich.
    * This is usually a fixed number of hours and minutes. It is equivalent to the {@link
    * ZoneOffset#getTotalSeconds() total amount} of the offset in seconds. For example, during the
-   * winter Paris has an offset of {@code +01:00}, which is 3600 seconds.
+   * winter Paris has an offset of {@@code+01:00} , which is 3600 seconds.
    *
    * This field is strictly defined to have the same meaning in all calendar systems. This is
    * necessary to ensure interoperation between calendars.
@@ -575,11 +575,11 @@ enum ChronoField private (
   /**
    * Gets the range of valid values for the field.
    *
-   * All fields can be expressed as a {@code long} integer. This method returns an object that
+   * All fields can be expressed as a {@@codelong} integer. This method returns an object that
    * describes the valid range for that value.
    *
    * This method returns the range of the field in the ISO-8601 calendar system. This range may be
-   * incorrect for other calendar systems. Use {@link Chronology#range(ChronoField)} to access the
+   * incorrect for other calendar systems. Use {@@linkChronology#range(ChronoField)} to access the
    * correct range for a different calendar system.
    *
    * Note that the result only describes the minimum and maximum valid values and it is important
@@ -619,7 +619,7 @@ enum ChronoField private (
    * #range()}.
    *
    * This method checks against the range of the field in the ISO-8601 calendar system. This range
-   * may be incorrect for other calendar systems. Use {@link Chronology#range(ChronoField)} to
+   * may be incorrect for other calendar systems. Use {@@linkChronology#range(ChronoField)} to
    * access the correct range for a different calendar system.
    *
    * @param value
@@ -630,13 +630,13 @@ enum ChronoField private (
   def checkValidValue(value: Long): Long = _range.checkValidValue(value, this)
 
   /**
-   * Checks that the specified value is valid and fits in an {@code int}.
+   * Checks that the specified value is valid and fits in an {@@codeint} .
    *
    * This validates that the value is within the outer range of valid values returned by {@link
-   * #range()}. It also checks that all valid values are within the bounds of an {@code int}.
+   * #range()}. It also checks that all valid values are within the bounds of an {@@codeint} .
    *
    * This method checks against the range of the field in the ISO-8601 calendar system. This range
-   * may be incorrect for other calendar systems. Use {@link Chronology#range(ChronoField)} to
+   * may be incorrect for other calendar systems. Use {@@linkChronology#range(ChronoField)} to
    * access the correct range for a different calendar system.
    *
    * @param value

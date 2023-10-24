@@ -38,7 +38,7 @@ import org.threeten.bp.temporal.{ TemporalAccessor, TemporalField, TemporalQuery
 trait GenDateTimeTest extends AnyFunSuite with AssertionsHelper {
 
   /**
-   * Sample {@code DateTime} objects.
+   * Sample {@@codeDateTime} objects.
    *
    * @return
    *   the objects, not null

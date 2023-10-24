@@ -45,7 +45,7 @@ private object ZoneRegion {
   private lazy val PATTERN: Pattern = Pattern.compile("[A-Za-z][A-Za-z0-9~/._+-]+")
 
   /**
-   * Obtains an instance of {@code ZoneId} from an identifier.
+   * Obtains an instance of {@@codeZoneId} from an identifier.
    *
    * @param zoneId
    *   the time-zone ID, not null
@@ -85,7 +85,7 @@ private object ZoneRegion {
  * (TZDB), which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
  *
  * The region identifier, modeled by this class, is distinct from the underlying rules, modeled by
- * {@link ZoneRules}. The rules are defined by governments and change frequently. By contrast, the
+ * {@@linkZoneRules} . The rules are defined by governments and change frequently. By contrast, the
  * region identifier is well-defined and long-lived. This separation also allows rules to be shared
  * between regions if appropriate.
  *

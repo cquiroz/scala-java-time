@@ -51,12 +51,12 @@ import org.threeten.bp.temporal.UnsupportedTemporalTypeException
  * Most calendar systems have a single epoch dividing the time-line into two eras. However, some
  * calendar systems, have multiple eras, such as one for the reign of each leader. In all cases, the
  * era is conceptually the largest division of the time-line. Each chronology defines the Era's that
- * are known Eras and a {@link Chronology#eras Chrono.eras} to get the valid eras.
+ * are known Eras and a {@@linkChronology#eras Chrono.eras} to get the valid eras.
  *
  * For example, the Thai Buddhist calendar system divides time into two eras, before and after a
  * single date. By contrast, the Japanese calendar system has one era for the reign of each Emperor.
  *
- * Instances of {@code Era} may be compared using the {@code ==} operator.
+ * Instances of {@@codeEra} may be compared using the {@@code==} operator.
  *
  * <h3>Specification for implementors</h3> This interface must be implemented with care to ensure
  * other classes operate correctly. All implementations must be singletons - final, immutable and
@@ -84,7 +84,7 @@ trait Era extends TemporalAccessor with TemporalAdjuster {
    * This returns the textual name used to identify the era. The parameters control the style of the
    * returned text and the locale.
    *
-   * If no textual mapping is found then the {@link #getValue() numeric value} is returned.
+   * If no textual mapping is found then the {@@link#getValue() numeric value} is returned.
    *
    * @param style
    *   the style of the text required, not null

@@ -138,8 +138,8 @@ final class HijrahChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'Hijrah-umalqura'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@@codeChronology} . It can be used to lookup the {@code
+   * Chronology} using {@@link#of(String)} .
    *
    * @return
    *   the chronology ID - 'Hijrah-umalqura'
@@ -152,7 +152,7 @@ final class HijrahChronology private () extends Chronology with Serializable {
    * Gets the calendar type of the underlying calendar system - 'islamic-umalqura'.
    *
    * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
-   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * (LDML)</em> specification. It can be used to lookup the {@@codeChronology} using {@link
    * #of(String)}. It can also be used as part of a locale, accessible via {@link
    * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *

@@ -73,7 +73,7 @@ object TTBPDateTimeParseContext {
  * the parsed values and manage optional segments. It also provides key information to the parsing
  * methods.
  *
- * Once parsing is complete, the {@link #toBuilder()} is typically used to obtain a builder that can
+ * Once parsing is complete, the {@@link#toBuilder()} is typically used to obtain a builder that can
  * combine the separate parsed fields into meaningful values.
  *
  * <h3>Specification for implementors</h3> This class is a mutable context intended for use from a
@@ -178,7 +178,7 @@ final class TTBPDateTimeParseContext(
   def setCaseSensitive(caseSensitive: Boolean): Unit = this.caseSensitive = caseSensitive
 
   /**
-   * Helper to compare two {@code CharSequence} instances. This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@@codeCharSequence} instances. This uses {@@link#isCaseSensitive()} .
    *
    * @param cs1
    *   the first character sequence, not null
@@ -228,7 +228,7 @@ final class TTBPDateTimeParseContext(
   }
 
   /**
-   * Helper to compare two {@code char}. This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@@codechar} . This uses {@@link#isCaseSensitive()} .
    *
    * @param ch1
    *   the first character
@@ -397,7 +397,7 @@ final class TTBPDateTimeParseContext(
   def setParsedLeapSecond(): Unit = currentParsed.leapSecond = true
 
   /**
-   * Returns a {@code TemporalAccessor} that can be used to interpret the results of the parse.
+   * Returns a {@@codeTemporalAccessor} that can be used to interpret the results of the parse.
    *
    * @return
    *   an accessor with the results of the parse, not null
@@ -459,11 +459,11 @@ final class TTBPDateTimeParseContext(
         super.query(query)
 
     /**
-     * Returns a {@code DateTimeBuilder} that can be used to interpret the results of the parse.
+     * Returns a {@@codeDateTimeBuilder} that can be used to interpret the results of the parse.
      *
      * This method is typically used once parsing is complete to obtain the parsed data. Parsing
      * will typically result in separate fields, such as year, month and day. The returned builder
-     * can be used to combine the parsed data into meaningful objects such as {@code LocalDate},
+     * can be used to combine the parsed data into meaningful objects such as {@@codeLocalDate} ,
      * potentially applying complex processing to handle invalid parsed data.
      *
      * @return

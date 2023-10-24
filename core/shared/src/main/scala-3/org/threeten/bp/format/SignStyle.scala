@@ -35,7 +35,7 @@ package org.threeten.bp.format
  * Enumeration of ways to handle the positive/negative sign.
  *
  * The formatting engine allows the positive and negative signs of numbers to be controlled using
- * this enum. See {@link DateTimeFormatterBuilder} for usage.
+ * this enum. See {@@linkDateTimeFormatterBuilder} for usage.
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
  */

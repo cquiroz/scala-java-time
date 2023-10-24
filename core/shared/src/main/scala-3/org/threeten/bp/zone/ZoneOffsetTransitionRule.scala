@@ -60,15 +60,15 @@ object ZoneOffsetTransitionRule {
   /**
    * Obtains an instance defining the yearly rule to create transitions between two offsets.
    *
-   * Applications should normally obtain an instance from {@link ZoneRules}. This factory is only
-   * intended for use when creating {@link ZoneRules}.
+   * Applications should normally obtain an instance from {@@linkZoneRules} . This factory is only
+   * intended for use when creating {@@linkZoneRules} .
    *
    * @param month
    *   the month of the month-day of the first day of the cutover week, not null
    * @param dayOfMonthIndicator
    *   the day of the month-day of the cutover week, positive if the week is that day or later,
    *   negative if the week is that day or earlier, counting from the last day of the month, from
-   * -28 to 31 excluding 0
+   *   -28 to 31 excluding 0
    * @param dayOfWeek
    *   the required day-of-week, null if the month-day should not be changed
    * @param time
@@ -262,8 +262,8 @@ final class ZoneOffsetTransitionRule private[zone] (
   /**
    * The day-of-month of the month-day of the cutover week. If positive, it is the start of the week
    * where the cutover can occur. If negative, it represents the end of the week where cutover can
-   * occur. The value is the number of days from the end of the month, such that {@code -1} is the
-   * last day of the month, {@code -2} is the second to last day, and so on.
+   * occur. The value is the number of days from the end of the month, such that {@@code-1} is the
+   * last day of the month, {@@code-2} is the second to last day, and so on.
    */
   private val dom: Byte = dayOfMonthIndicator.toByte
 
@@ -293,7 +293,7 @@ final class ZoneOffsetTransitionRule private[zone] (
    * treated as 1st March in non-leap years.
    *
    * If the value is negative, then it represents the number of days back from the end of the month
-   * where {@code -1} is the last day of the month. In this case, the day identified is the latest
+   * where {@@code-1} is the last day of the month. In this case, the day identified is the latest
    * possible date that the transition can be.
    *
    * @return

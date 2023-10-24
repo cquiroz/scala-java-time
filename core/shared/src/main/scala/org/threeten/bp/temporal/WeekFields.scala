@@ -84,7 +84,7 @@ object WeekFields {
   lazy val SUNDAY_START: WeekFields = WeekFields.of(DayOfWeek.SUNDAY, 1)
 
   /**
-   * Obtains an instance of {@code WeekFields} appropriate for a locale.
+   * Obtains an instance of {@@codeWeekFields} appropriate for a locale.
    *
    * This will look up appropriate values from the provider of localization data.
    *
@@ -104,16 +104,16 @@ object WeekFields {
   }
 
   /**
-   * Obtains an instance of {@code WeekFields} from the first day-of-week and minimal days.
+   * Obtains an instance of {@@codeWeekFields} from the first day-of-week and minimal days.
    *
-   * The first day-of-week defines the ISO {@code DayOfWeek} that is day 1 of the week. The minimal
+   * The first day-of-week defines the ISO {@@codeDayOfWeek} that is day 1 of the week. The minimal
    * number of days in the first week defines how many days must be present in a month or year,
    * starting from the first day-of-week, before the week is counted as the first week. A value of 1
    * will count the first day of the month or year as part of the first week, whereas a value of 7
    * will require the whole seven days to be in the new month or year.
    *
-   * WeekFields instances are singletons; for each unique combination of {@code firstDayOfWeek} and
-   * {@code minimalDaysInFirstWeek} the the same instance will be returned.
+   * WeekFields instances are singletons; for each unique combination of {@@codefirstDayOfWeek} and
+   * {@@codeminimalDaysInFirstWeek} the the same instance will be returned.
    *
    * @param firstDayOfWeek
    *   the first day of the week, not null
@@ -327,7 +327,7 @@ object WeekFields {
      * Returns the week number computed from the reference day and reference dayOfWeek.
      *
      * @param offset
-     *   the offset to align a date with the start of week from { @link #startOfWeekOffset}.
+     *   the offset to align a date with the start of week from {@@link#startOfWeekOffset} .
      * @param day
      *   the day for which to compute the week number
      * @return
@@ -555,16 +555,16 @@ object WeekFields {
  *
  * A standard week is seven days long, but cultures have different definitions for some other
  * aspects of a week. This class represents the definition of the week, for the purpose of providing
- * {@link TemporalField} instances.
+ * {@@linkTemporalField} instances.
  *
- * WeekFields provides three fields, {@link #dayOfWeek()}, {@link #weekOfMonth()}, and {@link
- * #weekOfYear()} that provide access to the values from any {@link Temporal temporal object}.
+ * WeekFields provides three fields, {@@link#dayOfWeek()} , {@@link#weekOfMonth()} , and {@link
+ * #weekOfYear()} that provide access to the values from any {@@linkTemporal temporal object} .
  *
  * The computations for day-of-week, week-of-month, and week-of-year are based on the {@link
- * ChronoField#YEAR proleptic-year}, {@link ChronoField#MONTH_OF_YEAR month-of-year}, {@link
- * ChronoField#DAY_OF_MONTH day-of-month}, and {@link ChronoField#DAY_OF_WEEK ISO day-of-week} which
- * are based on the {@link ChronoField#EPOCH_DAY epoch-day} and the chronology. The values may not
- * be aligned with the {@link ChronoField#YEAR_OF_ERA year-of-Era} depending on the Chronology. A
+ * ChronoField#YEAR proleptic-year}, {@@linkChronoField#MONTH_OF_YEAR month-of-year} , {@link
+ * ChronoField#DAY_OF_MONTH day-of-month}, and {@@linkChronoField#DAY_OF_WEEK ISO day-of-week} which
+ * are based on the {@@linkChronoField#EPOCH_DAY epoch-day} and the chronology. The values may not
+ * be aligned with the {@@linkChronoField#YEAR_OF_ERA year-of-Era} depending on the Chronology. A
  * week is defined by: <ul> <li>The first day-of-week. For example, the ISO-8601 standard considers
  * Monday to be the first day-of-week. <li>The minimal number of days in the first week. For
  * example, the ISO-8601 standard counts the first week as needing at least 4 days. </ul><p>
@@ -609,17 +609,17 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
     throw new IllegalArgumentException("Minimal number of days is invalid")
 
   /**
-   * Returns a field to access the day of week based on this {@code WeekFields}.
+   * Returns a field to access the day of week based on this {@@codeWeekFields} .
    *
-   * This is similar to {@link ChronoField#DAY_OF_WEEK} but uses values for the day-of-week based on
-   * this {@code WeekFields}. The days are numbered from 1 to 7 where the {@link
+   * This is similar to {@@linkChronoField#DAY_OF_WEEK} but uses values for the day-of-week based on
+   * this {@@codeWeekFields} . The days are numbered from 1 to 7 where the {@link
    * #getFirstDayOfWeek() first day-of-week} is assigned the value 1.
    *
    * For example, if the first day-of-week is Sunday, then that will have the value 1, with other
    * days ranging from Monday as 2 to Saturday as 7.
    *
    * In the resolving phase of parsing, a localized day-of-week will be converted to a standardized
-   * {@code ChronoField} day-of-week. The day-of-week must be in the valid range 1 to 7. Other
+   * {@@codeChronoField} day-of-week. The day-of-week must be in the valid range 1 to 7. Other
    * fields in this class build dates using the standardized day-of-week.
    *
    * @return
@@ -629,14 +629,14 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
   val dayOfWeek: TemporalField = WeekFields.ComputedDayOfField.ofDayOfWeekField(this)
 
   /**
-   * Returns a field to access the week of month based on this {@code WeekFields}.
+   * Returns a field to access the week of month based on this {@@codeWeekFields} .
    *
    * This represents the concept of the count of weeks within the month where weeks start on a fixed
-   * day-of-week, such as Monday. This field is typically used with {@link WeekFields#dayOfWeek()}.
+   * day-of-week, such as Monday. This field is typically used with {@@linkWeekFields#dayOfWeek()} .
    *
-   * Week one (1) is the week starting on the {@link WeekFields#getFirstDayOfWeek} where there are
-   * at least {@link WeekFields#getMinimalDaysInFirstWeek()} days in the month. Thus, week one may
-   * start up to {@code minDays} days before the start of the month. If the first week starts after
+   * Week one (1) is the week starting on the {@@linkWeekFields#getFirstDayOfWeek} where there are
+   * at least {@@linkWeekFields#getMinimalDaysInFirstWeek()} days in the month. Thus, week one may
+   * start up to {@@codeminDays} days before the start of the month. If the first week starts after
    * the start of the month then the period before is week zero (0).
    *
    * For example:<br>
@@ -654,15 +654,15 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
    * In the resolving phase of parsing, a date can be created from a year, week-of-month,
    * month-of-year and day-of-week.
    *
-   * In {@linkplain ResolverStyle#STRICT strict mode}, all four fields are validated against their
+   * In {@@linkplainResolverStyle#STRICT strict mode} , all four fields are validated against their
    * range of valid values. The week-of-month field is validated to ensure that the resulting month
    * is the month requested.
    *
-   * In {@linkplain ResolverStyle#SMART smart mode}, all four fields are validated against their
+   * In {@@linkplainResolverStyle#SMART smart mode} , all four fields are validated against their
    * range of valid values. The week-of-month field is validated from 0 to 6, meaning that the
    * resulting date can be in a different month to that specified.
    *
-   * In {@linkplain ResolverStyle#LENIENT lenient mode}, the year and day-of-week are validated
+   * In {@@linkplainResolverStyle#LENIENT lenient mode} , the year and day-of-week are validated
    * against the range of valid values. The resulting date is calculated equivalent to the following
    * four stage approach. First, create a date on the first day of the first week of January in the
    * requested year. Then take the month-of-year, subtract one, and add the amount in months to the
@@ -676,14 +676,14 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
   val weekOfMonth: TemporalField = WeekFields.ComputedDayOfField.ofWeekOfMonthField(this)
 
   /**
-   * Returns a field to access the week of year based on this {@code WeekFields}.
+   * Returns a field to access the week of year based on this {@@codeWeekFields} .
    *
    * This represents the concept of the count of weeks within the year where weeks start on a fixed
-   * day-of-week, such as Monday. This field is typically used with {@link WeekFields#dayOfWeek()}.
+   * day-of-week, such as Monday. This field is typically used with {@@linkWeekFields#dayOfWeek()} .
    *
-   * Week one(1) is the week starting on the {@link WeekFields#getFirstDayOfWeek} where there are at
-   * least {@link WeekFields#getMinimalDaysInFirstWeek()} days in the year. Thus, week one may start
-   * up to {@code minDays} days before the start of the year. If the first week starts after the
+   * Week one(1) is the week starting on the {@@linkWeekFields#getFirstDayOfWeek} where there are at
+   * least {@@linkWeekFields#getMinimalDaysInFirstWeek()} days in the year. Thus, week one may start
+   * up to {@@codeminDays} days before the start of the year. If the first week starts after the
    * start of the year then the period before is week zero (0).
    *
    * For example:<br>
@@ -701,15 +701,15 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
    * In the resolving phase of parsing, a date can be created from a year, week-of-year and
    * day-of-week.
    *
-   * In {@linkplain ResolverStyle#STRICT strict mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#STRICT strict mode} , all three fields are validated against their
    * range of valid values. The week-of-year field is validated to ensure that the resulting year is
    * the year requested.
    *
-   * In {@linkplain ResolverStyle#SMART smart mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#SMART smart mode} , all three fields are validated against their
    * range of valid values. The week-of-year field is validated from 0 to 54, meaning that the
    * resulting date can be in a different year to that specified.
    *
-   * In {@linkplain ResolverStyle#LENIENT lenient mode}, the year and day-of-week are validated
+   * In {@@linkplainResolverStyle#LENIENT lenient mode} , the year and day-of-week are validated
    * against the range of valid values. The resulting date is calculated equivalent to the following
    * three stage approach. First, create a date on the first day of the first week in the requested
    * year. Then take the week-of-year, subtract one, and add the amount in weeks to the date.
@@ -722,14 +722,14 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
   val weekOfYear: TemporalField = WeekFields.ComputedDayOfField.ofWeekOfYearField(this)
 
   /**
-   * Returns a field to access the week of a week-based-year based on this {@code WeekFields}.
+   * Returns a field to access the week of a week-based-year based on this {@@codeWeekFields} .
    *
    * This represents the concept of the count of weeks within the year where weeks start on a fixed
    * day-of-week, such as Monday and each week belongs to exactly one year. This field is typically
-   * used with {@link WeekFields#dayOfWeek()} and {@link WeekFields#weekBasedYear()}.
+   * used with {@@linkWeekFields#dayOfWeek()} and {@@linkWeekFields#weekBasedYear()} .
    *
-   * Week one(1) is the week starting on the {@link WeekFields#getFirstDayOfWeek} where there are at
-   * least {@link WeekFields#getMinimalDaysInFirstWeek()} days in the year. If the first week starts
+   * Week one(1) is the week starting on the {@@linkWeekFields#getFirstDayOfWeek} where there are at
+   * least {@@linkWeekFields#getMinimalDaysInFirstWeek()} days in the year. If the first week starts
    * after the start of the year then the period before is in the last week of the previous year.
    *
    * For example:<br>
@@ -746,15 +746,15 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
    * In the resolving phase of parsing, a date can be created from a week-based-year, week-of-year
    * and day-of-week.
    *
-   * In {@linkplain ResolverStyle#STRICT strict mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#STRICT strict mode} , all three fields are validated against their
    * range of valid values. The week-of-year field is validated to ensure that the resulting
    * week-based-year is the week-based-year requested.
    *
-   * In {@linkplain ResolverStyle#SMART smart mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#SMART smart mode} , all three fields are validated against their
    * range of valid values. The week-of-week-based-year field is validated from 1 to 53, meaning
    * that the resulting date can be in the following week-based-year to that specified.
    *
-   * In {@linkplain ResolverStyle#LENIENT lenient mode}, the year and day-of-week are validated
+   * In {@@linkplainResolverStyle#LENIENT lenient mode} , the year and day-of-week are validated
    * against the range of valid values. The resulting date is calculated equivalent to the following
    * three stage approach. First, create a date on the first day of the first week in the requested
    * week-based-year. Then take the week-of-week-based-year, subtract one, and add the amount in
@@ -768,14 +768,14 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
     WeekFields.ComputedDayOfField.ofWeekOfWeekBasedYearField(this)
 
   /**
-   * Returns a field to access the year of a week-based-year based on this {@code WeekFields}.
+   * Returns a field to access the year of a week-based-year based on this {@@codeWeekFields} .
    *
    * This represents the concept of the year where weeks start on a fixed day-of-week, such as
    * Monday and each week belongs to exactly one year. This field is typically used with {@link
-   * WeekFields#dayOfWeek()} and {@link WeekFields#weekOfWeekBasedYear()}.
+   * WeekFields#dayOfWeek()} and {@@linkWeekFields#weekOfWeekBasedYear()} .
    *
-   * Week one(1) is the week starting on the {@link WeekFields#getFirstDayOfWeek} where there are at
-   * least {@link WeekFields#getMinimalDaysInFirstWeek()} days in the year. Thus, week one may start
+   * Week one(1) is the week starting on the {@@linkWeekFields#getFirstDayOfWeek} where there are at
+   * least {@@linkWeekFields#getMinimalDaysInFirstWeek()} days in the year. Thus, week one may start
    * before the start of the year. If the first week starts after the start of the year then the
    * period before is in the last week of the previous year.
    *
@@ -784,15 +784,15 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
    * In the resolving phase of parsing, a date can be created from a week-based-year, week-of-year
    * and day-of-week.
    *
-   * In {@linkplain ResolverStyle#STRICT strict mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#STRICT strict mode} , all three fields are validated against their
    * range of valid values. The week-of-year field is validated to ensure that the resulting
    * week-based-year is the week-based-year requested.
    *
-   * In {@linkplain ResolverStyle#SMART smart mode}, all three fields are validated against their
+   * In {@@linkplainResolverStyle#SMART smart mode} , all three fields are validated against their
    * range of valid values. The week-of-week-based-year field is validated from 1 to 53, meaning
    * that the resulting date can be in the following week-based-year to that specified.
    *
-   * In {@linkplain ResolverStyle#LENIENT lenient mode}, the year and day-of-week are validated
+   * In {@@linkplainResolverStyle#LENIENT lenient mode} , the year and day-of-week are validated
    * against the range of valid values. The resulting date is calculated equivalent to the following
    * three stage approach. First, create a date on the first day of the first week in the requested
    * week-based-year. Then take the week-of-week-based-year, subtract one, and add the amount in
@@ -829,7 +829,7 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
   def getMinimalDaysInFirstWeek: Int = minimalDays
 
   /**
-   * Checks if this {@code WeekFields} is equal to the specified object.
+   * Checks if this {@@codeWeekFields} is equal to the specified object.
    *
    * The comparison is based on the entire state of the rules, which is the first day-of-week and
    * minimal days.
@@ -846,7 +846,7 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
     }
 
   /**
-   * A hash code for this {@code WeekFields}.
+   * A hash code for this {@@codeWeekFields} .
    *
    * @return
    *   a suitable hash code
@@ -854,7 +854,7 @@ final class WeekFields private (private val firstDayOfWeek: DayOfWeek, private v
   override def hashCode: Int = firstDayOfWeek.ordinal * 7 + minimalDays
 
   /**
-   * A string representation of this {@code WeekFields} instance.
+   * A string representation of this {@@codeWeekFields} instance.
    *
    * @return
    *   the string representation, not null

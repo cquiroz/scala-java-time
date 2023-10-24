@@ -47,7 +47,7 @@ object ThaiBuddhistEra {
   lazy val values: Array[ThaiBuddhistEra] = Array(BEFORE_BE, BE)
 
   /**
-   * Obtains an instance of {@code ThaiBuddhistEra} from a value.
+   * Obtains an instance of {@@codeThaiBuddhistEra} from a value.
    *
    * The current era (from ISO year -543 onwards) has the value 1 The previous era has the value 0.
    *

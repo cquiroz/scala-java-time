@@ -55,9 +55,9 @@ object JapaneseDate {
   private[chrono] val MIN_DATE: LocalDate = LocalDate.of(1873, 1, 1)
 
   /**
-   * Obtains the current {@code JapaneseDate} from the system clock in the default time-zone.
+   * Obtains the current {@@codeJapaneseDate} from the system clock in the default time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * This will query the {@@linkClock#systemDefaultZone() system clock} in the default time-zone to
    * obtain the current date.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -69,9 +69,9 @@ object JapaneseDate {
   def now: JapaneseDate = now(Clock.systemDefaultZone)
 
   /**
-   * Obtains the current {@code JapaneseDate} from the system clock in the specified time-zone.
+   * Obtains the current {@@codeJapaneseDate} from the system clock in the specified time-zone.
    *
-   * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
+   * This will query the {@@linkClock#system(ZoneId) system clock} to obtain the current date.
    * Specifying the time-zone avoids dependence on the default time-zone.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -85,11 +85,11 @@ object JapaneseDate {
   def now(zone: ZoneId): JapaneseDate = now(Clock.system(zone))
 
   /**
-   * Obtains the current {@code JapaneseDate} from the specified clock.
+   * Obtains the current {@@codeJapaneseDate} from the specified clock.
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@@linkplainClock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -101,10 +101,10 @@ object JapaneseDate {
   def now(clock: Clock): JapaneseDate = new JapaneseDate(LocalDate.now(clock))
 
   /**
-   * Obtains a {@code JapaneseDate} representing a date in the Japanese calendar system from the
+   * Obtains a {@@codeJapaneseDate} representing a date in the Japanese calendar system from the
    * era, year-of-era, month-of-year and day-of-month fields.
    *
-   * This returns a {@code JapaneseDate} with the specified fields. The day must be valid for the
+   * This returns a {@@codeJapaneseDate} with the specified fields. The day must be valid for the
    * year and month, otherwise an exception will be thrown.
    *
    * The Japanese month and day-of-month are the same as those in the ISO calendar system. They are
@@ -140,10 +140,10 @@ object JapaneseDate {
   }
 
   /**
-   * Obtains a {@code JapaneseDate} representing a date in the Japanese calendar system from the
+   * Obtains a {@@codeJapaneseDate} representing a date in the Japanese calendar system from the
    * era, year-of-era and day-of-year fields.
    *
-   * This returns a {@code JapaneseDate} with the specified fields. The day must be valid for the
+   * This returns a {@@codeJapaneseDate} with the specified fields. The day must be valid for the
    * year, otherwise an exception will be thrown. The Japanese day-of-year is reset when the era
    * changes.
    *
@@ -180,10 +180,10 @@ object JapaneseDate {
   }
 
   /**
-   * Obtains a {@code JapaneseDate} representing a date in the Japanese calendar system from the
+   * Obtains a {@@codeJapaneseDate} representing a date in the Japanese calendar system from the
    * proleptic-year, month-of-year and day-of-month fields.
    *
-   * This returns a {@code JapaneseDate} with the specified fields. The day must be valid for the
+   * This returns a {@@codeJapaneseDate} with the specified fields. The day must be valid for the
    * year and month, otherwise an exception will be thrown.
    *
    * The Japanese proleptic year, month and day-of-month are the same as those in the ISO calendar
@@ -205,24 +205,24 @@ object JapaneseDate {
     new JapaneseDate(LocalDate.of(prolepticYear, month, dayOfMonth))
 
   /**
-   * Obtains a {@code JapaneseDate} from a temporal object.
+   * Obtains a {@@codeJapaneseDate} from a temporal object.
    *
    * This obtains a date in the Japanese calendar system based on the specified temporal. A {@code
    * TemporalAccessor} represents an arbitrary set of date and time information, which this factory
-   * converts to an instance of {@code JapaneseDate}.
+   * converts to an instance of {@@codeJapaneseDate} .
    *
-   * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
+   * The conversion typically uses the {@@linkChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code JapaneseDate::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used as a query via method reference, {@@codeJapaneseDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Japanese calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code JapaneseDate}
+   *   if unable to convert to a {@@codeJapaneseDate}
    */
   def from(temporal: TemporalAccessor): JapaneseDate = JapaneseChronology.INSTANCE.date(temporal)
 
@@ -231,7 +231,7 @@ object JapaneseDate {
 /**
  * A date in the Japanese Imperial calendar system.
  *
- * This date operates using the {@linkplain JapaneseChronology Japanese Imperial calendar}. This
+ * This date operates using the {@@linkplainJapaneseChronology Japanese Imperial calendar} . This
  * calendar system is primarily used in Japan.
  *
  * The Japanese Imperial calendar system is the same as the ISO calendar system apart from the
@@ -241,17 +241,17 @@ object JapaneseDate {
  * supported.
  *
  * For example, the Japanese year "Heisei 24" corresponds to ISO year "2012".<br> Calling {@code
- * japaneseDate.get(YEAR_OF_ERA)} will return 24.<br> Calling {@code japaneseDate.get(YEAR)} will
- * return 2012.<br> Calling {@code japaneseDate.get(ERA)} will return 2, corresponding to {@code
+ * japaneseDate.get(YEAR_OF_ERA)} will return 24.<br> Calling {@@codejapaneseDate.get(YEAR)} will
+ * return 2012.<br> Calling {@@codejapaneseDate.get(ERA)} will return 2, corresponding to {@code
  * JapaneseChEra.HEISEI}.<br>
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
  * @constructor
- *   Constructs a {@code JapaneseDate}.
+ *   Constructs a {@@codeJapaneseDate} .
  *
- * This constructor does NOT validate the given parameters, and {@code era} and {@code year} must
- * agree with {@code isoDate}.
+ * This constructor does NOT validate the given parameters, and {@@codeera} and {@@codeyear} must
+ * agree with {@@codeisoDate} .
  * @param era
  *   the era, validated not null
  * @param yearOfEra
@@ -298,17 +298,17 @@ final class JapaneseDate private[chrono] (
    * Checks if the specified field is supported.
    *
    * This checks if this date can be queried for the specified field. If false, then calling the
-   * {@link #range(TemporalField) range} and {@link #get(TemporalField) get} methods will throw an
+   * {@@link#range(TemporalField) range} and {@@link#get(TemporalField) get} methods will throw an
    * exception.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The supported fields
+   * If the field is a {@@linkChronoField} then the query is implemented here. The supported fields
    * are: <ul> <li>{@code DAY_OF_WEEK} <li>{@code DAY_OF_MONTH} <li>{@code DAY_OF_YEAR} <li>{@code
    * EPOCH_DAY} <li>{@code MONTH_OF_YEAR} <li>{@code PROLEPTIC_MONTH} <li>{@code YEAR_OF_ERA}
-   * <li>{@code YEAR} <li>{@code ERA} </ul> All other {@code ChronoField} instances will return
+   * <li>{@code YEAR} <li>{@code ERA} </ul> All other {@@codeChronoField} instances will return
    * false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.isSupportedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the field is supported is determined by the field.
    *
    * @param field
@@ -418,9 +418,9 @@ final class JapaneseDate private[chrono] (
    * @param yearOfEra
    *   the year-of-era to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year, never null
+   *   a {@@codeJapaneseDate} based on this date with the requested year, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@@codeyear} is invalid
    */
   private def withYear(era: JapaneseEra, yearOfEra: Int): JapaneseDate = {
     val year: Int = JapaneseChronology.INSTANCE.prolepticYear(era, yearOfEra)
@@ -438,9 +438,9 @@ final class JapaneseDate private[chrono] (
    * @param year
    *   the year to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year-of-era, never null
+   *   a {@@codeJapaneseDate} based on this date with the requested year-of-era, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@@codeyear} is invalid
    */
   private def withYear(year: Int): JapaneseDate = withYear(getEra, year)
 

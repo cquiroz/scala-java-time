@@ -114,7 +114,7 @@ object ValueRange {
 /**
  * The range of valid values for a date-time field.
  *
- * All {@link TemporalField} instances have a valid range of values. For example, the ISO
+ * All {@@linkTemporalField} instances have a valid range of values. For example, the ISO
  * day-of-month runs from 1 to somewhere between 28 and 31. This class captures that valid range.
  *
  * It is important to be aware of the limitations of this class. Only the minimum and maximum values
@@ -199,18 +199,18 @@ final class ValueRange private (
   def getMaximum: Long = maxLargest
 
   /**
-   * Checks if all values in the range fit in an {@code int}.
+   * Checks if all values in the range fit in an {@@codeint} .
    *
-   * This checks that all valid values are within the bounds of an {@code int}.
+   * This checks that all valid values are within the bounds of an {@@codeint} .
    *
-   * For example, the ISO month-of-year has values from 1 to 12, which fits in an {@code int}. By
+   * For example, the ISO month-of-year has values from 1 to 12, which fits in an {@@codeint} . By
    * comparison, ISO nano-of-day runs from 1 to 86,400,000,000,000 which does not fit in an {@code
    * int}.
    *
-   * This implementation uses {@link #getMinimum()} and {@link #getMaximum()}.
+   * This implementation uses {@@link#getMinimum()} and {@@link#getMaximum()} .
    *
    * @return
-   *   true if a valid value always fits in an { @code int}
+   *   true if a valid value always fits in an {@@codeint}
    */
   def isIntValue: Boolean = getMinimum >= Int.MinValue && getMaximum <= Int.MaxValue
 
@@ -230,12 +230,12 @@ final class ValueRange private (
    * Checks if the value is within the valid range and that all values in the range fit in an {@code
    * int}.
    *
-   * This method combines {@link #isIntValue()} and {@link #isValidValue(long)}.
+   * This method combines {@@link#isIntValue()} and {@@link#isValidValue(long)} .
    *
    * @param value
    *   the value to check
    * @return
-   *   true if the value is valid and fits in an { @code int}
+   *   true if the value is valid and fits in an {@@codeint}
    */
   def isValidIntValue(value: Long): Boolean = isIntValue && isValidValue(value)
 
@@ -263,10 +263,10 @@ final class ValueRange private (
       value
 
   /**
-   * Checks that the specified value is valid and fits in an {@code int}.
+   * Checks that the specified value is valid and fits in an {@@codeint} .
    *
    * This validates that the value is within the valid range of values and that all valid values are
-   * within the bounds of an {@code int}. The field is only used to improve the error message.
+   * within the bounds of an {@@codeint} . The field is only used to improve the error message.
    *
    * @param value
    *   the value to check
@@ -286,7 +286,7 @@ final class ValueRange private (
    * Checks if this range is equal to another range.
    *
    * The comparison is based on the four values, minimum, largest minimum, smallest maximum and
-   * maximum. Only objects of type {@code ValueRange} are compared, other types return false.
+   * maximum. Only objects of type {@@codeValueRange} are compared, other types return false.
    *
    * @param obj
    *   the object to check, null returns false
@@ -314,7 +314,7 @@ final class ValueRange private (
   }
 
   /**
-   * Outputs this range as a {@code String}.
+   * Outputs this range as a {@@codeString} .
    *
    * The format will be '{min}/{largestMin} - {smallestMax}/{max}', where the largestMin or
    * smallestMax sections may be omitted, together with associated slash, if they are the same as

@@ -36,10 +36,10 @@ import org.threeten.bp.DateTimeException
 object IsoEra {
 
   /**
-   * Obtains an instance of {@code IsoEra} from an {@code int} value.
+   * Obtains an instance of {@@codeIsoEra} from an {@@codeint} value.
    *
-   * {@code IsoEra} is an enum representing the ISO eras of BCE/CE. This factory allows the enum to
-   * be obtained from the {@code int} value.
+   * {@@codeIsoEra} is an enum representing the ISO eras of BCE/CE. This factory allows the enum to
+   * be obtained from the {@@codeint} value.
    *
    * @param era
    *   the BCE/CE value to represent, from 0 (BCE) to 1 (CE)
@@ -63,8 +63,8 @@ object IsoEra {
  * \- 'Current era' (CE) for years from 0001-01-01 (ISO) and 'Before current era' (BCE) for years
  * before that.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code IsoEra}. Use
- * {@code getValue()} instead.</b>
+ * <b>Do not use {@@codeordinal()} to obtain the numeric representation of {@@codeIsoEra} . Use
+ * {@@codegetValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
  */
@@ -73,19 +73,19 @@ enum IsoEra(name: String, ordinal: Int) extends java.lang.Enum[IsoEra] with Era 
   /**
    * The singleton instance for the era BCE, 'Before Current Era'. The 'ISO' part of the name
    * emphasizes that this differs from the BCE era in the Gregorian calendar system. This has the
-   * numeric value of {@code 0}.
+   * numeric value of {@@code0} .
    */
   case BCE extends IsoEra("BCE", 0)
 
   /**
    * The singleton instance for the era CE, 'Current Era'. The 'ISO' part of the name emphasizes
    * that this differs from the CE era in the Gregorian calendar system. This has the numeric value
-   * of {@code 1}.
+   * of {@@code1} .
    */
   case CE extends IsoEra("CE", 1)
 
   /**
-   * Gets the numeric era {@code int} value.
+   * Gets the numeric era {@@codeint} value.
    *
    * The era BCE has the value 0, while the era CE has the value 1.
    *

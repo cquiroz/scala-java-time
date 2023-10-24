@@ -38,19 +38,19 @@ package org.threeten.bp.temporal
  * This is the base interface type for amounts of time. An amount is distinct from a date or
  * time-of-day in that it is not tied to any specific point on the time-line.
  *
- * The amount can be thought of as a Map of {@code TemporalUnit} to long, exposed via {@link
- * #getUnits()} and {@link #get(TemporalUnit)}. A simple case might have a single unit-value pair,
+ * The amount can be thought of as a Map of {@@codeTemporalUnit} to long, exposed via {@link
+ * #getUnits()} and {@@link#get(TemporalUnit)} . A simple case might have a single unit-value pair,
  * such as "6 hours". A more complex case may have multiple unit-value pairs, such as "7 years, 3
  * months and 5 days".
  *
- * There are two common implementations. {@link Period} is a date-based implementation, storing
- * years, months and days. {@link Duration} is a time-based implementation, storing seconds and
+ * There are two common implementations. {@@linkPeriod} is a date-based implementation, storing
+ * years, months and days. {@@linkDuration} is a time-based implementation, storing seconds and
  * nanoseconds, but providing some access using other duration based units such as minutes, hours
  * and fixed 24-hour days.
  *
  * This interface is a framework-level interface that should not be widely used in application code.
  * Instead, applications should create and pass around instances of concrete types, such as {@code
- * Period} and {@code Duration}.
+ * Period} and {@@codeDuration} .
  *
  * <h3>Specification for implementors</h3> This interface places no restrictions on the mutability
  * of implementations, however immutability is strongly recommended.
@@ -84,14 +84,14 @@ trait TemporalAmount {
    * class.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#plus(TemporalAmount)}: <pre> // these two lines
+   * directly. The second is to use {@@linkTemporal#plus(TemporalAmount)} : <pre> // these two lines
    * are equivalent, but the second approach is recommended dateTime = amount.addTo(dateTime);
    * dateTime = dateTime.plus(amount); </pre> It is recommended to use the second approach, {@code
    * plus(TemporalAmount)}, as it is a lot clearer to read in code.
    *
    * <h3>Specification for implementors</h3> The implementation must take the input object and add
    * to it. The implementation defines the logic of the addition and is responsible for documenting
-   * that logic. It may use any method on {@code Temporal} to query the temporal object and perform
+   * that logic. It may use any method on {@@codeTemporal} to query the temporal object and perform
    * the addition. The returned object must have the same observable type as the input object
    *
    * The input object must not be altered. Instead, an adjusted copy of the original must be
@@ -99,7 +99,7 @@ trait TemporalAmount {
    *
    * The input temporal object may be in a calendar system other than ISO. Implementations may
    * choose to document compatibility with other calendar systems, or reject non-ISO temporal
-   * objects by {@link TemporalQueries#chronology() querying the chronology}.
+   * objects by {@@linkTemporalQueries#chronology() querying the chronology} .
    *
    * This method may be called from multiple threads in parallel. It must be thread-safe when
    * invoked.
@@ -122,14 +122,15 @@ trait TemporalAmount {
    * class.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#minus(TemporalAmount)}: <pre> // these two lines
-   * are equivalent, but the second approach is recommended dateTime =
+   * directly. The second is to use {@@linkTemporal#minus(TemporalAmount)} : <pre> // these two
+   * lines are equivalent, but the second approach is recommended dateTime =
    * amount.subtractFrom(dateTime); dateTime = dateTime.minus(amount); </pre> It is recommended to
-   * use the second approach, {@code minus(TemporalAmount)}, as it is a lot clearer to read in code.
+   * use the second approach, {@@codeminus(TemporalAmount)} , as it is a lot clearer to read in
+   * code.
    *
    * <h3>Specification for implementors</h3> The implementation must take the input object and
    * subtract from it. The implementation defines the logic of the subtraction and is responsible
-   * for documenting that logic. It may use any method on {@code Temporal} to query the temporal
+   * for documenting that logic. It may use any method on {@@codeTemporal} to query the temporal
    * object and perform the subtraction. The returned object must have the same observable type as
    * the input object
    *
@@ -138,7 +139,7 @@ trait TemporalAmount {
    *
    * The input temporal object may be in a calendar system other than ISO. Implementations may
    * choose to document compatibility with other calendar systems, or reject non-ISO temporal
-   * objects by {@link TemporalQueries#chronology() querying the chronology}.
+   * objects by {@@linkTemporalQueries#chronology() querying the chronology} .
    *
    * This method may be called from multiple threads in parallel. It must be thread-safe when
    * invoked.

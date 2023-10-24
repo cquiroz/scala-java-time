@@ -42,16 +42,16 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.DayOfWeek
 
 /**
- * Common implementations of {@code TemporalAdjuster}.
+ * Common implementations of {@@codeTemporalAdjuster} .
  *
- * This class provides common implementations of {@link TemporalAdjuster}. They are especially
+ * This class provides common implementations of {@@linkTemporalAdjuster} . They are especially
  * useful to document the intent of business logic and often link well to requirements. For example,
  * these two pieces of code do the same thing, but the second one is clearer (assuming that there is
  * a static import of this class): <pre> // direct manipulation
  * date.withDayOfMonth(1).plusMonths(1).minusDays(1); // use of an adjuster from this class
  * date.with(lastDayOfMonth()); </pre> There are two equivalent ways of using a {@code
  * TemporalAdjuster}. The first is to invoke the method on the interface directly. The second is to
- * use {@link Temporal#with(TemporalAdjuster)}: <pre> // these two lines are equivalent, but the
+ * use {@@linkTemporal#with(TemporalAdjuster)} : <pre> // these two lines are equivalent, but the
  * second approach is recommended dateTime = adjuster.adjustInto(dateTime); dateTime =
  * dateTime.with(adjuster); </pre> It is recommended to use the second approach, {@code
  * with(TemporalAdjuster)}, as it is a lot clearer to read in code.
@@ -206,8 +206,8 @@ object TemporalAdjusters {
    * The ISO calendar system behaves as follows:<br> The input 2011-12-15 for (MONDAY) will return
    * 2011-12-05.<br> The input 2011-12-15 for (FRIDAY) will return 2011-12-02.<br>
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * and {@code DAY_OF_MONTH} fields and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * and {@@codeDAY_OF_MONTH} fields and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week, not null
@@ -226,8 +226,8 @@ object TemporalAdjusters {
    * The ISO calendar system behaves as follows:<br> The input 2011-12-15 for (MONDAY) will return
    * 2011-12-26.<br> The input 2011-12-15 for (FRIDAY) will return 2011-12-30.<br>
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * and {@code DAY_OF_MONTH} fields and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * and {@@codeDAY_OF_MONTH} fields and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week, not null
@@ -260,8 +260,8 @@ object TemporalAdjusters {
    * interpreted leniently according to this algorithm. This definition means that an ordinal of
    * zero finds the last matching day-of-week in the previous month.
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * and {@code DAY_OF_MONTH} fields and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * and {@@codeDAY_OF_MONTH} fields and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param ordinal
    *   the week within the month, unbounded but typically from -5 to 5
@@ -310,8 +310,8 @@ object TemporalAdjusters {
    * parameter (WEDNESDAY) will return 2011-01-19 (four days later).<br> The input 2011-01-15 (a
    * Saturday) for parameter (SATURDAY) will return 2011-01-22 (seven days later).
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * field and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * field and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week to move the date to, not null
@@ -331,8 +331,8 @@ object TemporalAdjusters {
    * parameter (WEDNESDAY) will return 2011-01-19 (four days later).<br> The input 2011-01-15 (a
    * Saturday) for parameter (SATURDAY) will return 2011-01-15 (same as input).
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * field and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * field and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week to check for or move the date to, not null
@@ -351,8 +351,8 @@ object TemporalAdjusters {
    * parameter (WEDNESDAY) will return 2011-01-12 (three days earlier).<br> The input 2011-01-15 (a
    * Saturday) for parameter (SATURDAY) will return 2011-01-08 (seven days earlier).
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * field and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * field and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week to move the date to, not null
@@ -372,8 +372,8 @@ object TemporalAdjusters {
    * parameter (WEDNESDAY) will return 2011-01-12 (three days earlier).<br> The input 2011-01-15 (a
    * Saturday) for parameter (SATURDAY) will return 2011-01-15 (same as input).
    *
-   * The behavior is suitable for use with most calendar systems. It uses the {@code DAY_OF_WEEK}
-   * field and the {@code DAYS} unit, and assumes a seven day week.
+   * The behavior is suitable for use with most calendar systems. It uses the {@@codeDAY_OF_WEEK}
+   * field and the {@@codeDAYS} unit, and assumes a seven day week.
    *
    * @param dayOfWeek
    *   the day-of-week to check for or move the date to, not null

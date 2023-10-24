@@ -83,16 +83,16 @@ object JapaneseEra {
   )
 
   /**
-   * Obtains an instance of {@code JapaneseEra} from an {@code int} value.
+   * Obtains an instance of {@@codeJapaneseEra} from an {@@codeint} value.
    *
-   * The {@link #SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1 Later era
-   * is numbered 2 ({@link #HEISEI}). Earlier eras are numbered 0 ({@link #TAISHO}),
-   * -1 ({@link #MEIJI}), only Meiji and later eras are supported.
+   * The {@@link#SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1 Later era
+   * is numbered 2 ({@link #HEISEI}). Earlier eras are numbered 0 ({@link #TAISHO}), -1 ({@link
+   * #MEIJI}), only Meiji and later eras are supported.
    *
    * @param japaneseEra
    *   the era to represent
    * @return
-   *   the { @code JapaneseEra} singleton, not null
+   *   the {@@codeJapaneseEra} singleton, not null
    * @throws DateTimeException
    *   if the value is invalid
    */
@@ -104,7 +104,7 @@ object JapaneseEra {
   }
 
   /**
-   * Returns the {@code JapaneseEra} with the name.
+   * Returns the {@@codeJapaneseEra} with the name.
    *
    * The string must match exactly the name of the era. (Extraneous whitespace characters are not
    * permitted.)
@@ -112,7 +112,7 @@ object JapaneseEra {
    * @param japaneseEra
    *   the japaneseEra name; non-null
    * @return
-   *   the { @code JapaneseEra} singleton, never null
+   *   the {@@codeJapaneseEra} singleton, never null
    * @throws IllegalArgumentException
    *   if there is not JapaneseEra with the specified name
    */
@@ -136,7 +136,7 @@ object JapaneseEra {
   def values: Array[JapaneseEra] = Arrays.copyOf(KNOWN_ERAS.get, KNOWN_ERAS.get.length)
 
   /**
-   * Obtains an instance of {@code JapaneseEra} from a date.
+   * Obtains an instance of {@@codeJapaneseEra} from a date.
    *
    * @param date
    *   the date, not null
@@ -174,7 +174,7 @@ object JapaneseEra {
  * This class defines the valid eras for the Japanese chronology. Japan introduced the Gregorian
  * calendar starting with Meiji 6. Only Meiji and later eras are supported; dates before Meiji 6,
  * January 1 are not supported. <p> The four supported eras are hard-coded. A single additional era
- * may be registered using {@link #registerEra(LocalDate, String)}.
+ * may be registered using {@@link#registerEra(LocalDate, String)} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
@@ -213,9 +213,9 @@ final class JapaneseEra private[chrono] (
   }
 
   /**
-   * Returns the numeric value of this {@code JapaneseEra}.
+   * Returns the numeric value of this {@@codeJapaneseEra} .
    *
-   * The {@link #SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1. Later
+   * The {@@link#SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1. Later
    * eras are numbered from 2 ({@link #HEISEI}). Earlier eras are numbered 0 ({@link #TAISHO}) and
    * -1 ({@link #MEIJI}).
    *

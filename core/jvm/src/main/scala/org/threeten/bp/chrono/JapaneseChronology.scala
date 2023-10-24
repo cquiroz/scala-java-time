@@ -118,7 +118,7 @@ object JapaneseChronology {
  * Japan introduced the Gregorian calendar starting with Meiji 6. Only Meiji and later eras are
  * supported; dates before Meiji 6, January 1 are not supported.
  *
- * The supported {@code ChronoField} instances are: <ul> <li>{@code DAY_OF_WEEK} <li>{@code
+ * The supported {@@codeChronoField} instances are: <ul> <li>{@code DAY_OF_WEEK} <li>{@code
  * DAY_OF_MONTH} <li>{@code DAY_OF_YEAR} <li>{@code EPOCH_DAY} <li>{@code MONTH_OF_YEAR} <li>{@code
  * PROLEPTIC_MONTH} <li>{@code YEAR_OF_ERA} <li>{@code YEAR} <li>{@code ERA} </ul>
  *
@@ -141,8 +141,8 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'Japanese'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@@codeChronology} . It can be used to lookup the {@code
+   * Chronology} using {@@link#of(String)} .
    *
    * @return
    *   the chronology ID - 'Japanese'
@@ -155,7 +155,7 @@ final class JapaneseChronology private () extends Chronology with Serializable {
    * Gets the calendar type of the underlying calendar system - 'japanese'.
    *
    * The calendar type is an identifier defined by the <em>Unicode Locale Data Markup Language
-   * (LDML)</em> specification. It can be used to lookup the {@code Chronology} using {@link
+   * (LDML)</em> specification. It can be used to lookup the {@@codeChronology} using {@link
    * #of(String)}. It can also be used as part of a locale, accessible via {@link
    * Locale#getUnicodeLocaleType(String)} with the key 'ca'.
    *
@@ -194,7 +194,7 @@ final class JapaneseChronology private () extends Chronology with Serializable {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not a { @code JapaneseEra}
+   *   if the {@@codeera} is not a {@@codeJapaneseEra}
    */
   override def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): JapaneseDate =
     if (!era.isInstanceOf[JapaneseEra]) throw new ClassCastException("Era must be JapaneseEra")
@@ -276,16 +276,16 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Returns the calendar system era object from the given numeric value.
    *
-   * See the description of each Era for the numeric values of: {@link JapaneseEra#HEISEI}, {@link
-   * JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO}, {@link JapaneseEra#MEIJI}), only Meiji and later
-   * eras are supported.
+   * See the description of each Era for the numeric values of: {@@linkJapaneseEra#HEISEI} , {@link
+   * JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO}, {@@linkJapaneseEra#MEIJI} ), only Meiji and
+   * later eras are supported.
    *
    * @param eraValue
    *   the era value
    * @return
-   *   the Japanese { @code Era} for the given numeric era value
+   *   the Japanese {@@codeEra} for the given numeric era value
    * @throws DateTimeException
-   *   if { @code eraValue} is invalid
+   *   if {@@codeeraValue} is invalid
    */
   def eraOf(eraValue: Int): JapaneseEra = JapaneseEra.of(eraValue)
 

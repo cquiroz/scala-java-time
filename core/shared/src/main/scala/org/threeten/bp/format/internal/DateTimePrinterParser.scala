@@ -11,8 +11,8 @@ import java.lang.StringBuilder
  * The parser may parse any piece of text from the input, storing the result in the context.
  * Typically, each individual parser will just parse one field, such as the day-of-month, storing
  * the value in the context. Once the parse is complete, the caller will then convert the context to
- * a {@link DateTimeBuilder} to merge the parsed values to create the desired object, such as a
- * {@code LocalDate}.
+ * a {@@linkDateTimeBuilder} to merge the parsed values to create the desired object, such as a
+ * {@@codeLocalDate} .
  *
  * The parse position will be updated during the parse. Parsing will start at the specified index
  * and the return value specifies the new parse position for the next parser. If an error occurs,

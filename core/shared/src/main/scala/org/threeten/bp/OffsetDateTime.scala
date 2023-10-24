@@ -57,27 +57,27 @@ import org.threeten.bp.zone.ZoneRules
 object OffsetDateTime {
 
   /**
-   * The minimum supported {@code OffsetDateTime}, '-999999999-01-01T00:00:00+18:00'. This is the
+   * The minimum supported {@@codeOffsetDateTime} , '-999999999-01-01T00:00:00+18:00'. This is the
    * local date-time of midnight at the start of the minimum date in the maximum offset (larger
-   * offsets are earlier on the time-line). This combines {@link LocalDateTime#MIN} and {@link
+   * offsets are earlier on the time-line). This combines {@@linkLocalDateTime#MIN} and {@link
    * ZoneOffset#MAX}. This could be used by an application as a "far past" date-time.
    */
   lazy val MIN: OffsetDateTime = LocalDateTime.MIN.atOffset(ZoneOffset.MAX)
 
   /**
-   * The maximum supported {@code OffsetDateTime}, '+999999999-12-31T23:59:59.999999999-18:00'. This
-   * is the local date-time just before midnight at the end of the maximum date in the minimum
+   * The maximum supported {@@codeOffsetDateTime} , '+999999999-12-31T23:59:59.999999999-18:00'.
+   * This is the local date-time just before midnight at the end of the maximum date in the minimum
    * offset (larger negative offsets are later on the time-line). This combines {@link
-   * LocalDateTime#MAX} and {@link ZoneOffset#MIN}. This could be used by an application as a "far
+   * LocalDateTime#MAX} and {@@linkZoneOffset#MIN} . This could be used by an application as a "far
    * future" date-time.
    */
   lazy val MAX: OffsetDateTime = LocalDateTime.MAX.atOffset(ZoneOffset.MIN)
 
   /**
-   * Gets a comparator that compares two {@code OffsetDateTime} instances based solely on the
+   * Gets a comparator that compares two {@@codeOffsetDateTime} instances based solely on the
    * instant.
    *
-   * This method differs from the comparison in {@link #compareTo} in that it only compares the
+   * This method differs from the comparison in {@@link#compareTo} in that it only compares the
    * underlying instant.
    *
    * @return
@@ -104,7 +104,7 @@ object OffsetDateTime {
   /**
    * Obtains the current date-time from the system clock in the default time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * This will query the {@@linkClock#systemDefaultZone() system clock} in the default time-zone to
    * obtain the current date-time. The offset will be calculated from the time-zone in the clock.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -118,7 +118,7 @@ object OffsetDateTime {
   /**
    * Obtains the current date-time from the system clock in the specified time-zone.
    *
-   * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date-time.
+   * This will query the {@@linkClock#system(ZoneId) system clock} to obtain the current date-time.
    * Specifying the time-zone avoids dependence on the default time-zone. The offset will be
    * calculated from the specified time-zone.
    *
@@ -139,7 +139,7 @@ object OffsetDateTime {
    * calculated from the time-zone in the clock.
    *
    * Using this method allows the use of an alternate clock for testing. The alternate clock may be
-   * introduced using {@link Clock dependency injection}.
+   * introduced using {@@linkClock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -153,7 +153,7 @@ object OffsetDateTime {
   }
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a date, time and offset.
+   * Obtains an instance of {@@codeOffsetDateTime} from a date, time and offset.
    *
    * This creates an offset date-time with the specified local date, time and offset.
    *
@@ -172,7 +172,7 @@ object OffsetDateTime {
   }
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a date-time and offset.
+   * Obtains an instance of {@@codeOffsetDateTime} from a date-time and offset.
    *
    * This creates an offset date-time with the specified local date-time and offset.
    *
@@ -187,13 +187,13 @@ object OffsetDateTime {
     new OffsetDateTime(dateTime, offset)
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a year, month, day, hour, minute, second,
+   * Obtains an instance of {@@codeOffsetDateTime} from a year, month, day, hour, minute, second,
    * nanosecond and offset.
    *
    * This creates an offset date-time with the seven specified fields.
    *
    * This method exists primarily for writing test cases. Non test-code will typically use other
-   * methods to create an offset time. {@code LocalDateTime} has five additional convenience
+   * methods to create an offset time. {@@codeLocalDateTime} has five additional convenience
    * variants of the equivalent factory method taking fewer arguments. They are not provided here to
    * reduce the footprint of the API.
    *
@@ -235,7 +235,7 @@ object OffsetDateTime {
   }
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from an {@code Instant} and zone ID.
+   * Obtains an instance of {@@codeOffsetDateTime} from an {@@codeInstant} and zone ID.
    *
    * This creates an offset date-time with the same instant as that specified. Finding the offset
    * from UTC/Greenwich is simple as there is only one valid offset for each instant.
@@ -260,23 +260,23 @@ object OffsetDateTime {
   }
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a temporal object.
+   * Obtains an instance of {@@codeOffsetDateTime} from a temporal object.
    *
-   * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code OffsetDateTime}.
+   * A {@@codeTemporalAccessor} represents some form of date and time information. This factory
+   * converts the arbitrary temporal object to an instance of {@@codeOffsetDateTime} .
    *
-   * The conversion extracts and combines {@code LocalDateTime} and {@code ZoneOffset}. If that
-   * fails it will try to extract and combine {@code Instant} and {@code ZoneOffset}.
+   * The conversion extracts and combines {@@codeLocalDateTime} and {@@codeZoneOffset} . If that
+   * fails it will try to extract and combine {@@codeInstant} and {@@codeZoneOffset} .
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code OffsetDateTime::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used in queries via method reference, {@@codeOffsetDateTime::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the offset date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code OffsetDateTime}
+   *   if unable to convert to an {@@codeOffsetDateTime}
    */
   def from(temporal: TemporalAccessor): OffsetDateTime =
     temporal match {
@@ -301,7 +301,7 @@ object OffsetDateTime {
     }
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a text string such as {@code
+   * Obtains an instance of {@@codeOffsetDateTime} from a text string such as {@code
    * 2007-12-03T10:15:30+01:00}.
    *
    * The string must represent a valid date-time and is parsed using {@link
@@ -318,7 +318,7 @@ object OffsetDateTime {
     parse(text, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
 
   /**
-   * Obtains an instance of {@code OffsetDateTime} from a text string using a specific formatter.
+   * Obtains an instance of {@@codeOffsetDateTime} from a text string using a specific formatter.
    *
    * The text is parsed using the formatter, returning a date-time.
    *
@@ -347,17 +347,17 @@ object OffsetDateTime {
  * A date-time with an offset from UTC/Greenwich in the ISO-8601 calendar system, such as {@code
  * 2007-12-03T10:15:30+01:00}.
  *
- * {@code OffsetDateTime} is an immutable representation of a date-time with an offset. This class
+ * {@@codeOffsetDateTime} is an immutable representation of a date-time with an offset. This class
  * stores all date and time fields, to a precision of nanoseconds, as well as the offset from
  * UTC/Greenwich. For example, the value "2nd October 2007 at 13:45.30.123456789 +02:00" can be
- * stored in an {@code OffsetDateTime}.
+ * stored in an {@@codeOffsetDateTime} .
  *
- * {@code OffsetDateTime}, {@link ZonedDateTime} and {@link Instant} all store an instant on the
- * time-line to nanosecond precision. {@code Instant} is the simplest, simply representing the
- * instant. {@code OffsetDateTime} adds to the instant the offset from UTC/Greenwich, which allows
- * the local date-time to be obtained. {@code ZonedDateTime} adds full time-zone rules.
+ * {@@codeOffsetDateTime} , {@@linkZonedDateTime} and {@@linkInstant} all store an instant on the
+ * time-line to nanosecond precision. {@@codeInstant} is the simplest, simply representing the
+ * instant. {@@codeOffsetDateTime} adds to the instant the offset from UTC/Greenwich, which allows
+ * the local date-time to be obtained. {@@codeZonedDateTime} adds full time-zone rules.
  *
- * It is intended that {@code ZonedDateTime} or {@code Instant} is used to model data in simpler
+ * It is intended that {@@codeZonedDateTime} or {@@codeInstant} is used to model data in simpler
  * applications. This class may be used when modeling date-time concepts in more detail, or when
  * communicating to a database or in a network protocol.
  *
@@ -380,7 +380,7 @@ final class OffsetDateTime private (
   Objects.requireNonNull(offset, "offset")
 
   /**
-   * Returns a new date-time based on this one, returning {@code this} where possible.
+   * Returns a new date-time based on this one, returning {@@codethis} where possible.
    *
    * @param dateTime
    *   the date-time to create with, not null
@@ -395,10 +395,10 @@ final class OffsetDateTime private (
    * Checks if the specified field is supported.
    *
    * This checks if this date-time can be queried for the specified field. If false, then calling
-   * the {@link #range(TemporalField) range} and {@link #get(TemporalField) get} methods will throw
+   * the {@@link#range(TemporalField) range} and {@@link#get(TemporalField) get} methods will throw
    * an exception.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The supported fields
+   * If the field is a {@@linkChronoField} then the query is implemented here. The supported fields
    * are: <ul> <li>{@code NANO_OF_SECOND} <li>{@code NANO_OF_DAY} <li>{@code MICRO_OF_SECOND}
    * <li>{@code MICRO_OF_DAY} <li>{@code MILLI_OF_SECOND} <li>{@code MILLI_OF_DAY} <li>{@code
    * SECOND_OF_MINUTE} <li>{@code SECOND_OF_DAY} <li>{@code MINUTE_OF_HOUR} <li>{@code
@@ -408,10 +408,10 @@ final class OffsetDateTime private (
    * <li>{@code DAY_OF_YEAR} <li>{@code EPOCH_DAY} <li>{@code ALIGNED_WEEK_OF_MONTH} <li>{@code
    * ALIGNED_WEEK_OF_YEAR} <li>{@code MONTH_OF_YEAR} <li>{@code EPOCH_MONTH} <li>{@code YEAR_OF_ERA}
    * <li>{@code YEAR} <li>{@code ERA} <li>{@code INSTANT_SECONDS} <li>{@code OFFSET_SECONDS} </ul>
-   * All other {@code ChronoField} instances will return false.
+   * All other {@@codeChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.isSupportedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the field is supported is determined by the field.
    *
    * @param field
@@ -433,12 +433,12 @@ final class OffsetDateTime private (
    * used to enhance the accuracy of the returned range. If it is not possible to return the range,
    * because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.rangeRefinedBy(TemporalAccessor)} passing {@@codethis} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
    * @param field
@@ -456,21 +456,21 @@ final class OffsetDateTime private (
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this date-time as an {@code int}.
+   * Gets the value of the specified field from this date-time as an {@@codeint} .
    *
    * This queries this date-time for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If it is not possible to return the
    * value, because the field is not supported or for some other reason, an exception is thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time,
-   * except {@code NANO_OF_DAY}, {@code MICRO_OF_DAY}, {@code EPOCH_DAY}, {@code EPOCH_MONTH} and
-   * {@code INSTANT_SECONDS} which are too large to fit in an {@code int} and throw a {@code
-   * DateTimeException}. All other {@code ChronoField} instances will throw a {@code
+   * except {@@codeNANO_OF_DAY} , {@@codeMICRO_OF_DAY} , {@@codeEPOCH_DAY} , {@@codeEPOCH_MONTH} and
+   * {@@codeINSTANT_SECONDS} which are too large to fit in an {@@codeint} and throw a {@code
+   * DateTimeException}. All other {@@codeChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -495,18 +495,18 @@ final class OffsetDateTime private (
     }
 
   /**
-   * Gets the value of the specified field from this date-time as a {@code long}.
+   * Gets the value of the specified field from this date-time as a {@@codelong} .
    *
    * This queries this date-time for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
    * thrown.
    *
-   * If the field is a {@link ChronoField} then the query is implemented here. The {@link
+   * If the field is a {@@linkChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time.
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.getFrom(TemporalAccessor)} passing {@@codethis} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
    * @param field
@@ -541,13 +541,13 @@ final class OffsetDateTime private (
   def getOffset: ZoneOffset = offset
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified offset ensuring that the
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified offset ensuring that the
    * result has the same local date-time.
    *
-   * This method returns an object with the same {@code LocalDateTime} and the specified {@code
+   * This method returns an object with the same {@@codeLocalDateTime} and the specified {@code
    * ZoneOffset}. No calculation is needed or performed. For example, if this time represents {@code
-   * 2007-12-03T10:30+02:00} and the offset specified is {@code +03:00}, then this method will
-   * return {@code 2007-12-03T10:30+03:00}.
+   * 2007-12-03T10:30+02:00} and the offset specified is {@@code+03:00} , then this method will
+   * return {@@code2007-12-03T10:30+03:00} .
    *
    * To take into account the difference between the offsets, and adjust the time fields, use {@link
    * #withOffsetSameInstant}.
@@ -557,28 +557,28 @@ final class OffsetDateTime private (
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested offset, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested offset, not null
    */
   def withOffsetSameLocal(offset: ZoneOffset): OffsetDateTime = `with`(dateTime, offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified offset ensuring that the
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified offset ensuring that the
    * result is at the same instant.
    *
-   * This method returns an object with the specified {@code ZoneOffset} and a {@code LocalDateTime}
+   * This method returns an object with the specified {@@codeZoneOffset} and a {@@codeLocalDateTime}
    * adjusted by the difference between the two offsets. This will result in the old and new objects
    * representing the same instant. This is useful for finding the local time in a different offset.
-   * For example, if this time represents {@code 2007-12-03T10:30+02:00} and the offset specified is
-   * {@code +03:00}, then this method will return {@code 2007-12-03T11:30+03:00}.
+   * For example, if this time represents {@@code2007-12-03T10:30+02:00} and the offset specified is
+   * {@@code+03:00} , then this method will return {@@code2007-12-03T11:30+03:00} .
    *
-   * To change the offset without adjusting the local time use {@link #withOffsetSameLocal}.
+   * To change the offset without adjusting the local time use {@@link#withOffsetSameLocal} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested offset, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested offset, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -593,10 +593,10 @@ final class OffsetDateTime private (
   /**
    * Gets the year field.
    *
-   * This method returns the primitive {@code int} value for the year.
+   * This method returns the primitive {@@codeint} value for the year.
    *
-   * The year returned by this method is proleptic as per {@code get(YEAR)}. To obtain the
-   * year-of-era, use {@code get(YEAR_OF_ERA}.
+   * The year returned by this method is proleptic as per {@@codeget(YEAR)} . To obtain the
+   * year-of-era, use {@@codeget(YEAR_OF_ERA} .
    *
    * @return
    *   the year, from MIN_YEAR to MAX_YEAR
@@ -606,8 +606,8 @@ final class OffsetDateTime private (
   /**
    * Gets the month-of-year field from 1 to 12.
    *
-   * This method returns the month as an {@code int} from 1 to 12. Application code is frequently
-   * clearer if the enum {@link Month} is used by calling {@link #getMonth()}.
+   * This method returns the month as an {@@codeint} from 1 to 12. Application code is frequently
+   * clearer if the enum {@@linkMonth} is used by calling {@@link#getMonth()} .
    *
    * @return
    *   the month-of-year, from 1 to 12
@@ -617,11 +617,11 @@ final class OffsetDateTime private (
   def getMonthValue: Int = dateTime.getMonthValue
 
   /**
-   * Gets the month-of-year field using the {@code Month} enum.
+   * Gets the month-of-year field using the {@@codeMonth} enum.
    *
-   * This method returns the enum {@link Month} for the month. This avoids confusion as to what
-   * {@code int} values mean. If you need access to the primitive {@code int} value then the enum
-   * provides the {@link Month#getValue() int value}.
+   * This method returns the enum {@@linkMonth} for the month. This avoids confusion as to what
+   * {@@codeint} values mean. If you need access to the primitive {@@codeint} value then the enum
+   * provides the {@@linkMonth#getValue() int value} .
    *
    * @return
    *   the month-of-year, not null
@@ -633,7 +633,7 @@ final class OffsetDateTime private (
   /**
    * Gets the day-of-month field.
    *
-   * This method returns the primitive {@code int} value for the day-of-month.
+   * This method returns the primitive {@@codeint} value for the day-of-month.
    *
    * @return
    *   the day-of-month, from 1 to 31
@@ -643,7 +643,7 @@ final class OffsetDateTime private (
   /**
    * Gets the day-of-year field.
    *
-   * This method returns the primitive {@code int} value for the day-of-year.
+   * This method returns the primitive {@@codeint} value for the day-of-year.
    *
    * @return
    *   the day-of-year, from 1 to 365, or 366 in a leap year
@@ -651,13 +651,13 @@ final class OffsetDateTime private (
   def getDayOfYear: Int = dateTime.getDayOfYear
 
   /**
-   * Gets the day-of-week field, which is an enum {@code DayOfWeek}.
+   * Gets the day-of-week field, which is an enum {@@codeDayOfWeek} .
    *
-   * This method returns the enum {@link DayOfWeek} for the day-of-week. This avoids confusion as to
-   * what {@code int} values mean. If you need access to the primitive {@code int} value then the
-   * enum provides the {@link DayOfWeek#getValue() int value}.
+   * This method returns the enum {@@linkDayOfWeek} for the day-of-week. This avoids confusion as to
+   * what {@@codeint} values mean. If you need access to the primitive {@@codeint} value then the
+   * enum provides the {@@linkDayOfWeek#getValue() int value} .
    *
-   * Additional information can be obtained from the {@code DayOfWeek}. This includes textual names
+   * Additional information can be obtained from the {@@codeDayOfWeek} . This includes textual names
    * of the values.
    *
    * @return
@@ -700,15 +700,15 @@ final class OffsetDateTime private (
   /**
    * Returns an adjusted copy of this date-time.
    *
-   * This returns a new {@code OffsetDateTime}, based on this one, with the date-time adjusted. The
+   * This returns a new {@@codeOffsetDateTime} , based on this one, with the date-time adjusted. The
    * adjustment takes place using the specified adjuster strategy object. Read the documentation of
    * the adjuster to understand what adjustment will be made.
    *
    * A simple adjuster might simply set the one of the fields, such as the year field. A more
    * complex adjuster might set the date to the last day of the month. A selection of common
-   * adjustments is provided in {@link TemporalAdjusters}. These include finding the "last day of
+   * adjustments is provided in {@@linkTemporalAdjusters} . These include finding the "last day of
    * the month" and "next Wednesday". Key date-time classes also implement the {@code
-   * TemporalAdjuster} interface, such as {@link Month} and {@link MonthDay}. The adjuster is
+   * TemporalAdjuster} interface, such as {@@linkMonth} and {@@linkMonthDay} . The adjuster is
    * responsible for handling special cases, such as the varying lengths of month and leap years.
    *
    * For example this code returns a date on the last day of July: <pre> import static
@@ -716,13 +716,13 @@ final class OffsetDateTime private (
    *
    * result = offsetDateTime.with(JULY).with(lastDayOfMonth()); </pre>
    *
-   * The classes {@link LocalDate}, {@link LocalTime} and {@link ZoneOffset} implement {@code
+   * The classes {@@linkLocalDate} , {@@linkLocalTime} and {@@linkZoneOffset} implement {@code
    * TemporalAdjuster}, thus this method can be used to change the date, time or offset: <pre>
    * result = offsetDateTime.with(date); result = offsetDateTime.with(time); result =
    * offsetDateTime.with(offset); </pre>
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@code this} as
+   * TemporalAdjuster#adjustInto(Temporal)} method on the specified adjuster passing {@@codethis} as
    * the argument.
    *
    * This instance is immutable and unaffected by this method call.
@@ -730,7 +730,7 @@ final class OffsetDateTime private (
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   an { @code OffsetDateTime} based on { @code this} with the adjustment made, not null
+   *   an {@@codeOffsetDateTime} based on {@@codethis} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -750,7 +750,7 @@ final class OffsetDateTime private (
   /**
    * Returns a copy of this date-time with the specified field set to a new value.
    *
-   * This returns a new {@code OffsetDateTime}, based on this one, with the value for the specified
+   * This returns a new {@@codeOffsetDateTime} , based on this one, with the value for the specified
    * field changed. This can be used to change any supported field, such as the year, month or
    * day-of-month. If it is not possible to set the value, because the field is not supported or for
    * some other reason, an exception is thrown.
@@ -760,24 +760,24 @@ final class OffsetDateTime private (
    * invalid. In cases like this, the field is responsible for resolving the date. Typically it will
    * choose the previous valid date, which would be the last valid day of February in this example.
    *
-   * If the field is a {@link ChronoField} then the adjustment is implemented here.
+   * If the field is a {@@linkChronoField} then the adjustment is implemented here.
    *
-   * The {@code INSTANT_SECONDS} field will return a date-time with the specified instant. The
+   * The {@@codeINSTANT_SECONDS} field will return a date-time with the specified instant. The
    * offset and nano-of-second are unchanged. If the new instant value is outside the valid range
-   * then a {@code DateTimeException} will be thrown.
+   * then a {@@codeDateTimeException} will be thrown.
    *
-   * The {@code OFFSET_SECONDS} field will return a date-time with the specified offset. The local
+   * The {@@codeOFFSET_SECONDS} field will return a date-time with the specified offset. The local
    * date-time is unaltered. If the new offset value is outside the valid range then a {@code
    * DateTimeException} will be thrown.
    *
-   * The other {@link #isSupported(TemporalField) supported fields} will behave as per the matching
-   * method on {@link LocalDateTime#with(TemporalField, long) LocalDateTime}. In this case, the
+   * The other {@@link#isSupported(TemporalField) supported fields} will behave as per the matching
+   * method on {@@linkLocalDateTime#with(TemporalField, long) LocalDateTime} . In this case, the
    * offset is not part of the calculation and will be unchanged.
    *
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@@codeChronoField} instances will throw a {@@codeDateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
-   * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the argument.
+   * If the field is not a {@@codeChronoField} , then the result of this method is obtained by
+   * invoking {@@codeTemporalField.adjustInto(Temporal, long)} passing {@@codethis} as the argument.
    * In this case, the field determines whether and how to adjust the instant.
    *
    * This instance is immutable and unaffected by this method call.
@@ -787,7 +787,7 @@ final class OffsetDateTime private (
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   an { @code OffsetDateTime} based on { @code this} with the specified field set, not null
+   *   an {@@codeOffsetDateTime} based on {@@codethis} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -808,7 +808,7 @@ final class OffsetDateTime private (
     }
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the year altered. The offset does not affect
+   * Returns a copy of this {@@codeOffsetDateTime} with the year altered. The offset does not affect
    * the calculation and will be the same in the result. If the day-of-month is invalid for the
    * year, it will be changed to the last valid day of the month.
    *
@@ -817,14 +817,14 @@ final class OffsetDateTime private (
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested year, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
   def withYear(year: Int): OffsetDateTime = `with`(dateTime.withYear(year), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the month-of-year altered. The offset does
+   * Returns a copy of this {@@codeOffsetDateTime} with the month-of-year altered. The offset does
    * not affect the calculation and will be the same in the result. If the day-of-month is invalid
    * for the year, it will be changed to the last valid day of the month.
    *
@@ -833,15 +833,15 @@ final class OffsetDateTime private (
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested month, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
   def withMonth(month: Int): OffsetDateTime = `with`(dateTime.withMonth(month), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the day-of-month altered. If the resulting
-   * {@code OffsetDateTime} is invalid, an exception is thrown. The offset does not affect the
+   * Returns a copy of this {@@codeOffsetDateTime} with the day-of-month altered. If the resulting
+   * {@@codeOffsetDateTime} is invalid, an exception is thrown. The offset does not affect the
    * calculation and will be the same in the result.
    *
    * This instance is immutable and unaffected by this method call.
@@ -849,7 +849,7 @@ final class OffsetDateTime private (
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested day, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -859,15 +859,15 @@ final class OffsetDateTime private (
     `with`(dateTime.withDayOfMonth(dayOfMonth), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the day-of-year altered. If the resulting
-   * {@code OffsetDateTime} is invalid, an exception is thrown.
+   * Returns a copy of this {@@codeOffsetDateTime} with the day-of-year altered. If the resulting
+   * {@@codeOffsetDateTime} is invalid, an exception is thrown.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   an { @code OffsetDateTime} based on this date with the requested day, not null
+   *   an {@@codeOffsetDateTime} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -877,7 +877,7 @@ final class OffsetDateTime private (
     `with`(dateTime.withDayOfYear(dayOfYear), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the hour-of-day value altered.
+   * Returns a copy of this {@@codeOffsetDateTime} with the hour-of-day value altered.
    *
    * The offset does not affect the calculation and will be the same in the result.
    *
@@ -886,14 +886,14 @@ final class OffsetDateTime private (
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested hour, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
   def withHour(hour: Int): OffsetDateTime = `with`(dateTime.withHour(hour), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the minute-of-hour value altered.
+   * Returns a copy of this {@@codeOffsetDateTime} with the minute-of-hour value altered.
    *
    * The offset does not affect the calculation and will be the same in the result.
    *
@@ -902,14 +902,14 @@ final class OffsetDateTime private (
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested minute, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
   def withMinute(minute: Int): OffsetDateTime = `with`(dateTime.withMinute(minute), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the second-of-minute value altered.
+   * Returns a copy of this {@@codeOffsetDateTime} with the second-of-minute value altered.
    *
    * The offset does not affect the calculation and will be the same in the result.
    *
@@ -918,14 +918,14 @@ final class OffsetDateTime private (
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested second, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
   def withSecond(second: Int): OffsetDateTime = `with`(dateTime.withSecond(second), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the nano-of-second value altered.
+   * Returns a copy of this {@@codeOffsetDateTime} with the nano-of-second value altered.
    *
    * The offset does not affect the calculation and will be the same in the result.
    *
@@ -934,22 +934,22 @@ final class OffsetDateTime private (
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested nanosecond, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nanos value is invalid
    */
   def withNano(nanoOfSecond: Int): OffsetDateTime = `with`(dateTime.withNano(nanoOfSecond), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the time truncated.
+   * Returns a copy of this {@@codeOffsetDateTime} with the time truncated.
    *
    * Truncation returns a copy of the original date-time with fields smaller than the specified unit
-   * set to zero. For example, truncating with the {@link ChronoUnit#MINUTES minutes} unit will set
+   * set to zero. For example, truncating with the {@@linkChronoUnit#MINUTES minutes} unit will set
    * the second-of-minute and nano-of-second field to zero.
    *
-   * The unit must have a {@linkplain TemporalUnit#getDuration() duration} that divides into the
+   * The unit must have a {@@linkplainTemporalUnit#getDuration() duration} that divides into the
    * length of a standard day without remainder. This includes all supplied time units on {@link
-   * ChronoUnit} and {@link ChronoUnit#DAYS DAYS}. Other units throw an exception.
+   * ChronoUnit} and {@@linkChronoUnit#DAYS DAYS} . Other units throw an exception.
    *
    * The offset does not affect the calculation and will be the same in the result.
    *
@@ -958,7 +958,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the time truncated, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -968,9 +968,9 @@ final class OffsetDateTime private (
    * Returns a copy of this date-time with the specified period added.
    *
    * This method returns a new date-time based on this time with the specified period added. The
-   * amount is typically {@link Period} but may be any other type implementing the {@link
+   * amount is typically {@@linkPeriod} but may be any other type implementing the {@link
    * TemporalAmount} interface. The calculation is delegated to the specified adjuster, which
-   * typically calls back to {@link #plus(long, TemporalUnit)}. The offset is not part of the
+   * typically calls back to {@@link#plus(long, TemporalUnit)} . The offset is not part of the
    * calculation and will be unchanged in the result.
    *
    * This instance is immutable and unaffected by this method call.
@@ -978,7 +978,7 @@ final class OffsetDateTime private (
    * @param amount
    *   the amount to add, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the addition made, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -1003,7 +1003,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the specified period added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1012,7 +1012,7 @@ final class OffsetDateTime private (
     else unit.addTo(this, amountToAdd)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in years added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in years added.
    *
    * This method adds the specified amount to the years field in three steps: <ol> <li>Add the input
    * years to the year field</li> <li>Check if the resulting date would be invalid</li> <li>Adjust
@@ -1027,14 +1027,14 @@ final class OffsetDateTime private (
    * @param years
    *   the years to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the years added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
   def plusYears(years: Long): OffsetDateTime = `with`(dateTime.plusYears(years), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in months added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in months added.
    *
    * This method adds the specified amount to the months field in three steps: <ol> <li>Add the
    * input months to the month-of-year field</li> <li>Check if the resulting date would be
@@ -1048,7 +1048,7 @@ final class OffsetDateTime private (
    * @param months
    *   the months to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the months added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1068,7 +1068,7 @@ final class OffsetDateTime private (
    * @param weeks
    *   the weeks to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the weeks added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1088,63 +1088,63 @@ final class OffsetDateTime private (
    * @param days
    *   the days to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the days added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
   def plusDays(days: Long): OffsetDateTime = `with`(dateTime.plusDays(days), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in hours added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in hours added.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the hours added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the hours added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
   def plusHours(hours: Long): OffsetDateTime = `with`(dateTime.plusHours(hours), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in minutes added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in minutes added.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the minutes added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the minutes added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
   def plusMinutes(minutes: Long): OffsetDateTime = `with`(dateTime.plusMinutes(minutes), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in seconds added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in seconds added.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the seconds added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
   def plusSeconds(seconds: Long): OffsetDateTime = `with`(dateTime.plusSeconds(seconds), offset)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in nanoseconds added.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in nanoseconds added.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the nanoseconds added, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the nanoseconds added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1154,9 +1154,9 @@ final class OffsetDateTime private (
    * Returns a copy of this date-time with the specified period subtracted.
    *
    * This method returns a new date-time based on this time with the specified period subtracted.
-   * The amount is typically {@link Period} but may be any other type implementing the {@link
+   * The amount is typically {@@linkPeriod} but may be any other type implementing the {@link
    * TemporalAmount} interface. The calculation is delegated to the specified adjuster, which
-   * typically calls back to {@link #minus(long, TemporalUnit)}. The offset is not part of the
+   * typically calls back to {@@link#minus(long, TemporalUnit)} . The offset is not part of the
    * calculation and will be unchanged in the result.
    *
    * This instance is immutable and unaffected by this method call.
@@ -1164,7 +1164,7 @@ final class OffsetDateTime private (
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the subtraction made, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1189,7 +1189,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the specified period subtracted, not
+   *   an {@@codeOffsetDateTime} based on this date-time with the specified period subtracted, not
    *   null
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): OffsetDateTime =
@@ -1197,7 +1197,7 @@ final class OffsetDateTime private (
     else plus(-amountToSubtract, unit)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in years subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in years subtracted.
    *
    * This method subtracts the specified amount from the years field in three steps: <ol>
    * <li>Subtract the input years to the year field</li> <li>Check if the resulting date would be
@@ -1212,7 +1212,7 @@ final class OffsetDateTime private (
    * @param years
    *   the years to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the years subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1221,7 +1221,7 @@ final class OffsetDateTime private (
     else plusYears(-years)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in months subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in months subtracted.
    *
    * This method subtracts the specified amount from the months field in three steps: <ol>
    * <li>Subtract the input months to the month-of-year field</li> <li>Check if the resulting date
@@ -1235,7 +1235,7 @@ final class OffsetDateTime private (
    * @param months
    *   the months to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the months subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1244,7 +1244,7 @@ final class OffsetDateTime private (
     else plusMonths(-months)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in weeks subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in weeks subtracted.
    *
    * This method subtracts the specified amount in weeks from the days field decrementing the month
    * and year fields as necessary to ensure the result remains valid. The result is only invalid if
@@ -1257,7 +1257,7 @@ final class OffsetDateTime private (
    * @param weeks
    *   the weeks to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the weeks subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1266,7 +1266,7 @@ final class OffsetDateTime private (
     else plusWeeks(-weeks)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in days subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in days subtracted.
    *
    * This method subtracts the specified amount from the days field incrementing the month and year
    * fields as necessary to ensure the result remains valid. The result is only invalid if the
@@ -1279,7 +1279,7 @@ final class OffsetDateTime private (
    * @param days
    *   the days to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the days subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1288,14 +1288,14 @@ final class OffsetDateTime private (
     else plusDays(-days)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in hours subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in hours subtracted.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the hours subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the hours subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1304,14 +1304,14 @@ final class OffsetDateTime private (
     else plusHours(-hours)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in minutes subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in minutes subtracted.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the minutes subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the minutes subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1320,14 +1320,14 @@ final class OffsetDateTime private (
     else plusMinutes(-minutes)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in seconds subtracted.
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in seconds subtracted.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the seconds subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1336,7 +1336,7 @@ final class OffsetDateTime private (
     else plusSeconds(-seconds)
 
   /**
-   * Returns a copy of this {@code OffsetDateTime} with the specified period in nanoseconds
+   * Returns a copy of this {@@codeOffsetDateTime} with the specified period in nanoseconds
    * subtracted.
    *
    * This instance is immutable and unaffected by this method call.
@@ -1344,7 +1344,7 @@ final class OffsetDateTime private (
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the nanoseconds subtracted, not null
+   *   an {@@codeOffsetDateTime} based on this date-time with the nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1360,7 +1360,7 @@ final class OffsetDateTime private (
    * of the query to understand what the result of this method will be.
    *
    * The result of this method is obtained by invoking the {@link
-   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@code this}
+   * TemporalQuery#queryFrom(TemporalAccessor)} method on the specified query passing {@@codethis}
    * as the argument.
    *
    * @tparam R
@@ -1391,8 +1391,8 @@ final class OffsetDateTime private (
    * This returns a temporal object of the same observable type as the input with the offset, date
    * and time changed to be the same as this.
    *
-   * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)} three times,
-   * passing {@link ChronoField#EPOCH_DAY}, {@link ChronoField#NANO_OF_DAY} and {@link
+   * The adjustment is equivalent to using {@@linkTemporal#with(TemporalField, long)} three times,
+   * passing {@@linkChronoField#EPOCH_DAY} , {@@linkChronoField#NANO_OF_DAY} and {@link
    * ChronoField#OFFSET_SECONDS} as the fields.
    *
    * In most cases, it is clearer to reverse the calling pattern by using {@link
@@ -1422,11 +1422,11 @@ final class OffsetDateTime private (
    * unit.
    *
    * This calculates the period between two date-times in terms of a single unit. The start and end
-   * points are {@code this} and the specified date-time. The result will be negative if the end is
+   * points are {@@codethis} and the specified date-time. The result will be negative if the end is
    * before the start. For example, the period in days between two date-times can be calculated
-   * using {@code startDateTime.until(endDateTime, DAYS)}.
+   * using {@@codestartDateTime.until(endDateTime, DAYS)} .
    *
-   * The {@code Temporal} passed to this method must be an {@code OffsetDateTime}. If the offset
+   * The {@@codeTemporal} passed to this method must be an {@@codeOffsetDateTime} . If the offset
    * differs between the two date-times, the specified end date-time is normalized to have the same
    * offset as this date-time.
    *
@@ -1434,26 +1434,26 @@ final class OffsetDateTime private (
    * two date-times. For example, the period in months between 2012-06-15T00:00Z and
    * 2012-08-14T23:59Z will only be one month as it is one minute short of two months.
    *
-   * This method operates in association with {@link TemporalUnit#between}. The result of this
-   * method is a {@code long} representing the amount of the specified unit. By contrast, the result
-   * of {@code between} is an object that can be used directly in addition/subtraction: <pre> long
+   * This method operates in association with {@@linkTemporalUnit#between} . The result of this
+   * method is a {@@codelong} representing the amount of the specified unit. By contrast, the result
+   * of {@@codebetween} is an object that can be used directly in addition/subtraction: <pre> long
    * period = start.until(end, MONTHS); // this method dateTime.plus(MONTHS.between(start, end)); //
    * use in plus/minus </pre>
    *
-   * The calculation is implemented in this method for {@link ChronoUnit}. The units {@code NANOS},
-   * {@code MICROS}, {@code MILLIS}, {@code SECONDS}, {@code MINUTES}, {@code HOURS} and {@code
-   * HALF_DAYS}, {@code DAYS}, {@code WEEKS}, {@code MONTHS}, {@code YEARS}, {@code DECADES}, {@code
-   * CENTURIES}, {@code MILLENNIA} and {@code ERAS} are supported. Other {@code ChronoUnit} values
-   * will throw an exception.
+   * The calculation is implemented in this method for {@@linkChronoUnit} . The units {@@codeNANOS}
+   * , {@@codeMICROS} , {@@codeMILLIS} , {@@codeSECONDS} , {@@codeMINUTES} , {@@codeHOURS} and
+   * {@code HALF_DAYS}, {@@codeDAYS} , {@@codeWEEKS} , {@@codeMONTHS} , {@@codeYEARS} ,
+   * {@@codeDECADES} , {@code CENTURIES}, {@@codeMILLENNIA} and {@@codeERAS} are supported. Other
+   * {@@codeChronoUnit} values will throw an exception.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@@codeChronoUnit} , then the result of this method is obtained by
+   * invoking {@@codeTemporalUnit.between(Temporal, Temporal)} passing {@@codethis} as the first
+   * argument and the input temporal as the second argument.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date-time, which is converted to an { @code OffsetDateTime}, not null
+   *   the end date-time, which is converted to an {@@codeOffsetDateTime} , not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1473,16 +1473,16 @@ final class OffsetDateTime private (
   }
 
   /**
-   * Combines this date-time with a time-zone to create a {@code ZonedDateTime} ensuring that the
+   * Combines this date-time with a time-zone to create a {@@codeZonedDateTime} ensuring that the
    * result has the same instant.
    *
-   * This returns a {@code ZonedDateTime} formed from this date-time and the specified time-zone.
+   * This returns a {@@codeZonedDateTime} formed from this date-time and the specified time-zone.
    * This conversion will ignore the visible local date-time and use the underlying instant instead.
    * This avoids any problems with local time-line gaps or overlaps. The result might have different
    * values for fields such as hour, minute an even day.
    *
-   * To attempt to retain the values of the fields, use {@link #atZoneSimilarLocal(ZoneId)}. To use
-   * the offset as the zone ID, use {@link #toZonedDateTime()}.
+   * To attempt to retain the values of the fields, use {@@link#atZoneSimilarLocal(ZoneId)} . To use
+   * the offset as the zone ID, use {@@link#toZonedDateTime()} .
    *
    * @param zone
    *   the time-zone to use, not null
@@ -1493,10 +1493,10 @@ final class OffsetDateTime private (
     ZonedDateTime.ofInstant(dateTime, offset, zone)
 
   /**
-   * Combines this date-time with a time-zone to create a {@code ZonedDateTime} trying to keep the
+   * Combines this date-time with a time-zone to create a {@@codeZonedDateTime} trying to keep the
    * same local date and time.
    *
-   * This returns a {@code ZonedDateTime} formed from this date-time and the specified time-zone.
+   * This returns a {@@codeZonedDateTime} formed from this date-time and the specified time-zone.
    * Where possible, the result will have the same local date-time as this object.
    *
    * Time-zone rules, such as daylight savings, mean that not every time on the local time-line
@@ -1506,11 +1506,11 @@ final class OffsetDateTime private (
    * instance if possible.
    *
    * Finer control over gaps and overlaps is available in two ways. If you simply want to use the
-   * later offset at overlaps then call {@link ZonedDateTime#withLaterOffsetAtOverlap()} immediately
+   * later offset at overlaps then call {@@linkZonedDateTime#withLaterOffsetAtOverlap()} immediately
    * after this method.
    *
    * To create a zoned date-time at the same instant irrespective of the local time-line, use {@link
-   * #atZoneSameInstant(ZoneId)}. To use the offset as the zone ID, use {@link #toZonedDateTime()}.
+   * #atZoneSameInstant(ZoneId)}. To use the offset as the zone ID, use {@@link#toZonedDateTime()} .
    *
    * @param zone
    *   the time-zone to use, not null
@@ -1521,9 +1521,9 @@ final class OffsetDateTime private (
     ZonedDateTime.ofLocal(dateTime, zone, offset)
 
   /**
-   * Gets the {@code LocalDateTime} part of this offset date-time.
+   * Gets the {@@codeLocalDateTime} part of this offset date-time.
    *
-   * This returns a {@code LocalDateTime} with the same year, month, day and time as this date-time.
+   * This returns a {@@codeLocalDateTime} with the same year, month, day and time as this date-time.
    *
    * @return
    *   the local date-time part of this date-time, not null
@@ -1531,9 +1531,9 @@ final class OffsetDateTime private (
   def toLocalDateTime: LocalDateTime = dateTime
 
   /**
-   * Gets the {@code LocalDate} part of this date-time.
+   * Gets the {@@codeLocalDate} part of this date-time.
    *
-   * This returns a {@code LocalDate} with the same year, month and day as this date-time.
+   * This returns a {@@codeLocalDate} with the same year, month and day as this date-time.
    *
    * @return
    *   the date part of this date-time, not null
@@ -1541,9 +1541,9 @@ final class OffsetDateTime private (
   def toLocalDate: LocalDate = dateTime.toLocalDate
 
   /**
-   * Gets the {@code LocalTime} part of this date-time.
+   * Gets the {@@codeLocalTime} part of this date-time.
    *
-   * This returns a {@code LocalTime} with the same hour, minute, second and nanosecond as this
+   * This returns a {@@codeLocalTime} with the same hour, minute, second and nanosecond as this
    * date-time.
    *
    * @return
@@ -1552,7 +1552,7 @@ final class OffsetDateTime private (
   def toLocalTime: LocalTime = dateTime.toLocalTime
 
   /**
-   * Converts this date-time to an {@code OffsetTime}.
+   * Converts this date-time to an {@@codeOffsetTime} .
    *
    * This returns an offset time with the same local time and offset.
    *
@@ -1562,11 +1562,11 @@ final class OffsetDateTime private (
   def toOffsetTime: OffsetTime = OffsetTime.of(dateTime.toLocalTime, offset)
 
   /**
-   * Converts this date-time to a {@code ZonedDateTime} using the offset as the zone ID.
+   * Converts this date-time to a {@@codeZonedDateTime} using the offset as the zone ID.
    *
-   * This creates the simplest possible {@code ZonedDateTime} using the offset as the zone ID.
+   * This creates the simplest possible {@@codeZonedDateTime} using the offset as the zone ID.
    *
-   * To control the time-zone used, see {@link #atZoneSameInstant(ZoneId)} and {@link
+   * To control the time-zone used, see {@@link#atZoneSameInstant(ZoneId)} and {@link
    * #atZoneSimilarLocal(ZoneId)}.
    *
    * @return
@@ -1575,10 +1575,10 @@ final class OffsetDateTime private (
   def toZonedDateTime: ZonedDateTime = ZonedDateTime.of(dateTime, offset)
 
   /**
-   * Converts this date-time to an {@code Instant}.
+   * Converts this date-time to an {@@codeInstant} .
    *
    * @return
-   *   an { @code Instant} representing the same instant, not null
+   *   an {@@codeInstant} representing the same instant, not null
    */
   def toInstant: Instant = dateTime.toInstant(offset)
 
@@ -1595,10 +1595,10 @@ final class OffsetDateTime private (
   def toEpochSecond: Long = dateTime.toEpochSecond(offset)
 
   /**
-   * Compares this {@code OffsetDateTime} to another date-time.
+   * Compares this {@@codeOffsetDateTime} to another date-time.
    *
    * The comparison is based on the instant then on the local date-time. It is "consistent with
-   * equals", as defined by {@link Comparable}.
+   * equals", as defined by {@@linkComparable} .
    *
    * For example, the following is the comparator order: <ol> <li>{@code
    * 2008-12-03T10:30+01:00}</li> <li>{@code 2008-12-03T11:00+01:00}</li> <li>{@code
@@ -1606,7 +1606,7 @@ final class OffsetDateTime private (
    * 2008-12-03T12:00+01:00}</li> <li>{@code 2008-12-03T12:30+01:00}</li> </ol> Values #2 and #3
    * represent the same instant on the time-line. When two values represent the same instant, the
    * local date-time is compared to distinguish them. This step is needed to make the ordering
-   * consistent with {@code equals()}.
+   * consistent with {@@codeequals()} .
    *
    * @param other
    *   the other date-time to compare to, not null
@@ -1630,7 +1630,7 @@ final class OffsetDateTime private (
   /**
    * Checks if the instant of this date-time is after that of the specified date-time.
    *
-   * This method differs from the comparison in {@link #compareTo} and {@link #equals} in that it
+   * This method differs from the comparison in {@@link#compareTo} and {@@link#equals} in that it
    * only compares the instant of the date-time. This is equivalent to using {@code
    * dateTime1.toInstant().isAfter(dateTime2.toInstant());}.
    *
@@ -1648,7 +1648,7 @@ final class OffsetDateTime private (
   /**
    * Checks if the instant of this date-time is before that of the specified date-time.
    *
-   * This method differs from the comparison in {@link #compareTo} in that it only compares the
+   * This method differs from the comparison in {@@link#compareTo} in that it only compares the
    * instant of the date-time. This is equivalent to using {@code
    * dateTime1.toInstant().isBefore(dateTime2.toInstant());}.
    *
@@ -1666,7 +1666,7 @@ final class OffsetDateTime private (
   /**
    * Checks if the instant of this date-time is equal to that of the specified date-time.
    *
-   * This method differs from the comparison in {@link #compareTo} and {@link #equals} in that it
+   * This method differs from the comparison in {@@link#compareTo} and {@@link#equals} in that it
    * only compares the instant of the date-time. This is equivalent to using {@code
    * dateTime1.toInstant().equals(dateTime2.toInstant());}.
    *
@@ -1682,7 +1682,7 @@ final class OffsetDateTime private (
    * Checks if this date-time is equal to another date-time.
    *
    * The comparison is based on the local date-time and the offset. To compare for the same instant
-   * on the time-line, use {@link #isEqual}. Only objects of type {@code OffsetDateTime} are
+   * on the time-line, use {@@link#isEqual} . Only objects of type {@@codeOffsetDateTime} are
    * compared, other types return false.
    *
    * @param obj
@@ -1706,7 +1706,7 @@ final class OffsetDateTime private (
   override def hashCode: Int = dateTime.hashCode ^ offset.hashCode
 
   /**
-   * Outputs this date-time as a {@code String}, such as {@code 2007-12-03T10:15:30+01:00}.
+   * Outputs this date-time as a {@@codeString} , such as {@@code2007-12-03T10:15:30+01:00} .
    *
    * The output will be one of the following ISO-8601 formats: <ul> <li>{@code
    * yyyy-MM-dd'T'HH:mmXXXXX}</li> <li>{@code yyyy-MM-dd'T'HH:mm:ssXXXXX}</li> <li>{@code
@@ -1721,7 +1721,7 @@ final class OffsetDateTime private (
   override def toString: String = dateTime.toString + offset.toString
 
   /**
-   * Outputs this date-time as a {@code String} using the formatter.
+   * Outputs this date-time as a {@@codeString} using the formatter.
    *
    * This date-time will be passed to the formatter {@link
    * DateTimeFormatter#format(TemporalAccessor) print method}.

@@ -39,17 +39,18 @@ package org.threeten.bp.temporal
  * pattern. Examples might be a query that checks if the date is the day before February 29th in a
  * leap year, or calculates the number of days to your next birthday.
  *
- * The {@link TemporalField} interface provides another mechanism for querying temporal objects.
- * That interface is limited to returning a {@code long}. By contrast, queries can return any type.
+ * The {@@linkTemporalField} interface provides another mechanism for querying temporal objects.
+ * That interface is limited to returning a {@@codelong} . By contrast, queries can return any type.
  *
- * There are two equivalent ways of using a {@code TemporalQuery}. The first is to invoke the method
- * on this interface directly. The second is to use {@link TemporalAccessor#query(TemporalQuery)}:
- * <pre> // these two lines are equivalent, but the second approach is recommended temporal =
- * thisQuery.queryFrom(temporal); temporal = temporal.query(thisQuery); </pre> It is recommended to
- * use the second approach, {@code query(TemporalQuery)}, as it is a lot clearer to read in code.
+ * There are two equivalent ways of using a {@@codeTemporalQuery} . The first is to invoke the
+ * method on this interface directly. The second is to use
+ * {@@linkTemporalAccessor#query(TemporalQuery)} : <pre> // these two lines are equivalent, but the
+ * second approach is recommended temporal = thisQuery.queryFrom(temporal); temporal =
+ * temporal.query(thisQuery); </pre> It is recommended to use the second approach,
+ * {@@codequery(TemporalQuery)} , as it is a lot clearer to read in code.
  *
- * The most common implementations are method references, such as {@code LocalDate::from} and {@code
- * ZoneId::from}. Further implementations are on {@link TemporalQueries}. Queries may also be
+ * The most common implementations are method references, such as {@@codeLocalDate::from} and {@code
+ * ZoneId::from}. Further implementations are on {@@linkTemporalQueries} . Queries may also be
  * defined by applications.
  *
  * <h3>Specification for implementors</h3> This interface places no restrictions on the mutability
@@ -65,20 +66,20 @@ trait TemporalQuery[+R] {
    * February 29th in a leap year, or calculates the number of days to your next birthday.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link TemporalAccessor#query(TemporalQuery)}: <pre> // these
+   * directly. The second is to use {@@linkTemporalAccessor#query(TemporalQuery)} : <pre> // these
    * two lines are equivalent, but the second approach is recommended temporal =
    * thisQuery.queryFrom(temporal); temporal = temporal.query(thisQuery); </pre> It is recommended
-   * to use the second approach, {@code query(TemporalQuery)}, as it is a lot clearer to read in
+   * to use the second approach, {@@codequery(TemporalQuery)} , as it is a lot clearer to read in
    * code.
    *
    * <h3>Specification for implementors</h3> The implementation must take the input object and query
    * it. The implementation defines the logic of the query and is responsible for documenting that
-   * logic. It may use any method on {@code TemporalAccessor} to determine the result. The input
+   * logic. It may use any method on {@@codeTemporalAccessor} to determine the result. The input
    * object must not be altered.
    *
    * The input temporal object may be in a calendar system other than ISO. Implementations may
    * choose to document compatibility with other calendar systems, or reject non-ISO temporal
-   * objects by {@link TemporalQueries#chronology() querying the chronology}.
+   * objects by {@@linkTemporalQueries#chronology() querying the chronology} .
    *
    * This method may be called from multiple threads in parallel. It must be thread-safe when
    * invoked.

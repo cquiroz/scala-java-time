@@ -122,7 +122,7 @@ private[chrono] object ChronoZonedDateTimeImpl {
 /**
  * A date-time with a time-zone in the calendar neutral API.
  *
- * {@code ZoneChronoDateTime} is an immutable representation of a date-time with a time-zone. This
+ * {@@codeZoneChronoDateTime} is an immutable representation of a date-time with a time-zone. This
  * class stores all date and time fields, to a precision of nanoseconds, as well as a time-zone and
  * zone offset.
  *
@@ -154,7 +154,7 @@ final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
   Objects.requireNonNull(zone, "zone")
 
   /**
-   * Obtains an instance from an {@code Instant}.
+   * Obtains an instance from an {@@codeInstant} .
    *
    * @param instant
    *   the instant to create the date-time from, not null

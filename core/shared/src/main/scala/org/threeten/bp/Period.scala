@@ -61,7 +61,7 @@ object Period {
   )
 
   /**
-   * Obtains a {@code Period} representing a number of years.
+   * Obtains a {@@codePeriod} representing a number of years.
    *
    * The resulting period will have the specified years. The months and days units will be zero.
    *
@@ -73,7 +73,7 @@ object Period {
   def ofYears(years: Int): Period = create(years, 0, 0)
 
   /**
-   * Obtains a {@code Period} representing a number of months.
+   * Obtains a {@@codePeriod} representing a number of months.
    *
    * The resulting period will have the specified months. The years and days units will be zero.
    *
@@ -85,7 +85,7 @@ object Period {
   def ofMonths(months: Int): Period = create(0, months, 0)
 
   /**
-   * Obtains a {@code Period} representing a number of weeks.
+   * Obtains a {@@codePeriod} representing a number of weeks.
    *
    * The resulting period will have days equal to the weeks multiplied by seven. The years and
    * months units will be zero.
@@ -98,7 +98,7 @@ object Period {
   def ofWeeks(weeks: Int): Period = create(0, 0, Math.multiplyExact(weeks, 7))
 
   /**
-   * Obtains a {@code Period} representing a number of days.
+   * Obtains a {@@codePeriod} representing a number of days.
    *
    * The resulting period will have the specified days. The years and months units will be zero.
    *
@@ -110,7 +110,7 @@ object Period {
   def ofDays(days: Int): Period = create(0, 0, days)
 
   /**
-   * Obtains a {@code Period} representing a number of years, months and days.
+   * Obtains a {@@codePeriod} representing a number of years, months and days.
    *
    * This creates an instance based on years, months and days.
    *
@@ -126,24 +126,24 @@ object Period {
   def of(years: Int, months: Int, days: Int): Period = create(years, months, days)
 
   /**
-   * Obtains an instance of {@code Period} from a temporal amount.
+   * Obtains an instance of {@@codePeriod} from a temporal amount.
    *
-   * This obtains a period based on the specified amount. A {@code TemporalAmount} represents an
+   * This obtains a period based on the specified amount. A {@@codeTemporalAmount} represents an
    * amount of time, which may be date-based or time-based, which this factory extracts to a {@code
    * Period}.
    *
    * The conversion loops around the set of units from the amount and uses the {@link
-   * ChronoUnit#YEARS YEARS}, {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS}
+   * ChronoUnit#YEARS YEARS}, {@@linkChronoUnit#MONTHS MONTHS} and {@@linkChronoUnit#DAYS DAYS}
    * units to create a period. If any other units are found then an exception is thrown.
    *
-   * If the amount is a {@code ChronoPeriod} then it must use the ISO chronology.
+   * If the amount is a {@@codeChronoPeriod} then it must use the ISO chronology.
    *
    * @param amount
    *   the temporal amount to convert, not null
    * @return
    *   the equivalent period, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Period}
+   *   if unable to convert to a {@@codePeriod}
    * @throws ArithmeticException
    *   if the amount of years, months or days exceeds an int
    */
@@ -178,13 +178,13 @@ object Period {
   }
 
   /**
-   * Obtains a {@code Period} consisting of the number of years, months, and days between two dates.
+   * Obtains a {@@codePeriod} consisting of the number of years, months, and days between two dates.
    *
    * The start date is included, but the end date is not. The period is calculated by removing
    * complete months, then calculating the remaining number of days, adjusting to ensure that both
    * have the same sign. The number of months is then split into years and months based on a 12
    * month year. A month is considered if the end day-of-month is greater than or equal to the start
-   * day-of-month. For example, from {@code 2010-01-15} to {@code 2011-03-18} is one year, two
+   * day-of-month. For example, from {@@code2010-01-15} to {@@code2011-03-18} is one year, two
    * months and three days.
    *
    * The result of this method can be a negative period if the end is before the start. The negative
@@ -202,10 +202,10 @@ object Period {
   def between(startDate: LocalDate, endDate: LocalDate): Period = startDate.until(endDate)
 
   /**
-   * Obtains a {@code Period} from a text string such as {@code PnYnMnD}.
+   * Obtains a {@@codePeriod} from a text string such as {@@codePnYnMnD} .
    *
-   * This will parse the string produced by {@code toString()} which is based on the ISO-8601 period
-   * formats {@code PnYnMnD} and {@code PnW}.
+   * This will parse the string produced by {@@codetoString()} which is based on the ISO-8601 period
+   * formats {@@codePnYnMnD} and {@@codePnW} .
    *
    * The string starts with an optional sign, denoted by the ASCII negative or positive symbol. If
    * negative, the whole period is negated. The ASCII letter "P" is next in upper or lower case.
@@ -213,10 +213,10 @@ object Period {
    * four sections must be present. The sections have suffixes in ASCII of "Y", "M", "W" and "D" for
    * years, months, weeks and days, accepted in upper or lower case. The suffixes must occur in
    * order. The number part of each section must consist of ASCII digits. The number may be prefixed
-   * by the ASCII negative or positive symbol. The number must parse to an {@code int}.
+   * by the ASCII negative or positive symbol. The number must parse to an {@@codeint} .
    *
    * The leading plus/minus sign, and negative values for other units are not part of the ISO-8601
-   * standard. In addition, ISO-8601 does not permit mixing between the {@code PnYnMnD} and {@code
+   * standard. In addition, ISO-8601 does not permit mixing between the {@@codePnYnMnD} and {@code
    * PnW} formats. Any week-based input is multiplied by 7 and treated as a number of days.
    *
    * For example, the following are valid inputs: <pre> "P2Y" -- Period.ofYears(2) "P3M" --
@@ -289,18 +289,18 @@ object Period {
  * Duration} for the time-based equivalent to this class.
  *
  * Durations and period differ in their treatment of daylight savings time when added to {@link
- * ZonedDateTime}. A {@code Duration} will add an exact number of seconds, thus a duration of one
- * day is always exactly 24 hours. By contrast, a {@code Period} will add a conceptual day, trying
+ * ZonedDateTime}. A {@@codeDuration} will add an exact number of seconds, thus a duration of one
+ * day is always exactly 24 hours. By contrast, a {@@codePeriod} will add a conceptual day, trying
  * to maintain the local time.
  *
  * For example, consider adding a period of one day and a duration of one day to 18:00 on the
- * evening before a daylight savings gap. The {@code Period} will add the conceptual day and result
- * in a {@code ZonedDateTime} at 18:00 the following day. By contrast, the {@code Duration} will add
- * exactly 24 hours, resulting in a {@code ZonedDateTime} at 19:00 the following day (assuming a one
+ * evening before a daylight savings gap. The {@@codePeriod} will add the conceptual day and result
+ * in a {@@codeZonedDateTime} at 18:00 the following day. By contrast, the {@@codeDuration} will add
+ * exactly 24 hours, resulting in a {@@codeZonedDateTime} at 19:00 the following day (assuming a one
  * hour DST gap).
  *
- * The supported units of a period are {@link ChronoUnit#YEARS YEARS}, {@link ChronoUnit#MONTHS
- * MONTHS} and {@link ChronoUnit#DAYS DAYS}. All three fields are always present, but may be set to
+ * The supported units of a period are {@@linkChronoUnit#YEARS YEARS} , {@link ChronoUnit#MONTHS
+ * MONTHS} and {@@linkChronoUnit#DAYS DAYS} . All three fields are always present, but may be set to
  * zero.
  *
  * The period may be used with any calendar system. The meaning of a "year" or "month" is only
@@ -309,7 +309,7 @@ object Period {
  * The period is modeled as a directed amount of time, meaning that individual parts of the period
  * may be negative.
  *
- * The months and years fields may be {@linkplain #normalized() normalized}. The normalization
+ * The months and years fields may be {@@linkplain#normalized() normalized} . The normalization
  * assumes a 12 month year, so is not appropriate for all calendar systems.
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
@@ -418,7 +418,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param years
    *   the years to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested years, not null
+   *   a {@@codePeriod} based on this period with the requested years, not null
    */
   def withYears(years: Int): Period =
     if (years == this.years) this
@@ -438,7 +438,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param months
    *   the months to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested months, not null
+   *   a {@@codePeriod} based on this period with the requested months, not null
    */
   def withMonths(months: Int): Period =
     if (months == this.months) this
@@ -455,7 +455,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param days
    *   the days to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested days, not null
+   *   a {@@codePeriod} based on this period with the requested days, not null
    */
   def withDays(days: Int): Period =
     if (days == this.days) this
@@ -464,7 +464,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   /**
    * Returns a copy of this period with the specified amount added.
    *
-   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)}. This
+   * This input amount is converted to a {@@codePeriod} using {@@codefrom(TemporalAmount)} . This
    * operates separately on the years, months and days.
    *
    * For example, "1 year, 6 months and 3 days" plus "2 years, 2 months and 2 days" returns "3
@@ -475,7 +475,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToAdd
    *   the period to add, not null
    * @return
-   *   a { @code Period} based on this period with the requested period added, not null
+   *   a {@@codePeriod} based on this period with the requested period added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -499,7 +499,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToAdd
    *   the years to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years added, not null
+   *   a {@@codePeriod} based on this period with the specified years added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -519,7 +519,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToAdd
    *   the months to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months added, not null
+   *   a {@@codePeriod} based on this period with the specified months added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -539,7 +539,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToAdd
    *   the days to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days added, not null
+   *   a {@@codePeriod} based on this period with the specified days added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -550,7 +550,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   /**
    * Returns a copy of this period with the specified amount subtracted.
    *
-   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)}. This
+   * This input amount is converted to a {@@codePeriod} using {@@codefrom(TemporalAmount)} . This
    * operates separately on the years, months and days.
    *
    * For example, "1 year, 6 months and 3 days" minus "2 years, 2 months and 2 days" returns "-1
@@ -561,7 +561,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToSubtract
    *   the period to subtract, not null
    * @return
-   *   a { @code Period} based on this period with the requested period subtracted, not null
+   *   a {@@codePeriod} based on this period with the requested period subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -585,7 +585,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years subtracted, not null
+   *   a {@@codePeriod} based on this period with the specified years subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -605,7 +605,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months subtracted, not null
+   *   a {@@codePeriod} based on this period with the specified months subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -625,7 +625,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToSubtract
    *   the months to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days subtracted, not null
+   *   a {@@codePeriod} based on this period with the specified days subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -642,7 +642,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param scalar
    *   the scalar to multiply by, not null
    * @return
-   *   a { @code Period} based on this period with the amounts multiplied by the scalar, not null
+   *   a {@@codePeriod} based on this period with the amounts multiplied by the scalar, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -658,7 +658,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * Returns a new instance with each amount in this period negated.
    *
    * @return
-   *   a { @code Period} based on this period with the amounts negated, not null
+   *   a {@@codePeriod} based on this period with the amounts negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -680,7 +680,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code Period} based on this period with excess months normalized to years, not null
+   *   a {@@codePeriod} based on this period with excess months normalized to years, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -817,7 +817,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   override def hashCode: Int = years + Integer.rotateLeft(months, 8) + Integer.rotateLeft(days, 16)
 
   /**
-   * Outputs this period as a {@code String}, such as {@code P6Y3M1D}.
+   * Outputs this period as a {@@codeString} , such as {@@codeP6Y3M1D} .
    *
    * The output will be in the ISO-8601 period format. A zero period will be represented as zero
    * days, 'P0D'.

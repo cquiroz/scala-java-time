@@ -89,9 +89,9 @@ object HijrahDate {
     Array(30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 30)
 
   /**
-   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum
-   * ---------- ------- ------- ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR
-   * 1 1 12 12 DAY_OF_MONTH 1 1 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
+   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum ---------- ------- -------
+   * ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR 1 1 12 12 DAY_OF_MONTH 1 1
+   * 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
    *
    * Minimum values.
    */
@@ -256,10 +256,10 @@ object HijrahDate {
   }
 
   /**
-   * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar in the default
+   * Obtains the current {@@codeHijrahDate} of the Islamic Umm Al-Qura calendar in the default
    * time-zone.
    *
-   * This will query the {@link Clock#systemDefaultZone() system clock} in the default time-zone to
+   * This will query the {@@linkClock#systemDefaultZone() system clock} in the default time-zone to
    * obtain the current date.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -271,10 +271,10 @@ object HijrahDate {
   def now: HijrahDate = now(Clock.systemDefaultZone)
 
   /**
-   * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar in the specified
+   * Obtains the current {@@codeHijrahDate} of the Islamic Umm Al-Qura calendar in the specified
    * time-zone.
    *
-   * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
+   * This will query the {@@linkClock#system(ZoneId) system clock} to obtain the current date.
    * Specifying the time-zone avoids dependence on the default time-zone.
    *
    * Using this method will prevent the ability to use an alternate clock for testing because the
@@ -288,12 +288,12 @@ object HijrahDate {
   def now(zone: ZoneId): HijrahDate = now(Clock.system(zone))
 
   /**
-   * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar from the specified
+   * Obtains the current {@@codeHijrahDate} of the Islamic Umm Al-Qura calendar from the specified
    * clock.
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@@linkplainClock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -305,7 +305,7 @@ object HijrahDate {
   def now(clock: Clock): HijrahDate = HijrahChronology.INSTANCE.dateNow(clock)
 
   /**
-   * Obtains an instance of {@code HijrahDate} from the Hijrah era year, month-of-year and
+   * Obtains an instance of {@@codeHijrahDate} from the Hijrah era year, month-of-year and
    * day-of-month. This uses the Hijrah era.
    *
    * @param prolepticYear
@@ -326,7 +326,7 @@ object HijrahDate {
     else HijrahDate.of(HijrahEra.of(0), 1 - prolepticYear, monthOfYear, dayOfMonth)
 
   /**
-   * Obtains an instance of {@code HijrahDate} from the era, year-of-era month-of-year and
+   * Obtains an instance of {@@codeHijrahDate} from the era, year-of-era month-of-year and
    * day-of-month.
    *
    * @param era
@@ -386,7 +386,7 @@ object HijrahDate {
       )
 
   /**
-   * Obtains an instance of {@code HijrahDate} from a date.
+   * Obtains an instance of {@@codeHijrahDate} from a date.
    *
    * @param date
    *   the date to use, not null
@@ -403,24 +403,24 @@ object HijrahDate {
   private[chrono] def ofEpochDay(epochDay: Long): HijrahDate = new HijrahDate(epochDay)
 
   /**
-   * Obtains a {@code HijrahDate} of the Islamic Umm Al-Qura calendar from a temporal object.
+   * Obtains a {@@codeHijrahDate} of the Islamic Umm Al-Qura calendar from a temporal object.
    *
    * This obtains a date in the Hijrah calendar system based on the specified temporal. A {@code
    * TemporalAccessor} represents an arbitrary set of date and time information, which this factory
-   * converts to an instance of {@code HijrahDate}.
+   * converts to an instance of {@@codeHijrahDate} .
    *
-   * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
+   * The conversion typically uses the {@@linkChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
-   * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code HijrahDate::from}.
+   * This method matches the signature of the functional interface {@@linkTemporalQuery} allowing it
+   * to be used as a query via method reference, {@@codeHijrahDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Hijrah calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code HijrahDate}
+   *   if unable to convert to a {@@codeHijrahDate}
    */
   def from(temporal: TemporalAccessor): HijrahDate = HijrahChronology.INSTANCE.date(temporal)
 
@@ -1144,7 +1144,7 @@ object HijrahDate {
 /**
  * A date in the Hijrah calendar system.
  *
- * This implements {@code ChronoLocalDate} for the {@link HijrahChronology Hijrah calendar}.
+ * This implements {@@codeChronoLocalDate} for the {@@linkHijrahChronology Hijrah calendar} .
  *
  * The Hijrah calendar has a different total of days in a year than Gregorian calendar, and a month
  * is based on the period of a complete revolution of the moon around the earth (as between

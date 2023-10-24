@@ -36,10 +36,10 @@ import org.threeten.bp.DateTimeException
 object MinguoEra {
 
   /**
-   * Obtains an instance of {@code MinguoEra} from an {@code int} value.
+   * Obtains an instance of {@@codeMinguoEra} from an {@@codeint} value.
    *
-   * {@code MinguoEra} is an enum representing the Minguo eras of BEFORE_ROC/ROC. This factory
-   * allows the enum to be obtained from the {@code int} value.
+   * {@@codeMinguoEra} is an enum representing the Minguo eras of BEFORE_ROC/ROC. This factory
+   * allows the enum to be obtained from the {@@codeint} value.
    *
    * @param era
    *   the BEFORE_ROC/ROC value to represent, from 0 (BEFORE_ROC) to 1 (ROC)
@@ -60,11 +60,11 @@ object MinguoEra {
 /**
  * An era in the Minguo calendar system.
  *
- * The Minguo calendar system has two eras. The date {@code 0001-01-01 (Minguo)} is equal to {@code
+ * The Minguo calendar system has two eras. The date {@@code0001-01-01 (Minguo)} is equal to {@code
  * 1912-01-01 (ISO)}.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code MinguoEra}. Use
- * {@code getValue()} instead.</b>
+ * <b>Do not use {@@codeordinal()} to obtain the numeric representation of {@@codeMinguoEra} . Use
+ * {@@codegetValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
  */
@@ -72,18 +72,18 @@ enum MinguoEra(name: String, ordinal: Int) extends java.lang.Enum[MinguoEra] wit
 
   /**
    * The singleton instance for the era BEFORE_ROC, 'Before Republic of China'. This has the numeric
-   * value of {@code 0}.
+   * value of {@@code0} .
    */
   case BEFORE_ROC extends MinguoEra("BEFORE_ROC", 0)
 
   /**
    * The singleton instance for the era ROC, 'Republic of China'. This has the numeric value of
-   * {@code 1}.
+   * {@@code1} .
    */
   case ROC extends MinguoEra("ROC", 1)
 
   /**
-   * Gets the numeric era {@code int} value.
+   * Gets the numeric era {@@codeint} value.
    *
    * The era BEFORE_ROC has the value 0, while the era ROC has the value 1.
    *

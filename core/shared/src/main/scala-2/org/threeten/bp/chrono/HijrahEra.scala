@@ -52,7 +52,7 @@ object HijrahEra {
   lazy val values: Array[HijrahEra] = Array(BEFORE_AH, AH)
 
   /**
-   * Obtains an instance of {@code HijrahEra} from a value.
+   * Obtains an instance of {@@codeHijrahEra} from a value.
    *
    * The current era (from ISO date 622-06-19 onwards) has the value 1 The previous era has the
    * value 0.
@@ -76,11 +76,11 @@ object HijrahEra {
 /**
  * An era in the Hijrah calendar system.
  *
- * The Hijrah calendar system has two eras. The date {@code 0001-01-01 (Hijrah)} is {@code 622-06-19
+ * The Hijrah calendar system has two eras. The date {@@code0001-01-01 (Hijrah)} is {@code 622-06-19
  * (ISO)}.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code HijrahEra}. Use
- * {@code getValue()} instead.</b>
+ * <b>Do not use {@@codeordinal()} to obtain the numeric representation of {@@codeHijrahEra} . Use
+ * {@@codegetValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
  */
