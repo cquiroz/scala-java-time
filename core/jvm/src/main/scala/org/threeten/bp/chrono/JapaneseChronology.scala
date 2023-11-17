@@ -141,8 +141,8 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'Japanese'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID - 'Japanese'
@@ -194,7 +194,7 @@ final class JapaneseChronology private () extends Chronology with Serializable {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not a { @code JapaneseEra}
+   *   if the {@code era} is not a {@code JapaneseEra}
    */
   override def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): JapaneseDate =
     if (!era.isInstanceOf[JapaneseEra]) throw new ClassCastException("Era must be JapaneseEra")
@@ -276,16 +276,16 @@ final class JapaneseChronology private () extends Chronology with Serializable {
   /**
    * Returns the calendar system era object from the given numeric value.
    *
-   * See the description of each Era for the numeric values of: {@link JapaneseEra#HEISEI}, {@link
-   * JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO}, {@link JapaneseEra#MEIJI}), only Meiji and later
-   * eras are supported.
+   * See the description of each Era for the numeric values of: {@link JapaneseEra#HEISEI} , {@link
+   * JapaneseEra#SHOWA},{@link JapaneseEra#TAISHO}, {@link JapaneseEra#MEIJI} ), only Meiji and
+   * later eras are supported.
    *
    * @param eraValue
    *   the era value
    * @return
-   *   the Japanese { @code Era} for the given numeric era value
+   *   the Japanese {@code Era} for the given numeric era value
    * @throws DateTimeException
-   *   if { @code eraValue} is invalid
+   *   if {@code eraValue} is invalid
    */
   def eraOf(eraValue: Int): JapaneseEra = JapaneseEra.of(eraValue)
 

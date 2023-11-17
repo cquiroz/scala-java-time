@@ -47,7 +47,7 @@ import org.threeten.bp.temporal.TemporalUnit
  * example, the Japanese, Minguo, Thai Buddhist and others.
  *
  * {@code ChronoLocalDate} is built on the generic concepts of year, month and day. The calendar
- * system, represented by a {@link Chronology}, expresses the relationship between the fields and
+ * system, represented by a {@link Chronology} , expresses the relationship between the fields and
  * this class allows the resulting date to be manipulated.
  *
  * Note that not all calendar systems are suitable for use with this class. For example, the Mayan
@@ -79,9 +79,9 @@ import org.threeten.bp.temporal.TemporalUnit
  * the factory for the ChronoLocalDate subclass. </p> To permit the discovery of the additional
  * calendar types the implementation of {@code Chronology} must be registered as a Service
  * implementing the {@code Chronology} interface in the {@code META-INF/Services} file as per the
- * specification of {@link java.util.ServiceLoader}. The subclass must function according to the
+ * specification of {@link java.util.ServiceLoader} . The subclass must function according to the
  * {@code Chronology} class description and must provide its {@link Chronology#getID calendar name}
- * and {@link Chronology#getCalendarType() calendar type}. </p>
+ * and {@link Chronology#getCalendarType() calendar type} . </p>
  *
  * <h3>Specification for implementors</h3> This abstract class must be implemented with care to
  * ensure other classes operate correctly. All implementations that can be instantiated must be
@@ -202,7 +202,7 @@ abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono] ()
    * day-of-month, will be adjusted to ensure that the result is valid. Typically this will select
    * the last valid day of the month.
    *
-   * The default implementation uses {@link #plusYears(long)}.
+   * The default implementation uses {@link #plusYears(long)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
@@ -225,7 +225,7 @@ abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono] ()
    * the day-of-month, will be adjusted to ensure that the result is valid. Typically this will
    * select the last valid day of the month.
    *
-   * The default implementation uses {@link #plusMonths(long)}.
+   * The default implementation uses {@link #plusMonths(long)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
@@ -247,7 +247,7 @@ abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono] ()
    * cause the resulting date to become invalid. If this occurs, then other fields will be adjusted
    * to ensure that the result is valid.
    *
-   * The default implementation uses {@link #plusWeeks(long)}.
+   * The default implementation uses {@link #plusWeeks(long)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
@@ -267,7 +267,7 @@ abstract class ChronoLocalDateImpl[D <: ChronoLocalDate] private[chrono] ()
    *
    * This subtracts the specified period in days to the date.
    *
-   * The default implementation uses {@link #plusDays(long)}.
+   * The default implementation uses {@link #plusDays(long)} .
    *
    * This instance is immutable and unaffected by this method call.
    *

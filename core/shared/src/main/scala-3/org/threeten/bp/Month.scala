@@ -60,8 +60,8 @@ import org.threeten.bp.temporal.ValueRange
  * is recommended that applications use the enum rather than the {@code int} value to ensure code
  * clarity.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code Month}. Use {@code
- * getValue()} instead.</b>
+ * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code Month} . Use
+ * {@code getValue()} instead.</b>
  *
  * This enum represents a common concept that is found in many calendar systems. As such, this enum
  * may be used by any calendar system that has the month-of-year concept defined exactly equivalent
@@ -100,21 +100,21 @@ object Month {
    * Obtains an instance of {@code Month} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code Month}.
+   * converts the arbitrary temporal object to an instance of {@code Month} .
    *
    * The conversion extracts the {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} field. The
    * extraction is only permitted if the temporal object has an ISO chronology, or can be converted
-   * to a {@code LocalDate}.
+   * to a {@code LocalDate} .
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code Month::from}.
+   * to be used in queries via method reference, {@code Month::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the month-of-year, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Month}
+   *   if unable to convert to a {@code Month}
    */
   def from(temporal: TemporalAccessor): Month = {
     var _temporal = temporal
@@ -143,25 +143,25 @@ enum Month private (name: String, ordinal: Int)
 
   /**
    * The singleton instance for the month of January with 31 days. This has the numeric value of
-   * {@code 1}.
+   * {@code 1} .
    */
   case JANUARY extends Month("JANUARY", 0)
 
   /**
    * The singleton instance for the month of February with 28 days, or 29 in a leap year. This has
-   * the numeric value of {@code 2}.
+   * the numeric value of {@code 2} .
    */
   case FEBRUARY extends Month("FEBRUARY", 1)
 
   /**
    * The singleton instance for the month of March with 31 days. This has the numeric value of
-   * {@code 3}.
+   * {@code 3} .
    */
   case MARCH extends Month("MARCH", 2)
 
   /**
    * The singleton instance for the month of April with 30 days. This has the numeric value of
-   * {@code 4}.
+   * {@code 4} .
    */
   case APRIL extends Month("APRIL", 3)
 
@@ -185,31 +185,31 @@ enum Month private (name: String, ordinal: Int)
 
   /**
    * The singleton instance for the month of August with 31 days. This has the numeric value of
-   * {@code 8}.
+   * {@code 8} .
    */
   case AUGUST extends Month("AUGUST", 7)
 
   /**
    * The singleton instance for the month of September with 30 days. This has the numeric value of
-   * {@code 9}.
+   * {@code 9} .
    */
   case SEPTEMBER extends Month("SEPTEMBER", 8)
 
   /**
    * The singleton instance for the month of October with 31 days. This has the numeric value of
-   * {@code 10}.
+   * {@code 10} .
    */
   case OCTOBER extends Month("OCTOBER", 9)
 
   /**
    * The singleton instance for the month of November with 30 days. This has the numeric value of
-   * {@code 11}.
+   * {@code 11} .
    */
   case NOVEMBER extends Month("NOVEMBER", 10)
 
   /**
    * The singleton instance for the month of December with 31 days. This has the numeric value of
-   * {@code 12}.
+   * {@code 12} .
    */
   case DECEMBER extends Month("DECEMBER", 11)
 
@@ -253,7 +253,7 @@ enum Month private (name: String, ordinal: Int)
    * If the field is {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} then this method returns true.
    * All other {@code ChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -277,9 +277,9 @@ enum Month private (name: String, ordinal: Int)
    *
    * If the field is {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} then the range of the
    * month-of-year, from 1 to 12, will be returned. All other {@code ChronoField} instances will
-   * throw a {@code DateTimeException}.
+   * throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
@@ -299,7 +299,7 @@ enum Month private (name: String, ordinal: Int)
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this month-of-year as an {@code int}.
+   * Gets the value of the specified field from this month-of-year as an {@code int} .
    *
    * This queries this month for the value for the specified field. The returned value will always
    * be within the valid range of values for the field. If it is not possible to return the value,
@@ -307,9 +307,9 @@ enum Month private (name: String, ordinal: Int)
    *
    * If the field is {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} then the value of the
    * month-of-year, from 1 to 12, will be returned. All other {@code ChronoField} instances will
-   * throw a {@code DateTimeException}.
+   * throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -320,7 +320,7 @@ enum Month private (name: String, ordinal: Int)
    * @throws DateTimeException
    *   if a value for the field cannot be obtained
    * @throws DateTimeException
-   *   if the range of valid values for the field exceeds an { @code int}
+   *   if the range of valid values for the field exceeds an {@code int}
    * @throws DateTimeException
    *   if the value is outside the range of valid values for the field
    * @throws ArithmeticException
@@ -333,16 +333,16 @@ enum Month private (name: String, ordinal: Int)
       range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field from this month-of-year as a {@code long}.
+   * Gets the value of the specified field from this month-of-year as a {@code long} .
    *
    * This queries this month for the value for the specified field. If it is not possible to return
    * the value, because the field is not supported or for some other reason, an exception is thrown.
    *
    * If the field is {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} then the value of the
    * month-of-year, from 1 to 12, will be returned. All other {@code ChronoField} instances will
-   * throw a {@code DateTimeException}.
+   * throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *

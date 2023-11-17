@@ -40,12 +40,12 @@ import org.threeten.bp.format.ResolverStyle
  * Date and time is expressed using fields which partition the time-line into something meaningful
  * for humans. Implementations of this interface represent those fields.
  *
- * The most commonly used units are defined in {@link ChronoField}. Further fields are supplied in
- * {@link IsoFields}, {@link WeekFields} and {@link JulianFields}. Fields can also be written by
+ * The most commonly used units are defined in {@link ChronoField} . Further fields are supplied in
+ * {@link IsoFields} , {@link WeekFields} and {@link JulianFields} . Fields can also be written by
  * application code by implementing this interface.
  *
  * The field works using double dispatch. Client code calls methods on a date-time like {@code
- * LocalDateTime} which check if the field is a {@code ChronoField}. If it is, then the date-time
+ * LocalDateTime} which check if the field is a {@code ChronoField} . If it is, then the date-time
  * must handle it. Otherwise, the method call is re-dispatched to the matching method in this
  * interface.
  *
@@ -60,7 +60,7 @@ trait TemporalField {
    * Gets the unit that the field is measured in.
    *
    * The unit of the field is the period that varies within the range. For example, in the field
-   * 'MonthOfYear', the unit is 'Months'. See also {@link #getRangeUnit()}.
+   * 'MonthOfYear', the unit is 'Months'. See also {@link #getRangeUnit()} .
    *
    * @return
    *   the period unit defining the base unit of the field, not null
@@ -71,7 +71,7 @@ trait TemporalField {
    * Gets the range that the field is bound by.
    *
    * The range of the field is the period that the field varies within. For example, in the field
-   * 'MonthOfYear', the range is 'Years'. See also {@link #getBaseUnit()}.
+   * 'MonthOfYear', the range is 'Years'. See also {@link #getBaseUnit()} .
    *
    * The range is never null. For example, the 'Year' field is shorthand for 'YearOfForever'. It
    * therefore has a unit of 'Years' and a range of 'Forever'.
@@ -124,14 +124,14 @@ trait TemporalField {
    * the temporal cannot be queried for this field.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link TemporalAccessor#isSupported(TemporalField)}: <pre> //
+   * directly. The second is to use {@link TemporalAccessor#isSupported(TemporalField)} : <pre> //
    * these two lines are equivalent, but the second approach is recommended temporal =
    * thisField.isSupportedBy(temporal); temporal = temporal.isSupported(thisField); </pre> It is
-   * recommended to use the second approach, {@code isSupported(TemporalField)}, as it is a lot
+   * recommended to use the second approach, {@code isSupported(TemporalField)} , as it is a lot
    * clearer to read in code.
    *
    * Implementations should determine whether they are supported using the fields available in
-   * {@link ChronoField}.
+   * {@link ChronoField} .
    *
    * @param temporal
    *   the temporal object to query, not null
@@ -144,17 +144,17 @@ trait TemporalField {
    * Get the range of valid values for this field using the temporal object to refine the result.
    *
    * This uses the temporal object to find the range of valid values for the field. This is similar
-   * to {@link #range()}, however this method refines the result using the temporal. For example, if
-   * the field is {@code DAY_OF_MONTH} the {@code range} method is not accurate as there are four
+   * to {@link #range()} , however this method refines the result using the temporal. For example,
+   * if the field is {@code DAY_OF_MONTH} the {@code range} method is not accurate as there are four
    * possible month lengths, 28, 29, 30 and 31 days. Using this method with a date allows the range
    * to be accurate, returning just one of those four options.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link TemporalAccessor#range(TemporalField)}: <pre> // these
+   * directly. The second is to use {@link TemporalAccessor#range(TemporalField)} : <pre> // these
    * two lines are equivalent, but the second approach is recommended temporal =
    * thisField.rangeRefinedBy(temporal); temporal = temporal.range(thisField); </pre> It is
-   * recommended to use the second approach, {@code range(TemporalField)}, as it is a lot clearer to
-   * read in code.
+   * recommended to use the second approach, {@code range(TemporalField)} , as it is a lot clearer
+   * to read in code.
    *
    * Implementations should perform any queries or calculations using the fields available in {@link
    * ChronoField}. If the field is not supported a {@code DateTimeException} must be thrown.
@@ -197,7 +197,7 @@ trait TemporalField {
    *
    * If there is no display name for the locale then a suitable default must be returned.
    *
-   * The default implementation must check the locale is not null and return {@code toString()}.
+   * The default implementation must check the locale is not null and return {@code toString()} .
    *
    * @param locale
    *   the locale to use, not null
@@ -210,7 +210,7 @@ trait TemporalField {
    * Returns a copy of the specified temporal object with the value of this field set.
    *
    * This returns a new temporal object based on the specified one with the value for this field
-   * changed. For example, on a {@code LocalDate}, this could be used to set the year, month or
+   * changed. For example, on a {@code LocalDate} , this could be used to set the year, month or
    * day-of-month. The returned object has the same observable type as the specified object.
    *
    * In some cases, changing a field is not fully defined. For example, if the target object is a
@@ -219,10 +219,10 @@ trait TemporalField {
    * choose the previous valid date, which would be the last valid day of February in this example.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#with(TemporalField, long)}: <pre> // these two
+   * directly. The second is to use {@link Temporal#with(TemporalField, long)} : <pre> // these two
    * lines are equivalent, but the second approach is recommended temporal =
    * thisField.adjustInto(temporal); temporal = temporal.with(thisField); </pre> It is recommended
-   * to use the second approach, {@code with(TemporalField)}, as it is a lot clearer to read in
+   * to use the second approach, {@code with(TemporalField)} , as it is a lot clearer to read in
    * code.
    *
    * Implementations should perform any queries or calculations using the fields available in {@link
@@ -249,7 +249,7 @@ trait TemporalField {
    * Resolves the date/time information in the builder
    *
    * This method is invoked during the resolve of the builder. Implementations should combine the
-   * associated field with others to form objects like {@code LocalDate}, {@code LocalTime} and
+   * associated field with others to form objects like {@code LocalDate} , {@code LocalTime} and
    * {@code LocalDateTime}
    *
    * @param fieldValues

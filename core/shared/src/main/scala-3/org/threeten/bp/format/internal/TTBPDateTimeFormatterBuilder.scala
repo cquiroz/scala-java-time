@@ -279,8 +279,8 @@ object TTBPDateTimeFormatterBuilder {
    * @param signStyle
    *   the positive/negative sign style, not null
    * @param subsequentWidth
-   *   the width of subsequent non-negative numbers, 0 or greater,
-   * -1 if fixed width due to active adjacent parsing
+   *   the width of subsequent non-negative numbers, 0 or greater, -1 if fixed width due to active
+   *   adjacent parsing
    */
   private[format] class NumberPrinterParser private[format] (
     private[format] val field:           TemporalField,
@@ -794,8 +794,8 @@ object TTBPDateTimeFormatterBuilder {
      *
      * The fractional value must be between 0 (inclusive) and 1 (exclusive). It can only be returned
      * if the {@link TemporalField#range() value range} is fixed. The value is obtained by
-     * calculation from the field range and a rounding mode of {@link RoundingMode#FLOOR FLOOR}. The
-     * calculation is inaccurate if the values do not run continuously from smallest to largest.
+     * calculation from the field range and a rounding mode of {@link RoundingMode#FLOOR FLOOR} .
+     * The calculation is inaccurate if the values do not run continuously from smallest to largest.
      *
      * For example, the fractional second-of-minute of 0.25 would be converted to 15, assuming the
      * standard definition of 60 seconds in a minute.

@@ -86,7 +86,7 @@ object ChronoLocalDate {
    *
    * This obtains a local date based on the specified temporal. A {@code TemporalAccessor}
    * represents an arbitrary set of date and time information, which this factory converts to an
-   * instance of {@code ChronoLocalDate}.
+   * instance of {@code ChronoLocalDate} .
    *
    * The conversion extracts and combines the chronology and the date from the temporal object. The
    * behavior is equivalent to using {@link Chronology#date(TemporalAccessor)} with the extracted
@@ -94,14 +94,14 @@ object ChronoLocalDate {
    * fields that are equivalent to the relevant objects.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code ChronoLocalDate::from}.
+   * to be used as a query via method reference, {@code ChronoLocalDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ChronoLocalDate}
+   *   if unable to convert to a {@code ChronoLocalDate}
    * @see
    *   Chronology#date(TemporalAccessor)
    */
@@ -122,12 +122,12 @@ object ChronoLocalDate {
  * A date without time-of-day or time-zone in an arbitrary chronology, intended for advanced
  * globalization use cases.
  *
- * <b>Most applications should declare method signatures, fields and variables as {@link LocalDate},
- * not this interface.</b>
+ * <b>Most applications should declare method signatures, fields and variables as {@link LocalDate}
+ * , not this interface.</b>
  *
  * A {@code ChronoLocalDate} is the abstract representation of a date where the {@code Chronology
  * chronology}, or calendar system, is pluggable. The date is defined in terms of fields expressed
- * by {@link TemporalField}, where most common implementations are defined in {@link ChronoField}.
+ * by {@link TemporalField} , where most common implementations are defined in {@link ChronoField} .
  * The chronology defines how the calendar system operates and the meaning of the standard fields.
  *
  * <h4>When to use this interface</h4> The design of the API encourages the use of {@code LocalDate}
@@ -144,12 +144,12 @@ object ChronoLocalDate {
  * To emphasize the point, declaring a method signature, field or variable as this interface type
  * can initially seem like the sensible way to globalize an application, however it is usually the
  * wrong approach. As such, it should be considered an application-wide architectural decision to
- * choose to use this interface as opposed to {@code LocalDate}.
+ * choose to use this interface as opposed to {@code LocalDate} .
  *
  * <h4>Architectural issues to consider</h4> These are some of the points that must be considered
  * before using this interface throughout an application.
  *
- * 1) Applications using this interface, as opposed to using just {@code LocalDate}, face a
+ * 1) Applications using this interface, as opposed to using just {@code LocalDate} , face a
  * significantly higher probability of bugs. This is because the calendar system in use is not known
  * at development time. A key cause of bugs is where the developer applies assumptions from their
  * day-to-day knowledge of the ISO calendar system to code that is intended to deal with any
@@ -220,7 +220,7 @@ object ChronoLocalDate {
  *
  * <h4>Using LocalDate instead</h4> The primary alternative to using this interface throughout your
  * application is as follows. <ul> <li>Declare all method signatures referring to dates in terms of
- * {@code LocalDate}. <li>Either store the chronology (calendar system) in the user profile or
+ * {@code LocalDate} . <li>Either store the chronology (calendar system) in the user profile or
  * lookup the chronology from the user locale <li>Convert the ISO {@code LocalDate} to and from the
  * user's preferred calendar system during printing and parsing </ul><p> This approach treats the
  * problem of globalized calendar systems as a localization issue and confines it to the UI layer.
@@ -271,10 +271,10 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
    *
    * The era is, conceptually, the largest division of the time-line. Most calendar systems have a
    * single epoch dividing the time-line into two eras. However, some have multiple eras, such as
-   * one for the reign of each leader. The exact meaning is determined by the {@code Chronology}.
+   * one for the reign of each leader. The exact meaning is determined by the {@code Chronology} .
    *
    * All correctly implemented {@code Era} classes are singletons, thus it is valid code to write
-   * {@code date.getEra() == SomeEra.NAME)}.
+   * {@code date.getEra() == SomeEra.NAME)} .
    *
    * @return
    *   the chronology specific era constant applicable at this date, not null
@@ -288,7 +288,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
    * chronology with the constraint that a leap-year must imply a year-length longer than a non
    * leap-year.
    *
-   * The default implementation uses {@link Chronology#isLeapYear(long)}.
+   * The default implementation uses {@link Chronology#isLeapYear(long)} .
    *
    * @return
    *   true if this date is in a leap year, false otherwise
@@ -355,7 +355,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
   def adjustInto(temporal: Temporal): Temporal = temporal.`with`(EPOCH_DAY, toEpochDay)
 
   /**
-   * Calculates the period between this date and another date as a {@code ChronoPeriod}.
+   * Calculates the period between this date and another date as a {@code ChronoPeriod} .
    *
    * This calculates the period between two dates. All supplied chronologies calculate the period
    * using years, months and days, however the {@code ChronoPeriod} API allows the period to be
@@ -401,7 +401,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
   }
 
   /**
-   * Combines this date with a time to create a {@code ChronoLocalDateTime}.
+   * Combines this date with a time to create a {@code ChronoLocalDateTime} .
    *
    * This returns a {@code ChronoLocalDateTime} formed from this date at the specified time. All
    * possible combinations of date and time are valid.
@@ -430,7 +430,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
    * Compares this date to another date, including the chronology.
    *
    * The comparison is based first on the underlying time-line date, then on the chronology. It is
-   * "consistent with equals", as defined by {@link Comparable}.
+   * "consistent with equals", as defined by {@link Comparable} .
    *
    * For example, the following is the comparator order: <ol> <li>{@code 2012-12-03 (ISO)}</li>
    * <li>{@code 2012-12-04 (ISO)}</li> <li>{@code 2555-12-04 (ThaiBuddhist)}</li> <li>{@code
@@ -531,7 +531,7 @@ trait ChronoLocalDate extends Temporal with TemporalAdjuster with Ordered[Chrono
   }
 
   /**
-   * Outputs this date as a {@code String}.
+   * Outputs this date as a {@code String} .
    *
    * The output will include the full local date and the chronology ID.
    *

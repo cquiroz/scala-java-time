@@ -62,7 +62,7 @@ object JulianFields {
    * For date-times, 'JULIAN_DAY.getFrom()' assumes the same value from midnight until just before
    * the next midnight. When 'JULIAN_DAY.adjustInto()' is applied to a date-time, the time of day
    * portion remains unaltered. 'JULIAN_DAY.adjustInto()' and 'JULIAN_DAY.getFrom()' only apply to
-   * {@code Temporal} objects that can be converted into {@link ChronoField#EPOCH_DAY}. A {@link
+   * {@code Temporal} objects that can be converted into {@link ChronoField#EPOCH_DAY} . A {@link
    * DateTimeException} is thrown for any other type of object.
    *
    * <h3>Astronomical and Scientific Notes</h3> The standard astronomical definition uses a fraction
@@ -94,15 +94,15 @@ object JulianFields {
    *
    * This is an integer-based version of the Modified Julian Day Number. Modified Julian Day (MJD)
    * is a well-known system that counts days continuously. It is defined relative to astronomical
-   * Julian Day as {@code MJD = JD - 2400000.5}. Each Modified Julian Day runs from midnight to
+   * Julian Day as {@code MJD = JD - 2400000.5} . Each Modified Julian Day runs from midnight to
    * midnight. The field always refers to the local date-time, ignoring the offset or zone.
    *
    * For date-times, 'MODIFIED_JULIAN_DAY.getFrom()' assumes the same value from midnight until just
    * before the next midnight. When 'MODIFIED_JULIAN_DAY.adjustInto()' is applied to a date-time,
    * the time of day portion remains unaltered. 'MODIFIED_JULIAN_DAY.adjustInto()' and
    * 'MODIFIED_JULIAN_DAY.getFrom()' only apply to {@code Temporal} objects that can be converted
-   * into {@link ChronoField#EPOCH_DAY}. A {@link DateTimeException} is thrown for any other type of
-   * object.
+   * into {@link ChronoField#EPOCH_DAY} . A {@link DateTimeException} is thrown for any other type
+   * of object.
    *
    * This implementation is an integer version of MJD with the decimal part rounded to floor.
    *
@@ -133,7 +133,7 @@ object JulianFields {
    * For date-times, 'RATA_DIE.getFrom()' assumes the same value from midnight until just before the
    * next midnight. When 'RATA_DIE.adjustInto()' is applied to a date-time, the time of day portion
    * remains unaltered. 'MODIFIED_JULIAN_DAY.adjustInto()' and 'RATA_DIE.getFrom()' only apply to
-   * {@code Temporal} objects that can be converted into {@link ChronoField#EPOCH_DAY}. A {@link
+   * {@code Temporal} objects that can be converted into {@link ChronoField#EPOCH_DAY} . A {@link
    * DateTimeException} is thrown for any other type of object.
    */
   lazy val RATA_DIE: TemporalField = Field.RATA_DIE

@@ -138,8 +138,8 @@ final class HijrahChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'Hijrah-umalqura'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID - 'Hijrah-umalqura'

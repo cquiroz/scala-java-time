@@ -158,7 +158,7 @@ object IsoFields {
    *
    * This allows a number of week-based-years to be added to, or subtracted from, a date. The unit
    * is equal to either 52 or 53 weeks. The estimated duration of a week-based-year is the same as
-   * that of a standard ISO year at {@code 365.2425 Days}.
+   * that of a standard ISO year at {@code 365.2425 Days} .
    *
    * The rules for addition add the number of week-based-years to the existing value for the
    * week-based-year field. If the resulting week-based-year only has 52 weeks, then the date will
@@ -170,7 +170,7 @@ object IsoFields {
 
   /**
    * Unit that represents the concept of a quarter-year. For the ISO calendar system, it is equal to
-   * 3 months. The estimated duration of a quarter-year is one quarter of {@code 365.2425 Days}.
+   * 3 months. The estimated duration of a quarter-year is one quarter of {@code 365.2425 Days} .
    *
    * This unit is an immutable and thread-safe singleton.
    */

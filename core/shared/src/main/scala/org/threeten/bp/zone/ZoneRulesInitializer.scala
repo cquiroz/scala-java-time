@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference
 
 /**
  * Controls how the time-zone rules are initialized. <p> The default behavior is to use {@link
- * ServiceLoader} to find instances of {@link ZoneRulesProvider}. Use the {@link
+ * ServiceLoader} to find instances of {@link ZoneRulesProvider} . Use the {@link
  * #setInitializer(ZoneRulesInitializer)} method to replace this behavior. The initializer instance
  * must perform the work of creating the {@code ZoneRulesProvider} within the {@link
  * #initializeProviders()} method to ensure that the provider is not initialized too early. <p>

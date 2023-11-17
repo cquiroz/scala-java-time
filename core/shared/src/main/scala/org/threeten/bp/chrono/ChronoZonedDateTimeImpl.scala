@@ -154,7 +154,7 @@ final class ChronoZonedDateTimeImpl[D <: ChronoLocalDate] private (
   Objects.requireNonNull(zone, "zone")
 
   /**
-   * Obtains an instance from an {@code Instant}.
+   * Obtains an instance from an {@code Instant} .
    *
    * @param instant
    *   the instant to create the date-time from, not null
