@@ -42,12 +42,13 @@ import org.threeten.bp.Duration
  * An instance of this interface represents the unit itself, rather than an amount of the unit. See
  * {@link Period} for a class that represents an amount in terms of the common units.
  *
- * The most commonly used units are defined in {@link ChronoUnit}. Further units are supplied in
- * {@link IsoFields}. Units can also be written by application code by implementing this interface.
+ * The most commonly used units are defined in {@link ChronoUnit} . Further units are supplied in
+ * {@link IsoFields} . Units can also be written by application code by implementing this interface.
  *
  * The unit works using double dispatch. Client code calls methods on a date-time like {@code
- * LocalDateTime} which check if the unit is a {@code ChronoUnit}. If it is, then the date-time must
- * handle it. Otherwise, the method call is re-dispatched to the matching method in this interface.
+ * LocalDateTime} which check if the unit is a {@code ChronoUnit} . If it is, then the date-time
+ * must handle it. Otherwise, the method call is re-dispatched to the matching method in this
+ * interface.
  *
  * <h3>Specification for implementors</h3> This interface must be implemented with care to ensure
  * other classes operate correctly. All implementations that can be instantiated must be final,
@@ -64,7 +65,7 @@ trait TemporalUnit {
    *
    * Some units may return an accurate duration while others return an estimate. For example, days
    * have an estimated duration due to the possibility of daylight saving time changes. To determine
-   * if the duration is an estimate, use {@link #isDurationEstimated()}.
+   * if the duration is an estimate, use {@link #isDurationEstimated()} .
    *
    * @return
    *   the duration of this unit, which may be an estimate, not null
@@ -121,13 +122,13 @@ trait TemporalUnit {
    * and the period "3". The period to be added may be negative, which is equivalent to subtraction.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#plus(long, TemporalUnit)}: <pre> // these two
+   * directly. The second is to use {@link Temporal#plus(long, TemporalUnit)} : <pre> // these two
    * lines are equivalent, but the second approach is recommended temporal =
    * thisUnit.doPlus(temporal); temporal = temporal.plus(thisUnit); </pre> It is recommended to use
-   * the second approach, {@code plus(TemporalUnit)}, as it is a lot clearer to read in code.
+   * the second approach, {@code plus(TemporalUnit)} , as it is a lot clearer to read in code.
    *
    * Implementations should perform any queries or calculations using the units available in {@link
-   * ChronoUnit} or the fields available in {@link ChronoField}. If the field is not supported a
+   * ChronoUnit} or the fields available in {@link ChronoField} . If the field is not supported a
    * {@code DateTimeException} must be thrown.
    *
    * Implementations must not alter the specified temporal object. Instead, an adjusted copy of the
@@ -153,21 +154,21 @@ trait TemporalUnit {
    * This calculates the period between two temporals in terms of this unit. The start and end
    * points are supplied as temporal objects and must be of the same type. The result will be
    * negative if the end is before the start. For example, the period in hours between two temporal
-   * objects can be calculated using {@code HOURS.between(startTime, endTime)}.
+   * objects can be calculated using {@code HOURS.between(startTime, endTime)} .
    *
    * The calculation returns a whole number, representing the number of complete units between the
    * two temporals. For example, the period in hours between the times 11:30 and 13:29 will only b
    * one hour as it is one minute short of two hours.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#until(Temporal, TemporalUnit)}: <pre> // these
+   * directly. The second is to use {@link Temporal#until(Temporal, TemporalUnit)} : <pre> // these
    * two lines are equivalent between = thisUnit.between(start, end); between = start.until(end,
    * thisUnit); </pre> The choice should be made based on which makes the code more readable.
    *
    * For example, this method allows the number of days between two dates to be calculated: <pre>
    * long daysBetween = DAYS.between(start, end); // or alternatively long daysBetween =
    * start.until(end, DAYS); </pre> Implementations should perform any queries or calculations using
-   * the units available in {@link ChronoUnit} or the fields available in {@link ChronoField}. If
+   * the units available in {@link ChronoUnit} or the fields available in {@link ChronoField} . If
    * the unit is not supported a DateTimeException must be thrown. Implementations must not alter
    * the specified temporal objects.
    *

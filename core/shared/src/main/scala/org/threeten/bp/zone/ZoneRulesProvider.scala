@@ -49,7 +49,7 @@ object ZoneRulesProvider {
   /**
    * Gets the set of available zone IDs.
    *
-   * These zone IDs are loaded and available for use by {@code ZoneId}.
+   * These zone IDs are loaded and available for use by {@code ZoneId} .
    *
    * @return
    *   the unmodifiable copy of the set of zone IDs, not null
@@ -62,22 +62,22 @@ object ZoneRulesProvider {
    * This returns the latest available rules for the zone ID.
    *
    * This method relies on time-zone data provider files that are configured. These are loaded using
-   * a {@code ServiceLoader}.
+   * a {@code ServiceLoader} .
    *
    * The caching flag is designed to allow provider implementations to prevent the rules being
-   * cached in {@code ZoneId}. Under normal circumstances, the caching of zone rules is highly
+   * cached in {@code ZoneId} . Under normal circumstances, the caching of zone rules is highly
    * desirable as it will provide greater performance. However, there is a use case where the
-   * caching would not be desirable, see {@link #provideRules}.
+   * caching would not be desirable, see {@link #provideRules} .
    *
    * @param zoneId
-   *   the zone ID as defined by { @code ZoneId}, not null
+   *   the zone ID as defined by {@code ZoneId} , not null
    * @param forCaching
    *   whether the rules are being queried for caching, true if the returned rules will be cached by
-   *   { @code ZoneId}, false if they will be returned to the user without being cached in { @code
+   *   {@code ZoneId} , false if they will be returned to the user without being cached in { @code
    *   ZoneId}
    * @return
-   *   the rules, null if { @code forCaching} is true and this is a dynamic provider that wants to
-   *   prevent caching in { @code ZoneId}, otherwise not null
+   *   the rules, null if {@code forCaching} is true and this is a dynamic provider that wants to
+   *   prevent caching in {@code ZoneId} , otherwise not null
    * @throws ZoneRulesException
    *   if rules cannot be obtained for the zone ID
    */
@@ -103,7 +103,7 @@ object ZoneRulesProvider {
    * more than one element if historical rule information is available.
    *
    * @param zoneId
-   *   the zone region ID as used by { @code ZoneId}, not null
+   *   the zone region ID as used by {@code ZoneId} , not null
    * @return
    *   a modifiable copy of the history of the rules for the ID, sorted from oldest to newest, not
    *   null
@@ -119,7 +119,7 @@ object ZoneRulesProvider {
    * Gets the provider for the zone ID.
    *
    * @param zoneId
-   *   the zone region ID as used by { @code ZoneId}, not null
+   *   the zone region ID as used by {@code ZoneId} , not null
    * @return
    *   the provider, not null
    * @throws ZoneRulesException
@@ -141,7 +141,7 @@ object ZoneRulesProvider {
    *
    * This adds a new provider to those currently available. A provider supplies rules for one or
    * more zone IDs. A provider cannot be registered if it supplies a zone ID that has already been
-   * registered. See the notes on time-zone IDs in {@link ZoneId}, especially the section on using
+   * registered. See the notes on time-zone IDs in {@link ZoneId} , especially the section on using
    * the concept of a "group" to make IDs unique.
    *
    * To ensure the integrity of time-zones already created, there is no way to deregister providers.
@@ -214,7 +214,7 @@ object ZoneRulesProvider {
  * API that can be used to manage the providers. The abstract methods provide the SPI that allows
  * rules to be provided.
  *
- * Rules are looked up primarily by zone ID, as used by {@link ZoneId}. Only zone region IDs may be
+ * Rules are looked up primarily by zone ID, as used by {@link ZoneId} . Only zone region IDs may be
  * used, zone offset IDs are not used here.
  *
  * Time-zone rules are political, thus the data can change at any time. Each provider will provide
@@ -281,7 +281,7 @@ abstract class ZoneRulesProvider protected () {
    * provider may increase the set of versions as more data becomes available.
    *
    * @param zoneId
-   *   the zone region ID as used by { @code ZoneId}, not null
+   *   the zone region ID as used by {@code ZoneId} , not null
    * @return
    *   a modifiable copy of the history of the rules for the ID, sorted from oldest to newest, not
    *   null

@@ -60,7 +60,7 @@ import org.threeten.bp.temporal.ValueRange
  * assign different numeric values to the days, declaring Sunday to have the value 1, however this
  * class provides no support for this. See {@link WeekFields} for localized week-numbering.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code DayOfWeek}. Use
+ * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code DayOfWeek} . Use
  * {@code getValue()} instead.</b>
  *
  * This enum represents a common concept that is found in many calendar systems. As such, this enum
@@ -100,19 +100,19 @@ object DayOfWeek {
    * Obtains an instance of {@code DayOfWeek} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code DayOfWeek}.
+   * converts the arbitrary temporal object to an instance of {@code DayOfWeek} .
    *
    * The conversion extracts the {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} field.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code DayOfWeek::from}.
+   * to be used as a query via method reference, {@code DayOfWeek::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the day-of-week, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code DayOfWeek}
+   *   if unable to convert to a {@code DayOfWeek}
    */
   def from(temporal: TemporalAccessor): DayOfWeek = {
     temporal match {
@@ -136,12 +136,13 @@ enum DayOfWeek(name: String, ordinal: Int)
     with TemporalAdjuster {
 
   /**
-   * The singleton instance for the day-of-week of Monday. This has the numeric value of {@code 1}.
+   * The singleton instance for the day-of-week of Monday. This has the numeric value of {@code 1} .
    */
   case MONDAY extends DayOfWeek("MONDAY", 0)
 
   /**
-   * The singleton instance for the day-of-week of Tuesday. This has the numeric value of {@code 2}.
+   * The singleton instance for the day-of-week of Tuesday. This has the numeric value of {@code 2}
+   * .
    */
   case TUESDAY extends DayOfWeek("TUESDAY", 1)
 
@@ -158,7 +159,7 @@ enum DayOfWeek(name: String, ordinal: Int)
   case THURSDAY extends DayOfWeek("THURSDAY", 3)
 
   /**
-   * The singleton instance for the day-of-week of Friday. This has the numeric value of {@code 5}.
+   * The singleton instance for the day-of-week of Friday. This has the numeric value of {@code 5} .
    */
   case FRIDAY extends DayOfWeek("FRIDAY", 4)
 
@@ -169,7 +170,7 @@ enum DayOfWeek(name: String, ordinal: Int)
   case SATURDAY extends DayOfWeek("SATURDAY", 5)
 
   /**
-   * The singleton instance for the day-of-week of Sunday. This has the numeric value of {@code 7}.
+   * The singleton instance for the day-of-week of Sunday. This has the numeric value of {@code 7} .
    */
   case SUNDAY extends DayOfWeek("SUNDAY", 6)
 
@@ -212,7 +213,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * If the field is {@link ChronoField#DAY_OF_WEEK DAY_OF_WEEK} then this method returns true. All
    * other {@code ChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -238,7 +239,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * from 1 to 7, will be returned. All other {@code ChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
@@ -258,7 +259,7 @@ enum DayOfWeek(name: String, ordinal: Int)
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this day-of-week as an {@code int}.
+   * Gets the value of the specified field from this day-of-week as an {@code int} .
    *
    * This queries this day-of-week for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If it is not possible to return the
@@ -268,7 +269,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * from 1 to 7, will be returned. All other {@code ChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -279,7 +280,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * @throws DateTimeException
    *   if a value for the field cannot be obtained
    * @throws DateTimeException
-   *   if the range of valid values for the field exceeds an { @code int}
+   *   if the range of valid values for the field exceeds an {@code int}
    * @throws DateTimeException
    *   if the value is outside the range of valid values for the field
    * @throws ArithmeticException
@@ -292,7 +293,7 @@ enum DayOfWeek(name: String, ordinal: Int)
       range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field from this day-of-week as a {@code long}.
+   * Gets the value of the specified field from this day-of-week as a {@code long} .
    *
    * This queries this day-of-week for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
@@ -302,7 +303,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * from 1 to 7, will be returned. All other {@code ChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -397,7 +398,7 @@ enum DayOfWeek(name: String, ordinal: Int)
    * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)} passing {@link
    * ChronoField#DAY_OF_WEEK} as the field. Note that this adjusts forwards or backwards within a
    * Monday to Sunday week. See {@link WeekFields#dayOfWeek} for localized week start days. See
-   * {@link TemporalAdjusters} for other adjusters with more control, such as {@code next(MONDAY)}.
+   * {@link TemporalAdjusters} for other adjusters with more control, such as {@code next(MONDAY)} .
    *
    * In most cases, it is clearer to reverse the calling pattern by using {@link
    * Temporal#with(TemporalAdjuster)}: <pre> // these two lines are equivalent, but the second

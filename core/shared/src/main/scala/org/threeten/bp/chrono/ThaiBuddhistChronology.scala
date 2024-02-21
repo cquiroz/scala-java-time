@@ -136,8 +136,8 @@ final class ThaiBuddhistChronology private () extends Chronology with Serializab
   /**
    * Gets the ID of the chronology - 'ThaiBuddhist'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID - 'ThaiBuddhist'

@@ -52,7 +52,7 @@ import org.threeten.bp.format.ResolverStyle
  * A standard set of fields.
  *
  * This set of fields provide field-based access to manipulate a date, time or date-time. The
- * standard set of fields can be extended by implementing {@link TemporalField}.
+ * standard set of fields can be extended by implementing {@link TemporalField} .
  *
  * These fields are intended to be applicable in multiple calendar systems. For example, most
  * non-ISO calendar systems define dates as a year, month and day, just with slightly different
@@ -80,7 +80,7 @@ enum ChronoField private (
    *
    * This field is used to represent the nano-of-second handling any fraction of the second.
    * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * return a value for {@link #SECOND_OF_MINUTE} , {@link #SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should set as much precision as the object
@@ -112,7 +112,7 @@ enum ChronoField private (
    *
    * This field is used to represent the micro-of-second handling any fraction of the second.
    * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * return a value for {@link #SECOND_OF_MINUTE} , {@link #SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
@@ -145,7 +145,7 @@ enum ChronoField private (
    *
    * This field is used to represent the milli-of-second handling any fraction of the second.
    * Implementations of {@code TemporalAccessor} should provide a value for this field if they can
-   * return a value for {@link #SECOND_OF_MINUTE}, {@link #SECOND_OF_DAY} or {@link
+   * return a value for {@link #SECOND_OF_MINUTE} , {@link #SECOND_OF_DAY} or {@link
    * #INSTANT_SECONDS} filling unknown precision with zero.
    *
    * When this field is used for setting a value, it should behave in the same way as setting {@link
@@ -414,12 +414,12 @@ enum ChronoField private (
    * The year within the era.
    *
    * This represents the concept of the year within the era. This field is typically used with
-   * {@link #ERA}.
+   * {@link #ERA} .
    *
    * The standard mental model for a date is based on three concepts - year, month and day. These
-   * map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
+   * map onto the {@code YEAR} , {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
    * there is no reference to eras. The full model for a date requires four concepts - era, year,
-   * month and day. These map onto the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and
+   * month and day. These map onto the {@code ERA} , {@code YEAR_OF_ERA} , {@code MONTH_OF_YEAR} and
    * {@code DAY_OF_MONTH} fields. Whether this field or {@code YEAR} is used depends on which mental
    * model is being used. See {@link ChronoLocalDate} for more discussion on this topic.
    *
@@ -460,9 +460,9 @@ enum ChronoField private (
    * showing the mapping from proleptic year to year-of-era.
    *
    * The standard mental model for a date is based on three concepts - year, month and day. These
-   * map onto the {@code YEAR}, {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
+   * map onto the {@code YEAR} , {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} fields. Note that
    * there is no reference to eras. The full model for a date requires four concepts - era, year,
-   * month and day. These map onto the {@code ERA}, {@code YEAR_OF_ERA}, {@code MONTH_OF_YEAR} and
+   * month and day. These map onto the {@code ERA} , {@code YEAR_OF_ERA} , {@code MONTH_OF_YEAR} and
    * {@code DAY_OF_MONTH} fields. Whether this field or {@code YEAR_OF_ERA} is used depends on which
    * mental model is being used. See {@link ChronoLocalDate} for more discussion on this topic.
    *
@@ -484,7 +484,7 @@ enum ChronoField private (
    * The era.
    *
    * This represents the concept of the era, which is the largest division of the time-line. This
-   * field is typically used with {@link #YEAR_OF_ERA}.
+   * field is typically used with {@link #YEAR_OF_ERA} .
    *
    * In the default ISO calendar system, there are two eras defined, 'BCE' and 'CE'. The era 'CE' is
    * the one currently in use and year-of-era runs from 1 to the maximum value. The era 'BCE' is the
@@ -526,7 +526,7 @@ enum ChronoField private (
    * A {@link ZoneOffset} represents the period of time that local time differs from UTC/Greenwich.
    * This is usually a fixed number of hours and minutes. It is equivalent to the {@link
    * ZoneOffset#getTotalSeconds() total amount} of the offset in seconds. For example, during the
-   * winter Paris has an offset of {@code +01:00}, which is 3600 seconds.
+   * winter Paris has an offset of {@code +01:00} , which is 3600 seconds.
    *
    * This field is strictly defined to have the same meaning in all calendar systems. This is
    * necessary to ensure interoperation between calendars.
@@ -630,10 +630,10 @@ enum ChronoField private (
   def checkValidValue(value: Long): Long = _range.checkValidValue(value, this)
 
   /**
-   * Checks that the specified value is valid and fits in an {@code int}.
+   * Checks that the specified value is valid and fits in an {@code int} .
    *
    * This validates that the value is within the outer range of valid values returned by {@link
-   * #range()}. It also checks that all valid values are within the bounds of an {@code int}.
+   * #range()}. It also checks that all valid values are within the bounds of an {@code int} .
    *
    * This method checks against the range of the field in the ISO-8601 calendar system. This range
    * may be incorrect for other calendar systems. Use {@link Chronology#range(ChronoField)} to

@@ -95,7 +95,7 @@ object ChronoZonedDateTime {
    *
    * This creates a zoned date-time based on the specified temporal. A {@code TemporalAccessor}
    * represents an arbitrary set of date and time information, which this factory converts to an
-   * instance of {@code ChronoZonedDateTime}.
+   * instance of {@code ChronoZonedDateTime} .
    *
    * The conversion extracts and combines the chronology, date, time and zone from the temporal
    * object. The behavior is equivalent to using {@link Chronology#zonedDateTime(TemporalAccessor)}
@@ -103,14 +103,14 @@ object ChronoZonedDateTime {
    * accessing those fields that are equivalent to the relevant objects.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code ChronoZonedDateTime::from}.
+   * to be used as a query via method reference, {@code ChronoZonedDateTime::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ChronoZonedDateTime}
+   *   if unable to convert to a {@code ChronoZonedDateTime}
    * @see
    *   Chronology#zonedDateTime(TemporalAccessor)
    */
@@ -137,10 +137,10 @@ object ChronoZonedDateTime {
  * ZonedDateTime}, not this interface.</b>
  *
  * A {@code ChronoZonedDateTime} is the abstract representation of an offset date-time where the
- * {@code Chronology chronology}, or calendar system, is pluggable. The date-time is defined in
- * terms of fields expressed by {@link TemporalField}, where most common implementations are defined
- * in {@link ChronoField}. The chronology defines how the calendar system operates and the meaning
- * of the standard fields.
+ * {@code Chronology chronology} , or calendar system, is pluggable. The date-time is defined in
+ * terms of fields expressed by {@link TemporalField} , where most common implementations are
+ * defined in {@link ChronoField} . The chronology defines how the calendar system operates and the
+ * meaning of the standard fields.
  *
  * <h4>When to use this interface</h4> The design of the API encourages the use of {@code
  * ZonedDateTime} rather than this interface, even in the case where the application needs to deal
@@ -259,7 +259,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZoneChronoDateTime} based on this date-time with the earlier offset, not null
+   *   a {@code ZoneChronoDateTime} based on this date-time with the earlier offset, not null
    * @throws DateTimeException
    *   if no rules can be found for the zone
    * @throws DateTimeException
@@ -281,7 +281,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the later offset, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the later offset, not null
    * @throws DateTimeException
    *   if no rules can be found for the zone
    * @throws DateTimeException
@@ -296,14 +296,14 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This method changes the time-zone and retains the local date-time. The local date-time is only
    * changed if it is invalid for the new zone.
    *
-   * To change the zone and adjust the local date-time, use {@link #withZoneSameInstant(ZoneId)}.
+   * To change the zone and adjust the local date-time, use {@link #withZoneSameInstant(ZoneId)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param zoneId
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null
    */
   def withZoneSameLocal(zoneId: ZoneId): ChronoZonedDateTime[D]
 
@@ -316,12 +316,12 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This method is based on retaining the same instant, thus gaps and overlaps in the local
    * time-line have no effect on the result.
    *
-   * To change the offset while keeping the local time, use {@link #withZoneSameLocal(ZoneId)}.
+   * To change the offset while keeping the local time, use {@link #withZoneSameLocal(ZoneId)} .
    *
    * @param zoneId
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -370,14 +370,14 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
   }
 
   /**
-   * Converts this date-time to an {@code Instant}.
+   * Converts this date-time to an {@code Instant} .
    *
    * This returns an {@code Instant} representing the same point on the time-line as this date-time.
    * The calculation combines the {@linkplain #toLocalDateTime() local date-time} and {@linkplain
    * #getOffset() offset}.
    *
    * @return
-   *   an { @code Instant} representing the same instant, not null
+   *   an {@code Instant} representing the same instant, not null
    */
   def toInstant: Instant = Instant.ofEpochSecond(toEpochSecond, toLocalTime.getNano.toLong)
 
@@ -403,7 +403,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * Compares this date-time to another date-time, including the chronology.
    *
    * The comparison is based first on the instant, then on the local date-time, then on the zone ID,
-   * then on the chronology. It is "consistent with equals", as defined by {@link Comparable}.
+   * then on the chronology. It is "consistent with equals", as defined by {@link Comparable} .
    *
    * If all the date-time objects being compared are in the same chronology, then the additional
    * chronology stage is not required.
@@ -486,7 +486,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * Checks if this date-time is equal to another date-time.
    *
    * The comparison is based on the offset date-time and the zone. To compare for the same instant
-   * on the time-line, use {@link #compareTo}. Only objects of type {@code ChronoZoneDateTime} are
+   * on the time-line, use {@link #compareTo} . Only objects of type {@code ChronoZoneDateTime} are
    * compared, other types return false.
    *
    * @param obj
@@ -510,7 +510,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
     toLocalDateTime.hashCode ^ getOffset.hashCode ^ Integer.rotateLeft(getZone.hashCode, 3)
 
   /**
-   * Outputs this date-time as a {@code String}.
+   * Outputs this date-time as a {@code String} .
    *
    * The output will include the full zoned date-time and the chronology ID.
    *
