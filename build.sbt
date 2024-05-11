@@ -21,7 +21,7 @@ ThisBuild / githubWorkflowBuildMatrixInclusions +=
   )
 
 val tzdbVersion             = "2019c"
-val scalajavaLocalesVersion = "1.5.1"
+val scalajavaLocalesVersion = "1.5.2"
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 lazy val downloadFromZip: TaskKey[Unit] =
