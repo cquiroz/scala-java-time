@@ -17,27 +17,27 @@ trait AssertionsHelper { this: AnyFunSuite =>
       true
 
   def assertEquals[A, B](
-    o1:                  A,
-    o2:                  B,
-    msg:                 String
+    o1:  A,
+    o2:  B,
+    msg: String
   )(implicit prettifier: Prettifier, pos: source.Position): Assertion =
     assert(o1 == o2, msg)
 
   def assertEquals[A, B](
-    o1:                  A,
-    o2:                  B
+    o1: A,
+    o2: B
   )(implicit prettifier: Prettifier, pos: source.Position): Assertion =
     assert(o1 == o2)
 
   def assertSame[A <: AnyRef, B <: AnyRef](
-    o1:                  A,
-    o2:                  B
+    o1: A,
+    o2: B
   )(implicit prettifier: Prettifier, pos: source.Position): Assertion =
     assert(o1 eq o2)
 
   def assertNotEquals[A, B](
-    o1:                  A,
-    o2:                  B
+    o1: A,
+    o2: B
   )(implicit prettifier: Prettifier, pos: source.Position): Assertion =
     assert(o1 != o2)
 
@@ -51,8 +51,8 @@ trait AssertionsHelper { this: AnyFunSuite =>
     assert(a == null)
 
   def assertNotNull[A](
-    a:                   A,
-    msg:                 String
+    a:   A,
+    msg: String
   )(implicit prettifier: Prettifier, pos: source.Position): Assertion =
     assert(a != null, msg)
 

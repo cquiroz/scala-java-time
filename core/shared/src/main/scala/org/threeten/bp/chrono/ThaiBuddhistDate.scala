@@ -87,7 +87,7 @@ object ThaiBuddhistDate {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@linkplain Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -125,20 +125,20 @@ object ThaiBuddhistDate {
    *
    * This obtains a date in the Thai Buddhist calendar system based on the specified temporal. A
    * {@code TemporalAccessor} represents an arbitrary set of date and time information, which this
-   * factory converts to an instance of {@code ThaiBuddhistDate}.
+   * factory converts to an instance of {@code ThaiBuddhistDate} .
    *
    * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code ThaiBuddhistDate::from}.
+   * to be used as a query via method reference, {@code ThaiBuddhistDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Thai Buddhist calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ThaiBuddhistDate}
+   *   if unable to convert to a {@code ThaiBuddhistDate}
    */
   def from(temporal: TemporalAccessor): ThaiBuddhistDate =
     ThaiBuddhistChronology.INSTANCE.date(temporal)
@@ -148,9 +148,9 @@ object ThaiBuddhistDate {
 /**
  * A date in the Thai Buddhist calendar system.
  *
- * This date operates using the {@linkplain ThaiBuddhistChronology Thai Buddhist calendar}. This
+ * This date operates using the {@linkplain ThaiBuddhistChronology Thai Buddhist calendar} . This
  * calendar system is primarily used in Thailand. Dates are aligned such that {@code 2484-01-01
- * (Buddhist)} is {@code 1941-01-01 (ISO)}.
+ * (Buddhist)} is {@code 1941-01-01 (ISO)} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *

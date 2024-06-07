@@ -87,7 +87,7 @@ object MinguoDate {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@linkplain Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -125,20 +125,20 @@ object MinguoDate {
    *
    * This obtains a date in the Minguo calendar system based on the specified temporal. A {@code
    * TemporalAccessor} represents an arbitrary set of date and time information, which this factory
-   * converts to an instance of {@code MinguoDate}.
+   * converts to an instance of {@code MinguoDate} .
    *
    * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code MinguoDate::from}.
+   * to be used as a query via method reference, {@code MinguoDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Minguo calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code MinguoDate}
+   *   if unable to convert to a {@code MinguoDate}
    */
   def from(temporal: TemporalAccessor): MinguoDate = MinguoChronology.INSTANCE.date(temporal)
 
@@ -147,9 +147,9 @@ object MinguoDate {
 /**
  * A date in the Minguo calendar system.
  *
- * This date operates using the {@linkplain MinguoChronology Minguo calendar}. This calendar system
+ * This date operates using the {@linkplain MinguoChronology Minguo calendar} . This calendar system
  * is primarily used in the Republic of China, often known as Taiwan. Dates are aligned such that
- * {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
+ * {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *

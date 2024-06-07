@@ -57,8 +57,8 @@ import org.threeten.bp.temporal.TemporalQuery
  *
  * The builder is used to hold onto different elements of date and time. It is designed as two
  * separate maps: <ul> <li>from {@link TemporalField} to {@code long} value, where the value may be
- * outside the valid range for the field <li>from {@code Class} to {@link TemporalAccessor}, holding
- * larger scale objects like {@code LocalDateTime}. </ul><p>
+ * outside the valid range for the field <li>from {@code Class} to {@link TemporalAccessor} ,
+ * holding larger scale objects like {@code LocalDateTime} . </ul><p>
  *
  * <h3>Specification for implementors</h3> This class is mutable and not thread-safe. It should only
  * be used from a single thread.
@@ -134,7 +134,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @param value
    *   the value to add, not null
    * @return
-   *   { @code this}, for method chaining
+   *   {@code this} , for method chaining
    * @throws DateTimeException
    *   if the field is already present with a different value
    */
@@ -166,7 +166,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @param resolverStyle
    *   how to resolve
    * @return
-   *   { @code this}, for method chaining
+   *   {@code this} , for method chaining
    */
   def resolve(
     resolverStyle:  ResolverStyle,
@@ -554,7 +554,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @tparam R
    *   the type to return
    * @param type
-   *   the type to invoke { @code from} on, not null
+   *   the type to invoke {@code from} on, not null
    * @return
    *   the extracted value, not null
    * @throws DateTimeException

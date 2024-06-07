@@ -54,9 +54,9 @@ object MockSimplePeriod {
    * @param unit
    *   the unit that the period is measured in, must not be the 'Forever' unit, not null
    * @return
-   *   the { @code MockSimplePeriod} instance, not null
+   *   the {@code MockSimplePeriod} instance, not null
    * @throws DateTimeException
-   *   if the period unit is { @link org.threeten.bp.temporal.ChronoUnit#FOREVER}.
+   *   if the period unit is {@link org.threeten.bp.temporal.ChronoUnit#FOREVER} .
    */
   def of(amount: Long, unit: TemporalUnit): MockSimplePeriod = new MockSimplePeriod(amount, unit)
 }

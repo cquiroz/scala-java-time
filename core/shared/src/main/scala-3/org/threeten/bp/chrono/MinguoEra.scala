@@ -63,7 +63,7 @@ object MinguoEra {
  * The Minguo calendar system has two eras. The date {@code 0001-01-01 (Minguo)} is equal to {@code
  * 1912-01-01 (ISO)}.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code MinguoEra}. Use
+ * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code MinguoEra} . Use
  * {@code getValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.
@@ -72,13 +72,13 @@ enum MinguoEra(name: String, ordinal: Int) extends java.lang.Enum[MinguoEra] wit
 
   /**
    * The singleton instance for the era BEFORE_ROC, 'Before Republic of China'. This has the numeric
-   * value of {@code 0}.
+   * value of {@code 0} .
    */
   case BEFORE_ROC extends MinguoEra("BEFORE_ROC", 0)
 
   /**
    * The singleton instance for the era ROC, 'Republic of China'. This has the numeric value of
-   * {@code 1}.
+   * {@code 1} .
    */
   case ROC extends MinguoEra("ROC", 1)
 

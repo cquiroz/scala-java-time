@@ -48,7 +48,7 @@ private object SimpleDateTimeFormatStyleProvider {
 /**
  * The Service Provider Implementation to obtain date-time formatters for a style.
  *
- * This implementation is based on extraction of data from a {@link SimpleDateFormat}.
+ * This implementation is based on extraction of data from a {@link SimpleDateFormat} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */

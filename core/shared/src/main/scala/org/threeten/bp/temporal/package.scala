@@ -52,10 +52,10 @@ package org.threeten.bp
  * to add their own units.
  *
  * A field is used to express part of a larger date-time, such as year, month-of-year or
- * second-of-minute. All fields implement {@link org.threeten.bp.temporal.TemporalField}. The set of
- * well known fields are defined in {@link org.threeten.bp.temporal.ChronoField}, for example,
- * {@link org.threeten.bp.temporal.ChronoField#HOUR_OF_DAY}. An additional fields are defined by
- * {@link org.threeten.bp.temporal.JulianFields}. The field interface is designed to allow
+ * second-of-minute. All fields implement {@link org.threeten.bp.temporal.TemporalField} . The set
+ * of well known fields are defined in {@link org.threeten.bp.temporal.ChronoField} , for example,
+ * {@link org.threeten.bp.temporal.ChronoField#HOUR_OF_DAY} . An additional fields are defined by
+ * {@link org.threeten.bp.temporal.JulianFields} . The field interface is designed to allow
  * applications to add their own fields.
  *
  * This package provides tools that allow the units and fields of date and time to be accessed in a
@@ -66,8 +66,8 @@ package org.threeten.bp
  *
  * One use of fields in application code is to retrieve fields for which there is no convenience
  * method. For example, getting the day-of-month is common enough that there is a method on {@code
- * LocalDate} called {@code getDayOfMonth()}. However for more unusual fields it is necessary to use
- * the field. For example, {@code date.get(ChronoField.ALIGNED_WEEK_OF_MONTH)}. The fields also
+ * LocalDate} called {@code getDayOfMonth()} . However for more unusual fields it is necessary to
+ * use the field. For example, {@code date.get(ChronoField.ALIGNED_WEEK_OF_MONTH)} . The fields also
  * provide access to the range of valid values.
  *
  * ==Adjustment==
@@ -75,8 +75,8 @@ package org.threeten.bp
  * A key part of the date-time problem space is adjusting a date to a new, related value, such as
  * the "last day of the month", or "next Wednesday". These are modeled as functions that adjust a
  * base date-time. The functions implement {@link org.threeten.bp.temporal.TemporalAdjuster} and
- * operate on {@link org.threeten.bp.temporal.Temporal}. A set of common functions are provided in
- * {@link org.threeten.bp.temporal.TemporalAdjusters}. For example, to find the first occurrence of
+ * operate on {@link org.threeten.bp.temporal.Temporal} . A set of common functions are provided in
+ * {@link org.threeten.bp.temporal.TemporalAdjusters} . For example, to find the first occurrence of
  * a day-of-week after a given date, use {@link
  * org.threeten.bp.temporal.TemporalAdjusters#next(DayOfWeek)}, such as {@code
  * date.with(next(MONDAY))}.

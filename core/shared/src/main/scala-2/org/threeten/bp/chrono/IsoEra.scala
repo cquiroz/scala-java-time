@@ -38,14 +38,14 @@ object IsoEra {
   /**
    * The singleton instance for the era BCE, 'Before Current Era'. The 'ISO' part of the name
    * emphasizes that this differs from the BCE era in the Gregorian calendar system. This has the
-   * numeric value of {@code 0}.
+   * numeric value of {@code 0} .
    */
   lazy val BCE = new IsoEra("BCE", 0)
 
   /**
    * The singleton instance for the era CE, 'Current Era'. The 'ISO' part of the name emphasizes
    * that this differs from the CE era in the Gregorian calendar system. This has the numeric value
-   * of {@code 1}.
+   * of {@code 1} .
    */
   lazy val CE = new IsoEra("CE", 1)
 
@@ -79,7 +79,7 @@ object IsoEra {
  *   - 'Current era' (CE) for years from 0001-01-01 (ISO) and 'Before current era' (BCE) for years
  *     before that.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code IsoEra}. Use
+ * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code IsoEra} . Use
  * {@code getValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.

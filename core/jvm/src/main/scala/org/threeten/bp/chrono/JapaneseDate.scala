@@ -89,7 +89,7 @@ object JapaneseDate {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@linkplain Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -209,20 +209,20 @@ object JapaneseDate {
    *
    * This obtains a date in the Japanese calendar system based on the specified temporal. A {@code
    * TemporalAccessor} represents an arbitrary set of date and time information, which this factory
-   * converts to an instance of {@code JapaneseDate}.
+   * converts to an instance of {@code JapaneseDate} .
    *
    * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code JapaneseDate::from}.
+   * to be used as a query via method reference, {@code JapaneseDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Japanese calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code JapaneseDate}
+   *   if unable to convert to a {@code JapaneseDate}
    */
   def from(temporal: TemporalAccessor): JapaneseDate = JapaneseChronology.INSTANCE.date(temporal)
 
@@ -231,7 +231,7 @@ object JapaneseDate {
 /**
  * A date in the Japanese Imperial calendar system.
  *
- * This date operates using the {@linkplain JapaneseChronology Japanese Imperial calendar}. This
+ * This date operates using the {@linkplain JapaneseChronology Japanese Imperial calendar} . This
  * calendar system is primarily used in Japan.
  *
  * The Japanese Imperial calendar system is the same as the ISO calendar system apart from the
@@ -248,10 +248,10 @@ object JapaneseDate {
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  *
  * @constructor
- *   Constructs a {@code JapaneseDate}.
+ *   Constructs a {@code JapaneseDate} .
  *
  * This constructor does NOT validate the given parameters, and {@code era} and {@code year} must
- * agree with {@code isoDate}.
+ * agree with {@code isoDate} .
  * @param era
  *   the era, validated not null
  * @param yearOfEra
@@ -307,7 +307,7 @@ final class JapaneseDate private[chrono] (
    * <li>{@code YEAR} <li>{@code ERA} </ul> All other {@code ChronoField} instances will return
    * false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -418,9 +418,9 @@ final class JapaneseDate private[chrono] (
    * @param yearOfEra
    *   the year-of-era to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year, never null
+   *   a {@code JapaneseDate} based on this date with the requested year, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@code year} is invalid
    */
   private def withYear(era: JapaneseEra, yearOfEra: Int): JapaneseDate = {
     val year: Int = JapaneseChronology.INSTANCE.prolepticYear(era, yearOfEra)
@@ -438,9 +438,9 @@ final class JapaneseDate private[chrono] (
    * @param year
    *   the year to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year-of-era, never null
+   *   a {@code JapaneseDate} based on this date with the requested year-of-era, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@code year} is invalid
    */
   private def withYear(year: Int): JapaneseDate = withYear(getEra, year)
 

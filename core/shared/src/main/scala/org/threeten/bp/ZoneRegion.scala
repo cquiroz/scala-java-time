@@ -85,7 +85,7 @@ private object ZoneRegion {
  * (TZDB), which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
  *
  * The region identifier, modeled by this class, is distinct from the underlying rules, modeled by
- * {@link ZoneRules}. The rules are defined by governments and change frequently. By contrast, the
+ * {@link ZoneRules} . The rules are defined by governments and change frequently. By contrast, the
  * region identifier is well-defined and long-lived. This separation also allows rules to be shared
  * between regions if appropriate.
  *

@@ -108,7 +108,7 @@ object MonthDay {
   }
 
   /**
-   * Obtains an instance of {@code MonthDay}.
+   * Obtains an instance of {@code MonthDay} .
    *
    * The day-of-month must be valid for the month within a leap year. Hence, for February, day 29 is
    * valid.
@@ -139,7 +139,7 @@ object MonthDay {
   }
 
   /**
-   * Obtains an instance of {@code MonthDay}.
+   * Obtains an instance of {@code MonthDay} .
    *
    * The day-of-month must be valid for the month within a leap year. Hence, for month 2 (February),
    * day 29 is valid.
@@ -165,21 +165,21 @@ object MonthDay {
    * Obtains an instance of {@code MonthDay} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code MonthDay}.
+   * converts the arbitrary temporal object to an instance of {@code MonthDay} .
    *
    * The conversion extracts the {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} and {@link
    * ChronoField#DAY_OF_MONTH DAY_OF_MONTH} fields. The extraction is only permitted if the
    * date-time has an ISO chronology.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code MonthDay::from}.
+   * to be used in queries via method reference, {@code MonthDay::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the month-day, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code MonthDay}
+   *   if unable to convert to a {@code MonthDay}
    */
   def from(temporal: TemporalAccessor): MonthDay = {
     var _temporal = temporal
@@ -201,9 +201,9 @@ object MonthDay {
   }
 
   /**
-   * Obtains an instance of {@code MonthDay} from a text string such as {@code --12-03}.
+   * Obtains an instance of {@code MonthDay} from a text string such as {@code --12-03} .
    *
-   * The string must represent a valid month-day. The format is {@code --MM-dd}.
+   * The string must represent a valid month-day. The format is {@code --MM-dd} .
    *
    * @param text
    *   the text to parse such as "--12-03", not null
@@ -241,22 +241,22 @@ object MonthDay {
 }
 
 /**
- * A month-day in the ISO-8601 calendar system, such as {@code --12-03}.
+ * A month-day in the ISO-8601 calendar system, such as {@code --12-03} .
  *
  * {@code MonthDay} is an immutable date-time object that represents the combination of a year and
  * month. Any field that can be derived from a month and day, such as quarter-of-year, can be
  * obtained.
  *
  * This class does not store or represent a year, time or time-zone. For example, the value
- * "December 3rd" can be stored in a {@code MonthDay}.
+ * "December 3rd" can be stored in a {@code MonthDay} .
  *
  * Since a {@code MonthDay} does not possess a year, the leap day of February 29th is considered
  * valid.
  *
- * This class implements {@link TemporalAccessor} rather than {@link Temporal}. This is because it
+ * This class implements {@link TemporalAccessor} rather than {@link Temporal} . This is because it
  * is not possible to define whether February 29th is valid or not without external information,
  * preventing the implementation of plus/minus. Related to this, {@code MonthDay} only provides
- * access to query and set the fields {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH}.
+ * access to query and set the fields {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH} .
  *
  * The ISO-8601 calendar system is the modern civil calendar system used today in most of the world.
  * It is equivalent to the proleptic Gregorian calendar system, in which today's rules for leap
@@ -293,7 +293,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * The supported fields are: <ul> <li>{@code MONTH_OF_YEAR} <li>{@code YEAR} </ul> All other
    * {@code ChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -317,9 +317,9 @@ final class MonthDay private (private val month: Int, private val day: Int)
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
@@ -342,7 +342,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this month-day as an {@code int}.
+   * Gets the value of the specified field from this month-day as an {@code int} .
    *
    * This queries this month-day for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If it is not possible to return the
@@ -350,9 +350,9 @@ final class MonthDay private (private val month: Int, private val day: Int)
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this month-day.
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -369,7 +369,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
     range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field from this month-day as a {@code long}.
+   * Gets the value of the specified field from this month-day as a {@code long} .
    *
    * This queries this month-day for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
@@ -377,9 +377,9 @@ final class MonthDay private (private val month: Int, private val day: Int)
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this month-day.
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -407,7 +407,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * Gets the month-of-year field from 1 to 12.
    *
    * This method returns the month as an {@code int} from 1 to 12. Application code is frequently
-   * clearer if the enum {@link Month} is used by calling {@link #getMonth()}.
+   * clearer if the enum {@link Month} is used by calling {@link #getMonth()} .
    *
    * @return
    *   the month-of-year, from 1 to 12
@@ -421,7 +421,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    *
    * This method returns the enum {@link Month} for the month. This avoids confusion as to what
    * {@code int} values mean. If you need access to the primitive {@code int} value then the enum
-   * provides the {@link Month#getValue() int value}.
+   * provides the {@link Month#getValue() int value} .
    *
    * @return
    *   the month-of-year, not null
@@ -466,7 +466,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param month
    *   the month-of-year to set in the returned month-day, from 1 (January) to 12 (December)
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested month, not null
+   *   a {@code MonthDay} based on this month-day with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -483,7 +483,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param month
    *   the month-of-year to set in the returned month-day, not null
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested month, not null
+   *   a {@code MonthDay} based on this month-day with the requested month, not null
    */
   def `with`(month: Month): MonthDay = {
     Objects.requireNonNull(month, "month")
@@ -504,7 +504,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param dayOfMonth
    *   the day-of-month to set in the return month-day, from 1 to 31
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested day, not null
+   *   a {@code MonthDay} based on this month-day with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -580,7 +580,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
   }
 
   /**
-   * Combines this month-day with a year to create a {@code LocalDate}.
+   * Combines this month-day with a year to create a {@code LocalDate} .
    *
    * This returns a {@code LocalDate} formed from this month-day and the specified year.
    *
@@ -602,7 +602,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * Compares this month-day to another month-day.
    *
    * The comparison is based first on value of the month, then on the value of the day. It is
-   * "consistent with equals", as defined by {@link Comparable}.
+   * "consistent with equals", as defined by {@link Comparable} .
    *
    * @param other
    *   the other month-day to compare to, not null
@@ -663,9 +663,9 @@ final class MonthDay private (private val month: Int, private val day: Int)
   override def hashCode: Int = (month << 6) + day
 
   /**
-   * Outputs this month-day as a {@code String}, such as {@code --12-03}.
+   * Outputs this month-day as a {@code String} , such as {@code --12-03} .
    *
-   * The output will be in the format {@code --MM-dd}:
+   * The output will be in the format {@code --MM-dd} :
    *
    * @return
    *   a string representation of this month-day, not null

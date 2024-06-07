@@ -77,7 +77,7 @@ object MinguoChronology {
  *
  * This chronology defines the rules of the Minguo calendar system. This calendar system is
  * primarily used in the Republic of China, often known as Taiwan. Dates are aligned such that
- * {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
+ * {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)} .
  *
  * The fields are defined as follows: <ul> <li>era - There are two eras, the current 'Republic'
  * (ROC) and the previous era (BEFORE_ROC). <li>year-of-era - The year-of-era for the current era
@@ -106,8 +106,8 @@ final class MinguoChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'Minguo'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID - 'Minguo'

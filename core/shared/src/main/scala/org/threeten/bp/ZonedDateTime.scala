@@ -93,7 +93,7 @@ object ZonedDateTime {
    * be set based on the time-zone in the clock.
    *
    * Using this method allows the use of an alternate clock for testing. The alternate clock may be
-   * introduced using {@link Clock dependency injection}.
+   * introduced using {@link Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -287,7 +287,7 @@ object ZonedDateTime {
   }
 
   /**
-   * Obtains an instance of {@code ZonedDateTime} from an {@code Instant}.
+   * Obtains an instance of {@code ZonedDateTime} from an {@code Instant} .
    *
    * This creates a zoned date-time with the same instant as that specified. Calling {@link
    * #toInstant()} will return an instant equal to the one used here.
@@ -315,14 +315,14 @@ object ZonedDateTime {
    * date-time and offset.
    *
    * This creates a zoned date-time by {@link LocalDateTime#toInstant(ZoneOffset) combining} the
-   * {@code LocalDateTime} and {@code ZoneOffset}. This combination uniquely specifies an instant
+   * {@code LocalDateTime} and {@code ZoneOffset} . This combination uniquely specifies an instant
    * without ambiguity.
    *
    * Converting an instant to a zoned date-time is simple as there is only one valid offset for each
    * instant. If the valid offset is different to the offset specified, the the date-time and offset
    * of the zoned date-time will differ from those specified.
    *
-   * If the {@code ZoneId} to be used is a {@code ZoneOffset}, this method is equivalent to {@link
+   * If the {@code ZoneId} to be used is a {@code ZoneOffset} , this method is equivalent to {@link
    * #of(LocalDateTime, ZoneId)}.
    *
    * @param localDateTime
@@ -401,21 +401,21 @@ object ZonedDateTime {
    * Obtains an instance of {@code ZonedDateTime} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code ZonedDateTime}.
+   * converts the arbitrary temporal object to an instance of {@code ZonedDateTime} .
    *
-   * The conversion will first obtain a {@code ZoneId}. It will then try to obtain an instant. If
+   * The conversion will first obtain a {@code ZoneId} . It will then try to obtain an instant. If
    * that fails it will try to obtain a local date-time. The zoned date time will either be a
    * combination of {@code ZoneId} and instant, or {@code ZoneId} and local date-time.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code ZonedDateTime::from}.
+   * to be used in queries via method reference, {@code ZonedDateTime::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the zoned date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code ZonedDateTime}
+   *   if unable to convert to an {@code ZonedDateTime}
    */
   def from(temporal: TemporalAccessor): ZonedDateTime =
     temporal match {
@@ -494,11 +494,11 @@ object ZonedDateTime {
  * ZonedDateTime}.
  *
  * This class handles conversion from the local time-line of {@code LocalDateTime} to the instant
- * time-line of {@code Instant}. The difference between the two time-lines is the offset from
- * UTC/Greenwich, represented by a {@code ZoneOffset}.
+ * time-line of {@code Instant} . The difference between the two time-lines is the offset from
+ * UTC/Greenwich, represented by a {@code ZoneOffset} .
  *
  * Converting between the two time-lines involves calculating the offset using the {@link ZoneRules
- * rules} accessed from the {@code ZoneId}. Obtaining the offset for an instant is simple, as there
+ * rules} accessed from the {@code ZoneId} . Obtaining the offset for an instant is simple, as there
  * is exactly one valid offset for each instant. By contrast, obtaining the offset for a local
  * date-time is not straightforward. There are three cases: <ul> <li>Normal, with one valid offset.
  * For the vast majority of the year, the normal case applies, where there is a single valid offset
@@ -522,10 +522,10 @@ object ZonedDateTime {
  * #withLaterOffsetAtOverlap()}, help manage the case of an overlap.
  *
  * <h3>Specification for implementors</h3> A {@code ZonedDateTime} holds state equivalent to three
- * separate objects, a {@code LocalDateTime}, a {@code ZoneId} and the resolved {@code ZoneOffset}.
- * The offset and local date-time are used to define an instant when necessary. The zone ID is used
- * to obtain the rules for how and when the offset changes. The offset cannot be freely set, as the
- * zone controls which offsets are valid.
+ * separate objects, a {@code LocalDateTime} , a {@code ZoneId} and the resolved {@code ZoneOffset}
+ * . The offset and local date-time are used to define an instant when necessary. The zone ID is
+ * used to obtain the rules for how and when the offset changes. The offset cannot be freely set, as
+ * the zone controls which offsets are valid.
  *
  * This class is immutable and thread-safe.
  *
@@ -602,7 +602,7 @@ final class ZonedDateTime(
    * <li>{@code YEAR} <li>{@code ERA} <li>{@code INSTANT_SECONDS} <li>{@code OFFSET_SECONDS} </ul>
    * All other {@code ChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -635,9 +635,9 @@ final class ZonedDateTime(
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
@@ -658,7 +658,7 @@ final class ZonedDateTime(
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field from this date-time as an {@code int}.
+   * Gets the value of the specified field from this date-time as an {@code int} .
    *
    * This queries this date-time for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If it is not possible to return the
@@ -666,12 +666,12 @@ final class ZonedDateTime(
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time,
-   * except {@code NANO_OF_DAY}, {@code MICRO_OF_DAY}, {@code EPOCH_DAY}, {@code EPOCH_MONTH} and
+   * except {@code NANO_OF_DAY} , {@code MICRO_OF_DAY} , {@code EPOCH_DAY} , {@code EPOCH_MONTH} and
    * {@code INSTANT_SECONDS} which are too large to fit in an {@code int} and throw a {@code
    * DateTimeException}. All other {@code ChronoField} instances will throw a {@code
    * DateTimeException}.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -697,7 +697,7 @@ final class ZonedDateTime(
     }
 
   /**
-   * Gets the value of the specified field from this date-time as a {@code long}.
+   * Gets the value of the specified field from this date-time as a {@code long} .
    *
    * This queries this date-time for the value for the specified field. If it is not possible to
    * return the value, because the field is not supported or for some other reason, an exception is
@@ -705,9 +705,9 @@ final class ZonedDateTime(
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this date-time.
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -756,7 +756,7 @@ final class ZonedDateTime(
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the earlier offset, not null
+   *   a {@code ZonedDateTime} based on this date-time with the earlier offset, not null
    */
   def withEarlierOffsetAtOverlap: ZonedDateTime = {
     val trans: ZoneOffsetTransition = getZone.getRules.getTransition(dateTime)
@@ -782,7 +782,7 @@ final class ZonedDateTime(
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the later offset, not null
+   *   a {@code ZonedDateTime} based on this date-time with the later offset, not null
    */
   def withLaterOffsetAtOverlap: ZonedDateTime = {
     val trans: ZoneOffsetTransition = getZone.getRules.getTransition(toLocalDateTime)
@@ -802,9 +802,9 @@ final class ZonedDateTime(
    * This returns the zone ID. This identifies the time-zone {@link ZoneRules rules} that determine
    * when and how the offset from UTC/Greenwich changes.
    *
-   * The zone ID may be same as the {@link #getOffset() offset}. If this is true, then any future
+   * The zone ID may be same as the {@link #getOffset() offset} . If this is true, then any future
    * calculations, such as addition or subtraction, have no complex edge cases due to time-zone
-   * rules. See also {@link #withFixedOffsetZone()}.
+   * rules. See also {@link #withFixedOffsetZone()} .
    *
    * @return
    *   the time-zone, not null
@@ -819,14 +819,14 @@ final class ZonedDateTime(
    * changed if it is invalid for the new zone, determined using the same approach as {@link
    * #ofLocal(LocalDateTime, ZoneId, ZoneOffset)}.
    *
-   * To change the zone and adjust the local date-time, use {@link #withZoneSameInstant(ZoneId)}.
+   * To change the zone and adjust the local date-time, use {@link #withZoneSameInstant(ZoneId)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param zone
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested zone, not null
    */
   def withZoneSameLocal(zone: ZoneId): ZonedDateTime = {
     Objects.requireNonNull(zone, "zone")
@@ -842,12 +842,12 @@ final class ZonedDateTime(
    * This method is based on retaining the same instant, thus gaps and overlaps in the local
    * time-line have no effect on the result.
    *
-   * To change the offset while keeping the local time, use {@link #withZoneSameLocal(ZoneId)}.
+   * To change the offset while keeping the local time, use {@link #withZoneSameLocal(ZoneId)} .
    *
    * @param zone
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested zone, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -860,18 +860,18 @@ final class ZonedDateTime(
   /**
    * Returns a copy of this date-time with the zone ID set to the offset.
    *
-   * This returns a zoned date-time where the zone ID is the same as {@link #getOffset()}. The local
-   * date-time, offset and instant of the result will be the same as in this date-time.
+   * This returns a zoned date-time where the zone ID is the same as {@link #getOffset()} . The
+   * local date-time, offset and instant of the result will be the same as in this date-time.
    *
    * Setting the date-time to a fixed single offset means that any future calculations, such as
    * addition or subtraction, have no complex edge cases due to time-zone rules. This might also be
    * useful when sending a zoned date-time across a network, as most protocols, such as ISO-8601,
    * only handle offsets, and not region-based zone IDs.
    *
-   * This is equivalent to {@code ZonedDateTime.of(zdt.getDateTime(), zdt.getOffset())}.
+   * This is equivalent to {@code ZonedDateTime.of(zdt.getDateTime(), zdt.getOffset())} .
    *
    * @return
-   *   a { @code ZonedDateTime} with the zone ID set to the offset, not null
+   *   a {@code ZonedDateTime} with the zone ID set to the offset, not null
    */
   def withFixedOffsetZone: ZonedDateTime =
     if (this.zone == offset) this
@@ -882,8 +882,8 @@ final class ZonedDateTime(
    *
    * This method returns the primitive {@code int} value for the year.
    *
-   * The year returned by this method is proleptic as per {@code get(YEAR)}. To obtain the
-   * year-of-era, use {@code get(YEAR_OF_ERA}.
+   * The year returned by this method is proleptic as per {@code get(YEAR)} . To obtain the
+   * year-of-era, use {@code get(YEAR_OF_ERA} .
    *
    * @return
    *   the year, from MIN_YEAR to MAX_YEAR
@@ -894,7 +894,7 @@ final class ZonedDateTime(
    * Gets the month-of-year field from 1 to 12.
    *
    * This method returns the month as an {@code int} from 1 to 12. Application code is frequently
-   * clearer if the enum {@link Month} is used by calling {@link #getMonth()}.
+   * clearer if the enum {@link Month} is used by calling {@link #getMonth()} .
    *
    * @return
    *   the month-of-year, from 1 to 12
@@ -908,7 +908,7 @@ final class ZonedDateTime(
    *
    * This method returns the enum {@link Month} for the month. This avoids confusion as to what
    * {@code int} values mean. If you need access to the primitive {@code int} value then the enum
-   * provides the {@link Month#getValue() int value}.
+   * provides the {@link Month#getValue() int value} .
    *
    * @return
    *   the month-of-year, not null
@@ -938,13 +938,13 @@ final class ZonedDateTime(
   def getDayOfYear: Int = dateTime.getDayOfYear
 
   /**
-   * Gets the day-of-week field, which is an enum {@code DayOfWeek}.
+   * Gets the day-of-week field, which is an enum {@code DayOfWeek} .
    *
    * This method returns the enum {@link DayOfWeek} for the day-of-week. This avoids confusion as to
    * what {@code int} values mean. If you need access to the primitive {@code int} value then the
-   * enum provides the {@link DayOfWeek#getValue() int value}.
+   * enum provides the {@link DayOfWeek#getValue() int value} .
    *
-   * Additional information can be obtained from the {@code DayOfWeek}. This includes textual names
+   * Additional information can be obtained from the {@code DayOfWeek} . This includes textual names
    * of the values.
    *
    * @return
@@ -987,15 +987,15 @@ final class ZonedDateTime(
   /**
    * Returns an adjusted copy of this date-time.
    *
-   * This returns a new {@code ZonedDateTime}, based on this one, with the date-time adjusted. The
+   * This returns a new {@code ZonedDateTime} , based on this one, with the date-time adjusted. The
    * adjustment takes place using the specified adjuster strategy object. Read the documentation of
    * the adjuster to understand what adjustment will be made.
    *
    * A simple adjuster might simply set the one of the fields, such as the year field. A more
    * complex adjuster might set the date to the last day of the month. A selection of common
-   * adjustments is provided in {@link TemporalAdjusters}. These include finding the "last day of
+   * adjustments is provided in {@link TemporalAdjusters} . These include finding the "last day of
    * the month" and "next Wednesday". Key date-time classes also implement the {@code
-   * TemporalAdjuster} interface, such as {@link Month} and {@link MonthDay}. The adjuster is
+   * TemporalAdjuster} interface, such as {@link Month} and {@link MonthDay} . The adjuster is
    * responsible for handling special cases, such as the varying lengths of month and leap years.
    *
    * For example this code returns a date on the last day of July: <pre> import static
@@ -1003,13 +1003,13 @@ final class ZonedDateTime(
    *
    * result = zonedDateTime.with(JULY).with(lastDayOfMonth()); </pre>
    *
-   * The classes {@link LocalDate} and {@link LocalTime} implement {@code TemporalAdjuster}, thus
+   * The classes {@link LocalDate} and {@link LocalTime} implement {@code TemporalAdjuster} , thus
    * this method can be used to change the date, time or offset: <pre> result =
    * zonedDateTime.with(date); result = zonedDateTime.with(time); </pre>
    *
    * {@link ZoneOffset} also implements {@code TemporalAdjuster} however it is less likely that
    * setting the offset will have the effect you expect. When an offset is passed in, the local
-   * date-time is combined with the new offset to form an {@code Instant}. The instant and original
+   * date-time is combined with the new offset to form an {@code Instant} . The instant and original
    * zone are then used to create the result. This algorithm means that it is quite likely that the
    * output has a different offset to the specified offset. It will however work correctly when
    * passing in the offset applicable for the instant of the zoned date-time, and will work
@@ -1025,7 +1025,7 @@ final class ZonedDateTime(
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code ZonedDateTime} based on { @code this} with the adjustment made, not null
+   *   a {@code ZonedDateTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -1044,8 +1044,8 @@ final class ZonedDateTime(
   /**
    * Returns a copy of this date-time with the specified field set to a new value.
    *
-   * This returns a {@code ZonedDateTime}, based on this one, with the value for the specified field
-   * changed. This can be used to change any supported field, such as the year, month or
+   * This returns a {@code ZonedDateTime} , based on this one, with the value for the specified
+   * field changed. This can be used to change any supported field, such as the year, month or
    * day-of-month. If it is not possible to set the value, because the field is not supported or for
    * some other reason, an exception is thrown.
    *
@@ -1069,15 +1069,16 @@ final class ZonedDateTime(
    * value is outside the valid range then a {@code DateTimeException} will be thrown.
    *
    * The other {@link #isSupported(TemporalField) supported fields} will behave as per the matching
-   * method on {@link LocalDateTime#with(TemporalField, long) LocalDateTime}. The zone is not part
-   * of the calculation and will be unchanged. When converting back to {@code ZonedDateTime}, if the
-   * local date-time is in an overlap, then the offset will be retained if possible, otherwise the
-   * earlier offset will be used. If in a gap, the local date-time will be adjusted forward by the
-   * length of the gap.
+   * method on {@link LocalDateTime#with(TemporalField, long) LocalDateTime} . The zone is not part
+   * of the calculation and will be unchanged. When converting back to {@code ZonedDateTime} , if
+   * the local date-time is in an overlap, then the offset will be retained if possible, otherwise
+   * the earlier offset will be used. If in a gap, the local date-time will be adjusted forward by
+   * the length of the gap.
    *
-   * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
+   * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}
+   * .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the argument.
    * In this case, the field determines whether and how to adjust the instant.
    *
@@ -1088,7 +1089,7 @@ final class ZonedDateTime(
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code ZonedDateTime} based on { @code this} with the specified field set, not null
+   *   a {@code ZonedDateTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws UnsupportedTemporalTypeException
@@ -1113,10 +1114,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the year value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withYear(int) changing the year} of
-   * the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID
+   * the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID
    * to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1125,7 +1126,7 @@ final class ZonedDateTime(
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested year, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -1135,10 +1136,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the month-of-year value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withMonth(int) changing the month}
-   * of the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone
+   * of the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone
    * ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1147,7 +1148,7 @@ final class ZonedDateTime(
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested month, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -1157,10 +1158,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the day-of-month value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withDayOfMonth(int) changing the
-   * day-of-month} of the local date-time. This is then converted back to a {@code ZonedDateTime},
+   * day-of-month} of the local date-time. This is then converted back to a {@code ZonedDateTime} ,
    * using the zone ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1169,7 +1170,7 @@ final class ZonedDateTime(
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested day, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -1182,10 +1183,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the day-of-year altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withDayOfYear(int) changing the
-   * day-of-year} of the local date-time. This is then converted back to a {@code ZonedDateTime},
+   * day-of-year} of the local date-time. This is then converted back to a {@code ZonedDateTime} ,
    * using the zone ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1194,7 +1195,7 @@ final class ZonedDateTime(
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   a { @code ZonedDateTime} based on this date with the requested day, not null
+   *   a {@code ZonedDateTime} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -1206,10 +1207,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the hour-of-day value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withHour(int) changing the time} of
-   * the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID
+   * the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID
    * to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1218,7 +1219,7 @@ final class ZonedDateTime(
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested hour, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -1228,10 +1229,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the minute-of-hour value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withMinute(int) changing the time}
-   * of the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone
+   * of the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone
    * ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1240,7 +1241,7 @@ final class ZonedDateTime(
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested minute, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -1250,10 +1251,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the second-of-minute value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withSecond(int) changing the time}
-   * of the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone
+   * of the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone
    * ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1262,7 +1263,7 @@ final class ZonedDateTime(
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested second, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -1272,10 +1273,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the nano-of-second value altered.
    *
    * This operates on the local time-line, {@link LocalDateTime#withNano(int) changing the time} of
-   * the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID
+   * the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID
    * to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1284,7 +1285,7 @@ final class ZonedDateTime(
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested nanosecond, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nano value is invalid
    */
@@ -1299,13 +1300,13 @@ final class ZonedDateTime(
    *
    * The unit must have a {@linkplain TemporalUnit#getDuration() duration} that divides into the
    * length of a standard day without remainder. This includes all supplied time units on {@link
-   * ChronoUnit} and {@link ChronoUnit#DAYS DAYS}. Other units throw an exception.
+   * ChronoUnit} and {@link ChronoUnit#DAYS DAYS} . Other units throw an exception.
    *
    * This operates on the local time-line, {@link LocalDateTime#truncatedTo(TemporalUnit)
    * truncating} the underlying local date-time. This is then converted back to a {@code
    * ZonedDateTime}, using the zone ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1314,7 +1315,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the time truncated, not null
+   *   a {@code ZonedDateTime} based on this date-time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -1326,14 +1327,14 @@ final class ZonedDateTime(
    * This method returns a new date-time based on this time with the specified period added. The
    * amount is typically {@link Period} but may be any other type implementing the {@link
    * TemporalAmount} interface. The calculation is delegated to the specified adjuster, which
-   * typically calls back to {@link #plus(long, TemporalUnit)}.
+   * typically calls back to {@link #plus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the addition made, not null
+   *   a {@code ZonedDateTime} based on this date-time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -1367,7 +1368,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the specified period added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1382,10 +1383,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in years added.
    *
    * This operates on the local time-line, {@link LocalDateTime#plusYears(long) adding years} to the
-   * local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID to
+   * local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID to
    * obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1394,7 +1395,7 @@ final class ZonedDateTime(
    * @param years
    *   the years to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the years added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1404,10 +1405,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in months added.
    *
    * This operates on the local time-line, {@link LocalDateTime#plusMonths(long) adding months} to
-   * the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID
+   * the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID
    * to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1416,7 +1417,7 @@ final class ZonedDateTime(
    * @param months
    *   the months to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the months added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1426,10 +1427,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in weeks added.
    *
    * This operates on the local time-line, {@link LocalDateTime#plusWeeks(long) adding weeks} to the
-   * local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID to
+   * local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID to
    * obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1438,7 +1439,7 @@ final class ZonedDateTime(
    * @param weeks
    *   the weeks to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the weeks added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1448,10 +1449,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in days added.
    *
    * This operates on the local time-line, {@link LocalDateTime#plusDays(long) adding days} to the
-   * local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID to
+   * local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID to
    * obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1460,7 +1461,7 @@ final class ZonedDateTime(
    * @param days
    *   the days to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the days added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1485,7 +1486,7 @@ final class ZonedDateTime(
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the hours added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the hours added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1503,7 +1504,7 @@ final class ZonedDateTime(
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the minutes added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the minutes added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1521,7 +1522,7 @@ final class ZonedDateTime(
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the seconds added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1539,7 +1540,7 @@ final class ZonedDateTime(
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the nanoseconds added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the nanoseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1551,14 +1552,14 @@ final class ZonedDateTime(
    * This method returns a new date-time based on this time with the specified period subtracted.
    * The amount is typically {@link Period} but may be any other type implementing the {@link
    * TemporalAmount} interface. The calculation is delegated to the specified adjuster, which
-   * typically calls back to {@link #minus(long, TemporalUnit)}.
+   * typically calls back to {@link #minus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the subtraction made, not null
+   *   a {@code ZonedDateTime} based on this date-time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1592,7 +1593,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the specified period subtracted, not
+   *   a {@code ZonedDateTime} based on this date-time with the specified period subtracted, not
    *   null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
@@ -1605,10 +1606,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in years subtracted.
    *
    * This operates on the local time-line, {@link LocalDateTime#minusYears(long) subtracting years}
-   * to the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone
+   * to the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone
    * ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1617,7 +1618,7 @@ final class ZonedDateTime(
    * @param years
    *   the years to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the years subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1629,10 +1630,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in months subtracted.
    *
    * This operates on the local time-line, {@link LocalDateTime#minusMonths(long) subtracting
-   * months} to the local date-time. This is then converted back to a {@code ZonedDateTime}, using
+   * months} to the local date-time. This is then converted back to a {@code ZonedDateTime} , using
    * the zone ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1641,7 +1642,7 @@ final class ZonedDateTime(
    * @param months
    *   the months to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the months subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1653,10 +1654,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in weeks subtracted.
    *
    * This operates on the local time-line, {@link LocalDateTime#minusWeeks(long) subtracting weeks}
-   * to the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone
+   * to the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone
    * ID to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1665,7 +1666,7 @@ final class ZonedDateTime(
    * @param weeks
    *   the weeks to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the weeks subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1677,10 +1678,10 @@ final class ZonedDateTime(
    * Returns a copy of this {@code ZonedDateTime} with the specified period in days subtracted.
    *
    * This operates on the local time-line, {@link LocalDateTime#minusDays(long) subtracting days} to
-   * the local date-time. This is then converted back to a {@code ZonedDateTime}, using the zone ID
+   * the local date-time. This is then converted back to a {@code ZonedDateTime} , using the zone ID
    * to obtain the offset.
    *
-   * When converting back to {@code ZonedDateTime}, if the local date-time is in an overlap, then
+   * When converting back to {@code ZonedDateTime} , if the local date-time is in an overlap, then
    * the offset will be retained if possible, otherwise the earlier offset will be used. If in a
    * gap, the local date-time will be adjusted forward by the length of the gap.
    *
@@ -1689,7 +1690,7 @@ final class ZonedDateTime(
    * @param days
    *   the days to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the days subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1716,7 +1717,7 @@ final class ZonedDateTime(
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the hours subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the hours subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1736,7 +1737,7 @@ final class ZonedDateTime(
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the minutes subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the minutes subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1756,7 +1757,7 @@ final class ZonedDateTime(
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the seconds subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1777,7 +1778,7 @@ final class ZonedDateTime(
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1818,9 +1819,9 @@ final class ZonedDateTime(
    * This calculates the period between two date-times in terms of a single unit. The start and end
    * points are {@code this} and the specified date-time. The result will be negative if the end is
    * before the start. For example, the period in days between two date-times can be calculated
-   * using {@code startDateTime.until(endDateTime, DAYS)}.
+   * using {@code startDateTime.until(endDateTime, DAYS)} .
    *
-   * The {@code Temporal} passed to this method must be a {@code ZonedDateTime}. If the time-zone
+   * The {@code Temporal} passed to this method must be a {@code ZonedDateTime} . If the time-zone
    * differs between the two zoned date-times, the specified end date-time is normalized to have the
    * same zone as this date-time.
    *
@@ -1828,17 +1829,17 @@ final class ZonedDateTime(
    * two date-times. For example, the period in months between 2012-06-15T00:00Z and
    * 2012-08-14T23:59Z will only be one month as it is one minute short of two months.
    *
-   * This method operates in association with {@link TemporalUnit#between}. The result of this
+   * This method operates in association with {@link TemporalUnit#between} . The result of this
    * method is a {@code long} representing the amount of the specified unit. By contrast, the result
    * of {@code between} is an object that can be used directly in addition/subtraction: <pre> long
    * period = start.until(end, MONTHS); // this method dateTime.plus(MONTHS.between(start, end)); //
    * use in plus/minus </pre>
    *
-   * The calculation is implemented in this method for {@link ChronoUnit}. The units {@code NANOS},
-   * {@code MICROS}, {@code MILLIS}, {@code SECONDS}, {@code MINUTES}, {@code HOURS} and {@code
-   * HALF_DAYS}, {@code DAYS}, {@code WEEKS}, {@code MONTHS}, {@code YEARS}, {@code DECADES}, {@code
-   * CENTURIES}, {@code MILLENNIA} and {@code ERAS} are supported. Other {@code ChronoUnit} values
-   * will throw an exception.
+   * The calculation is implemented in this method for {@link ChronoUnit} . The units {@code NANOS}
+   * , {@code MICROS} , {@code MILLIS} , {@code SECONDS} , {@code MINUTES} , {@code HOURS} and
+   * {@code HALF_DAYS}, {@code DAYS} , {@code WEEKS} , {@code MONTHS} , {@code YEARS} ,
+   * {@code DECADES} , {@code CENTURIES}, {@code MILLENNIA} and {@code ERAS} are supported. Other
+   * {@code ChronoUnit} values will throw an exception.
    *
    * The calculation for date and time units differ.
    *
@@ -1851,14 +1852,14 @@ final class ZonedDateTime(
    * period from noon on day 1 to noon the following day in hours may be 23, 24 or 25 hours (or some
    * other amount) depending on whether there was a daylight savings change or not.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@code ChronoUnit} , then the result of this method is obtained by
+   * invoking {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first
+   * argument and the input temporal as the second argument.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date-time, which is converted to a { @code ZonedDateTime}, not null
+   *   the end date-time, which is converted to a {@code ZonedDateTime} , not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1912,7 +1913,7 @@ final class ZonedDateTime(
   override def toLocalTime: LocalTime = dateTime.toLocalTime
 
   /**
-   * Converts this date-time to an {@code OffsetDateTime}.
+   * Converts this date-time to an {@code OffsetDateTime} .
    *
    * This creates an offset date-time using the local date-time and offset. The zone ID is ignored.
    *
@@ -1949,10 +1950,10 @@ final class ZonedDateTime(
     dateTime.hashCode ^ offset.hashCode ^ Integer.rotateLeft(zone.hashCode, 3)
 
   /**
-   * Outputs this date-time as a {@code String}, such as {@code
+   * Outputs this date-time as a {@code String} , such as {@code
    * 2007-12-03T10:15:30+01:00[Europe/Paris]}.
    *
-   * The format consists of the {@code LocalDateTime} followed by the {@code ZoneOffset}. If the
+   * The format consists of the {@code LocalDateTime} followed by the {@code ZoneOffset} . If the
    * {@code ZoneId} is not the same as the offset, then the ID is output. The output is compatible
    * with ISO-8601 if the offset and ID are the same.
    *

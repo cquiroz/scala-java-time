@@ -143,7 +143,7 @@ object Period {
    * @return
    *   the equivalent period, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Period}
+   *   if unable to convert to a {@code Period}
    * @throws ArithmeticException
    *   if the amount of years, months or days exceeds an int
    */
@@ -202,10 +202,10 @@ object Period {
   def between(startDate: LocalDate, endDate: LocalDate): Period = startDate.until(endDate)
 
   /**
-   * Obtains a {@code Period} from a text string such as {@code PnYnMnD}.
+   * Obtains a {@code Period} from a text string such as {@code PnYnMnD} .
    *
    * This will parse the string produced by {@code toString()} which is based on the ISO-8601 period
-   * formats {@code PnYnMnD} and {@code PnW}.
+   * formats {@code PnYnMnD} and {@code PnW} .
    *
    * The string starts with an optional sign, denoted by the ASCII negative or positive symbol. If
    * negative, the whole period is negated. The ASCII letter "P" is next in upper or lower case.
@@ -213,7 +213,7 @@ object Period {
    * four sections must be present. The sections have suffixes in ASCII of "Y", "M", "W" and "D" for
    * years, months, weeks and days, accepted in upper or lower case. The suffixes must occur in
    * order. The number part of each section must consist of ASCII digits. The number may be prefixed
-   * by the ASCII negative or positive symbol. The number must parse to an {@code int}.
+   * by the ASCII negative or positive symbol. The number must parse to an {@code int} .
    *
    * The leading plus/minus sign, and negative values for other units are not part of the ISO-8601
    * standard. In addition, ISO-8601 does not permit mixing between the {@code PnYnMnD} and {@code
@@ -299,8 +299,8 @@ object Period {
  * exactly 24 hours, resulting in a {@code ZonedDateTime} at 19:00 the following day (assuming a one
  * hour DST gap).
  *
- * The supported units of a period are {@link ChronoUnit#YEARS YEARS}, {@link ChronoUnit#MONTHS
- * MONTHS} and {@link ChronoUnit#DAYS DAYS}. All three fields are always present, but may be set to
+ * The supported units of a period are {@link ChronoUnit#YEARS YEARS} , {@link ChronoUnit#MONTHS
+ * MONTHS} and {@link ChronoUnit#DAYS DAYS} . All three fields are always present, but may be set to
  * zero.
  *
  * The period may be used with any calendar system. The meaning of a "year" or "month" is only
@@ -309,7 +309,7 @@ object Period {
  * The period is modeled as a directed amount of time, meaning that individual parts of the period
  * may be negative.
  *
- * The months and years fields may be {@linkplain #normalized() normalized}. The normalization
+ * The months and years fields may be {@linkplain #normalized() normalized} . The normalization
  * assumes a 12 month year, so is not appropriate for all calendar systems.
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
@@ -418,7 +418,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param years
    *   the years to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested years, not null
+   *   a {@code Period} based on this period with the requested years, not null
    */
   def withYears(years: Int): Period =
     if (years == this.years) this
@@ -438,7 +438,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param months
    *   the months to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested months, not null
+   *   a {@code Period} based on this period with the requested months, not null
    */
   def withMonths(months: Int): Period =
     if (months == this.months) this
@@ -455,7 +455,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param days
    *   the days to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested days, not null
+   *   a {@code Period} based on this period with the requested days, not null
    */
   def withDays(days: Int): Period =
     if (days == this.days) this
@@ -464,7 +464,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   /**
    * Returns a copy of this period with the specified amount added.
    *
-   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)}. This
+   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)} . This
    * operates separately on the years, months and days.
    *
    * For example, "1 year, 6 months and 3 days" plus "2 years, 2 months and 2 days" returns "3
@@ -475,7 +475,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToAdd
    *   the period to add, not null
    * @return
-   *   a { @code Period} based on this period with the requested period added, not null
+   *   a {@code Period} based on this period with the requested period added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -499,7 +499,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToAdd
    *   the years to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years added, not null
+   *   a {@code Period} based on this period with the specified years added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -519,7 +519,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToAdd
    *   the months to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months added, not null
+   *   a {@code Period} based on this period with the specified months added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -539,7 +539,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToAdd
    *   the days to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days added, not null
+   *   a {@code Period} based on this period with the specified days added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -550,7 +550,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   /**
    * Returns a copy of this period with the specified amount subtracted.
    *
-   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)}. This
+   * This input amount is converted to a {@code Period} using {@code from(TemporalAmount)} . This
    * operates separately on the years, months and days.
    *
    * For example, "1 year, 6 months and 3 days" minus "2 years, 2 months and 2 days" returns "-1
@@ -561,7 +561,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToSubtract
    *   the period to subtract, not null
    * @return
-   *   a { @code Period} based on this period with the requested period subtracted, not null
+   *   a {@code Period} based on this period with the requested period subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -585,7 +585,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years subtracted, not null
+   *   a {@code Period} based on this period with the specified years subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -605,7 +605,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months subtracted, not null
+   *   a {@code Period} based on this period with the specified months subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -625,7 +625,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToSubtract
    *   the months to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days subtracted, not null
+   *   a {@code Period} based on this period with the specified days subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -642,7 +642,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param scalar
    *   the scalar to multiply by, not null
    * @return
-   *   a { @code Period} based on this period with the amounts multiplied by the scalar, not null
+   *   a {@code Period} based on this period with the amounts multiplied by the scalar, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -658,7 +658,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * Returns a new instance with each amount in this period negated.
    *
    * @return
-   *   a { @code Period} based on this period with the amounts negated, not null
+   *   a {@code Period} based on this period with the amounts negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -680,7 +680,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code Period} based on this period with excess months normalized to years, not null
+   *   a {@code Period} based on this period with excess months normalized to years, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -817,7 +817,7 @@ final class Period private (private val years: Int, private val months: Int, pri
   override def hashCode: Int = years + Integer.rotateLeft(months, 8) + Integer.rotateLeft(days, 16)
 
   /**
-   * Outputs this period as a {@code String}, such as {@code P6Y3M1D}.
+   * Outputs this period as a {@code String} , such as {@code P6Y3M1D} .
    *
    * The output will be in the ISO-8601 period format. A zero period will be represented as zero
    * days, 'P0D'.
