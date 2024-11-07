@@ -39,7 +39,7 @@ package org.threeten.bp.temporal
  * time-of-day in that it is not tied to any specific point on the time-line.
  *
  * The amount can be thought of as a Map of {@code TemporalUnit} to long, exposed via {@link
- * #getUnits()} and {@link #get(TemporalUnit)}. A simple case might have a single unit-value pair,
+ * #getUnits()} and {@link #get(TemporalUnit)} . A simple case might have a single unit-value pair,
  * such as "6 hours". A more complex case may have multiple unit-value pairs, such as "7 years, 3
  * months and 5 days".
  *
@@ -50,7 +50,7 @@ package org.threeten.bp.temporal
  *
  * This interface is a framework-level interface that should not be widely used in application code.
  * Instead, applications should create and pass around instances of concrete types, such as {@code
- * Period} and {@code Duration}.
+ * Period} and {@code Duration} .
  *
  * <h3>Specification for implementors</h3> This interface places no restrictions on the mutability
  * of implementations, however immutability is strongly recommended.
@@ -84,7 +84,7 @@ trait TemporalAmount {
    * class.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#plus(TemporalAmount)}: <pre> // these two lines
+   * directly. The second is to use {@link Temporal#plus(TemporalAmount)} : <pre> // these two lines
    * are equivalent, but the second approach is recommended dateTime = amount.addTo(dateTime);
    * dateTime = dateTime.plus(amount); </pre> It is recommended to use the second approach, {@code
    * plus(TemporalAmount)}, as it is a lot clearer to read in code.
@@ -99,7 +99,7 @@ trait TemporalAmount {
    *
    * The input temporal object may be in a calendar system other than ISO. Implementations may
    * choose to document compatibility with other calendar systems, or reject non-ISO temporal
-   * objects by {@link TemporalQueries#chronology() querying the chronology}.
+   * objects by {@link TemporalQueries#chronology() querying the chronology} .
    *
    * This method may be called from multiple threads in parallel. It must be thread-safe when
    * invoked.
@@ -122,10 +122,11 @@ trait TemporalAmount {
    * class.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link Temporal#minus(TemporalAmount)}: <pre> // these two lines
-   * are equivalent, but the second approach is recommended dateTime =
+   * directly. The second is to use {@link Temporal#minus(TemporalAmount)} : <pre> // these two
+   * lines are equivalent, but the second approach is recommended dateTime =
    * amount.subtractFrom(dateTime); dateTime = dateTime.minus(amount); </pre> It is recommended to
-   * use the second approach, {@code minus(TemporalAmount)}, as it is a lot clearer to read in code.
+   * use the second approach, {@code minus(TemporalAmount)} , as it is a lot clearer to read in
+   * code.
    *
    * <h3>Specification for implementors</h3> The implementation must take the input object and
    * subtract from it. The implementation defines the logic of the subtraction and is responsible
@@ -138,7 +139,7 @@ trait TemporalAmount {
    *
    * The input temporal object may be in a calendar system other than ISO. Implementations may
    * choose to document compatibility with other calendar systems, or reject non-ISO temporal
-   * objects by {@link TemporalQueries#chronology() querying the chronology}.
+   * objects by {@link TemporalQueries#chronology() querying the chronology} .
    *
    * This method may be called from multiple threads in parallel. It must be thread-safe when
    * invoked.

@@ -178,7 +178,7 @@ final class TTBPDateTimeParseContext(
   def setCaseSensitive(caseSensitive: Boolean): Unit = this.caseSensitive = caseSensitive
 
   /**
-   * Helper to compare two {@code CharSequence} instances. This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@code CharSequence} instances. This uses {@link #isCaseSensitive()} .
    *
    * @param cs1
    *   the first character sequence, not null
@@ -228,7 +228,7 @@ final class TTBPDateTimeParseContext(
   }
 
   /**
-   * Helper to compare two {@code char}. This uses {@link #isCaseSensitive()}.
+   * Helper to compare two {@code char} . This uses {@link #isCaseSensitive()} .
    *
    * @param ch1
    *   the first character
@@ -463,7 +463,7 @@ final class TTBPDateTimeParseContext(
      *
      * This method is typically used once parsing is complete to obtain the parsed data. Parsing
      * will typically result in separate fields, such as year, month and day. The returned builder
-     * can be used to combine the parsed data into meaningful objects such as {@code LocalDate},
+     * can be used to combine the parsed data into meaningful objects such as {@code LocalDate} ,
      * potentially applying complex processing to handle invalid parsed data.
      *
      * @return

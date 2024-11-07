@@ -45,10 +45,10 @@ package org.threeten.bp.temporal
  * ChronoField} for the standard set of fields.
  *
  * Two pieces of date/time information cannot be represented by numbers, the {@link Chronology
- * chronology} and the {@link ZoneId time-zone}. These can be accessed via {@link
- * #query(TemporalQuery) queries} using the static methods defined on {@link TemporalQueries}.
+ * chronology} and the {@link ZoneId time-zone} . These can be accessed via {@link
+ * #query(TemporalQuery) queries} using the static methods defined on {@link TemporalQueries} .
  *
- * A sub-interface, {@link Temporal}, extends this definition to one that also supports adjustment
+ * A sub-interface, {@link Temporal} , extends this definition to one that also supports adjustment
  * and manipulation on more complete temporal objects.
  *
  * This interface is a framework-level interface that should not be widely used in application code.
@@ -70,10 +70,10 @@ trait TemporalAccessor {
    * exception.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoField}. If the field is supported, then true is returned, otherwise
+   * defined in {@link ChronoField} . If the field is supported, then true is returned, otherwise
    * false
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument.
    *
@@ -99,10 +99,10 @@ trait TemporalAccessor {
    * invalid for the field.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoField}. If the field is supported, then the range of the field must be
+   * defined in {@link ChronoField} . If the field is supported, then the range of the field must be
    * returned. If unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessorl)} passing {@code this} as the
    * argument.
    *
@@ -123,18 +123,18 @@ trait TemporalAccessor {
       field.rangeRefinedBy(this)
 
   /**
-   * Gets the value of the specified field as an {@code int}.
+   * Gets the value of the specified field as an {@code int} .
    *
    * This queries the date-time for the value for the specified field. The returned value will
    * always be within the valid range of values for the field. If the date-time cannot return the
    * value, because the field is unsupported or for some other reason, an exception will be thrown.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoField}. If the field is supported and has an {@code int} range, then
+   * defined in {@link ChronoField} . If the field is supported and has an {@code int} range, then
    * the value of the field must be returned. If unsupported, then a {@code DateTimeException} must
    * be thrown.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    *
    * Implementations must not alter either this object.
@@ -146,7 +146,7 @@ trait TemporalAccessor {
    * @throws DateTimeException
    *   if a value for the field cannot be obtained
    * @throws DateTimeException
-   *   if the range of valid values for the field exceeds an { @code int}
+   *   if the range of valid values for the field exceeds an {@code int}
    * @throws DateTimeException
    *   if the value is outside the range of valid values for the field
    * @throws ArithmeticException
@@ -155,17 +155,17 @@ trait TemporalAccessor {
   def get(field: TemporalField): Int = range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field as a {@code long}.
+   * Gets the value of the specified field as a {@code long} .
    *
    * This queries the date-time for the value for the specified field. The returned value may be
    * outside the valid range of values for the field. If the date-time cannot return the value,
    * because the field is unsupported or for some other reason, an exception will be thrown.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoField}. If the field is supported, then the value of the field must be
+   * defined in {@link ChronoField} . If the field is supported, then the value of the field must be
    * returned. If unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    *
    * Implementations must not alter either this object.
@@ -192,7 +192,7 @@ trait TemporalAccessor {
    * year, or calculates the number of days to your next birthday.
    *
    * The most common query implementations are method references, such as {@code LocalDate::from}
-   * and {@code ZoneId::from}. Further implementations are on {@link TemporalQueries}. Queries may
+   * and {@code ZoneId::from} . Further implementations are on {@link TemporalQueries} . Queries may
    * also be defined by applications.
    *
    * <h3>Specification for implementors</h3> Implementations of this method must behave as follows:

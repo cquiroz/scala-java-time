@@ -79,7 +79,7 @@ object HijrahEra {
  * The Hijrah calendar system has two eras. The date {@code 0001-01-01 (Hijrah)} is {@code 622-06-19
  * (ISO)}.
  *
- * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code HijrahEra}. Use
+ * <b>Do not use {@code ordinal()} to obtain the numeric representation of {@code HijrahEra} . Use
  * {@code getValue()} instead.</b>
  *
  * <h3>Specification for implementors</h3> This is an immutable and thread-safe enum.

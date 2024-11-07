@@ -68,20 +68,20 @@ object Chronology {
    * Obtains an instance of {@code Chronology} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code Chronology}. If the specified
+   * converts the arbitrary temporal object to an instance of {@code Chronology} . If the specified
    * temporal object does not have a chronology, {@link IsoChronology} is returned.
    *
-   * The conversion will obtain the chronology using {@link TemporalQueries#chronology()}.
+   * The conversion will obtain the chronology using {@link TemporalQueries#chronology()} .
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code Chrono::from}.
+   * to be used in queries via method reference, {@code Chrono::from} .
    *
    * @param temporal
    *   the temporal to convert, not null
    * @return
    *   the chronology, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code Chronology}
+   *   if unable to convert to an {@code Chronology}
    */
   def from(temporal: TemporalAccessor): Chronology = {
     Objects.requireNonNull(temporal, "temporal")
@@ -107,12 +107,12 @@ object Chronology {
    * in Japan with the Japanese calendar system.
    *
    * This method finds the desired calendar system by in a manner equivalent to passing "ca" to
-   * {@link Locale#getUnicodeLocaleType(String)}. If the "ca" key is not present, then {@code
+   * {@link Locale#getUnicodeLocaleType(String)} . If the "ca" key is not present, then {@code
    * IsoChronology} is returned.
    *
    * Note that the behavior of this method differs from the older {@link
    * java.util.Calendar#getInstance(Locale)} method. If that method receives a locale of "th_TH" it
-   * will return {@code BuddhistCalendar}. By contrast, this method will return {@code
+   * will return {@code BuddhistCalendar} . By contrast, this method will return {@code
    * IsoChronology}. Passing the locale "th-TH-u-ca-buddhist" into either method will result in the
    * Thai Buddhist calendar system and is therefore the recommended approach going forward for Thai
    * calendar system localization.
@@ -237,9 +237,10 @@ object Chronology {
  * val thaiYear: Int = thaiDate.get(ChronoField.YEAR);
  * }}}
  * As shown, although the date objects are in different calendar systems, represented by different
- * {@code Chronology} instances, both can be queried using the same constant on {@code ChronoField}.
- * For a full discussion of the implications of this, see {@link ChronoLocalDate}. In general, the
- * advice is to use the known ISO-based {@code LocalDate}, rather than {@code ChronoLocalDate}.
+ * {@code Chronology} instances, both can be queried using the same constant on {@code ChronoField}
+ * . For a full discussion of the implications of this, see {@link ChronoLocalDate} . In general,
+ * the advice is to use the known ISO-based {@code LocalDate} , rather than {@code ChronoLocalDate}
+ * .
  *
  * While a {@code Chronology} object typically uses {@code ChronoField} and is based on an era,
  * year-of-era, month-of-year, day-of-month model of a date, this is not required. A {@code
@@ -264,8 +265,8 @@ object Chronology {
  *
  * <p id="addcalendars">Adding New Calendars</p> The set of available chronologies can be extended
  * by applications. Adding a new calendar system requires the writing of an implementation of {@code
- * Chronology}, {@code ChronoLocalDate} and {@code Era}. The majority of the logic specific to the
- * calendar system will be in {@code ChronoLocalDate}. The {@code Chronology} subclass acts as a
+ * Chronology}, {@code ChronoLocalDate} and {@code Era} . The majority of the logic specific to the
+ * calendar system will be in {@code ChronoLocalDate} . The {@code Chronology} subclass acts as a
  * factory.
  *
  * To permit the discovery of additional chronologies, the {@link java.util.ServiceLoader
@@ -290,7 +291,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoLocalDate}, not null
+   *   the date-time checked and cast to {@code ChronoLocalDate} , not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoLocalDate or the chronology is not equal this Chrono
    */
@@ -309,7 +310,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoLocalDateTime}, not null
+   *   the date-time checked and cast to {@code ChronoLocalDateTime} , not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoLocalDateTimeImpl or the chronology is not equal
    *   this Chrono
@@ -331,7 +332,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoZonedDateTimeImpl}, not null
+   *   the date-time checked and cast to {@code ChronoZonedDateTimeImpl} , not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoZonedDateTimeImpl or the chronology is not equal
    *   this Chrono
@@ -350,8 +351,8 @@ trait Chronology extends Ordered[Chronology] {
   /**
    * Gets the ID of the chronology.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID, not null
@@ -392,7 +393,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def date(era: Era, yearOfEra: Int, month: Int, dayOfMonth: Int): ChronoLocalDate =
     date(prolepticYear(era, yearOfEra), month, dayOfMonth)
@@ -428,7 +429,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): ChronoLocalDate =
     dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
@@ -465,7 +466,7 @@ trait Chronology extends Ordered[Chronology] {
   /**
    * Obtains a local date in this chronology from another temporal object.
    *
-   * This creates a date in this chronology based on the specified {@code TemporalAccessor}.
+   * This creates a date in this chronology based on the specified {@code TemporalAccessor} .
    *
    * The standard mechanism for conversion between date types is the {@link ChronoField#EPOCH_DAY
    * local epoch-day} field.
@@ -489,7 +490,7 @@ trait Chronology extends Ordered[Chronology] {
    * Using this method will prevent the ability to use an alternate clock for testing because the
    * clock is hard-coded.
    *
-   * This implementation uses {@link #dateNow(Clock)}.
+   * This implementation uses {@link #dateNow(Clock)} .
    *
    * @return
    *   the current local date using the system clock and default time-zone, not null
@@ -522,7 +523,7 @@ trait Chronology extends Ordered[Chronology] {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@link Clock dependency injection}.
+   * {@link Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -539,7 +540,7 @@ trait Chronology extends Ordered[Chronology] {
   /**
    * Obtains a local date-time in this chronology from another temporal object.
    *
-   * This creates a date-time in this chronology based on the specified {@code TemporalAccessor}.
+   * This creates a date-time in this chronology based on the specified {@code TemporalAccessor} .
    *
    * The date of the date-time should be equivalent to that obtained by calling {@link
    * #date(TemporalAccessor)}. The standard mechanism for conversion between time types is the
@@ -567,10 +568,10 @@ trait Chronology extends Ordered[Chronology] {
   /**
    * Obtains a zoned date-time in this chronology from another temporal object.
    *
-   * This creates a date-time in this chronology based on the specified {@code TemporalAccessor}.
+   * This creates a date-time in this chronology based on the specified {@code TemporalAccessor} .
    *
-   * This should obtain a {@code ZoneId} using {@link ZoneId#from(TemporalAccessor)}. The date-time
-   * should be obtained by obtaining an {@code Instant}. If that fails, the local date-time should
+   * This should obtain a {@code ZoneId} using {@link ZoneId#from(TemporalAccessor)} . The date-time
+   * should be obtained by obtaining an {@code Instant} . If that fails, the local date-time should
    * be used.
    *
    * @param temporal
@@ -604,7 +605,7 @@ trait Chronology extends Ordered[Chronology] {
     }
 
   /**
-   * Obtains a zoned date-time in this chronology from an {@code Instant}.
+   * Obtains a zoned date-time in this chronology from an {@code Instant} .
    *
    * This creates a zoned date-time with the same instant as that specified.
    *
@@ -629,9 +630,9 @@ trait Chronology extends Ordered[Chronology] {
    *
    * The default implementation returns an implementation class suitable for most calendar systems.
    * It is based solely on the three units. Normalization, addition and subtraction derive the
-   * number of months in a year from the {@link #range(ChronoField)}. If the number of months within
-   * a year is fixed, then the calculation approach for addition, subtraction and normalization is
-   * slightly different.
+   * number of months in a year from the {@link #range(ChronoField)} . If the number of months
+   * within a year is fixed, then the calculation approach for addition, subtraction and
+   * normalization is slightly different.
    *
    * If implementing an unusual calendar system that is not based on years, months and days, or
    * where you want direct control, then the {@code ChronoPeriod} interface must be directly
@@ -681,7 +682,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to convert
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def prolepticYear(era: Era, yearOfEra: Int): Int
 
@@ -823,7 +824,7 @@ trait Chronology extends Ordered[Chronology] {
    * Compares this chronology to another chronology.
    *
    * The comparison order first by the chronology ID string, then by any additional information
-   * specific to the subclass. It is "consistent with equals", as defined by {@link Comparable}.
+   * specific to the subclass. It is "consistent with equals", as defined by {@link Comparable} .
    *
    * The default implementation compares the chronology ID. Subclasses must compare any additional
    * state that they store.
@@ -840,7 +841,7 @@ trait Chronology extends Ordered[Chronology] {
    *
    * The comparison is based on the entire state of the object.
    *
-   * The default implementation checks the type and calls {@link #compareTo(Chronology)}.
+   * The default implementation checks the type and calls {@link #compareTo(Chronology)} .
    *
    * @param obj
    *   the object to check, null returns false
@@ -865,7 +866,7 @@ trait Chronology extends Ordered[Chronology] {
   override def hashCode: Int = getClass.hashCode ^ getId.hashCode
 
   /**
-   * Outputs this chronology as a {@code String}, using the ID.
+   * Outputs this chronology as a {@code String} , using the ID.
    *
    * @return
    *   a string representation of this chronology, not null

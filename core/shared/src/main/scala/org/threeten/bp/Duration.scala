@@ -87,9 +87,9 @@ object Duration {
    * @param days
    *   the number of days, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws ArithmeticException
-   *   if the input days exceeds the capacity of { @code Duration}
+   *   if the input days exceeds the capacity of {@code Duration}
    */
   def ofDays(days: Long): Duration = create(Math.multiplyExact(days, 86400L), 0)
 
@@ -102,9 +102,9 @@ object Duration {
    * @param hours
    *   the number of hours, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws ArithmeticException
-   *   if the input hours exceeds the capacity of { @code Duration}
+   *   if the input hours exceeds the capacity of {@code Duration}
    */
   def ofHours(hours: Long): Duration = create(Math.multiplyExact(hours, 3600L), 0)
 
@@ -117,9 +117,9 @@ object Duration {
    * @param minutes
    *   the number of minutes, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws ArithmeticException
-   *   if the input minutes exceeds the capacity of { @code Duration}
+   *   if the input minutes exceeds the capacity of {@code Duration}
    */
   def ofMinutes(minutes: Long): Duration = create(Math.multiplyExact(minutes, 60L), 0)
 
@@ -131,7 +131,7 @@ object Duration {
    * @param seconds
    *   the number of seconds, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    */
   def ofSeconds(seconds: Long): Duration = create(seconds, 0)
 
@@ -150,9 +150,9 @@ object Duration {
    * @param nanoAdjustment
    *   the nanosecond adjustment to the number of seconds, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws ArithmeticException
-   *   if the adjustment causes the seconds to exceed the capacity of { @code Duration}
+   *   if the adjustment causes the seconds to exceed the capacity of {@code Duration}
    */
   def ofSeconds(seconds: Long, nanoAdjustment: Long): Duration = {
     val secs: Long = Math.addExact(seconds, Math.floorDiv(nanoAdjustment, NANOS_PER_SECOND.toLong))
@@ -168,7 +168,7 @@ object Duration {
    * @param millis
    *   the number of milliseconds, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    */
   def ofMillis(millis: Long): Duration = {
     var secs: Long = millis / 1000
@@ -188,7 +188,7 @@ object Duration {
    * @param nanos
    *   the number of nanoseconds, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    */
   def ofNanos(nanos: Long): Duration = {
     var secs: Long = nanos / NANOS_PER_SECOND
@@ -214,7 +214,7 @@ object Duration {
    * @param unit
    *   the unit that the duration is measured in, must have an exact duration, not null
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws DateTimeException
    *   if the period unit has an estimated duration
    * @throws ArithmeticException
@@ -236,7 +236,7 @@ object Duration {
    * @param amount
    *   the amount to convert, not null
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws DateTimeException
    *   if the amount cannot be converted
    * @throws ArithmeticException
@@ -258,7 +258,7 @@ object Duration {
    *
    * Obtains a {@code Duration} representing the duration between two instants. This calculates the
    * duration between two temporal objects of the same type. The difference in seconds is calculated
-   * using {@link Temporal#until(Temporal, TemporalUnit)}. The difference in nanoseconds is
+   * using {@link Temporal#until(Temporal, TemporalUnit)} . The difference in nanoseconds is
    * calculated using by querying the {@link ChronoField#NANO_OF_SECOND NANO_OF_SECOND} field.
    *
    * The result of this method can be a negative period if the end is before the start. To guarantee
@@ -269,11 +269,11 @@ object Duration {
    * @param endExclusive
    *   the end instant, exclusive, not null
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws DateTimeException
    *   if the seconds between the temporals cannot be obtained
    * @throws ArithmeticException
-   *   if the calculation exceeds the capacity of { @code Duration}
+   *   if the calculation exceeds the capacity of {@code Duration}
    */
   def between(startInclusive: Temporal, endExclusive: Temporal): Duration = {
     var secs: Long  = startInclusive.until(endExclusive, SECONDS)
@@ -298,7 +298,7 @@ object Duration {
   }
 
   /**
-   * Obtains a {@code Duration} from a text string such as {@code PnDTnHnMn.nS}.
+   * Obtains a {@code Duration} from a text string such as {@code PnDTnHnMn.nS} .
    *
    * This will parse a textual representation of a duration, including the string produced by {@code
    * toString()}. The formats accepted are based on the ISO-8601 duration format {@code
@@ -313,7 +313,7 @@ object Duration {
    * sections must be present, and if "T" is present there must be at least one section after the
    * "T". The number part of each section must consist of one or more ASCII digits. The number may
    * be prefixed by the ASCII negative or positive symbol. The number of days, hours and minutes
-   * must parse to a {@code long}. The number of seconds must parse to a {@code long} with optional
+   * must parse to a {@code long} . The number of seconds must parse to a {@code long} with optional
    * fraction. The decimal point may be either a dot or a comma. The fractional part may have from
    * zero to 9 digits.
    *
@@ -452,7 +452,7 @@ object Duration {
    * @param seconds
    *   the number of seconds, up to scale 9, positive or negative
    * @return
-   *   a { @code Duration}, not null
+   *   a {@code Duration} , not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -475,11 +475,11 @@ object Duration {
  * daylight savings effects. See {@link Period} for the date-based equivalent to this class.
  *
  * A physical duration could be of infinite length. For practicality, the duration is stored with
- * constraints similar to {@link Instant}. The duration uses nanosecond resolution with a maximum
- * value of the seconds that can be held in a {@code long}. This is greater than the current
+ * constraints similar to {@link Instant} . The duration uses nanosecond resolution with a maximum
+ * value of the seconds that can be held in a {@code long} . This is greater than the current
  * estimated age of the universe.
  *
- * The range of a duration requires the storage of a number larger than a {@code long}. To achieve
+ * The range of a duration requires the storage of a number larger than a {@code long} . To achieve
  * this, the class stores a {@code long} representing seconds and an {@code int} representing
  * nanosecond-of-second, which will always be between 0 and 999,999,999.
  *
@@ -539,7 +539,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    *
    * The length of the duration is stored using two fields - seconds and nanoseconds. The
    * nanoseconds part is a value from 0 to 999,999,999 that is an adjustment to the length in
-   * seconds. The total duration is defined by calling this method and {@link #getNano()}.
+   * seconds. The total duration is defined by calling this method and {@link #getNano()} .
    *
    * A {@code Duration} represents a directed distance between two points on the time-line. A
    * negative duration is expressed by the negative sign of the seconds part. A duration of -1
@@ -555,7 +555,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    *
    * The length of the duration is stored using two fields - seconds and nanoseconds. The
    * nanoseconds part is a value from 0 to 999,999,999 that is an adjustment to the length in
-   * seconds. The total duration is defined by calling this method and {@link #getSeconds()}.
+   * seconds. The total duration is defined by calling this method and {@link #getSeconds()} .
    *
    * A {@code Duration} represents a directed distance between two points on the time-line. A
    * negative duration is expressed by the negative sign of the seconds part. A duration of -1
@@ -577,7 +577,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param seconds
    *   the seconds to represent, may be negative
    * @return
-   *   a { @code Duration} based on this period with the requested seconds, not null
+   *   a {@code Duration} based on this period with the requested seconds, not null
    */
   def withSeconds(seconds: Long): Duration = Duration.create(seconds, nanos)
 
@@ -592,7 +592,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param nanoOfSecond
    *   the nano-of-second to represent, from 0 to 999,999,999
    * @return
-   *   a { @code Duration} based on this period with the requested nano-of-second, not null
+   *   a {@code Duration} based on this period with the requested nano-of-second, not null
    * @throws DateTimeException
    *   if the nano-of-second is invalid
    */
@@ -609,7 +609,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param duration
    *   the duration to add, positive or negative, not null
    * @return
-   *   a { @code Duration} based on this duration with the specified duration added, not null
+   *   a {@code Duration} based on this duration with the specified duration added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -630,7 +630,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param unit
    *   the unit that the period is measured in, must have an exact duration, not null
    * @return
-   *   a { @code Duration} based on this duration with the specified duration added, not null
+   *   a {@code Duration} based on this duration with the specified duration added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -667,7 +667,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param daysToAdd
    *   the days to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified days added, not null
+   *   a {@code Duration} based on this duration with the specified days added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -682,7 +682,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param hoursToAdd
    *   the hours to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified hours added, not null
+   *   a {@code Duration} based on this duration with the specified hours added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -697,7 +697,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param minutesToAdd
    *   the minutes to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified minutes added, not null
+   *   a {@code Duration} based on this duration with the specified minutes added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -712,7 +712,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param secondsToAdd
    *   the seconds to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified seconds added, not null
+   *   a {@code Duration} based on this duration with the specified seconds added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -726,7 +726,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param millisToAdd
    *   the milliseconds to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified milliseconds added, not null
+   *   a {@code Duration} based on this duration with the specified milliseconds added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -741,7 +741,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanoseconds to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified nanoseconds added, not null
+   *   a {@code Duration} based on this duration with the specified nanoseconds added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -757,7 +757,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanos to add, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified seconds added, not null
+   *   a {@code Duration} based on this duration with the specified seconds added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -780,7 +780,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param duration
    *   the duration to subtract, positive or negative, not null
    * @return
-   *   a { @code Duration} based on this duration with the specified duration subtracted, not null
+   *   a {@code Duration} based on this duration with the specified duration subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -806,7 +806,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param unit
    *   the unit that the period is measured in, must have an exact duration, not null
    * @return
-   *   a { @code Duration} based on this duration with the specified duration subtracted, not null
+   *   a {@code Duration} based on this duration with the specified duration subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -822,7 +822,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param daysToSubtract
    *   the days to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified days subtracted, not null
+   *   a {@code Duration} based on this duration with the specified days subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -838,7 +838,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param hoursToSubtract
    *   the hours to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified hours subtracted, not null
+   *   a {@code Duration} based on this duration with the specified hours subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -854,7 +854,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param minutesToSubtract
    *   the minutes to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified minutes subtracted, not null
+   *   a {@code Duration} based on this duration with the specified minutes subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -870,7 +870,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param secondsToSubtract
    *   the seconds to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified seconds subtracted, not null
+   *   a {@code Duration} based on this duration with the specified seconds subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -886,7 +886,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param millisToSubtract
    *   the milliseconds to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified milliseconds subtracted, not
+   *   a {@code Duration} based on this duration with the specified milliseconds subtracted, not
    *   null
    * @throws ArithmeticException
    *   if numeric overflow occurs
@@ -903,8 +903,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param nanosToSubtract
    *   the nanoseconds to subtract, positive or negative
    * @return
-   *   a { @code Duration} based on this duration with the specified nanoseconds subtracted, not
-   *   null
+   *   a {@code Duration} based on this duration with the specified nanoseconds subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -920,7 +919,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param multiplicand
    *   the value to multiply the duration by, positive or negative
    * @return
-   *   a { @code Duration} based on this duration multiplied by the specified scalar, not null
+   *   a {@code Duration} based on this duration multiplied by the specified scalar, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -937,7 +936,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * @param divisor
    *   the value to divide the duration by, positive or negative, not zero
    * @return
-   *   a { @code Duration} based on this duration divided by the specified divisor, not null
+   *   a {@code Duration} based on this duration divided by the specified divisor, not null
    * @throws ArithmeticException
    *   if the divisor is zero
    * @throws ArithmeticException
@@ -950,7 +949,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
 
   /**
    * Converts this duration to the total length in seconds and fractional nanoseconds expressed as a
-   * {@code BigDecimal}.
+   * {@code BigDecimal} .
    *
    * @return
    *   the total length of the duration in seconds, with a scale of 9, not null
@@ -990,12 +989,12 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * Returns a copy of this duration with the length negated.
    *
    * This method swaps the sign of the total length of this duration. For example, {@code PT1.3S}
-   * will be returned as {@code PT-1.3S}.
+   * will be returned as {@code PT-1.3S} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code Duration} based on this duration with the amount negated, not null
+   *   a {@code Duration} based on this duration with the amount negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -1005,12 +1004,12 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
    * Returns a copy of this duration with a positive length.
    *
    * This method returns a positive duration by effectively removing the sign from any negative
-   * total length. For example, {@code PT-1.3S} will be returned as {@code PT1.3S}.
+   * total length. For example, {@code PT-1.3S} will be returned as {@code PT1.3S} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code Duration} based on this duration with an absolute length, not null
+   *   a {@code Duration} based on this duration with an absolute length, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -1200,7 +1199,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
   def toMillisPart: Int = (nanos / Duration.NANOS_PER_MILLI).toInt
 
   /**
-   * Converts this duration to the total length in nanoseconds expressed as a {@code long}.
+   * Converts this duration to the total length in nanoseconds expressed as a {@code long} .
    *
    * If this duration is too large to fit in a {@code long} nanoseconds, then an exception is
    * thrown.
@@ -1231,10 +1230,10 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
   def toNanosPart: Int = nanos
 
   /**
-   * Compares this duration to the specified {@code Duration}.
+   * Compares this duration to the specified {@code Duration} .
    *
    * The comparison is based on the total length of the durations. It is "consistent with equals",
-   * as defined by {@link Comparable}.
+   * as defined by {@link Comparable} .
    *
    * @param otherDuration
    *   the other duration to compare to, not null
@@ -1250,7 +1249,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
   override def compareTo(other: Duration): Int = compare(other)
 
   /**
-   * Checks if this duration is equal to the specified {@code Duration}.
+   * Checks if this duration is equal to the specified {@code Duration} .
    *
    * The comparison is based on the total length of the durations.
    *
@@ -1276,16 +1275,16 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
 
   /**
    * A string representation of this duration using ISO-8601 seconds based representation, such as
-   * {@code PT8H6M12.345S}.
+   * {@code PT8H6M12.345S} .
    *
-   * The format of the returned string will be {@code PTnHnMnS}, where n is the relevant hours,
+   * The format of the returned string will be {@code PTnHnMnS} , where n is the relevant hours,
    * minutes or seconds part of the duration. Any fractional seconds are placed after a decimal
    * point i the seconds section. If a section has a zero value, it is omitted. The hours, minutes
    * and seconds will all have the same sign.
    *
    * Examples: <pre> "20.345 seconds" -> "PT20.345S "15 minutes" (15 * 60 seconds) -> "PT15M" "10
    * hours" (10 * 3600 seconds) -> "PT10H" "2 days" (2 * 86400 seconds) -> "PT48H" </pre> Note that
-   * multiples of 24 hours are not output as days to avoid confusion with {@code Period}.
+   * multiples of 24 hours are not output as days to avoid confusion with {@code Period} .
    *
    * @return
    *   an ISO-8601 representation of this duration, not null
