@@ -40,7 +40,7 @@ import org.threeten.bp.chrono.ChronoZonedDateTime
  * A standard set of date periods units.
  *
  * This set of units provide unit-based access to manipulate a date, time or date-time. The standard
- * set of units can be extended by implementing {@link TemporalUnit}.
+ * set of units can be extended by implementing {@link TemporalUnit} .
  *
  * These units are intended to be applicable in multiple calendar systems. For example, most non-ISO
  * calendar systems define units of years, months and days, just with slightly different rules. The
@@ -99,7 +99,7 @@ enum ChronoUnit private (name: String, ordinal: Int, private val duration: Durat
 
   /**
    * Unit that represents the concept of a day. For the ISO calendar system, it is the standard day
-   * from midnight to midnight. The estimated duration of a day is {@code 24 Hours}.
+   * from midnight to midnight. The estimated duration of a day is {@code 24 Hours} .
    *
    * When used with other calendar systems it must correspond to the day defined by the rising and
    * setting of the Sun on Earth. It is not required that days begin at midnight - when converting
@@ -125,7 +125,7 @@ enum ChronoUnit private (name: String, ordinal: Int, private val duration: Durat
 
   /**
    * Unit that represents the concept of a year. For the ISO calendar system, it is equal to 12
-   * months. The estimated duration of a year is {@code 365.2425 Days}.
+   * months. The estimated duration of a year is {@code 365.2425 Days} .
    *
    * When used with other calendar systems it must correspond to an integral number of days or
    * months roughly equal to a year defined by the passage of the Earth around the Sun.
@@ -162,7 +162,7 @@ enum ChronoUnit private (name: String, ordinal: Int, private val duration: Durat
   /**
    * Unit that represents the concept of an era. The ISO calendar system doesn't have eras thus it
    * is impossible to add an era to a date or date-time. The estimated duration of the era is
-   * artificially defined as {@code 1,000,000,000 Years}.
+   * artificially defined as {@code 1,000,000,000 Years} .
    *
    * When used with other calendar systems there are no restrictions on the unit.
    */
@@ -171,7 +171,7 @@ enum ChronoUnit private (name: String, ordinal: Int, private val duration: Durat
   /**
    * Artificial unit that represents the concept of forever. This is primarily used with {@link
    * TemporalField} to represent unbounded fields such as the year or era. The estimated duration of
-   * the era is artificially defined as the largest duration supported by {@code Duration}.
+   * the era is artificially defined as the largest duration supported by {@code Duration} .
    */
   case FOREVER extends ChronoUnit("Forever", 15, Duration.ofSeconds(Long.MaxValue, 999999999))
 

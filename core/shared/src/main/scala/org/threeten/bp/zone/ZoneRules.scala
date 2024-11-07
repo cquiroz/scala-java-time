@@ -46,7 +46,7 @@ import org.threeten.bp.ZoneOffset
  * ZoneOffsetTransitionRule} is used for future transitions that are based on the result of an
  * algorithm.
  *
- * The rules are loaded via {@link ZoneRulesProvider} using a {@link ZoneId}. The same rules may be
+ * The rules are loaded via {@link ZoneRulesProvider} using a {@link ZoneId} . The same rules may be
  * shared internally between multiple zone IDs.
  *
  * Serializing an instance of {@code ZoneRules} will store the entire set of rules. It does not
@@ -212,7 +212,7 @@ abstract class ZoneRules private[zone] () {
    * Since, in the case of Gap and Overlap, the offset returned is a "best" value, rather than the
    * "correct" value, it should be treated with care. Applications that care about the correct
    * offset should use a combination of this method, {@link #getValidOffsets(LocalDateTime)} and
-   * {@link #getTransition(LocalDateTime)}.
+   * {@link #getTransition(LocalDateTime)} .
    *
    * @param localDateTime
    *   the local date-time to query, not null, but null may be ignored if the rules have a single
@@ -237,7 +237,7 @@ abstract class ZoneRules private[zone] () {
    * offsets, which is a list of size 0, 1 or 2. In the case where there are two offsets, the
    * earlier offset is returned at index 0 and the later offset at index 1.
    *
-   * There are various ways to handle the conversion from a {@code LocalDateTime}. One technique,
+   * There are various ways to handle the conversion from a {@code LocalDateTime} . One technique,
    * using this method, would be: <pre> List<ZoneOffset> validOffsets = rules.getOffset(localDT); if
    * (validOffsets.size() == 1) { // Normal case: only one valid offset zoneOffset =
    * validOffsets.get(0); } else { // Gap or Overlap: determine what to do from transition (which
@@ -269,7 +269,7 @@ abstract class ZoneRules private[zone] () {
    * local date-time values with two valid offsets.</li> </ul><p> A transition is used to model the
    * cases of a Gap or Overlap. The Normal case will return null.
    *
-   * There are various ways to handle the conversion from a {@code LocalDateTime}. One technique,
+   * There are various ways to handle the conversion from a {@code LocalDateTime} . One technique,
    * using this method, would be: <pre> ZoneOffsetTransition trans = rules.getTransition(localDT);
    * if (trans == null) { // Gap or Overlap: determine what to do from transition } else { // Normal
    * case: only one valid offset zoneOffset = rule.getOffset(localDT); } </pre>
@@ -395,9 +395,9 @@ abstract class ZoneRules private[zone] () {
    * #getTransitions()}. This method returns instances of {@link ZoneOffsetTransitionRule} that
    * define an algorithm for when transitions will occur.
    *
-   * For any given {@code ZoneRules}, this list contains the transition rules for years beyond those
-   * years that have been fully defined. These rules typically refer to future daylight saving time
-   * rule changes.
+   * For any given {@code ZoneRules} , this list contains the transition rules for years beyond
+   * those years that have been fully defined. These rules typically refer to future daylight saving
+   * time rule changes.
    *
    * If the zone defines daylight savings into the future, then the list will normally be of size
    * two and hold information about entering and exiting daylight savings. If the zone does not have
@@ -429,7 +429,7 @@ abstract class ZoneRules private[zone] () {
   override def equals(otherRules: Any): Boolean
 
   /**
-   * Returns a suitable hash code given the definition of {@code #equals}.
+   * Returns a suitable hash code given the definition of {@code #equals} .
    *
    * @return
    *   the hash code

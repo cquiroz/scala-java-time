@@ -46,12 +46,12 @@ import org.threeten.bp.ZoneOffset
  * models the transition between the two offsets.
  *
  * Gaps occur where there are local date-times that simply do not not exist. An example would be
- * when the offset changes from {@code +03:00} to {@code +04:00}. This might be described as 'the
+ * when the offset changes from {@code +03:00} to {@code +04:00} . This might be described as 'the
  * clocks will move forward one hour tonight at 1am'.
  *
  * Overlaps occur where there are local date-times that exist twice. An example would be when the
- * offset changes from {@code +04:00} to {@code +03:00}. This might be described as 'the clocks will
- * move back one hour tonight at 2am'.
+ * offset changes from {@code +04:00} to {@code +03:00} . This might be described as 'the clocks
+ * will move back one hour tonight at 2am'.
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */
@@ -60,8 +60,8 @@ object ZoneOffsetTransition {
   /**
    * Obtains an instance defining a transition between two offsets.
    *
-   * Applications should normally obtain an instance from {@link ZoneRules}. This factory is only
-   * intended for use when creating {@link ZoneRules}.
+   * Applications should normally obtain an instance from {@link ZoneRules} . This factory is only
+   * intended for use when creating {@link ZoneRules} .
    *
    * @param transition
    *   the transition date-time at the transition, which never actually occurs, expressed local to
@@ -73,7 +73,7 @@ object ZoneOffsetTransition {
    * @return
    *   the transition, not null
    * @throws IllegalArgumentException
-   *   if { @code offsetBefore} and { @code offsetAfter} are equal, or { @code transition.getNano()}
+   *   if {@code offsetBefore} and {@code offsetAfter} are equal, or {@code transition.getNano()}
    *   returns non-zero value
    */
   def of(
@@ -129,8 +129,8 @@ final class ZoneOffsetTransition private[zone] (
    * This is the instant of the discontinuity, which is defined as the first instant that the
    * 'after' offset applies.
    *
-   * The methods {@link #getInstant()}, {@link #getDateTimeBefore()} and {@link #getDateTimeAfter()}
-   * all represent the same instant.
+   * The methods {@link #getInstant()} , {@link #getDateTimeBefore()} and
+   * {@link #getDateTimeAfter()} all represent the same instant.
    *
    * @return
    *   the transition instant, not null
@@ -218,7 +218,7 @@ final class ZoneOffsetTransition private[zone] (
    * Does this transition represent a gap in the local time-line.
    *
    * Gaps occur where there are local date-times that simply do not not exist. An example would be
-   * when the offset changes from {@code +01:00} to {@code +02:00}. This might be described as 'the
+   * when the offset changes from {@code +01:00} to {@code +02:00} . This might be described as 'the
    * clocks will move forward one hour tonight at 1am'.
    *
    * @return
@@ -230,7 +230,7 @@ final class ZoneOffsetTransition private[zone] (
    * Does this transition represent a gap in the local time-line.
    *
    * Overlaps occur where there are local date-times that exist twice. An example would be when the
-   * offset changes from {@code +02:00} to {@code +01:00}. This might be described as 'the clocks
+   * offset changes from {@code +02:00} to {@code +01:00} . This might be described as 'the clocks
    * will move back one hour tonight at 2am'.
    *
    * @return

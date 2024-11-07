@@ -93,7 +93,7 @@ object ChronoLocalDateTime {
    *
    * This obtains a local date-time based on the specified temporal. A {@code TemporalAccessor}
    * represents an arbitrary set of date and time information, which this factory converts to an
-   * instance of {@code ChronoLocalDateTime}.
+   * instance of {@code ChronoLocalDateTime} .
    *
    * The conversion extracts and combines the chronology and the date-time from the temporal object.
    * The behavior is equivalent to using {@link Chronology#localDateTime(TemporalAccessor)} with the
@@ -101,7 +101,7 @@ object ChronoLocalDateTime {
    * those fields that are equivalent to the relevant objects.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code ChronoLocalDateTime::from}.
+   * to be used as a query via method reference, {@code ChronoLocalDateTime::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
@@ -211,7 +211,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
   }
 
   /**
-   * Combines this time with a time-zone to create a {@code ChronoZonedDateTime}.
+   * Combines this time with a time-zone to create a {@code ChronoZonedDateTime} .
    *
    * This returns a {@code ChronoZonedDateTime} formed from this date-time at the specified
    * time-zone. The result will match this date-time as closely as possible. Time-zone rules, such
@@ -240,9 +240,9 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
   def atZone(zone: ZoneId): ChronoZonedDateTime[D]
 
   /**
-   * Converts this date-time to an {@code Instant}.
+   * Converts this date-time to an {@code Instant} .
    *
-   * This combines this local date-time and the specified offset to form an {@code Instant}.
+   * This combines this local date-time and the specified offset to form an {@code Instant} .
    *
    * @param offset
    *   the offset to use for the conversion, not null
@@ -276,7 +276,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
    * Compares this date-time to another date-time, including the chronology.
    *
    * The comparison is based first on the underlying time-line date-time, then on the chronology. It
-   * is "consistent with equals", as defined by {@link Comparable}.
+   * is "consistent with equals", as defined by {@link Comparable} .
    *
    * For example, the following is the comparator order: <ol> <li>{@code 2012-12-03T12:00
    * (ISO)}</li> <li>{@code 2012-12-04T12:00 (ISO)}</li> <li>{@code 2555-12-04T12:00
@@ -379,7 +379,7 @@ abstract class ChronoLocalDateTime[D <: ChronoLocalDate]
   override def hashCode: Int = toLocalDate.hashCode ^ toLocalTime.hashCode
 
   /**
-   * Outputs this date-time as a {@code String}.
+   * Outputs this date-time as a {@code String} .
    *
    * The output will include the full local date-time and the chronology ID.
    *

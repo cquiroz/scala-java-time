@@ -76,7 +76,7 @@ object ChronoPeriod {
  *
  * This interface models a date-based amount of time in a calendar system. While most calendar
  * systems use years, months and days, some do not. Therefore, this interface operates solely in
- * terms of a set of supported units that are defined by the {@code Chronology}. The set of
+ * terms of a set of supported units that are defined by the {@code Chronology} . The set of
  * supported units is fixed for a given chronology. The amount of a supported unit may be set to
  * zero.
  *
@@ -93,11 +93,11 @@ trait ChronoPeriod extends TemporalAmount {
    * Gets the value of the requested unit.
    *
    * The supported units are chronology specific. They will typically be {@link ChronoUnit#YEARS
-   * YEARS}, {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS}. Requesting an
+   * YEARS}, {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS} . Requesting an
    * unsupported unit will throw an exception.
    *
    * @param unit
-   *   the { @code TemporalUnit} for which to return the value
+   *   the {@code TemporalUnit} for which to return the value
    * @return
    *   the long value of the unit
    * @throws DateTimeException
@@ -111,8 +111,8 @@ trait ChronoPeriod extends TemporalAmount {
    * Gets the set of units supported by this period.
    *
    * The supported units are chronology specific. They will typically be {@link ChronoUnit#YEARS
-   * YEARS}, {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS}. They are returned in
-   * order from largest to smallest.
+   * YEARS}, {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS} . They are returned
+   * in order from largest to smallest.
    *
    * This set can be used in conjunction with {@link #get(TemporalUnit)} to access the entire state
    * of the period.
@@ -177,7 +177,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param amountToAdd
    *   the period to add, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the requested period added, not null
+   *   a {@code ChronoPeriod} based on this period with the requested period added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -195,7 +195,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param amountToSubtract
    *   the period to subtract, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the requested period subtracted, not null
+   *   a {@code ChronoPeriod} based on this period with the requested period subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -212,7 +212,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param scalar
    *   the scalar to multiply by, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts multiplied by the scalar, not
+   *   a {@code ChronoPeriod} based on this period with the amounts multiplied by the scalar, not
    *   null
    * @throws ArithmeticException
    *   if numeric overflow occurs
@@ -227,7 +227,7 @@ trait ChronoPeriod extends TemporalAmount {
    * normalization is performed.
    *
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts negated, not null
+   *   a {@code ChronoPeriod} based on this period with the amounts negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs, which only happens if one of the units has the value { @code
    *   Long.MIN_VALUE}
@@ -244,7 +244,7 @@ trait ChronoPeriod extends TemporalAmount {
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts of each unit normalized, not
+   *   a {@code ChronoPeriod} based on this period with the amounts of each unit normalized, not
    *   null
    * @throws ArithmeticException
    *   if numeric overflow occurs
@@ -327,7 +327,7 @@ trait ChronoPeriod extends TemporalAmount {
   override def hashCode: Int
 
   /**
-   * Outputs this period as a {@code String}.
+   * Outputs this period as a {@code String} .
    *
    * The output will include the period amounts and chronology.
    *

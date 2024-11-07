@@ -42,16 +42,16 @@ object Clock {
    * Obtains a clock that returns the current instant using the best available system clock,
    * converting to date and time using the UTC time-zone.
    *
-   * This clock, rather than {@link #systemDefaultZone()}, should be used when you need the current
+   * This clock, rather than {@link #systemDefaultZone()} , should be used when you need the current
    * instant without the date or time.
    *
    * This clock is based on the best available system clock. This may use {@link
    * System#currentTimeMillis()}, or a higher resolution clock if one is available.
    *
-   * Conversion from instant to date or time uses the {@link ZoneOffset#UTC UTC time-zone}.
+   * Conversion from instant to date or time uses the {@link ZoneOffset#UTC UTC time-zone} .
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}. It is
-   * equivalent to {@code system(ZoneOffset.UTC)}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} . It is
+   * equivalent to {@code system(ZoneOffset.UTC)} .
    *
    * @return
    *   a clock that uses the best available system clock in the UTC zone, not null
@@ -70,8 +70,8 @@ object Clock {
    * #systemUTC() UTC clock} should be used when you need the current instant without the date or
    * time.
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}. It is
-   * equivalent to {@code system(ZoneId.systemDefault())}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} . It is
+   * equivalent to {@code system(ZoneId.systemDefault())} .
    *
    * @return
    *   a clock that uses the best available system clock in the default zone, not null
@@ -88,7 +88,7 @@ object Clock {
    *
    * Conversion from instant to date or time uses the specified time-zone.
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} .
    *
    * @param zone
    *   the time-zone to use to convert the instant to date-time, not null
@@ -106,14 +106,14 @@ object Clock {
    *
    * This clock will always have the nano-of-second field set to zero. This ensures that the visible
    * time ticks in whole seconds. The underlying clock is the best available system clock,
-   * equivalent to using {@link #system(ZoneId)}.
+   * equivalent to using {@link #system(ZoneId)} .
    *
    * Implementations may use a caching strategy for performance reasons. As such, it is possible
    * that the start of the second observed via this clock will be later than that observed directly
    * via the underlying clock.
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}. It is
-   * equivalent to {@code tick(system(zone), Duration.ofSeconds(1))}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} . It is
+   * equivalent to {@code tick(system(zone), Duration.ofSeconds(1))} .
    *
    * @param zone
    *   the time-zone to use to convert the instant to date-time, not null
@@ -128,14 +128,14 @@ object Clock {
    *
    * This clock will always have the nano-of-second and second-of-minute fields set to zero. This
    * ensures that the visible time ticks in whole minutes. The underlying clock is the best
-   * available system clock, equivalent to using {@link #system(ZoneId)}.
+   * available system clock, equivalent to using {@link #system(ZoneId)} .
    *
    * Implementations may use a caching strategy for performance reasons. As such, it is possible
    * that the start of the minute observed via this clock will be later than that observed directly
    * via the underlying clock.
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}. It is
-   * equivalent to {@code tick(system(zone), Duration.ofMinutes(1))}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} . It is
+   * equivalent to {@code tick(system(zone), Duration.ofMinutes(1))} .
    *
    * @param zone
    *   the time-zone to use to convert the instant to date-time, not null
@@ -198,7 +198,7 @@ object Clock {
    * sense. The main use case for this is in testing, where the fixed clock ensures tests are not
    * dependent on the current clock.
    *
-   * The returned implementation is immutable, thread-safe and {@code Serializable}.
+   * The returned implementation is immutable, thread-safe and {@code Serializable} .
    *
    * @param fixedInstant
    *   the instant to use as the clock, not null
@@ -378,7 +378,7 @@ object Clock {
  *
  * Instances of this class are used to find the current instant, which can be interpreted using the
  * stored time-zone to find the current date and time. As such, a clock can be used instead of
- * {@link System#currentTimeMillis()} and {@link TimeZone#getDefault()}.
+ * {@link System#currentTimeMillis()} and {@link TimeZone#getDefault()} .
  *
  * Use of a {@code Clock} is optional. All key date-time classes also have a {@code now()} factory
  * method that uses the system clock in the default time zone. The primary purpose of this
@@ -393,7 +393,7 @@ object Clock {
  * to be used during testing.
  *
  * The {@code system} factory methods provide clocks based on the best available system clock This
- * may use {@link System#currentTimeMillis()}, or a higher resolution clock if one is available.
+ * may use {@link System#currentTimeMillis()} , or a higher resolution clock if one is available.
  *
  * <h3>Specification for implementors</h3> This abstract class must be implemented with care to
  * ensure other operate correctly. All implementations that can be instantiated must be final,
@@ -442,12 +442,12 @@ abstract class Clock protected () {
    * Gets the current millisecond instant of the clock.
    *
    * This returns the millisecond-based instant, measured from 1970-01-01T00:00 UTC. This is
-   * equivalent to the definition of {@link System#currentTimeMillis()}.
+   * equivalent to the definition of {@link System#currentTimeMillis()} .
    *
    * Most applications should avoid this method and use {@link Instant} to represent an instant on
    * the time-line rather than a raw millisecond value. This method is provided to allow the use of
    * the clock in high performance use cases where the creation of an object would be unacceptable.
-   * The default implementation currently calls {@link #instant()}.
+   * The default implementation currently calls {@link #instant()} .
    *
    * @return
    *   the current millisecond instant from this clock, measured from the Java epoch of

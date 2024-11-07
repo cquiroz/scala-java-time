@@ -121,7 +121,7 @@ object Year {
   }
 
   /**
-   * Obtains an instance of {@code Year}.
+   * Obtains an instance of {@code Year} .
    *
    * This method accepts a year value from the proleptic ISO calendar system.
    *
@@ -129,7 +129,7 @@ object Year {
    * 1BC/BCE is represented by 0.<br> The year 2BC/BCE is represented by -1.<br>
    *
    * @param isoYear
-   *   the ISO proleptic year to represent, from { @code MIN_VALUE} to { @code MAX_VALUE}
+   *   the ISO proleptic year to represent, from {@code MIN_VALUE} to {@code MAX_VALUE}
    * @return
    *   the year, not null
    * @throws DateTimeException
@@ -144,21 +144,21 @@ object Year {
    * Obtains an instance of {@code Year} from a temporal object.
    *
    * A {@code TemporalAccessor} represents some form of date and time information. This factory
-   * converts the arbitrary temporal object to an instance of {@code Year}.
+   * converts the arbitrary temporal object to an instance of {@code Year} .
    *
    * The conversion extracts the {@link ChronoField#YEAR year} field. The extraction is only
    * permitted if the temporal object has an ISO chronology, or can be converted to a {@code
    * LocalDate}.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used in queries via method reference, {@code Year::from}.
+   * to be used in queries via method reference, {@code Year::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the year, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Year}
+   *   if unable to convert to a {@code Year}
    */
   def from(temporal: TemporalAccessor): Year = {
     var _temporal = temporal
@@ -180,7 +180,7 @@ object Year {
   }
 
   /**
-   * Obtains an instance of {@code Year} from a text string such as {@code 2007}.
+   * Obtains an instance of {@code Year} from a text string such as {@code 2007} .
    *
    * The string must represent a valid year. Years outside the range 0000 to 9999 must be prefixed
    * by the plus or minus symbol.
@@ -240,7 +240,7 @@ object Year {
 }
 
 /**
- * A year in the ISO-8601 calendar system, such as {@code 2007}.
+ * A year in the ISO-8601 calendar system, such as {@code 2007} .
  *
  * {@code Year} is an immutable date-time object that represents a year. Any field that can be
  * derived from a year can be obtained.
@@ -250,7 +250,7 @@ object Year {
  * such, historical years must be treated with caution.</b>
  *
  * This class does not store or represent a month, day, time or time-zone. For example, the value
- * "2007" can be stored in a {@code Year}.
+ * "2007" can be stored in a {@code Year} .
  *
  * Years represented by this class follow the ISO-8601 standard and use the proleptic numbering
  * system. Year 1 is preceded by year 0, then by year -1.
@@ -278,10 +278,10 @@ final class Year private (private val year: Int)
   /**
    * Gets the year value.
    *
-   * The year returned by this method is proleptic as per {@code get(YEAR)}.
+   * The year returned by this method is proleptic as per {@code get(YEAR)} .
    *
    * @return
-   *   the year, { @code MIN_VALUE} to { @code MAX_VALUE}
+   *   the year, {@code MIN_VALUE} to {@code MAX_VALUE}
    */
   def getValue: Int = year
 
@@ -297,7 +297,7 @@ final class Year private (private val year: Int)
    * The supported fields are: <ul> <li>{@code YEAR_OF_ERA} <li>{@code YEAR} <li>{@code ERA} </ul>
    * All other {@code ChronoField} instances will return false.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.isSupportedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the field is supported is determined by the field.
    *
@@ -327,9 +327,9 @@ final class Year private (private val year: Int)
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return appropriate range instances. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)} passing {@code this} as the
    * argument. Whether the range can be obtained is determined by the field.
    *
@@ -348,7 +348,7 @@ final class Year private (private val year: Int)
       super.range(field)
 
   /**
-   * Gets the value of the specified field from this year as an {@code int}.
+   * Gets the value of the specified field from this year as an {@code int} .
    *
    * This queries this year for the value for the specified field. The returned value will always be
    * within the valid range of values for the field. If it is not possible to return the value,
@@ -356,9 +356,9 @@ final class Year private (private val year: Int)
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this year. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -375,16 +375,16 @@ final class Year private (private val year: Int)
     range(field).checkValidIntValue(getLong(field), field)
 
   /**
-   * Gets the value of the specified field from this year as a {@code long}.
+   * Gets the value of the specified field from this year as a {@code long} .
    *
    * This queries this year for the value for the specified field. If it is not possible to return
    * the value, because the field is not supported or for some other reason, an exception is thrown.
    *
    * If the field is a {@link ChronoField} then the query is implemented here. The {@link
    * #isSupported(TemporalField) supported fields} will return valid values based on this year. All
-   * other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.getFrom(TemporalAccessor)} passing {@code this} as the argument.
    * Whether the value can be obtained, and what the value represents, is determined by the field.
    *
@@ -450,7 +450,7 @@ final class Year private (private val year: Int)
   /**
    * Returns an adjusted copy of this year.
    *
-   * This returns a new {@code Year}, based on this one, with the year adjusted. The adjustment
+   * This returns a new {@code Year} , based on this one, with the year adjusted. The adjustment
    * takes place using the specified adjuster strategy object. Read the documentation of the
    * adjuster to understand what adjustment will be made.
    *
@@ -463,7 +463,7 @@ final class Year private (private val year: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code Year} based on { @code this} with the adjustment made, not null
+   *   a {@code Year} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -475,23 +475,23 @@ final class Year private (private val year: Int)
   /**
    * Returns a copy of this year with the specified field set to a new value.
    *
-   * This returns a new {@code Year}, based on this one, with the value for the specified field
+   * This returns a new {@code Year} , based on this one, with the value for the specified field
    * changed. If it is not possible to set the value, because the field is not supported or for some
    * other reason, an exception is thrown.
    *
    * If the field is a {@link ChronoField} then the adjustment is implemented here. The supported
    * fields behave as follows: <ul> <li>{@code YEAR_OF_ERA} - Returns a {@code Year} with the
    * specified year-of-era The era will be unchanged. <li>{@code YEAR} - Returns a {@code Year} with
-   * the specified year. This completely replaces the date and is equivalent to {@link #of(int)}.
+   * the specified year. This completely replaces the date and is equivalent to {@link #of(int)} .
    * <li>{@code ERA} - Returns a {@code Year} with the specified era. The year-of-era will be
    * unchanged. </ul>
    *
    * In all cases, if the new value is outside the valid range of values for the field then a {@code
    * DateTimeException} will be thrown.
    *
-   * All other {@code ChronoField} instances will throw a {@code DateTimeException}.
+   * All other {@code ChronoField} instances will throw a {@code DateTimeException} .
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the argument.
    * In this case, the field determines whether and how to adjust the instant.
    *
@@ -502,7 +502,7 @@ final class Year private (private val year: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code Year} based on { @code this} with the specified field set, not null
+   *   a {@code Year} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -528,14 +528,14 @@ final class Year private (private val year: Int)
    * This method returns a new year based on this year with the specified period added. The adder is
    * typically {@link Period} but may be any other type implementing the {@link TemporalAmount}
    * interface. The calculation is delegated to the specified adjuster, which typically calls back
-   * to {@link #plus(long, TemporalUnit)}.
+   * to {@link #plus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code Year} based on this year with the addition made, not null
+   *   a {@code Year} based on this year with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -547,9 +547,9 @@ final class Year private (private val year: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): Year =
     unit match {
@@ -574,7 +574,7 @@ final class Year private (private val year: Int)
    * @param yearsToAdd
    *   the years to add, may be negative
    * @return
-   *   a { @code Year} based on this year with the period added, not null
+   *   a {@code Year} based on this year with the period added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported year range
    */
@@ -590,14 +590,14 @@ final class Year private (private val year: Int)
    * This method returns a new year based on this year with the specified period subtracted. The
    * subtractor is typically {@link Period} but may be any other type implementing the {@link
    * TemporalAmount} interface. The calculation is delegated to the specified adjuster, which
-   * typically calls back to {@link #minus(long, TemporalUnit)}.
+   * typically calls back to {@link #minus(long, TemporalUnit)} .
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code Year} based on this year with the subtraction made, not null
+   *   a {@code Year} based on this year with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -609,9 +609,9 @@ final class Year private (private val year: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): Year =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -625,7 +625,7 @@ final class Year private (private val year: Int)
    * @param yearsToSubtract
    *   the years to subtract, may be negative
    * @return
-   *   a { @code Year} based on this year with the period subtracted, not null
+   *   a {@code Year} based on this year with the period subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported year range
    */
@@ -704,7 +704,7 @@ final class Year private (private val year: Int)
    *
    * This calculates the period between two years in terms of a single unit. The start and end
    * points are {@code this} and the specified year. The result will be negative if the end is
-   * before the start. The {@code Temporal} passed to this method must be a {@code Year}. For
+   * before the start. The {@code Temporal} passed to this method must be a {@code Year} . For
    * example, the period in decades between two year can be calculated using {@code
    * startYear.until(endYear, DECADES)}.
    *
@@ -712,24 +712,24 @@ final class Year private (private val year: Int)
    * two years. For example, the period in decades between 2012 and 2031 will only be one decade as
    * it is one year short of two decades.
    *
-   * This method operates in association with {@link TemporalUnit#between}. The result of this
+   * This method operates in association with {@link TemporalUnit#between} . The result of this
    * method is a {@code long} representing the amount of the specified unit. By contrast, the result
    * of {@code between} is an object that can be used directly in addition/subtraction: <pre> long
    * period = start.until(end, YEARS); // this method dateTime.plus(YEARS.between(start, end)); //
    * use in plus/minus </pre>
    *
-   * The calculation is implemented in this method for {@link ChronoUnit}. The units {@code YEARS},
-   * {@code DECADES}, {@code CENTURIES}, {@code MILLENNIA} and {@code ERAS} are supported. Other
+   * The calculation is implemented in this method for {@link ChronoUnit} . The units {@code YEARS}
+   * , {@code DECADES} , {@code CENTURIES} , {@code MILLENNIA} and {@code ERAS} are supported. Other
    * {@code ChronoUnit} values will throw an exception.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@code ChronoUnit} , then the result of this method is obtained by
+   * invoking {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first
+   * argument and the input temporal as the second argument.
    *
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end year, which is converted to a { @code Year}, not null
+   *   the end year, which is converted to a {@code Year} , not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -758,7 +758,7 @@ final class Year private (private val year: Int)
   }
 
   /**
-   * Combines this year with a day-of-year to create a {@code LocalDate}.
+   * Combines this year with a day-of-year to create a {@code LocalDate} .
    *
    * This returns a {@code LocalDate} formed from this year and the specified day-of-year.
    *
@@ -775,7 +775,7 @@ final class Year private (private val year: Int)
   def atDay(dayOfYear: Int): LocalDate = LocalDate.ofYearDay(year, dayOfYear)
 
   /**
-   * Combines this year with a month to create a {@code YearMonth}.
+   * Combines this year with a month to create a {@code YearMonth} .
    *
    * This returns a {@code YearMonth} formed from this year and the specified month. All possible
    * combinations of year and month are valid.
@@ -791,7 +791,7 @@ final class Year private (private val year: Int)
   def atMonth(month: Month): YearMonth = YearMonth.of(year, month)
 
   /**
-   * Combines this year with a month to create a {@code YearMonth}.
+   * Combines this year with a month to create a {@code YearMonth} .
    *
    * This returns a {@code YearMonth} formed from this year and the specified month. All possible
    * combinations of year and month are valid.
@@ -809,7 +809,7 @@ final class Year private (private val year: Int)
   def atMonth(month: Int): YearMonth = YearMonth.of(year, month)
 
   /**
-   * Combines this year with a month-day to create a {@code LocalDate}.
+   * Combines this year with a month-day to create a {@code LocalDate} .
    *
    * This returns a {@code LocalDate} formed from this year and the specified month-day.
    *
@@ -827,7 +827,7 @@ final class Year private (private val year: Int)
    * Compares this year to another year.
    *
    * The comparison is based on the value of the year. It is "consistent with equals", as defined by
-   * {@link Comparable}.
+   * {@link Comparable} .
    *
    * @param other
    *   the other year to compare to, not null
@@ -883,7 +883,7 @@ final class Year private (private val year: Int)
   override def hashCode: Int = year
 
   /**
-   * Outputs this year as a {@code String}.
+   * Outputs this year as a {@code String} .
    *
    * @return
    *   a string representation of this year, not null

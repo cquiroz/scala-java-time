@@ -89,9 +89,9 @@ object HijrahDate {
     Array(30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 30)
 
   /**
-   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum
-   * ---------- ------- ------- ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR
-   * 1 1 12 12 DAY_OF_MONTH 1 1 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
+   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum ---------- ------- -------
+   * ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR 1 1 12 12 DAY_OF_MONTH 1 1
+   * 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
    *
    * Minimum values.
    */
@@ -293,7 +293,7 @@ object HijrahDate {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@linkplain Clock dependency injection}.
+   * {@linkplain Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
@@ -407,20 +407,20 @@ object HijrahDate {
    *
    * This obtains a date in the Hijrah calendar system based on the specified temporal. A {@code
    * TemporalAccessor} represents an arbitrary set of date and time information, which this factory
-   * converts to an instance of {@code HijrahDate}.
+   * converts to an instance of {@code HijrahDate} .
    *
    * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY} field, which is
    * standardized across calendar systems.
    *
    * This method matches the signature of the functional interface {@link TemporalQuery} allowing it
-   * to be used as a query via method reference, {@code HijrahDate::from}.
+   * to be used as a query via method reference, {@code HijrahDate::from} .
    *
    * @param temporal
    *   the temporal object to convert, not null
    * @return
    *   the date in Hijrah calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code HijrahDate}
+   *   if unable to convert to a {@code HijrahDate}
    */
   def from(temporal: TemporalAccessor): HijrahDate = HijrahChronology.INSTANCE.date(temporal)
 
@@ -1144,7 +1144,7 @@ object HijrahDate {
 /**
  * A date in the Hijrah calendar system.
  *
- * This implements {@code ChronoLocalDate} for the {@link HijrahChronology Hijrah calendar}.
+ * This implements {@code ChronoLocalDate} for the {@link HijrahChronology Hijrah calendar} .
  *
  * The Hijrah calendar has a different total of days in a year than Gregorian calendar, and a month
  * is based on the period of a complete revolution of the moon around the earth (as between

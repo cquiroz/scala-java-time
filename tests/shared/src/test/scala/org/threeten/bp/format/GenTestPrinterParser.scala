@@ -48,9 +48,9 @@ import org.threeten.bp.format.internal.TTBPDateTimePrintContext
 /** Abstract PrinterParser test. */
 object GenTestPrinterParser {
   private val EMPTY: TemporalAccessor = new TemporalAccessor() {
-    def isSupported(field: TemporalField): Boolean = true
-    def getLong(field:     TemporalField): Long    = throw new DateTimeException("Mock")
-    override def get(field: TemporalField): Int =
+    def isSupported(field:       TemporalField): Boolean    = true
+    def getLong(field:           TemporalField): Long       = throw new DateTimeException("Mock")
+    override def get(field: TemporalField): Int             =
       range(field).checkValidIntValue(getLong(field), field)
     override def query[R](query: TemporalQuery[R]): R       = query.queryFrom(this)
     override def range(field:    TemporalField): ValueRange = field.range

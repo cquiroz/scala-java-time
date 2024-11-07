@@ -158,7 +158,7 @@ object IsoFields {
    *
    * This allows a number of week-based-years to be added to, or subtracted from, a date. The unit
    * is equal to either 52 or 53 weeks. The estimated duration of a week-based-year is the same as
-   * that of a standard ISO year at {@code 365.2425 Days}.
+   * that of a standard ISO year at {@code 365.2425 Days} .
    *
    * The rules for addition add the number of week-based-years to the existing value for the
    * week-based-year field. If the resulting week-based-year only has 52 weeks, then the date will
@@ -170,7 +170,7 @@ object IsoFields {
 
   /**
    * Unit that represents the concept of a quarter-year. For the ISO calendar system, it is equal to
-   * 3 months. The estimated duration of a quarter-year is one quarter of {@code 365.2425 Days}.
+   * 3 months. The estimated duration of a quarter-year is one quarter of {@code 365.2425 Days} .
    *
    * This unit is an immutable and thread-safe singleton.
    */
@@ -259,13 +259,13 @@ object IsoFields {
     private def QY                 = "QuarterOfYear"
 
     lazy val QUARTER_OF_YEAR: Field = new Field("QUARTER_OF_YEAR", 1) {
-      override def toString: String                          = QY
-      def getBaseUnit: TemporalUnit                          = QUARTER_YEARS
-      def getRangeUnit: TemporalUnit                         = YEARS
-      def range: ValueRange                                  = ValueRange.of(1, 4)
-      def isSupportedBy(temporal: TemporalAccessor): Boolean =
+      override def toString: String                                 = QY
+      def getBaseUnit: TemporalUnit                                 = QUARTER_YEARS
+      def getRangeUnit: TemporalUnit                                = YEARS
+      def range: ValueRange                                         = ValueRange.of(1, 4)
+      def isSupportedBy(temporal: TemporalAccessor): Boolean        =
         temporal.isSupported(MONTH_OF_YEAR) && isIso(temporal)
-      def rangeRefinedBy(temporal: TemporalAccessor): ValueRange = range
+      def rangeRefinedBy(temporal: TemporalAccessor): ValueRange    = range
       def getFrom(temporal: TemporalAccessor): Long                 = {
         if (!temporal.isSupported(this))
           throw unsupportedEx(QY)
@@ -349,13 +349,13 @@ object IsoFields {
       new UnsupportedTemporalTypeException(s"Unsupported field: $f")
 
     lazy val WEEK_BASED_YEAR: Field = new Field("WEEK_BASED_YEAR", 3) {
-      override def toString: String                          = WBY
-      def getBaseUnit: TemporalUnit                          = WEEK_BASED_YEARS
-      def getRangeUnit: TemporalUnit                         = FOREVER
-      def range: ValueRange                                  = YEAR.range
-      def isSupportedBy(temporal: TemporalAccessor): Boolean =
+      override def toString: String                                 = WBY
+      def getBaseUnit: TemporalUnit                                 = WEEK_BASED_YEARS
+      def getRangeUnit: TemporalUnit                                = FOREVER
+      def range: ValueRange                                         = YEAR.range
+      def isSupportedBy(temporal: TemporalAccessor): Boolean        =
         temporal.isSupported(EPOCH_DAY) && isIso(temporal)
-      def rangeRefinedBy(temporal: TemporalAccessor): ValueRange = YEAR.range
+      def rangeRefinedBy(temporal: TemporalAccessor): ValueRange    = YEAR.range
       def getFrom(temporal: TemporalAccessor): Long                 =
         if (!temporal.isSupported(this))
           throw unsupportedEx(WBY)

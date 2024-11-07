@@ -53,7 +53,7 @@ package org.threeten
  * ==Dates and Times==
  *
  * {@link org.threeten.bp.Instant} is essentially a numeric timestamp. The current Instant can be
- * retrieved from a {@link org.threeten.bp.Clock}. This is useful for logging and persistence of a
+ * retrieved from a {@link org.threeten.bp.Clock} . This is useful for logging and persistence of a
  * point in time and has in the past been associated with storing the result from {@link
  * java.lang.System#currentTimeMillis()}.
  *

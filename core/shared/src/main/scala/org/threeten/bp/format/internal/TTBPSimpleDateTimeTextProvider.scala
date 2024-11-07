@@ -133,7 +133,7 @@ object TTBPSimpleDateTimeTextProvider {
 /**
  * The Service Provider Implementation to obtain date-time text for a field.
  *
- * This implementation is based on extraction of data from a {@link DateFormatSymbols}.
+ * This implementation is based on extraction of data from a {@link DateFormatSymbols} .
  *
  * <h3>Specification for implementors</h3> This class is immutable and thread-safe.
  */

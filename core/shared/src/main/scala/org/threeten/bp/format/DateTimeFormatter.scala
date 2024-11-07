@@ -72,9 +72,10 @@ object DateTimeFormatter {
    * date format. The format consists of: <ul> <li>Four digits or more for the {@link
    * ChronoField#YEAR year}. Years in the range 0000 to 9999 will be pre-padded by zero to ensure
    * four digits. Years outside that range will have a prefixed positive or negative symbol. <li>A
-   * dash <li>Two digits for the {@link ChronoField#MONTH_OF_YEAR month-of-year}. This is pre-padded
-   * by zero to ensure two digits. <li>A dash <li>Two digits for the {@link ChronoField#DAY_OF_MONTH
-   * day-of-month}. This is pre-padded by zero to ensure two digits. </ul><p>
+   * dash <li>Two digits for the {@link ChronoField#MONTH_OF_YEAR month-of-year} . This is
+   * pre-padded by zero to ensure two digits. <li>A dash <li>Two digits for the {@link
+   * ChronoField#DAY_OF_MONTH day-of-month}. This is pre-padded by zero to ensure two digits.
+   * </ul><p>
    */
   lazy val ISO_LOCAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder()
     .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
@@ -109,7 +110,7 @@ object DateTimeFormatter {
    * available to print/parse then the format is complete. <li>The {@link ZoneOffset#getId() offset
    * ID}. If the offset has seconds then they will be handled even though this is not part of the
    * ISO-8601 standard. Parsing is case insensitive. </ul><p> As this formatter has an optional
-   * element, it may be necessary to parse using {@link DateTimeFormatter#parseBest}.
+   * element, it may be necessary to parse using {@link DateTimeFormatter#parseBest} .
    */
   lazy val ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
     .append(ISO_LOCAL_DATE)
@@ -125,12 +126,12 @@ object DateTimeFormatter {
    * This returns an immutable formatter capable of printing and parsing the ISO-8601 extended local
    * time format. The format consists of: <ul> <li>Two digits for the {@link ChronoField#HOUR_OF_DAY
    * hour-of-day}. This is pre-padded by zero to ensure two digits. <li>A colon <li>Two digits for
-   * the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour}. This is pre-padded by zero to ensure two
-   * digits. <li>If the second-of-minute is not available to print/parse then the format is
+   * the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour} . This is pre-padded by zero to ensure
+   * two digits. <li>If the second-of-minute is not available to print/parse then the format is
    * complete. <li>A colon <li>Two digits for the {@link ChronoField#SECOND_OF_MINUTE
    * second-of-minute}. This is pre-padded by zero to ensure two digits. <li>If the nano-of-second
    * is zero or not available to print/parse then the format is complete. <li>A decimal point
-   * <li>One to nine digits for the {@link ChronoField#NANO_OF_SECOND nano-of-second}. As many
+   * <li>One to nine digits for the {@link ChronoField#NANO_OF_SECOND nano-of-second} . As many
    * digits will be printed as required. </ul><p>
    */
   lazy val ISO_LOCAL_TIME: DateTimeFormatter = new DateTimeFormatterBuilder()
@@ -198,7 +199,7 @@ object DateTimeFormatter {
    *
    * This returns an immutable formatter capable of printing and parsing the ISO-8601 extended
    * offset date-time format. The format consists of: <ul> <li>The {@link #ISO_LOCAL_DATE_TIME}
-   * <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds then they will be
+   * <li>The {@link ZoneOffset#getId() offset ID} . If the offset has seconds then they will be
    * handled even though this is not part of the ISO-8601 standard. Parsing is case insensitive.
    * </ul><p>
    */
@@ -243,7 +244,7 @@ object DateTimeFormatter {
    * ZoneOffset} then the format is complete. <li>An open square bracket '['. <li>The {@link
    * ZoneId#getId() zone ID}. This is not part of the ISO-8601 standard. Parsing is case sensitive.
    * <li>A close square bracket ']'. </ul><p> As this formatter has an optional element, it may be
-   * necessary to parse using {@link DateTimeFormatter#parseBest}.
+   * necessary to parse using {@link DateTimeFormatter#parseBest} .
    */
   lazy val ISO_DATE_TIME: DateTimeFormatter = new DateTimeFormatterBuilder()
     .append(ISO_LOCAL_DATE_TIME)
@@ -265,12 +266,12 @@ object DateTimeFormatter {
    * ordinal date format. The format consists of: <ul> <li>Four digits or more for the {@link
    * ChronoField#YEAR year}. Years in the range 0000 to 9999 will be pre-padded by zero to ensure
    * four digits. Years outside that range will have a prefixed positive or negative symbol. <li>A
-   * dash <li>Three digits for the {@link ChronoField#DAY_OF_YEAR day-of-year}. This is pre-padded
+   * dash <li>Three digits for the {@link ChronoField#DAY_OF_YEAR day-of-year} . This is pre-padded
    * by zero to ensure three digits. <li>If the offset is not available to print/parse then the
-   * format is complete. <li>The {@link ZoneOffset#getId() offset ID}. If the offset has seconds
+   * format is complete. <li>The {@link ZoneOffset#getId() offset ID} . If the offset has seconds
    * then they will be handled even though this is not part of the ISO-8601 standard. Parsing is
    * case insensitive. </ul><p> As this formatter has an optional element, it may be necessary to
-   * parse using {@link DateTimeFormatter#parseBest}.
+   * parse using {@link DateTimeFormatter#parseBest} .
    */
   lazy val ISO_ORDINAL_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
     .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
@@ -290,13 +291,13 @@ object DateTimeFormatter {
    * IsoFields#WEEK_BASED_YEAR week-based-year}. Years in the range 0000 to 9999 will be pre-padded
    * by zero to ensure four digits. Years outside that range will have a prefixed positive or
    * negative symbol. <li>A dash <li>The letter 'W'. Parsing is case insensitive. <li>Two digits for
-   * the {@link IsoFields#WEEK_OF_WEEK_BASED_YEAR week-of-week-based-year}. This is pre-padded by
+   * the {@link IsoFields#WEEK_OF_WEEK_BASED_YEAR week-of-week-based-year} . This is pre-padded by
    * zero to ensure three digits. <li>A dash <li>One digit for the {@link ChronoField#DAY_OF_WEEK
    * day-of-week}. The value run from Monday (1) to Sunday (7). <li>If the offset is not available
-   * to print/parse then the format is complete. <li>The {@link ZoneOffset#getId() offset ID}. If
+   * to print/parse then the format is complete. <li>The {@link ZoneOffset#getId() offset ID} . If
    * the offset has seconds then they will be handled even though this is not part of the ISO-8601
    * standard. Parsing is case insensitive. </ul><p> As this formatter has an optional element, it
-   * may be necessary to parse using {@link DateTimeFormatter#parseBest}.
+   * may be necessary to parse using {@link DateTimeFormatter#parseBest} .
    */
   lazy val ISO_WEEK_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
     .appendValue(IsoFields.WEEK_BASED_YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
@@ -324,7 +325,7 @@ object DateTimeFormatter {
    * point in time and internally stores a value in nanoseconds from a fixed epoch of 1970-01-01Z.
    * As such, an {@code Instant} cannot be formatted as a date or time without providing some form
    * of time-zone. This formatter allows the {@code Instant} to be formatted, by providing a
-   * suitable conversion using {@code ZoneOffset.UTC}.
+   * suitable conversion using {@code ZoneOffset.UTC} .
    *
    * The format consists of: <ul> <li>The {@link #ISO_OFFSET_DATE_TIME} where the instant is
    * converted from {@link ChronoField#INSTANT_SECONDS} and {@link ChronoField#NANO_OF_SECOND} using
@@ -344,12 +345,12 @@ object DateTimeFormatter {
    * date format. The format consists of: <ul> <li>Four digits for the {@link ChronoField#YEAR
    * year}. Only years in the range 0000 to 9999 are supported. <li>Two digits for the {@link
    * ChronoField#MONTH_OF_YEAR month-of-year}. This is pre-padded by zero to ensure two digits.
-   * <li>Two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month}. This is pre-padded by
+   * <li>Two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month} . This is pre-padded by
    * zero to ensure two digits. <li>If the offset is not available to print/parse then the format is
    * complete. <li>The {@link ZoneOffset#getId() offset ID} without colons. If the offset has
    * seconds then they will be handled even though this is not part of the ISO-8601 standard.
    * Parsing is case insensitive. </ul><p> As this formatter has an optional element, it may be
-   * necessary to parse using {@link DateTimeFormatter#parseBest}.
+   * necessary to parse using {@link DateTimeFormatter#parseBest} .
    */
   lazy val BASIC_ISO_DATE: DateTimeFormatter = new DateTimeFormatterBuilder().parseCaseInsensitive
     .appendValue(YEAR, 4)
@@ -370,13 +371,13 @@ object DateTimeFormatter {
    *
    * The format consists of: <ul> <li>If the day-of-week is not available to print/parse then jump
    * to day-of-month. <li>Three letter {@link ChronoField#DAY_OF_WEEK day-of-week} in English. <li>A
-   * comma <li>A space <li>One or two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month}.
+   * comma <li>A space <li>One or two digits for the {@link ChronoField#DAY_OF_MONTH day-of-month} .
    * <li>A space <li>Three letter {@link ChronoField#MONTH_OF_YEAR month-of-year} in English. <li>A
-   * space <li>Four digits for the {@link ChronoField#YEAR year}. Only years in the range 0000 to
+   * space <li>Four digits for the {@link ChronoField#YEAR year} . Only years in the range 0000 to
    * 9999 are supported. <li>A space <li>Two digits for the {@link ChronoField#HOUR_OF_DAY
    * hour-of-day}. This is pre-padded by zero to ensure two digits. <li>A colon <li>Two digits for
-   * the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour}. This is pre-padded by zero to ensure two
-   * digits. <li>If the second-of-minute is not available to print/parse then jump to the next
+   * the {@link ChronoField#MINUTE_OF_HOUR minute-of-hour} . This is pre-padded by zero to ensure
+   * two digits. <li>If the second-of-minute is not available to print/parse then jump to the next
    * space. <li>A colon <li>Two digits for the {@link ChronoField#SECOND_OF_MINUTE
    * second-of-minute}. This is pre-padded by zero to ensure two digits. <li>A space <li>The {@link
    * ZoneOffset#getId() offset ID} without colons or seconds. An offset of zero uses "GMT". North
@@ -440,10 +441,9 @@ object DateTimeFormatter {
    * DateTimeFormatter#withLocale(Locale)}.
    *
    * All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The following pattern
-   * letters are defined: <pre> Symbol Meaning Presentation Examples
-   * ------ ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004;
-   * 04 D day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month
-   * number 10
+   * letters are defined: <pre> Symbol Meaning Presentation Examples ------ ------- ------------
+   * ------- G era number/text 1; 01; AD; Anno Domini y year year 2004; 04 D day-of-year number 189
+   * M month-of-year number/text 7; 07; Jul; July; J d day-of-month number 10
    *
    * Q quarter-of-year number/text 3; 03; Q3 Y week-based-year year 1996; 96 w week-of-year number
    * 27 W week-of-month number 27 e localized day-of-week number 2; Tue; Tuesday; T E day-of-week
@@ -469,9 +469,9 @@ object DateTimeFormatter {
    * The count of pattern letters determine the format.
    *
    * <b>Text</b>: The text style is determined based on the number of pattern letters used. Less
-   * than 4 pattern letters will use the {@link TextStyle#SHORT short form}. Exactly 4 pattern
-   * letters will use the {@link TextStyle#FULL full form}. Exactly 5 pattern letters will use the
-   * {@link TextStyle#NARROW narrow form}.
+   * than 4 pattern letters will use the {@link TextStyle#SHORT short form} . Exactly 4 pattern
+   * letters will use the {@link TextStyle#FULL full form} . Exactly 5 pattern letters will use the
+   * {@link TextStyle#NARROW narrow form} .
    *
    * <b>Number</b>: If the count of letters is one, then the value is printed using the minimum
    * number of digits and without padding as per {@link
@@ -494,7 +494,7 @@ object DateTimeFormatter {
    * reduced} two digit form is used. For printing, this outputs the rightmost two digits. For
    * parsing, this will parse using the base value of 2000, resulting in a year within the range
    * 2000 to 2099 inclusive. If the count of letters is less than four (but not two), then the sign
-   * is only output for negative years as per {@link SignStyle#NORMAL}. Otherwise, the sign is
+   * is only output for negative years as per {@link SignStyle#NORMAL} . Otherwise, the sign is
    * output if the pad width is exceeded, as per {@link SignStyle#EXCEEDS_PAD}
    *
    * <b>ZoneId</b>: This outputs the time-zone ID, such as 'Europe/Paris'. If the count of letters
@@ -503,7 +503,7 @@ object DateTimeFormatter {
    *
    * <b>Zone names</b>: This outputs the display name of the time-zone ID. If the count of letters
    * is one, two or three, then the short name is output. If the count of letters is four, then the
-   * full name is output. Five or more letters throws {@code IllegalArgumentException}.
+   * full name is output. Five or more letters throws {@code IllegalArgumentException} .
    *
    * <b>Offset X and x</b>: This formats the offset based on the number of pattern letters. One
    * letter outputs just the hour', such as '+01', unless the minute is non-zero in which case the
@@ -511,21 +511,21 @@ object DateTimeFormatter {
    * colon, such as '+0130'. Three letters outputs the hour and minute, with a colon, such as
    * '+01:30'. Four letters outputs the hour and minute and optional second, without a colon, such
    * as '+013015'. Five letters outputs the hour and minute and optional second, with a colon, such
-   * as '+01:30:15'. Six or more letters throws {@code IllegalArgumentException}. Pattern letter 'X'
-   * (upper case) will output 'Z' when the offset to be output would be zero, whereas pattern letter
-   * 'x' (lower case) will output '+00', '+0000', or '+00:00'.
+   * as '+01:30:15'. Six or more letters throws {@code IllegalArgumentException} . Pattern letter
+   * 'X' (upper case) will output 'Z' when the offset to be output would be zero, whereas pattern
+   * letter 'x' (lower case) will output '+00', '+0000', or '+00:00'.
    *
    * <b>Offset Z</b>: This formats the offset based on the number of pattern letters. One, two or
    * three letters outputs the hour and minute, without a colon, such as '+0130'. Four or more
-   * letters throws {@code IllegalArgumentException}. The output will be '+0000' when the offset is
+   * letters throws {@code IllegalArgumentException} . The output will be '+0000' when the offset is
    * zero.
    *
    * <b>Optional section</b>: The optional section markers work exactly like calling {@link
-   * DateTimeFormatterBuilder#optionalStart()} and {@link DateTimeFormatterBuilder#optionalEnd()}.
+   * DateTimeFormatterBuilder#optionalStart()} and {@link DateTimeFormatterBuilder#optionalEnd()} .
    *
    * <b>Pad modifier</b>: Modifies the pattern that immediately follows to be padded with spaces.
    * The pad width is determined by the number of pattern letters. This is the same as calling
-   * {@link DateTimeFormatterBuilder#padNext(int)}.
+   * {@link DateTimeFormatterBuilder#padNext(int)} .
    *
    * For example, 'ppH' outputs the hour-of-day padded on the left with spaces to a width of 2.
    *
@@ -578,7 +578,7 @@ object DateTimeFormatter {
    * locale.
    *
    * The locale is determined from the formatter. The formatter returned directly by this method
-   * will use the {@link Locale#getDefault() default locale}. The locale can be controlled using
+   * will use the {@link Locale#getDefault() default locale} . The locale can be controlled using
    * {@link DateTimeFormatter#withLocale(Locale) withLocale(Locale)} on the result of this method.
    *
    * Note that the localized pattern is looked up lazily. This {@code DateTimeFormatter} holds the
@@ -604,7 +604,7 @@ object DateTimeFormatter {
    * locale.
    *
    * The locale is determined from the formatter. The formatter returned directly by this method
-   * will use the {@link Locale#getDefault() default locale}. The locale can be controlled using
+   * will use the {@link Locale#getDefault() default locale} . The locale can be controlled using
    * {@link DateTimeFormatter#withLocale(Locale) withLocale(Locale)} on the result of this method.
    *
    * Note that the localized pattern is looked up lazily. This {@code DateTimeFormatter} holds the
@@ -630,7 +630,7 @@ object DateTimeFormatter {
    * varies by locale.
    *
    * The locale is determined from the formatter. The formatter returned directly by this method
-   * will use the {@link Locale#getDefault() default locale}. The locale can be controlled using
+   * will use the {@link Locale#getDefault() default locale} . The locale can be controlled using
    * {@link DateTimeFormatter#withLocale(Locale) withLocale(Locale)} on the result of this method.
    *
    * Note that the localized pattern is looked up lazily. This {@code DateTimeFormatter} holds the
@@ -656,7 +656,7 @@ object DateTimeFormatter {
    * varies by locale.
    *
    * The locale is determined from the formatter. The formatter returned directly by this method
-   * will use the {@link Locale#getDefault() default locale}. The locale can be controlled using
+   * will use the {@link Locale#getDefault() default locale} . The locale can be controlled using
    * {@link DateTimeFormatter#withLocale(Locale) withLocale(Locale)} on the result of this method.
    *
    * Note that the localized pattern is looked up lazily. This {@code DateTimeFormatter} holds the
@@ -839,7 +839,7 @@ object DateTimeFormatter {
  * For more complex formatters, a {@link DateTimeFormatterBuilder builder} is provided.
  *
  * In most cases, it is not necessary to use this class directly when formatting. The main date-time
- * classes provide two methods - one for formatting, {@code format(DateTimeFormatter formatter)},
+ * classes provide two methods - one for formatting, {@code format(DateTimeFormatter formatter)} ,
  * and one for parsing, For example: <pre> String text = date.format(formatter); LocalDate date =
  * LocalDate.parse(text, formatter); </pre> Some aspects of printing and parsing are dependent on
  * the locale. The locale can be changed using the {@link #withLocale(Locale)} method which returns
@@ -973,7 +973,7 @@ final class DateTimeFormatter private[format] (
    * When printing, if the {@code Temporal} object contains a date then it will be converted to a
    * date in the override chronology. Any time or zone will be retained unless overridden. The
    * converted result will behave in a manner equivalent to an implementation of {@code
-   * ChronoLocalDate},{@code ChronoLocalDateTime} or {@code ChronoZonedDateTime}.
+   * ChronoLocalDate},{@code ChronoLocalDateTime} or {@code ChronoZonedDateTime} .
    *
    * When parsing, the override chronology will be used to interpret the {@linkplain ChronoField
    * fields} into a date unless the formatter directly parses a valid chronology.
@@ -1019,9 +1019,9 @@ final class DateTimeFormatter private[format] (
    *
    * When printing, if the {@code Temporal} object contains an instant then it will be converted to
    * a zoned date-time using the override zone. If the input has a chronology then it will be
-   * retained unless overridden. If the input does not have a chronology, such as {@code Instant},
+   * retained unless overridden. If the input does not have a chronology, such as {@code Instant} ,
    * then the ISO chronology will be used. The converted result will behave in a manner equivalent
-   * to an implementation of {@code ChronoZonedDateTime}.
+   * to an implementation of {@code ChronoZonedDateTime} .
    *
    * When parsing, the override zone will be used to interpret the {@linkplain ChronoField fields}
    * into an instant unless the formatter directly parses a valid zone.
@@ -1240,9 +1240,9 @@ final class DateTimeFormatter private[format] (
    *
    * This formats the date-time to the specified destination. {@link Appendable} is a general
    * purpose interface that is implemented by all key character output classes including {@code
-   * StringBuffer}, {@code StringBuilder}, {@code PrintStream} and {@code Writer}.
+   * StringBuffer}, {@code StringBuilder} , {@code PrintStream} and {@code Writer} .
    *
-   * Although {@code Appendable} methods throw an {@code IOException}, this method does not.
+   * Although {@code Appendable} methods throw an {@code IOException} , this method does not.
    * Instead, any {@code IOException} is wrapped in a runtime exception.
    *
    * @param temporal
@@ -1276,7 +1276,7 @@ final class DateTimeFormatter private[format] (
    * Fully parses the text producing a temporal object.
    *
    * This parses the entire text producing a temporal object. It is typically more useful to use
-   * {@link #parse(CharSequence, TemporalQuery)}. The result of this method is {@code
+   * {@link #parse(CharSequence, TemporalQuery)} . The result of this method is {@code
    * TemporalAccessor} which has been resolved, applying basic validation checks to help ensure a
    * valid date-time.
    *
@@ -1306,13 +1306,13 @@ final class DateTimeFormatter private[format] (
    * finish at the end. The result of this method is {@code TemporalAccessor} which has been
    * resolved, applying basic validation checks to help ensure a valid date-time.
    *
-   * The text will be parsed from the specified start {@code ParsePosition}. The entire length of
+   * The text will be parsed from the specified start {@code ParsePosition} . The entire length of
    * the text does not have to be parsed, the {@code ParsePosition} will be updated with the index
    * at the end of parsing.
    *
    * The operation of this method is slightly different to similar methods using {@code
-   * ParsePosition} on {@code java.text.Format}. That class will return errors using the error index
-   * on the {@code ParsePosition}. By contrast, this method will throw a {@link
+   * ParsePosition} on {@code java.text.Format} . That class will return errors using the error
+   * index on the {@code ParsePosition} . By contrast, this method will throw a {@link
    * DateTimeParseException} if an error occurs, with the exception containing the error index. This
    * change in behavior is necessary due to the increased complexity of parsing and resolving
    * dates/times in this API.
@@ -1378,10 +1378,10 @@ final class DateTimeFormatter private[format] (
    * Fully parses the text producing an object of one of the specified types.
    *
    * This parse method is convenient for use when the parser can handle optional elements. For
-   * example, a pattern of 'yyyy[-MM[-dd]]' can be fully parsed to a {@code LocalDate}, or partially
-   * parsed to a {@code YearMonth} or a {@code Year}. The types must be specified in order, starting
-   * from the best matching full-parse option and ending with the worst matching minimal parse
-   * option.
+   * example, a pattern of 'yyyy[-MM[-dd]]' can be fully parsed to a {@code LocalDate} , or
+   * partially parsed to a {@code YearMonth} or a {@code Year} . The types must be specified in
+   * order, starting from the best matching full-parse option and ending with the worst matching
+   * minimal parse option.
    *
    * The result is associated with the first type that successfully parses. Normally, applications
    * will use {@code instanceof} to check the result. For example: <pre> TemporalAccessor dt =
@@ -1392,7 +1392,7 @@ final class DateTimeFormatter private[format] (
    * @param text
    *   the text to parse, not null
    * @param types
-   *   the types to attempt to parse to, which must implement { @code TemporalAccessor}, not null
+   *   the types to attempt to parse to, which must implement {@code TemporalAccessor} , not null
    * @return
    *   the parsed date-time, not null
    * @throws IllegalArgumentException
@@ -1482,7 +1482,7 @@ final class DateTimeFormatter private[format] (
    *
    * Parsing is implemented as a two-phase operation. First, the text is parsed using the layout
    * defined by the formatter, producing a {@code Map} of field to value, a {@code ZoneId} and a
-   * {@code Chronology}. Second, the parsed data is <em>resolved</em>, by validating, combining and
+   * {@code Chronology} . Second, the parsed data is <em>resolved</em>, by validating, combining and
    * simplifying the various fields into more useful ones. This method performs the parsing stage
    * but not the resolving stage.
    *
@@ -1490,7 +1490,7 @@ final class DateTimeFormatter private[format] (
    * input. Values are not validated, thus parsing a date string of '2012-00-65' would result in a
    * temporal with three fields - year of '2012', month of '0' and day-of-month of '65'.
    *
-   * The text will be parsed from the specified start {@code ParsePosition}. The entire length of
+   * The text will be parsed from the specified start {@code ParsePosition} . The entire length of
    * the text does not have to be parsed, the {@code ParsePosition} will be updated with the index
    * at the end of parsing.
    *
@@ -1551,9 +1551,9 @@ final class DateTimeFormatter private[format] (
    * Returns this formatter as a {@code java.text.Format} instance.
    *
    * The returned {@link Format} instance will print any {@link TemporalAccessor} and parses to a
-   * resolved {@link TemporalAccessor}.
+   * resolved {@link TemporalAccessor} .
    *
-   * Exceptions will follow the definitions of {@code Format}, see those methods for details about
+   * Exceptions will follow the definitions of {@code Format} , see those methods for details about
    * {@code IllegalArgumentException} during formatting and {@code ParseException} or null during
    * parsing. The format does not support attributing of the returned format string.
    *
@@ -1567,9 +1567,9 @@ final class DateTimeFormatter private[format] (
    * type.
    *
    * The returned {@link Format} instance will print any {@link TemporalAccessor} and parses to the
-   * type specified. The type must be one that is supported by {@link #parse}.
+   * type specified. The type must be one that is supported by {@link #parse} .
    *
-   * Exceptions will follow the definitions of {@code Format}, see those methods for details about
+   * Exceptions will follow the definitions of {@code Format} , see those methods for details about
    * {@code IllegalArgumentException} during formatting and {@code ParseException} or null during
    * parsing. The format does not support attributing of the returned format string.
    *

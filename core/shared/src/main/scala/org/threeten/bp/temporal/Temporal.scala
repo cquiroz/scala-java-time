@@ -37,7 +37,7 @@ package org.threeten.bp.temporal
  *
  * This is the base interface type for date, time and offset objects that are complete enough to be
  * manipulated using plus and minus. It is implemented by those classes that can provide and
- * manipulate information as {@link TemporalField fields} or {@link TemporalQuery queries}. See
+ * manipulate information as {@link TemporalField fields} or {@link TemporalQuery queries} . See
  * {@link TemporalAccessor} for the read-only version of this interface.
  *
  * Most date and time information can be represented as a number. These are modeled using {@code
@@ -46,8 +46,8 @@ package org.threeten.bp.temporal
  * ChronoField} for the standard set of fields.
  *
  * Two pieces of date/time information cannot be represented by numbers, the {@link Chronology
- * chronology} and the {@link ZoneId time-zone}. These can be accessed via {@link
- * #query(TemporalQuery) queries} using the static methods defined on {@link TemporalQueries}.
+ * chronology} and the {@link ZoneId time-zone} . These can be accessed via {@link
+ * #query(TemporalQuery) queries} using the static methods defined on {@link TemporalQueries} .
  *
  * This interface is a framework-level interface that should not be widely used in application code.
  * Instead, applications should create and pass around instances of concrete types, such as {@code
@@ -78,7 +78,7 @@ package org.threeten.bp.temporal
  *
  * <h3>Specification for implementors</h3> This interface places no restrictions on the mutability
  * of implementations, however immutability is strongly recommended. All implementations must be
- * {@link Comparable}.
+ * {@link Comparable} .
  */
 trait Temporal extends TemporalAccessor {
 
@@ -90,10 +90,10 @@ trait Temporal extends TemporalAccessor {
    * an exception.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoUnit}. If the field is supported, then true is returned, otherwise
+   * defined in {@link ChronoUnit} . If the field is supported, then true is returned, otherwise
    * false
    *
-   * If the field is not a {@code ChronoUnit}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoUnit} , then the result of this method is obtained by
    * invoking {@code TemporalUnit.isSupportedBy(Temporal)} passing {@code this} as the argument.
    *
    * Implementations must not alter this object.
@@ -111,7 +111,7 @@ trait Temporal extends TemporalAccessor {
    * This adjusts this date-time according to the rules of the specified adjuster. A simple adjuster
    * might simply set the one of the fields, such as the year field. A more complex adjuster might
    * set the date to the last day of the month. A selection of common adjustments is provided in
-   * {@link TemporalAdjusters}. These include finding the "last day of the month" and "next
+   * {@link TemporalAdjusters} . These include finding the "last day of the month" and "next
    * Wednesday". The adjuster is responsible for handling special cases, such as the varying lengths
    * of month and leap years.
    *
@@ -139,8 +139,8 @@ trait Temporal extends TemporalAccessor {
    * Returns an object of the same type as this object with the specified field altered.
    *
    * This returns a new object based on this one with the value for the specified field changed. For
-   * example, on a {@code LocalDate}, this could be used to set the year, month or day-of-month. The
-   * returned object will have the same observable type as this object.
+   * example, on a {@code LocalDate} , this could be used to set the year, month or day-of-month.
+   * The returned object will have the same observable type as this object.
    *
    * In some cases, changing a field is not fully defined. For example, if the target object is a
    * date representing the 31st January, then changing the month to February would be unclear. In
@@ -148,10 +148,10 @@ trait Temporal extends TemporalAccessor {
    * the previous valid date, which would be the last valid day of February in this example.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all fields
-   * defined in {@link ChronoField}. If the field is supported, then the adjustment must be
+   * defined in {@link ChronoField} . If the field is supported, then the adjustment must be
    * performed. If unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the field is not a {@code ChronoField}, then the result of this method is obtained by
+   * If the field is not a {@code ChronoField} , then the result of this method is obtained by
    * invoking {@code TemporalField.adjustInto(Temporal, long)} passing {@code this} as the first
    * argument.
    *
@@ -177,7 +177,7 @@ trait Temporal extends TemporalAccessor {
    *
    * This adjusts this temporal, adding according to the rules of the specified amount. The amount
    * is typically a {@link Period} but may be any other type implementing the {@link TemporalAmount}
-   * interface, such as {@link Duration}.
+   * interface, such as {@link Duration} .
    *
    * Some example code indicating how and why this method is used: <pre> date = date.plus(period);
    * // add a Period instance date = date.plus(duration); // add a Duration instance date =
@@ -205,7 +205,7 @@ trait Temporal extends TemporalAccessor {
    * Returns an object of the same type as this object with the specified period added.
    *
    * This method returns a new object based on this one with the specified period added. For
-   * example, on a {@code LocalDate}, this could be used to add a number of years, months or days.
+   * example, on a {@code LocalDate} , this could be used to add a number of years, months or days.
    * The returned object will have the same observable type as this object.
    *
    * In some cases, changing a field is not fully defined. For example, if the target object is a
@@ -213,17 +213,17 @@ trait Temporal extends TemporalAccessor {
    * the field is responsible for resolving the result. Typically it will choose the previous valid
    * date, which would be the last valid day of February in this example.
    *
-   * If the implementation represents a date-time that has boundaries, such as {@code LocalTime},
+   * If the implementation represents a date-time that has boundaries, such as {@code LocalTime} ,
    * then the permitted units must include the boundary unit, but no multiples of the boundary unit.
    * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code
    * MONTHS}.
    *
    * <h3>Specification for implementors</h3> Implementations must check and handle all units defined
-   * in {@link ChronoUnit}. If the unit is supported, then the addition must be performed. If
+   * in {@link ChronoUnit} . If the unit is supported, then the addition must be performed. If
    * unsupported, then a {@code DateTimeException} must be thrown.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.addTo(Temporal, long)} passing {@code this} as the first argument.
+   * If the unit is not a {@code ChronoUnit} , then the result of this method is obtained by
+   * invoking {@code TemporalUnit.addTo(Temporal, long)} passing {@code this} as the first argument.
    *
    * Implementations must not alter either this object or the specified temporal object. Instead, an
    * adjusted copy of the original must be returned. This provides equivalent, safe behavior for
@@ -247,7 +247,7 @@ trait Temporal extends TemporalAccessor {
    *
    * This adjusts this temporal, subtracting according to the rules of the specified amount. The
    * amount is typically a {@link Period} but may be any other type implementing the {@link
-   * TemporalAmount} interface, such as {@link Duration}.
+   * TemporalAmount} interface, such as {@link Duration} .
    *
    * Some example code indicating how and why this method is used: <pre> date = date.minus(period);
    * // subtract a Period instance date = date.minus(duration); // subtract a Duration instance date
@@ -275,7 +275,7 @@ trait Temporal extends TemporalAccessor {
    * Returns an object of the same type as this object with the specified period subtracted.
    *
    * This method returns a new object based on this one with the specified period subtracted. For
-   * example, on a {@code LocalDate}, this could be used to subtract a number of years, months or
+   * example, on a {@code LocalDate} , this could be used to subtract a number of years, months or
    * days. The returned object will have the same observable type as this object.
    *
    * In some cases, changing a field is not fully defined. For example, if the target object is a
@@ -283,7 +283,7 @@ trait Temporal extends TemporalAccessor {
    * this, the field is responsible for resolving the result. Typically it will choose the previous
    * valid date, which would be the last valid day of February in this example.
    *
-   * If the implementation represents a date-time that has boundaries, such as {@code LocalTime},
+   * If the implementation represents a date-time that has boundaries, such as {@code LocalTime} ,
    * then the permitted units must include the boundary unit, but no multiples of the boundary unit.
    * For example, {@code LocalTime} must accept {@code DAYS} but not {@code WEEKS} or {@code
    * MONTHS}.
@@ -317,16 +317,17 @@ trait Temporal extends TemporalAccessor {
    * This calculates the period between two temporals in terms of a single unit. The start and end
    * points are {@code this} and the specified temporal. The result will be negative if the end is
    * before the start. For example, the period in hours between two temporal objects can be
-   * calculated using {@code startTime.until(endTime, HOURS)}.
+   * calculated using {@code startTime.until(endTime, HOURS)} .
    *
    * The calculation returns a whole number, representing the number of complete units between the
    * two temporals. For example, the period in hours between the times 11:30 and 13:29 will only be
    * one hour as it is one minute short of two hours.
    *
    * There are two equivalent ways of using this method. The first is to invoke this method
-   * directly. The second is to use {@link TemporalUnit#between(Temporal, Temporal)}: <pre> // these
-   * two lines are equivalent between = thisUnit.between(start, end); between = start.until(end,
-   * thisUnit); </pre> The choice should be made based on which makes the code more readable.
+   * directly. The second is to use {@link TemporalUnit#between(Temporal, Temporal)} : <pre> //
+   * these two lines are equivalent between = thisUnit.between(start, end); between =
+   * start.until(end, thisUnit); </pre> The choice should be made based on which makes the code more
+   * readable.
    *
    * For example, this method allows the number of days between two dates to be calculated: <pre>
    * val daysBetween: Long = DAYS.between(start, end); // or alternatively val daysBetween: Long =
@@ -334,12 +335,12 @@ trait Temporal extends TemporalAccessor {
    *
    * <h3>Specification for implementors</h3> Implementations must begin by checking to ensure that
    * the input temporal object is of the same observable type as the implementation. They must then
-   * perform the calculation for all instances of {@link ChronoUnit}. A {@code DateTimeException}
+   * perform the calculation for all instances of {@link ChronoUnit} . A {@code DateTimeException}
    * must be thrown for {@code ChronoUnit} instances that are unsupported.
    *
-   * If the unit is not a {@code ChronoUnit}, then the result of this method is obtained by invoking
-   * {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first argument and
-   * the input temporal as the second argument.
+   * If the unit is not a {@code ChronoUnit} , then the result of this method is obtained by
+   * invoking {@code TemporalUnit.between(Temporal, Temporal)} passing {@code this} as the first
+   * argument and the input temporal as the second argument.
    *
    * In summary, implementations must behave in a manner equivalent to this code: <pre> // check
    * input temporal is the same type as this class if (unit instanceof ChronoUnit) { // if unit is

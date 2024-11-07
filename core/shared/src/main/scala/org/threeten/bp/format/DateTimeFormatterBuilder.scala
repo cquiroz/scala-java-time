@@ -152,7 +152,7 @@ object DateTimeFormatterBuilder {
  * The basic elements of date-time can all be added: <ul> <li>Value - a numeric value</li>
  * <li>Fraction - a fractional value including the decimal place. Always use this when outputting
  * fractions to ensure that the fraction is parsed correctly</li> <li>Text - the textual equivalent
- * for the value</li> <li>OffsetId/Offset - the {@linkplain ZoneOffset zone offset}</li> <li>ZoneId
+ * for the value</li> <li>OffsetId/Offset - the {@linkplain ZoneOffset zone offset} </li> <li>ZoneId
  *   - the {@linkplain ZoneId time-zone} id</li> <li>ZoneText - the name of the time-zone</li>
  *     <li>Literal - a text literal</li> <li>Nested and Optional - formats can be nested or made
  *     optional</li> <li>Other - the printer and parser interfaces can be used to add user supplied
@@ -160,7 +160,7 @@ object DateTimeFormatterBuilder {
  *     with spaces or any other character.
  *
  * Finally, a shorthand pattern, mostly compatible with {@code java.text.SimpleDateFormat
- * SimpleDateFormat} can be used, see {@link #appendPattern(String)}. In practice, this simply
+ * SimpleDateFormat} can be used, see {@link #appendPattern(String)} . In practice, this simply
  * parses the pattern and calls other methods on the builder.
  *
  * <h3>Specification for implementors</h3> This class is a mutable builder intended for use from a
@@ -211,7 +211,7 @@ final class DateTimeFormatterBuilder private (
    * parse.
    *
    * Since the default is case sensitive, this method should only be used after a previous call to
-   * {@code #parseCaseInsensitive}.
+   * {@code #parseCaseInsensitive} .
    *
    * @return
    *   this, for chaining, not null
@@ -248,7 +248,7 @@ final class DateTimeFormatterBuilder private (
    * flexibility in matching the text and sign styles.
    *
    * When used, this method changes the parsing to be strict from this point onwards. As strict is
-   * the default, this is normally only needed after calling {@link #parseLenient()}. The change
+   * the default, this is normally only needed after calling {@link #parseLenient()} . The change
    * will remain in force until the end of the formatter that is eventually constructed or until
    * {@code parseLenient} is called.
    *
@@ -266,7 +266,7 @@ final class DateTimeFormatterBuilder private (
    *
    * Parsing can be strict or lenient - by default its strict. This controls the degree of
    * flexibility in matching the text and sign styles. Applications calling this method should
-   * typically also call {@link #parseCaseInsensitive()}.
+   * typically also call {@link #parseCaseInsensitive()} .
    *
    * When used, this method changes the parsing to be strict from this point onwards. The change
    * will remain in force until the end of the formatter that is eventually constructed or until
@@ -412,11 +412,11 @@ final class DateTimeFormatterBuilder private (
    * digits as possible. This behavior can be affected by 'adjacent value parsing'. See {@link
    * #appendValue(TemporalField, int)} for full details.
    *
-   * In strict parsing mode, the minimum number of parsed digits is {@code minWidth}. In lenient
+   * In strict parsing mode, the minimum number of parsed digits is {@code minWidth} . In lenient
    * parsing mode, the minimum number of parsed digits is one.
    *
    * If this method is invoked with equal minimum and maximum widths and a sign style of {@code
-   * NOT_NEGATIVE} then it delegates to {@code appendValue(TemporalField,int)}. In this scenario,
+   * NOT_NEGATIVE} then it delegates to {@code appendValue(TemporalField,int)} . In this scenario,
    * the printing and parsing behavior described there occur.
    *
    * @param field
@@ -470,7 +470,7 @@ final class DateTimeFormatterBuilder private (
    * For formatting, the {@code width} and {@code maxWidth} are used to determine the number of
    * characters to format. If they are equal then the format is fixed width. If the value of the
    * field is within the range of the {@code baseValue} using {@code width} characters then the
-   * reduced value is formatted otherwise the value is truncated to fit {@code maxWidth}. The
+   * reduced value is formatted otherwise the value is truncated to fit {@code maxWidth} . The
    * rightmost characters are output to match the width, left padding with zero.
    *
    * For strict parsing, the number of characters allowed by {@code width} to {@code maxWidth} are
@@ -482,9 +482,9 @@ final class DateTimeFormatterBuilder private (
    * absolute values can be entered for values outside the range.
    *
    * For example, a base value of {@code 1980} and a width of {@code 2} will have valid values from
-   * {@code 1980} to {@code 2079}. During parsing, the text {@code "12"} will result in the value
+   * {@code 1980} to {@code 2079} . During parsing, the text {@code "12"} will result in the value
    * {@code 2012} as that is the value within the range where the last two characters are "12". By
-   * contrast, parsing the text {@code "1915"} will result in the value {@code 1915}.
+   * contrast, parsing the text {@code "1915"} will result in the value {@code 1915} .
    *
    * @param field
    *   the field to append, not null
@@ -532,7 +532,7 @@ final class DateTimeFormatterBuilder private (
    * For formatting, the {@code width} and {@code maxWidth} are used to determine the number of
    * characters to format. If they are equal then the format is fixed width. If the value of the
    * field is within the range of the {@code baseValue} using {@code width} characters then the
-   * reduced value is formatted otherwise the value is truncated to fit {@code maxWidth}. The
+   * reduced value is formatted otherwise the value is truncated to fit {@code maxWidth} . The
    * rightmost characters are output to match the width, left padding with zero.
    *
    * For strict parsing, the number of characters allowed by {@code width} to {@code maxWidth} are
@@ -544,9 +544,9 @@ final class DateTimeFormatterBuilder private (
    * absolute values can be entered for values outside the range.
    *
    * For example, a base value of {@code 1980} and a width of {@code 2} will have valid values from
-   * {@code 1980} to {@code 2079}. During parsing, the text {@code "12"} will result in the value
+   * {@code 1980} to {@code 2079} . During parsing, the text {@code "12"} will result in the value
    * {@code 2012} as that is the value within the range where the last two characters are "12". By
-   * contrast, parsing the text {@code "1915"} will result in the value {@code 1915}.
+   * contrast, parsing the text {@code "1915"} will result in the value {@code 1915} .
    *
    * @param field
    *   the field to append, not null
@@ -616,7 +616,7 @@ final class DateTimeFormatterBuilder private (
    *
    * The fractional value of the field will be output including the preceding decimal point. The
    * preceding value is not output. For example, the second-of-minute value of 15 would be output as
-   * {@code .25}.
+   * {@code .25} .
    *
    * The width of the printed fraction can be controlled. Setting the minimum width to zero will
    * cause no output to be generated. The printed fraction will have the minimum width necessary
@@ -782,7 +782,7 @@ final class DateTimeFormatterBuilder private (
    *
    * The instant is obtained using {@link ChronoField#INSTANT_SECONDS INSTANT_SECONDS} and
    * optionally (@code NANO_OF_SECOND). The value of {@code INSTANT_SECONDS} may be outside the
-   * maximum range of {@code LocalDateTime}.
+   * maximum range of {@code LocalDateTime} .
    *
    * The {@linkplain ResolverStyle resolver style} has no effect on instant parsing. The end-of-day
    * time of '24:00' is handled as midnight at the start of the following day. The leap-second time
@@ -790,7 +790,7 @@ final class DateTimeFormatterBuilder private (
    * full details.
    *
    * An alternative to this method is to format/parse the instant as a single epoch-seconds value.
-   * That is achieved using {@code appendValue(INSTANT_SECONDS)}.
+   * That is achieved using {@code appendValue(INSTANT_SECONDS)} .
    *
    * @return
    *   this, for chaining, not null
@@ -818,7 +818,7 @@ final class DateTimeFormatterBuilder private (
    *
    * The instant is obtained using {@link ChronoField#INSTANT_SECONDS INSTANT_SECONDS} and
    * optionally (@code NANO_OF_SECOND). The value of {@code INSTANT_SECONDS} may be outside the
-   * maximum range of {@code LocalDateTime}.
+   * maximum range of {@code LocalDateTime} .
    *
    * The {@linkplain ResolverStyle resolver style} has no effect on instant parsing. The end-of-day
    * time of '24:00' is handled as midnight at the start of the following day. The leap-second time
@@ -826,7 +826,7 @@ final class DateTimeFormatterBuilder private (
    * full details.
    *
    * An alternative to this method is to format/parse the instant as a single epoch-seconds value.
-   * That is achieved using {@code appendValue(INSTANT_SECONDS)}.
+   * That is achieved using {@code appendValue(INSTANT_SECONDS)} .
    *
    * @param fractionalDigits
    *   the number of fractional second digits to format with, from 0 to 9, or -1 to use as many
@@ -846,7 +846,7 @@ final class DateTimeFormatterBuilder private (
    * Appends the zone offset, such as '+01:00', to the formatter.
    *
    * This appends an instruction to print/parse the offset ID to the builder. This is equivalent to
-   * calling {@code appendOffset("HH:MM:ss", "Z")}.
+   * calling {@code appendOffset("HH:MM:ss", "Z")} .
    *
    * @return
    *   this, for chaining, not null
@@ -862,7 +862,7 @@ final class DateTimeFormatterBuilder private (
    * This appends an instruction to print/parse the offset ID to the builder.
    *
    * During printing, the offset is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#offset()}. It will be printed using the format defined below. If
+   * with {@link TemporalQueries#offset()} . It will be printed using the format defined below. If
    * the offset cannot be obtained then an exception is thrown unless the section of the formatter
    * is optional.
    *
@@ -904,7 +904,7 @@ final class DateTimeFormatterBuilder private (
    * minute and second if non-zero, and colon. </ul>
    *
    * During formatting, the offset is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#offset()}. If the offset cannot be obtained then an exception is
+   * with {@link TemporalQueries#offset()} . If the offset cannot be obtained then an exception is
    * thrown unless the section of the formatter is optional.
    *
    * During parsing, the offset is parsed using the format defined above. If the offset cannot be
@@ -915,7 +915,7 @@ final class DateTimeFormatterBuilder private (
    * @return
    *   this, for chaining, not null
    * @throws IllegalArgumentException
-   *   if style is neither { @link TextStyle#FULL full} nor { @link TextStyle#SHORT short}
+   *   if style is neither {@link TextStyle#FULL full} nor {@link TextStyle#SHORT short}
    */
   def appendLocalizedOffset(style: TextStyle): DateTimeFormatterBuilder = {
     Objects.requireNonNull(style, "style")
@@ -929,11 +929,12 @@ final class DateTimeFormatterBuilder private (
    * Appends the time-zone ID, such as 'Europe/Paris' or '+02:00', to the formatter.
    *
    * This appends an instruction to print/parse the zone ID to the builder. The zone ID is obtained
-   * in a strict manner suitable for {@code ZonedDateTime}. By contrast, {@code OffsetDateTime} does
-   * not have a zone ID suitable for use with this method, see {@link #appendZoneOrOffsetId()}.
+   * in a strict manner suitable for {@code ZonedDateTime} . By contrast, {@code OffsetDateTime}
+   * does not have a zone ID suitable for use with this method, see {@link #appendZoneOrOffsetId()}
+   * .
    *
    * During printing, the zone is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#zoneId()}. It will be printed using the result of {@link
+   * with {@link TemporalQueries#zoneId()} . It will be printed using the result of {@link
    * ZoneId#getId()}. If the zone cannot be obtained then an exception is thrown unless the section
    * of the formatter is optional.
    *
@@ -954,13 +955,13 @@ final class DateTimeFormatterBuilder private (
 
   /**
    * Appends the time-zone region ID, such as 'Europe/Paris', to the formatter, rejecting the zone
-   * ID if it is a {@code ZoneOffset}.
+   * ID if it is a {@code ZoneOffset} .
    *
    * This appends an instruction to print/parse the zone ID to the builder only if it is a
    * region-based ID.
    *
    * During printing, the zone is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#zoneId()}. If the zone is a {@code ZoneOffset} or it cannot be
+   * with {@link TemporalQueries#zoneId()} . If the zone is a {@code ZoneOffset} or it cannot be
    * obtained then an exception is thrown unless the section of the formatter is optional. If the
    * zone is not an offset, then the zone will be printed using the zone ID from {@link
    * ZoneId#getId()}.
@@ -968,7 +969,7 @@ final class DateTimeFormatterBuilder private (
    * During parsing, the zone is parsed and must match a known zone or offset. If the zone cannot be
    * parsed then an exception is thrown unless the section of the formatter is optional. Note that
    * parsing accepts offsets, whereas printing will never produce one, thus parsing is equivalent to
-   * {@code appendZoneId}.
+   * {@code appendZoneId} .
    *
    * @return
    *   this, for chaining, not null
@@ -991,11 +992,11 @@ final class DateTimeFormatterBuilder private (
    *
    * This appends an instruction to print/parse the best available zone or offset ID to the builder.
    * The zone ID is obtained in a lenient manner that first attempts to find a true zone ID, such as
-   * that on {@code ZonedDateTime}, and then attempts to find an offset, such as that on {@code
+   * that on {@code ZonedDateTime} , and then attempts to find an offset, such as that on {@code
    * OffsetDateTime}.
    *
    * During printing, the zone is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#zone()}. It will be printed using the result of {@link
+   * with {@link TemporalQueries#zone()} . It will be printed using the result of {@link
    * ZoneId#getId()}. If the zone cannot be obtained then an exception is thrown unless the section
    * of the formatter is optional.
    *
@@ -1023,9 +1024,9 @@ final class DateTimeFormatterBuilder private (
    * This appends an instruction to print the textual name of the zone to the builder.
    *
    * During printing, the zone is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#zoneId()}. If the zone is a {@code ZoneOffset} it will be printed
-   * using the result of {@link ZoneOffset#getId()}. If the zone is not an offset, the textual name
-   * will be looked up for the locale set in the {@link DateTimeFormatter}. If the temporal object
+   * with {@link TemporalQueries#zoneId()} . If the zone is a {@code ZoneOffset} it will be printed
+   * using the result of {@link ZoneOffset#getId()} . If the zone is not an offset, the textual name
+   * will be looked up for the locale set in the {@link DateTimeFormatter} . If the temporal object
    * being printed represents an instant, then the text will be the summer or winter time text as
    * appropriate. If the lookup for text does not find any suitable reuslt, then the {@link
    * ZoneId#getId() ID} will be printed instead. If the zone cannot be obtained then an exception is
@@ -1049,9 +1050,9 @@ final class DateTimeFormatterBuilder private (
    * This appends an instruction to format/parse the textual name of the zone to the builder.
    *
    * During formatting, the zone is obtained using a mechanism equivalent to querying the temporal
-   * with {@link TemporalQueries#zoneId()}. If the zone is a {@code ZoneOffset} it will be printed
-   * using the result of {@link ZoneOffset#getId()}. If the zone is not an offset, the textual name
-   * will be looked up for the locale set in the {@link DateTimeFormatter}. If the temporal object
+   * with {@link TemporalQueries#zoneId()} . If the zone is a {@code ZoneOffset} it will be printed
+   * using the result of {@link ZoneOffset#getId()} . If the zone is not an offset, the textual name
+   * will be looked up for the locale set in the {@link DateTimeFormatter} . If the temporal object
    * being printed represents an instant, then the text will be the summer or winter time text as
    * appropriate. If the lookup for text does not find any suitable result, then the {@link
    * ZoneId#getId() ID} will be printed instead. If the zone cannot be obtained then an exception is
@@ -1104,8 +1105,8 @@ final class DateTimeFormatterBuilder private (
    * This appends an instruction to format/parse the chronology ID to the builder.
    *
    * During printing, the chronology is obtained using a mechanism equivalent to querying the
-   * temporal with {@link TemporalQueries#chronology()}. It will be printed using the result of
-   * {@link Chronology#getId()}. If the chronology cannot be obtained then an exception is thrown
+   * temporal with {@link TemporalQueries#chronology()} . It will be printed using the result of
+   * {@link Chronology#getId()} . If the chronology cannot be obtained then an exception is thrown
    * unless the section of the formatter is optional.
    *
    * During parsing, the chronology is parsed and must match one of the chronologies in {@link
@@ -1138,7 +1139,7 @@ final class DateTimeFormatterBuilder private (
    * as the fallback.
    *
    * Note that this method provides similar functionality to methods on {@code DateFormat} such as
-   * {@link DateFormat#getDateTimeInstance(int, int)}.
+   * {@link DateFormat#getDateTimeInstance(int, int)} .
    *
    * @param dateStyle
    *   the date style to use, null means no date required
@@ -1214,7 +1215,7 @@ final class DateTimeFormatterBuilder private (
    * Appends a formatter to the builder which will optionally print/parse.
    *
    * This method has the same effect as appending each of the constituent parts directly to this
-   * builder surrounded by an {@link #optionalStart()} and {@link #optionalEnd()}.
+   * builder surrounded by an {@link #optionalStart()} and {@link #optionalEnd()} .
    *
    * The formatter will print if data is available for all the fields contained within it. The
    * formatter will parse if the string matches, otherwise no error is returned.
@@ -1235,10 +1236,9 @@ final class DateTimeFormatterBuilder private (
    *
    * All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The characters '{' and
    * '}' are reserved for future use. The characters '[' and ']' indicate optional patterns. The
-   * following pattern letters are defined: <pre> Symbol Meaning Presentation Examples
-   * ------ ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004;
-   * 04 D day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month
-   * number 10
+   * following pattern letters are defined: <pre> Symbol Meaning Presentation Examples ------
+   * ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004; 04 D
+   * day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month number 10
    *
    * Q quarter-of-year number/text 3; 03; Q3 Y week-based-year year 1996; 96 w week-of-year number
    * 27 W week-of-month number 27 e localized day-of-week number 2; Tue; Tuesday; T E day-of-week
@@ -1264,13 +1264,13 @@ final class DateTimeFormatterBuilder private (
    * The count of pattern letters determine the format.
    *
    * <b>Text</b>: The text style is determined based on the number of pattern letters used. Less
-   * than 4 pattern letters will use the {@link TextStyle#SHORT short form}. Exactly 4 pattern
-   * letters will use the {@link TextStyle#FULL full form}. Exactly 5 pattern letters will use the
-   * {@link TextStyle#NARROW narrow form}.
+   * than 4 pattern letters will use the {@link TextStyle#SHORT short form} . Exactly 4 pattern
+   * letters will use the {@link TextStyle#FULL full form} . Exactly 5 pattern letters will use the
+   * {@link TextStyle#NARROW narrow form} .
    *
    * <b>Number</b>: If the count of letters is one, then the value is printed using the minimum
-   * number of digits and without padding as per {@link #appendValue(TemporalField)}. Otherwise, the
-   * count of digits is used as the width of the output field as per {@link
+   * number of digits and without padding as per {@link #appendValue(TemporalField)} . Otherwise,
+   * the count of digits is used as the width of the output field as per {@link
    * #appendValue(TemporalField, int)}.
    *
    * <b>Number/Text</b>: If the count of pattern letters is 3 or greater, use the Text rules above.
@@ -1288,7 +1288,7 @@ final class DateTimeFormatterBuilder private (
    * is used. For printing, this outputs the rightmost two digits. For parsing, this will parse
    * using the base value of 2000, resulting in a year within the range 2000 to 2099 inclusive. If
    * the count of letters is less than four (but not two), then the sign is only output for negative
-   * years as per {@link SignStyle#NORMAL}. Otherwise, the sign is output if the pad width is
+   * years as per {@link SignStyle#NORMAL} . Otherwise, the sign is output if the pad width is
    * exceeded, as per {@link SignStyle#EXCEEDS_PAD}
    *
    * <b>ZoneId</b>: This outputs the time-zone ID, such as 'Europe/Paris'. If the count of letters
@@ -1297,7 +1297,7 @@ final class DateTimeFormatterBuilder private (
    *
    * <b>Zone names</b>: This outputs the display name of the time-zone ID. If the count of letters
    * is one, two or three, then the short name is output. If the count of letters is four, then the
-   * full name is output. Five or more letters throws {@code IllegalArgumentException}. <pre>
+   * full name is output. Five or more letters throws {@code IllegalArgumentException} . <pre>
    * Pattern Equivalent builder methods z appendZoneText(TextStyle.SHORT) zz
    * appendZoneText(TextStyle.SHORT) zzz appendZoneText(TextStyle.SHORT) zzzz
    * appendZoneText(TextStyle.FULL) </pre>
@@ -1308,27 +1308,27 @@ final class DateTimeFormatterBuilder private (
    * colon, such as '+0130'. Three letters outputs the hour and minute, with a colon, such as
    * '+01:30'. Four letters outputs the hour and minute and optional second, without a colon, such
    * as '+013015'. Five letters outputs the hour and minute and optional second, with a colon, such
-   * as '+01:30:15'. Six or more letters throws {@code IllegalArgumentException}. Pattern letter 'X'
-   * (upper case) will output 'Z' when the offset to be output would be zero, whereas pattern letter
-   * 'x' (lower case) will output '+00', '+0000', or '+00:00'. <pre> Pattern Equivalent builder
-   * methods X appendOffset("+HHmm","Z") XX appendOffset("+HHMM","Z") XXX appendOffset("+HH:MM","Z")
-   * XXXX appendOffset("+HHMMss","Z") XXXXX appendOffset("+HH:MM:ss","Z") x
-   * appendOffset("+HHmm","+00") xx appendOffset("+HHMM","+0000") xxx
+   * as '+01:30:15'. Six or more letters throws {@code IllegalArgumentException} . Pattern letter
+   * 'X' (upper case) will output 'Z' when the offset to be output would be zero, whereas pattern
+   * letter 'x' (lower case) will output '+00', '+0000', or '+00:00'. <pre> Pattern Equivalent
+   * builder methods X appendOffset("+HHmm","Z") XX appendOffset("+HHMM","Z") XXX
+   * appendOffset("+HH:MM","Z") XXXX appendOffset("+HHMMss","Z") XXXXX appendOffset("+HH:MM:ss","Z")
+   * x appendOffset("+HHmm","+00") xx appendOffset("+HHMM","+0000") xxx
    * appendOffset("+HH:MM","+00:00") xxxx appendOffset("+HHMMss","+0000") xxxxx
    * appendOffset("+HH:MM:ss","+00:00") </pre>
    *
    * <b>Offset Z</b>: This formats the offset based on the number of pattern letters. One, two or
    * three letters outputs the hour and minute, without a colon, such as '+0130'. Four or more
-   * letters throws {@code IllegalArgumentException}. The output will be '+0000' when the offset is
+   * letters throws {@code IllegalArgumentException} . The output will be '+0000' when the offset is
    * zero. <pre> Pattern Equivalent builder methods Z appendOffset("+HHMM","+0000") ZZ
    * appendOffset("+HHMM","+0000") ZZZ appendOffset("+HHMM","+0000") </pre>
    *
    * <b>Optional section</b>: The optional section markers work exactly like calling {@link
-   * #optionalStart()} and {@link #optionalEnd()}.
+   * #optionalStart()} and {@link #optionalEnd()} .
    *
    * <b>Pad modifier</b>: Modifies the pattern that immediately follows to be padded with spaces.
    * The pad width is determined by the number of pattern letters. This is the same as calling
-   * {@link #padNext(int)}.
+   * {@link #padNext(int)} .
    *
    * For example, 'ppH' outputs the hour-of-day padded on the left with spaces to a width of 2.
    *
@@ -1705,7 +1705,7 @@ final class DateTimeFormatterBuilder private (
    * @return
    *   this, for chaining, not null
    * @throws IllegalStateException
-   *   if there was no previous call to { @code optionalStart}
+   *   if there was no previous call to {@code optionalStart}
    */
   def optionalEnd(): DateTimeFormatterBuilder = {
     if (active.parent == null)
@@ -1759,7 +1759,7 @@ final class DateTimeFormatterBuilder private (
    * #optionalEnd()} before creating the formatter.
    *
    * This builder can still be used after creating the formatter if desired, although the state may
-   * have been changed by calls to {@code optionalEnd}.
+   * have been changed by calls to {@code optionalEnd} .
    *
    * @return
    *   the created formatter, not null
@@ -1776,7 +1776,7 @@ final class DateTimeFormatterBuilder private (
    * #optionalEnd()} before creating the formatter.
    *
    * This builder can still be used after creating the formatter if desired, although the state may
-   * have been changed by calls to {@code optionalEnd}.
+   * have been changed by calls to {@code optionalEnd} .
    *
    * @param locale
    *   the locale to use for formatting, not null

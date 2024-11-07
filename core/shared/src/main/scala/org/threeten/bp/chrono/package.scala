@@ -39,10 +39,10 @@ package org.threeten.bp
  *
  * The supported calendar systems includes:
  *
- * -{@linkplain org.threeten.bp.chrono.HijrahChronology Hijrah calendar}
- * -{@linkplain org.threeten.bp.chrono.JapaneseChronology Japanese calendar}
- * -{@linkplain org.threeten.bp.chrono.MinguoChronology Minguo calendar}
- * -{@linkplain org.threeten.bp.chrono.ThaiBuddhistChronology Thai Buddhist calendar}
+ * -{@linkplain org.threeten.bp.chrono.HijrahChronology Hijrah calendar} -{@linkplain
+ * org.threeten.bp.chrono.JapaneseChronology Japanese calendar} -{@linkplain
+ * org.threeten.bp.chrono.MinguoChronology Minguo calendar} -{@linkplain
+ * org.threeten.bp.chrono.ThaiBuddhistChronology Thai Buddhist calendar}
  *
  * It is intended that applications use the main API whenever possible, including code to read and
  * write from a persistent data store, such as a database, and to send dates and times across a

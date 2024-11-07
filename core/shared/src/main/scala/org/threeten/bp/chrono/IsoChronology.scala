@@ -107,8 +107,8 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Gets the ID of the chronology - 'ISO'.
    *
-   * The ID uniquely identifies the {@code Chronology}. It can be used to lookup the {@code
-   * Chronology} using {@link #of(String)}.
+   * The ID uniquely identifies the {@code Chronology} . It can be used to lookup the {@code
+   * Chronology} using {@link #of(String)} .
    *
    * @return
    *   the chronology ID - 'ISO'
@@ -154,7 +154,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO local date from the proleptic-year, month-of-year and day-of-month fields.
    *
-   * This is equivalent to {@link LocalDate#of(int, int, int)}.
+   * This is equivalent to {@link LocalDate#of(int, int, int)} .
    *
    * @param prolepticYear
    *   the ISO proleptic-year
@@ -190,7 +190,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO local date from the proleptic-year and day-of-year fields.
    *
-   * This is equivalent to {@link LocalDate#ofYearDay(int, int)}.
+   * This is equivalent to {@link LocalDate#ofYearDay(int, int)} .
    *
    * @param prolepticYear
    *   the ISO proleptic-year
@@ -209,7 +209,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO local date from another date-time object.
    *
-   * This is equivalent to {@link LocalDate#from(TemporalAccessor)}.
+   * This is equivalent to {@link LocalDate#from(TemporalAccessor)} .
    *
    * @param temporal
    *   the date-time object to convert, not null
@@ -223,7 +223,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO local date-time from another date-time object.
    *
-   * This is equivalent to {@link LocalDateTime#from(TemporalAccessor)}.
+   * This is equivalent to {@link LocalDateTime#from(TemporalAccessor)} .
    *
    * @param temporal
    *   the date-time object to convert, not null
@@ -238,7 +238,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO zoned date-time from another date-time object.
    *
-   * This is equivalent to {@link ZonedDateTime#from(TemporalAccessor)}.
+   * This is equivalent to {@link ZonedDateTime#from(TemporalAccessor)} .
    *
    * @param temporal
    *   the date-time object to convert, not null
@@ -253,7 +253,7 @@ final class IsoChronology private () extends Chronology with Serializable {
   /**
    * Obtains an ISO zoned date-time from an instant.
    *
-   * This is equivalent to {@link ZonedDateTime#ofInstant(Instant, ZoneId)}.
+   * This is equivalent to {@link ZonedDateTime#ofInstant(Instant, ZoneId)} .
    *
    * @param instant
    *   the instant to convert, not null
@@ -304,7 +304,7 @@ final class IsoChronology private () extends Chronology with Serializable {
    *
    * This will query the specified clock to obtain the current date - today. Using this method
    * allows the use of an alternate clock for testing. The alternate clock may be introduced using
-   * {@link Clock dependency injection}.
+   * {@link Clock dependency injection} .
    *
    * @param clock
    *   the clock to use, not null
