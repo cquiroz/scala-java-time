@@ -365,7 +365,7 @@ class TestChronoZonedDateTime extends AnyFunSuite with AssertionsHelper {
               .atZone(d.getZone)
               .asInstanceOf[ChronoZonedDateTime[_ <: ChronoLocalDate]]
           )
-        var i: Int = 0
+        var i: Int                                                                = 0
         while (i < dates.size) {
           val a: ChronoZonedDateTime[_ <: ChronoLocalDate] = dates.get(i)
           var j: Int                                       = 0

@@ -415,7 +415,7 @@ object ZonedDateTime {
    * @return
    *   the zoned date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code ZonedDateTime}
+   *   if unable to convert to an {@code ZonedDateTime}
    */
   def from(temporal: TemporalAccessor): ZonedDateTime =
     temporal match {
@@ -756,7 +756,7 @@ final class ZonedDateTime(
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the earlier offset, not null
+   *   a {@code ZonedDateTime} based on this date-time with the earlier offset, not null
    */
   def withEarlierOffsetAtOverlap: ZonedDateTime = {
     val trans: ZoneOffsetTransition = getZone.getRules.getTransition(dateTime)
@@ -782,7 +782,7 @@ final class ZonedDateTime(
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the later offset, not null
+   *   a {@code ZonedDateTime} based on this date-time with the later offset, not null
    */
   def withLaterOffsetAtOverlap: ZonedDateTime = {
     val trans: ZoneOffsetTransition = getZone.getRules.getTransition(toLocalDateTime)
@@ -826,7 +826,7 @@ final class ZonedDateTime(
    * @param zone
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested zone, not null
    */
   def withZoneSameLocal(zone: ZoneId): ZonedDateTime = {
     Objects.requireNonNull(zone, "zone")
@@ -847,7 +847,7 @@ final class ZonedDateTime(
    * @param zone
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested zone, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -871,7 +871,7 @@ final class ZonedDateTime(
    * This is equivalent to {@code ZonedDateTime.of(zdt.getDateTime(), zdt.getOffset())}.
    *
    * @return
-   *   a { @code ZonedDateTime} with the zone ID set to the offset, not null
+   *   a {@code ZonedDateTime} with the zone ID set to the offset, not null
    */
   def withFixedOffsetZone: ZonedDateTime =
     if (this.zone == offset) this
@@ -1025,7 +1025,7 @@ final class ZonedDateTime(
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code ZonedDateTime} based on { @code this} with the adjustment made, not null
+   *   a {@code ZonedDateTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -1088,7 +1088,7 @@ final class ZonedDateTime(
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code ZonedDateTime} based on { @code this} with the specified field set, not null
+   *   a {@code ZonedDateTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws UnsupportedTemporalTypeException
@@ -1125,7 +1125,7 @@ final class ZonedDateTime(
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested year, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -1147,7 +1147,7 @@ final class ZonedDateTime(
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested month, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -1169,7 +1169,7 @@ final class ZonedDateTime(
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested day, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -1194,7 +1194,7 @@ final class ZonedDateTime(
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   a { @code ZonedDateTime} based on this date with the requested day, not null
+   *   a {@code ZonedDateTime} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -1218,7 +1218,7 @@ final class ZonedDateTime(
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested hour, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -1240,7 +1240,7 @@ final class ZonedDateTime(
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested minute, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -1262,7 +1262,7 @@ final class ZonedDateTime(
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested second, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -1284,7 +1284,7 @@ final class ZonedDateTime(
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the requested nanosecond, not null
+   *   a {@code ZonedDateTime} based on this date-time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nano value is invalid
    */
@@ -1314,7 +1314,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the time truncated, not null
+   *   a {@code ZonedDateTime} based on this date-time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -1333,7 +1333,7 @@ final class ZonedDateTime(
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the addition made, not null
+   *   a {@code ZonedDateTime} based on this date-time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -1367,7 +1367,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the specified period added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1394,7 +1394,7 @@ final class ZonedDateTime(
    * @param years
    *   the years to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the years added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1416,7 +1416,7 @@ final class ZonedDateTime(
    * @param months
    *   the months to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the months added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1438,7 +1438,7 @@ final class ZonedDateTime(
    * @param weeks
    *   the weeks to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the weeks added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1460,7 +1460,7 @@ final class ZonedDateTime(
    * @param days
    *   the days to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the days added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1485,7 +1485,7 @@ final class ZonedDateTime(
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the hours added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the hours added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1503,7 +1503,7 @@ final class ZonedDateTime(
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the minutes added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the minutes added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1521,7 +1521,7 @@ final class ZonedDateTime(
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the seconds added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1539,7 +1539,7 @@ final class ZonedDateTime(
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the nanoseconds added, not null
+   *   a {@code ZonedDateTime} based on this date-time with the nanoseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1558,7 +1558,7 @@ final class ZonedDateTime(
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the subtraction made, not null
+   *   a {@code ZonedDateTime} based on this date-time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1592,7 +1592,7 @@ final class ZonedDateTime(
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the specified period subtracted, not
+   *   a {@code ZonedDateTime} based on this date-time with the specified period subtracted, not
    *   null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
@@ -1617,7 +1617,7 @@ final class ZonedDateTime(
    * @param years
    *   the years to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the years subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1641,7 +1641,7 @@ final class ZonedDateTime(
    * @param months
    *   the months to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the months subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1665,7 +1665,7 @@ final class ZonedDateTime(
    * @param weeks
    *   the weeks to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the weeks subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1689,7 +1689,7 @@ final class ZonedDateTime(
    * @param days
    *   the days to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the days subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1716,7 +1716,7 @@ final class ZonedDateTime(
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the hours subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the hours subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1736,7 +1736,7 @@ final class ZonedDateTime(
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the minutes subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the minutes subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1756,7 +1756,7 @@ final class ZonedDateTime(
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the seconds subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1777,7 +1777,7 @@ final class ZonedDateTime(
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   a { @code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null
+   *   a {@code ZonedDateTime} based on this date-time with the nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1858,7 +1858,7 @@ final class ZonedDateTime(
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date-time, which is converted to a { @code ZonedDateTime}, not null
+   *   the end date-time, which is converted to a {@code ZonedDateTime}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
