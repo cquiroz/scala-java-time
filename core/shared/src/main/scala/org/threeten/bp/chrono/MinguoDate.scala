@@ -138,7 +138,7 @@ object MinguoDate {
    * @return
    *   the date in Minguo calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code MinguoDate}
+   *   if unable to convert to a {@code MinguoDate}
    */
   def from(temporal: TemporalAccessor): MinguoDate = MinguoChronology.INSTANCE.date(temporal)
 

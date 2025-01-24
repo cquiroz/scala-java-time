@@ -19,7 +19,7 @@ object TTBPJapaneseEra {
    * @param name
    *   the name
    * @return
-   *   the { @code JapaneseEra} singleton, not null
+   *   the {@code JapaneseEra} singleton, not null
    * @throws DateTimeException
    *   if an additional era has already been registered
    */
