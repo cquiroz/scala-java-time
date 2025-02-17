@@ -13,11 +13,11 @@ object TimeZone {
     // TODO: implement this functionality, perhaps using https://github.com/scala-native/scala-native/blob/master/posixlib/src/main/scala/scala/scalanative/posix/time.scala
     new SimpleTimeZone(0, "UTC")
 
-  def getDefault: TimeZone = default
+  def getDefault: TimeZone                 = default
   def setDefault(timeZone: TimeZone): Unit = default = timeZone
 
   def getTimeZone(timeZone: String): TimeZone = getTimeZone(ZoneId.of(timeZone))
-  def getTimeZone(zoneId: ZoneId): TimeZone = {
+  def getTimeZone(zoneId: ZoneId): TimeZone   = {
     val rules          = zoneId.getRules
     val offsetInMillis = rules.getStandardOffset(Instant.now).getTotalSeconds * 1000
     new SimpleTimeZone(offsetInMillis, zoneId.getId)
@@ -42,7 +42,7 @@ abstract class TimeZone extends Serializable with Cloneable {
   // def useDaylightTime: Boolean
 
   /* concrete methods */
-  def getID: String = ID
+  def getID: String           = ID
   def setID(id: String): Unit = ID = id
 
   def getDisplayName(daylight: Boolean, style: Int, locale: Locale): String = {
