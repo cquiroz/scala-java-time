@@ -208,7 +208,7 @@ object Instant {
    * @return
    *   the instant, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code Instant}
+   *   if unable to convert to an {@code Instant}
    */
   def from(temporal: TemporalAccessor): Instant =
     try {
@@ -527,7 +527,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   an { @code Instant} based on { @code this} with the adjustment made, not null
+   *   an {@code Instant} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -568,7 +568,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   an { @code Instant} based on { @code this} with the specified field set, not null
+   *   an {@code Instant} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -614,7 +614,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   an { @code Instant} based on this instant with the time truncated, not null
+   *   an {@code Instant} based on this instant with the time truncated, not null
    * @throws DateTimeException
    *   if the unit is invalid for truncation
    */
@@ -636,18 +636,18 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * {@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def plus(amount: TemporalAmount): Instant = amount.addTo(this).asInstanceOf[Instant]
 
   /**
    * {@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): Instant = {
     unit match {
@@ -686,7 +686,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param secondsToAdd
    *   the seconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds added, not null
+   *   an {@code Instant} based on this instant with the specified seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -702,7 +702,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param millisToAdd
    *   the milliseconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified milliseconds added, not null
+   *   an {@code Instant} based on this instant with the specified milliseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -719,7 +719,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanoseconds to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified nanoseconds added, not null
+   *   an {@code Instant} based on this instant with the specified nanoseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -737,7 +737,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToAdd
    *   the nanos to add, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds added, not null
+   *   an {@code Instant} based on this instant with the specified seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -757,9 +757,9 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * {@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def minus(amount: TemporalAmount): Instant =
     amount.subtractFrom(this).asInstanceOf[Instant]
@@ -767,9 +767,9 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
   /**
    * {@inheritDoc}
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): Instant =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -783,7 +783,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param secondsToSubtract
    *   the seconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified seconds subtracted, not null
+   *   an {@code Instant} based on this instant with the specified seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -803,8 +803,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param millisToSubtract
    *   the milliseconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified milliseconds subtracted, not
-   *   null
+   *   an {@code Instant} based on this instant with the specified milliseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -824,7 +823,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * @param nanosToSubtract
    *   the nanoseconds to subtract, positive or negative
    * @return
-   *   an { @code Instant} based on this instant with the specified nanoseconds subtracted, not null
+   *   an {@code Instant} based on this instant with the specified nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the maximum or minimum instant
    * @throws ArithmeticException
@@ -924,7 +923,7 @@ final class Instant private (private val seconds: Long, private val nanos: Int)
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date, which is converted to an { @code Instant}, not null
+   *   the end date, which is converted to an {@code Instant}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return

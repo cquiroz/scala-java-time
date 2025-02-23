@@ -276,7 +276,7 @@ object OffsetDateTime {
    * @return
    *   the offset date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code OffsetDateTime}
+   *   if unable to convert to an {@code OffsetDateTime}
    */
   def from(temporal: TemporalAccessor): OffsetDateTime =
     temporal match {
@@ -557,7 +557,7 @@ final class OffsetDateTime private (
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested offset, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested offset, not null
    */
   def withOffsetSameLocal(offset: ZoneOffset): OffsetDateTime = `with`(dateTime, offset)
 
@@ -578,7 +578,7 @@ final class OffsetDateTime private (
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested offset, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested offset, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -730,7 +730,7 @@ final class OffsetDateTime private (
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   an { @code OffsetDateTime} based on { @code this} with the adjustment made, not null
+   *   an {@code OffsetDateTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -787,7 +787,7 @@ final class OffsetDateTime private (
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   an { @code OffsetDateTime} based on { @code this} with the specified field set, not null
+   *   an {@code OffsetDateTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -817,7 +817,7 @@ final class OffsetDateTime private (
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested year, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -833,7 +833,7 @@ final class OffsetDateTime private (
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested month, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -849,7 +849,7 @@ final class OffsetDateTime private (
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested day, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -867,7 +867,7 @@ final class OffsetDateTime private (
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   an { @code OffsetDateTime} based on this date with the requested day, not null
+   *   an {@code OffsetDateTime} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -886,7 +886,7 @@ final class OffsetDateTime private (
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested hour, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -902,7 +902,7 @@ final class OffsetDateTime private (
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested minute, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -918,7 +918,7 @@ final class OffsetDateTime private (
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested second, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -934,7 +934,7 @@ final class OffsetDateTime private (
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the requested nanosecond, not null
+   *   an {@code OffsetDateTime} based on this date-time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nanos value is invalid
    */
@@ -958,7 +958,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the time truncated, not null
+   *   an {@code OffsetDateTime} based on this date-time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -978,7 +978,7 @@ final class OffsetDateTime private (
    * @param amount
    *   the amount to add, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the addition made, not null
+   *   an {@code OffsetDateTime} based on this date-time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -1003,7 +1003,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the specified period added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1027,7 +1027,7 @@ final class OffsetDateTime private (
    * @param years
    *   the years to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the years added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1048,7 +1048,7 @@ final class OffsetDateTime private (
    * @param months
    *   the months to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the months added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1068,7 +1068,7 @@ final class OffsetDateTime private (
    * @param weeks
    *   the weeks to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the weeks added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1088,7 +1088,7 @@ final class OffsetDateTime private (
    * @param days
    *   the days to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the days added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1102,7 +1102,7 @@ final class OffsetDateTime private (
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the hours added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the hours added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1116,7 +1116,7 @@ final class OffsetDateTime private (
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the minutes added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the minutes added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1130,7 +1130,7 @@ final class OffsetDateTime private (
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the seconds added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1144,7 +1144,7 @@ final class OffsetDateTime private (
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the nanoseconds added, not null
+   *   an {@code OffsetDateTime} based on this date-time with the nanoseconds added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1164,7 +1164,7 @@ final class OffsetDateTime private (
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the subtraction made, not null
+   *   an {@code OffsetDateTime} based on this date-time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1189,7 +1189,7 @@ final class OffsetDateTime private (
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the specified period subtracted, not
+   *   an {@code OffsetDateTime} based on this date-time with the specified period subtracted, not
    *   null
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): OffsetDateTime =
@@ -1212,7 +1212,7 @@ final class OffsetDateTime private (
    * @param years
    *   the years to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the years subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1235,7 +1235,7 @@ final class OffsetDateTime private (
    * @param months
    *   the months to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the months subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1257,7 +1257,7 @@ final class OffsetDateTime private (
    * @param weeks
    *   the weeks to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the weeks subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1279,7 +1279,7 @@ final class OffsetDateTime private (
    * @param days
    *   the days to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the days subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1295,7 +1295,7 @@ final class OffsetDateTime private (
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the hours subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the hours subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1311,7 +1311,7 @@ final class OffsetDateTime private (
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the minutes subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the minutes subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1327,7 +1327,7 @@ final class OffsetDateTime private (
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the seconds subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1344,7 +1344,7 @@ final class OffsetDateTime private (
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   an { @code OffsetDateTime} based on this date-time with the nanoseconds subtracted, not null
+   *   an {@code OffsetDateTime} based on this date-time with the nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1453,7 +1453,7 @@ final class OffsetDateTime private (
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date-time, which is converted to an { @code OffsetDateTime}, not null
+   *   the end date-time, which is converted to an {@code OffsetDateTime}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1578,7 +1578,7 @@ final class OffsetDateTime private (
    * Converts this date-time to an {@code Instant}.
    *
    * @return
-   *   an { @code Instant} representing the same instant, not null
+   *   an {@code Instant} representing the same instant, not null
    */
   def toInstant: Instant = dateTime.toInstant(offset)
 

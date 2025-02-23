@@ -244,7 +244,7 @@ class TestOffsetDateTime_instants extends AnyFunSuite with AssertionsHelper {
             case ex: RuntimeException =>
               System.out.println("RuntimeException: " + i + " " + expected)
               throw ex
-            case ex: Error =>
+            case ex: Error            =>
               System.out.println("Error: " + i + " " + expected)
               throw ex
           }
