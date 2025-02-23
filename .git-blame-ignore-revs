@@ -3,3 +3,6 @@ aa7db3a42121f78a5b3bed3658786c1cef83efe8
 
 # Enable scalafmt for Scala 3
 64df4ae51873593a789af5848bd225c14d0baf8a
+
+# Scala Steward: Reformat with scalafmt 3.9.1
+aea1c5439d8a5aa0bcb1ecce54623a5a84ab9b06
