@@ -190,7 +190,7 @@ object YearMonth {
    * @return
    *   the year-month, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code YearMonth}
+   *   if unable to convert to a {@code YearMonth}
    */
   def from(temporal: TemporalAccessor): YearMonth = {
     var _temporal = temporal
@@ -520,7 +520,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code YearMonth} based on { @code this} with the adjustment made, not null
+   *   a {@code YearMonth} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -562,7 +562,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code YearMonth} based on { @code this} with the specified field set, not null
+   *   a {@code YearMonth} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -598,7 +598,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param year
    *   the year to set in the returned year-month, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code YearMonth} based on this year-month with the requested year, not null
+   *   a {@code YearMonth} based on this year-month with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -615,7 +615,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param month
    *   the month-of-year to set in the returned year-month, from 1 (January) to 12 (December)
    * @return
-   *   a { @code YearMonth} based on this year-month with the requested month, not null
+   *   a {@code YearMonth} based on this year-month with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -637,7 +637,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code YearMonth} based on this year-month with the addition made, not null
+   *   a {@code YearMonth} based on this year-month with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -649,9 +649,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): YearMonth =
     if (unit.isInstanceOf[ChronoUnit])
@@ -675,7 +675,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param yearsToAdd
    *   the years to add, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the years added, not null
+   *   a {@code YearMonth} based on this year-month with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -695,7 +695,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param monthsToAdd
    *   the months to add, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the months added, not null
+   *   a {@code YearMonth} based on this year-month with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -722,7 +722,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param amount
    *   the amount to aubtract, not null
    * @return
-   *   a { @code YearMonth} based on this year-month with the subtraction made, not null
+   *   a {@code YearMonth} based on this year-month with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -735,9 +735,9 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): YearMonth =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -751,7 +751,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param yearsToSubtract
    *   the years to subtract, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the years subtracted, not null
+   *   a {@code YearMonth} based on this year-month with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -767,7 +767,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * @param monthsToSubtract
    *   the months to subtract, may be negative
    * @return
-   *   a { @code YearMonth} based on this year-month with the months subtracted, not null
+   *   a {@code YearMonth} based on this year-month with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported range
    */
@@ -874,7 +874,7 @@ final class YearMonth private (private val year: Int, private val month: Int)
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end year-month, which is converted to a { @code YearMonth}, not null
+   *   the end year-month, which is converted to a {@code YearMonth}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
