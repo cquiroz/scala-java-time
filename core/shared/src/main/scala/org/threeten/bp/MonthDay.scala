@@ -179,7 +179,7 @@ object MonthDay {
    * @return
    *   the month-day, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code MonthDay}
+   *   if unable to convert to a {@code MonthDay}
    */
   def from(temporal: TemporalAccessor): MonthDay = {
     var _temporal = temporal
@@ -466,7 +466,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param month
    *   the month-of-year to set in the returned month-day, from 1 (January) to 12 (December)
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested month, not null
+   *   a {@code MonthDay} based on this month-day with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -483,7 +483,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param month
    *   the month-of-year to set in the returned month-day, not null
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested month, not null
+   *   a {@code MonthDay} based on this month-day with the requested month, not null
    */
   def `with`(month: Month): MonthDay = {
     Objects.requireNonNull(month, "month")
@@ -504,7 +504,7 @@ final class MonthDay private (private val month: Int, private val day: Int)
    * @param dayOfMonth
    *   the day-of-month to set in the return month-day, from 1 to 31
    * @return
-   *   a { @code MonthDay} based on this month-day with the requested day, not null
+   *   a {@code MonthDay} based on this month-day with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException

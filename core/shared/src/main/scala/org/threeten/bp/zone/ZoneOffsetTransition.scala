@@ -73,7 +73,7 @@ object ZoneOffsetTransition {
    * @return
    *   the transition, not null
    * @throws IllegalArgumentException
-   *   if { @code offsetBefore} and { @code offsetAfter} are equal, or { @code transition.getNano()}
+   *   if {@code offsetBefore} and {@code offsetAfter} are equal, or {@code transition.getNano()}
    *   returns non-zero value
    */
   def of(

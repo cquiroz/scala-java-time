@@ -143,7 +143,7 @@ object Period {
    * @return
    *   the equivalent period, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Period}
+   *   if unable to convert to a {@code Period}
    * @throws ArithmeticException
    *   if the amount of years, months or days exceeds an int
    */
@@ -418,7 +418,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param years
    *   the years to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested years, not null
+   *   a {@code Period} based on this period with the requested years, not null
    */
   def withYears(years: Int): Period =
     if (years == this.years) this
@@ -438,7 +438,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param months
    *   the months to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested months, not null
+   *   a {@code Period} based on this period with the requested months, not null
    */
   def withMonths(months: Int): Period =
     if (months == this.months) this
@@ -455,7 +455,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param days
    *   the days to represent, may be negative
    * @return
-   *   a { @code Period} based on this period with the requested days, not null
+   *   a {@code Period} based on this period with the requested days, not null
    */
   def withDays(days: Int): Period =
     if (days == this.days) this
@@ -475,7 +475,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToAdd
    *   the period to add, not null
    * @return
-   *   a { @code Period} based on this period with the requested period added, not null
+   *   a {@code Period} based on this period with the requested period added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -499,7 +499,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToAdd
    *   the years to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years added, not null
+   *   a {@code Period} based on this period with the specified years added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -519,7 +519,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToAdd
    *   the months to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months added, not null
+   *   a {@code Period} based on this period with the specified months added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -539,7 +539,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToAdd
    *   the days to add, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days added, not null
+   *   a {@code Period} based on this period with the specified days added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -561,7 +561,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param amountToSubtract
    *   the period to subtract, not null
    * @return
-   *   a { @code Period} based on this period with the requested period subtracted, not null
+   *   a {@code Period} based on this period with the requested period subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -585,7 +585,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param yearsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified years subtracted, not null
+   *   a {@code Period} based on this period with the specified years subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -605,7 +605,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param monthsToSubtract
    *   the years to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified months subtracted, not null
+   *   a {@code Period} based on this period with the specified months subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -625,7 +625,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param daysToSubtract
    *   the months to subtract, positive or negative
    * @return
-   *   a { @code Period} based on this period with the specified days subtracted, not null
+   *   a {@code Period} based on this period with the specified days subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -642,7 +642,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * @param scalar
    *   the scalar to multiply by, not null
    * @return
-   *   a { @code Period} based on this period with the amounts multiplied by the scalar, not null
+   *   a {@code Period} based on this period with the amounts multiplied by the scalar, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -658,7 +658,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * Returns a new instance with each amount in this period negated.
    *
    * @return
-   *   a { @code Period} based on this period with the amounts negated, not null
+   *   a {@code Period} based on this period with the amounts negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -680,7 +680,7 @@ final class Period private (private val years: Int, private val months: Int, pri
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code Period} based on this period with excess months normalized to years, not null
+   *   a {@code Period} based on this period with excess months normalized to years, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */

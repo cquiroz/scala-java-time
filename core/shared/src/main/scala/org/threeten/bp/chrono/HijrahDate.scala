@@ -89,9 +89,9 @@ object HijrahDate {
     Array(30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 30)
 
   /**
-   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum
-   * ---------- ------- ------- ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR
-   * 1 1 12 12 DAY_OF_MONTH 1 1 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
+   * <pre> Greatest Least Field name Minimum Minimum Maximum Maximum ---------- ------- -------
+   * ------- ------- ERA 0 0 1 1 YEAR_OF_ERA 1 1 9999 9999 MONTH_OF_YEAR 1 1 12 12 DAY_OF_MONTH 1 1
+   * 29 30 DAY_OF_YEAR 1 1 354 355 </pre>
    *
    * Minimum values.
    */
@@ -420,7 +420,7 @@ object HijrahDate {
    * @return
    *   the date in Hijrah calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code HijrahDate}
+   *   if unable to convert to a {@code HijrahDate}
    */
   def from(temporal: TemporalAccessor): HijrahDate = HijrahChronology.INSTANCE.date(temporal)
 
