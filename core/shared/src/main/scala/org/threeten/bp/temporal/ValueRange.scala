@@ -210,7 +210,7 @@ final class ValueRange private (
    * This implementation uses {@link #getMinimum()} and {@link #getMaximum()}.
    *
    * @return
-   *   true if a valid value always fits in an { @code int}
+   *   true if a valid value always fits in an {@code int}
    */
   def isIntValue: Boolean = getMinimum >= Int.MinValue && getMaximum <= Int.MaxValue
 
@@ -235,7 +235,7 @@ final class ValueRange private (
    * @param value
    *   the value to check
    * @return
-   *   true if the value is valid and fits in an { @code int}
+   *   true if the value is valid and fits in an {@code int}
    */
   def isValidIntValue(value: Long): Boolean = isIntValue && isValidValue(value)
 

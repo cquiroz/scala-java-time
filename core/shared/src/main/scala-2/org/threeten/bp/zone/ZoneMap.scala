@@ -12,7 +12,7 @@ import scala.collection.immutable
 // TreeMap is not available in Scala.js however it is needed for Time Zone support
 // This is a simple implementation of NavigableMap, performance is likely terrible
 private[bp] class ZoneMap[K: ClassTag, V] private[bp] (var map: immutable.TreeMap[K, V])(implicit
-  ordering:                                                     Ordering[K]
+  ordering: Ordering[K]
 ) extends AbstractMap[K, V]
     with java.util.NavigableMap[K, V] {
   def this()(implicit ordering: Ordering[K]) =
@@ -164,6 +164,6 @@ private[bp] class ZoneMap[K: ClassTag, V] private[bp] (var map: immutable.TreeMa
 object ZoneMap {
 
   def apply[K: ClassTag, V](map: immutable.TreeMap[K, V])(implicit
-    ordering:                    Ordering[K]
+    ordering: Ordering[K]
   ): java.util.NavigableMap[K, V] = new ZoneMap[K, V](map)
 }
