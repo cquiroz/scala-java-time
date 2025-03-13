@@ -260,7 +260,7 @@ object LocalTime {
    * This factory may return a cached value, but applications must not rely on this.
    *
    * @param secondOfDay
-   *   the second-of-day, from { @code 0} to { @code 24 * 60 * 60 - 1}
+   *   the second-of-day, from {@code 0} to {@code 24 * 60 * 60 - 1}
    * @return
    *   the local time, not null
    * @throws DateTimeException
@@ -283,7 +283,7 @@ object LocalTime {
    * This factory may return a cached value, but applications must not rely on this.
    *
    * @param secondOfDay
-   *   the second-of-day, from { @code 0} to { @code 24 * 60 * 60 - 1}
+   *   the second-of-day, from {@code 0} to {@code 24 * 60 * 60 - 1}
    * @param nanoOfSecond
    *   the nano-of-second, from 0 to 999,999,999
    * @return
@@ -308,7 +308,7 @@ object LocalTime {
    * This factory may return a cached value, but applications must not rely on this.
    *
    * @param nanoOfDay
-   *   the nano of day, from { @code 0} to { @code 24 * 60 * 60 * 1,000,000,000 - 1}
+   *   the nano of day, from {@code 0} to {@code 24 * 60 * 60 * 1,000,000,000 - 1}
    * @return
    *   the local time, not null
    * @throws DateTimeException
@@ -343,7 +343,7 @@ object LocalTime {
    * @return
    *   the local time, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code LocalTime}
+   *   if unable to convert to a {@code LocalTime}
    */
   def from(temporal: TemporalAccessor): LocalTime = {
     val time: LocalTime = temporal.query(TemporalQueries.localTime)
@@ -653,7 +653,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code LocalTime} based on { @code this} with the adjustment made, not null
+   *   a {@code LocalTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -722,7 +722,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code LocalTime} based on { @code this} with the specified field set, not null
+   *   a {@code LocalTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -763,7 +763,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   a { @code LocalTime} based on this time with the requested hour, not null
+   *   a {@code LocalTime} based on this time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -783,7 +783,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   a { @code LocalTime} based on this time with the requested minute, not null
+   *   a {@code LocalTime} based on this time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -803,7 +803,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   a { @code LocalTime} based on this time with the requested second, not null
+   *   a {@code LocalTime} based on this time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -823,7 +823,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   a { @code LocalTime} based on this time with the requested nanosecond, not null
+   *   a {@code LocalTime} based on this time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nanos value is invalid
    */
@@ -851,7 +851,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   a { @code LocalTime} based on this time with the time truncated, not null
+   *   a {@code LocalTime} based on this time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -881,7 +881,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code LocalTime} based on this time with the addition made, not null
+   *   a {@code LocalTime} based on this time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -904,7 +904,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   a { @code LocalTime} based on this time with the specified period added, not null
+   *   a {@code LocalTime} based on this time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -937,7 +937,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param hoursToAdd
    *   the hours to add, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the hours added, not null
+   *   a {@code LocalTime} based on this time with the hours added, not null
    */
   def plusHours(hoursToAdd: Long): LocalTime = {
     if (hoursToAdd == 0)
@@ -958,7 +958,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param minutesToAdd
    *   the minutes to add, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the minutes added, not null
+   *   a {@code LocalTime} based on this time with the minutes added, not null
    */
   def plusMinutes(minutesToAdd: Long): LocalTime = {
     if (minutesToAdd == 0)
@@ -984,7 +984,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param secondstoAdd
    *   the seconds to add, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the seconds added, not null
+   *   a {@code LocalTime} based on this time with the seconds added, not null
    */
   def plusSeconds(secondstoAdd: Long): LocalTime = {
     if (secondstoAdd == 0)
@@ -1012,7 +1012,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param nanosToAdd
    *   the nanos to add, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the nanoseconds added, not null
+   *   a {@code LocalTime} based on this time with the nanoseconds added, not null
    */
   def plusNanos(nanosToAdd: Long): LocalTime = {
     if (nanosToAdd == 0)
@@ -1043,7 +1043,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code LocalTime} based on this time with the subtraction made, not null
+   *   a {@code LocalTime} based on this time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1067,7 +1067,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   a { @code LocalTime} based on this time with the specified period subtracted, not null
+   *   a {@code LocalTime} based on this time with the specified period subtracted, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1086,7 +1086,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param hoursToSubtract
    *   the hours to subtract, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the hours subtracted, not null
+   *   a {@code LocalTime} based on this time with the hours subtracted, not null
    */
   def minusHours(hoursToSubtract: Long): LocalTime =
     plusHours(-(hoursToSubtract % LocalTime.HOURS_PER_DAY))
@@ -1102,7 +1102,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param minutesToSubtract
    *   the minutes to subtract, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the minutes subtracted, not null
+   *   a {@code LocalTime} based on this time with the minutes subtracted, not null
    */
   def minusMinutes(minutesToSubtract: Long): LocalTime =
     plusMinutes(-(minutesToSubtract % LocalTime.MINUTES_PER_DAY))
@@ -1118,7 +1118,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param secondsToSubtract
    *   the seconds to subtract, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the seconds subtracted, not null
+   *   a {@code LocalTime} based on this time with the seconds subtracted, not null
    */
   def minusSeconds(secondsToSubtract: Long): LocalTime =
     plusSeconds(-(secondsToSubtract % LocalTime.SECONDS_PER_DAY))
@@ -1134,7 +1134,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @param nanosToSubtract
    *   the nanos to subtract, may be negative
    * @return
-   *   a { @code LocalTime} based on this time with the nanoseconds subtracted, not null
+   *   a {@code LocalTime} based on this time with the nanoseconds subtracted, not null
    */
   def minusNanos(nanosToSubtract: Long): LocalTime =
     plusNanos(-(nanosToSubtract % LocalTime.NANOS_PER_DAY))
@@ -1228,7 +1228,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end time, which is converted to a { @code LocalTime}, not null
+   *   the end time, which is converted to a {@code LocalTime}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1323,7 +1323,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @return
    *   the comparator value, negative if less, positive if greater
    * @throws NullPointerException
-   *   if { @code other} is null
+   *   if {@code other} is null
    */
   def compare(other: LocalTime): Int = {
     var cmp: Int = Integer.compare(hour.toInt, other.hour.toInt)
@@ -1350,7 +1350,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @return
    *   true if this is after the specified time
    * @throws NullPointerException
-   *   if { @code other} is null
+   *   if {@code other} is null
    */
   def isAfter(other: LocalTime): Boolean = compareTo(other) > 0
 
@@ -1364,7 +1364,7 @@ final class LocalTime(_hour: Int, _minute: Int, _second: Int, private val nano: 
    * @return
    *   true if this point is before the specified time
    * @throws NullPointerException
-   *   if { @code other} is null
+   *   if {@code other} is null
    */
   def isBefore(other: LocalTime): Boolean = compareTo(other) < 0
 

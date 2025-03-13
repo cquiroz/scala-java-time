@@ -78,7 +78,7 @@ class TestCharLiteralParser extends AnyFunSuite with GenTestPrinterParser with A
     data_error.foreach {
       case (pp: CharLiteralPrinterParser) :: (text: String) :: (pos: Int) :: (expected: Class[
             _
-          ]) :: Nil                 =>
+          ]) :: Nil =>
         try pp.parse(parseContext, text, pos)
         catch {
           case ex: RuntimeException =>

@@ -244,27 +244,27 @@ class TestInstant
       List[Long](Long.MaxValue - 1,
                  0,
                  (Long.MaxValue - 1) / 1000,
-                 ((Long.MaxValue - 1) % 1000).toInt * 1000000
+                 ((Long.MaxValue - 1)                                   % 1000).toInt * 1000000
       ),
       List[Long](Long.MinValue,
                  0,
                  (Long.MinValue / 1000) - 1,
-                 (Long.MinValue % 1000).toInt * 1000000 + 1000000000
+                 (Long.MinValue                                         % 1000).toInt * 1000000 + 1000000000
       ),
       List[Long](Long.MinValue,
                  1,
                  (Long.MinValue / 1000) - 1,
-                 (Long.MinValue % 1000).toInt * 1000000 + 1000000000 + 1
+                 (Long.MinValue                                         % 1000).toInt * 1000000 + 1000000000 + 1
       ),
       List[Long](Long.MinValue + 1,
                  0,
                  ((Long.MinValue + 1) / 1000) - 1,
-                 ((Long.MinValue + 1) % 1000).toInt * 1000000 + 1000000000
+                 ((Long.MinValue + 1)                                   % 1000).toInt * 1000000 + 1000000000
       ),
       List[Long](Long.MinValue + 1,
                  1,
                  ((Long.MinValue + 1) / 1000) - 1,
-                 ((Long.MinValue + 1) % 1000).toInt * 1000000 + 1000000000 + 1
+                 ((Long.MinValue + 1)                                   % 1000).toInt * 1000000 + 1000000000 + 1
       )
     )
 
@@ -730,7 +730,7 @@ class TestInstant
            0,
            Long.MinValue,
            Long.MinValue / 1000 - 1,
-           (Long.MinValue % 1000).toInt * 1000000 + 1000000000
+           (Long.MinValue                                            % 1000).toInt * 1000000 + 1000000000
       )
     )
 

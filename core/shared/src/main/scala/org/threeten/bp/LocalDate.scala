@@ -276,7 +276,7 @@ object LocalDate {
    * @return
    *   the local date, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code LocalDate}
+   *   if unable to convert to a {@code LocalDate}
    */
   def from(temporal: TemporalAccessor): LocalDate = {
     val date: LocalDate = temporal.query(TemporalQueries.localDate)
@@ -594,7 +594,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * IsoChronology} using the {@code ==} operator.
    *
    * @return
-   *   the { @code IsoChronology} era constant applicable at this date, not null
+   *   the {@code IsoChronology} era constant applicable at this date, not null
    */
   override def getEra: Era = super.getEra
 
@@ -747,7 +747,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code LocalDate} based on { @code this} with the adjustment made, not null
+   *   a {@code LocalDate} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -830,7 +830,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code LocalDate} based on { @code this} with the specified field set, not null
+   *   a {@code LocalDate} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -870,7 +870,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code LocalDate} based on this date with the requested year, not null
+   *   a {@code LocalDate} based on this date with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -891,7 +891,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   a { @code LocalDate} based on this date with the requested month, not null
+   *   a {@code LocalDate} based on this date with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -912,7 +912,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   a { @code LocalDate} based on this date with the requested day, not null
+   *   a {@code LocalDate} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -931,7 +931,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   a { @code LocalDate} based on this date with the requested day, not null
+   *   a {@code LocalDate} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -954,7 +954,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code LocalDate} based on this date with the addition made, not null
+   *   a {@code LocalDate} based on this date with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -977,7 +977,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   a { @code LocalDate} based on this date with the specified period added, not null
+   *   a {@code LocalDate} based on this date with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1015,7 +1015,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param yearsToAdd
    *   the years to add, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the years added, not null
+   *   a {@code LocalDate} based on this date with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1042,7 +1042,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param monthsToAdd
    *   the months to add, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the months added, not null
+   *   a {@code LocalDate} based on this date with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1071,7 +1071,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param weeksToAdd
    *   the weeks to add, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the weeks added, not null
+   *   a {@code LocalDate} based on this date with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1091,7 +1091,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param daysToAdd
    *   the days to add, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the days added, not null
+   *   a {@code LocalDate} based on this date with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1116,7 +1116,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code LocalDate} based on this date with the subtraction made, not null
+   *   a {@code LocalDate} based on this date with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1140,7 +1140,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   a { @code LocalDate} based on this date with the specified period subtracted, not null
+   *   a {@code LocalDate} based on this date with the specified period subtracted, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1164,7 +1164,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param yearsToSubtract
    *   the years to subtract, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the years subtracted, not null
+   *   a {@code LocalDate} based on this date with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1187,7 +1187,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param monthsToSubtract
    *   the months to subtract, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the months subtracted, not null
+   *   a {@code LocalDate} based on this date with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1209,7 +1209,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param weeksToSubtract
    *   the weeks to subtract, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the weeks subtracted, not null
+   *   a {@code LocalDate} based on this date with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1231,7 +1231,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * @param daysToSubtract
    *   the days to subtract, may be negative
    * @return
-   *   a { @code LocalDate} based on this date with the days subtracted, not null
+   *   a {@code LocalDate} based on this date with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1323,7 +1323,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date, which is converted to a { @code LocalDate}, not null
+   *   the end date, which is converted to a {@code LocalDate}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1598,8 +1598,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents a point on the local time-line after the other date.
    * <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isAfter(b) == false
-   * a.isAfter(a) == false b.isAfter(a) == true </pre>
+   * a.isAfter(b) == false a.isAfter(a) == false b.isAfter(a) == true </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in
@@ -1619,8 +1618,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents a point on the local time-line before the other
    * date. <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isBefore(b) == true
-   * a.isBefore(a) == false b.isBefore(a) == false </pre>
+   * a.isBefore(b) == true a.isBefore(a) == false b.isBefore(a) == false </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in
@@ -1640,8 +1638,7 @@ final class LocalDate private (private val year: Int, monthOfYear: Int, dayOfMon
    *
    * This checks to see if this date represents the same point on the local time-line as the other
    * date. <pre> LocalDate a = LocalDate.of(2012, 6, 30); LocalDate b = LocalDate.of(2012, 7, 1);
-   * a.isEqual(b) == false
-   * a.isEqual(a) == true b.isEqual(a) == false </pre>
+   * a.isEqual(b) == false a.isEqual(a) == true b.isEqual(a) == false </pre>
    *
    * This method only considers the position of the two dates on the local time-line. It does not
    * take into account the chronology, or calendar system. This is different from the comparison in

@@ -279,8 +279,8 @@ object TTBPDateTimeFormatterBuilder {
    * @param signStyle
    *   the positive/negative sign style, not null
    * @param subsequentWidth
-   *   the width of subsequent non-negative numbers, 0 or greater,
-   * -1 if fixed width due to active adjacent parsing
+   *   the width of subsequent non-negative numbers, 0 or greater, -1 if fixed width due to active
+   *   adjacent parsing
    */
   private[format] class NumberPrinterParser private[format] (
     private[format] val field:           TemporalField,

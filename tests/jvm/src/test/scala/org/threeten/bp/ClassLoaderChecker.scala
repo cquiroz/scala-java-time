@@ -47,7 +47,7 @@ import org.threeten.bp.temporal.TemporalAccessor
  */
 object ClassLoaderChecker {
   def main(args: Array[String]): Unit = {
-    var a: Any = new ConcurrentHashMap[AnyRef, AnyRef]
+    var a: Any             = new ConcurrentHashMap[AnyRef, AnyRef]
     a.toString
     a = new ReentrantLock
     a.toString

@@ -210,7 +210,7 @@ object OffsetTime {
    * @return
    *   the offset time, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code OffsetTime}
+   *   if unable to convert to an {@code OffsetTime}
    */
   def from(temporal: TemporalAccessor): OffsetTime =
     temporal match {
@@ -454,7 +454,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the requested offset, not null
+   *   an {@code OffsetTime} based on this time with the requested offset, not null
    */
   def withOffsetSameLocal(offset: ZoneOffset): OffsetTime =
     if (offset != null && (offset == this.offset)) this
@@ -477,7 +477,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param offset
    *   the zone offset to change to, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the requested offset, not null
+   *   an {@code OffsetTime} based on this time with the requested offset, not null
    */
   def withOffsetSameInstant(offset: ZoneOffset): OffsetTime =
     if (offset == this.offset)
@@ -543,7 +543,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   an { @code OffsetTime} based on { @code this} with the adjustment made, not null
+   *   an {@code OffsetTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -588,7 +588,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   an { @code OffsetTime} based on { @code this} with the specified field set, not null
+   *   an {@code OffsetTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -613,7 +613,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   an { @code OffsetTime} based on this time with the requested hour, not null
+   *   an {@code OffsetTime} based on this time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -629,7 +629,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetTime} based on this time with the requested minute, not null
+   *   an {@code OffsetTime} based on this time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -645,7 +645,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   an { @code OffsetTime} based on this time with the requested second, not null
+   *   an {@code OffsetTime} based on this time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -661,7 +661,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   an { @code OffsetTime} based on this time with the requested nanosecond, not null
+   *   an {@code OffsetTime} based on this time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nanos value is invalid
    */
@@ -685,7 +685,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the time truncated, not null
+   *   an {@code OffsetTime} based on this time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -705,7 +705,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param amount
    *   the amount to add, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the addition made, not null
+   *   an {@code OffsetTime} based on this time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -730,7 +730,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the specified period added, not null
+   *   an {@code OffsetTime} based on this time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -749,7 +749,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the hours added, not null
+   *   an {@code OffsetTime} based on this time with the hours added, not null
    */
   def plusHours(hours: Long): OffsetTime = `with`(time.plusHours(hours), offset)
 
@@ -764,7 +764,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the minutes added, not null
+   *   an {@code OffsetTime} based on this time with the minutes added, not null
    */
   def plusMinutes(minutes: Long): OffsetTime = `with`(time.plusMinutes(minutes), offset)
 
@@ -779,7 +779,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the seconds added, not null
+   *   an {@code OffsetTime} based on this time with the seconds added, not null
    */
   def plusSeconds(seconds: Long): OffsetTime = `with`(time.plusSeconds(seconds), offset)
 
@@ -794,7 +794,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the nanoseconds added, not null
+   *   an {@code OffsetTime} based on this time with the nanoseconds added, not null
    */
   def plusNanos(nanos: Long): OffsetTime = `with`(time.plusNanos(nanos), offset)
 
@@ -812,7 +812,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the subtraction made, not null
+   *   an {@code OffsetTime} based on this time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -837,7 +837,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   an { @code OffsetTime} based on this time with the specified period subtracted, not null
+   *   an {@code OffsetTime} based on this time with the specified period subtracted, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -856,7 +856,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the hours subtracted, not null
+   *   an {@code OffsetTime} based on this time with the hours subtracted, not null
    */
   def minusHours(hours: Long): OffsetTime = `with`(time.minusHours(hours), offset)
 
@@ -871,7 +871,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the minutes subtracted, not null
+   *   an {@code OffsetTime} based on this time with the minutes subtracted, not null
    */
   def minusMinutes(minutes: Long): OffsetTime = `with`(time.minusMinutes(minutes), offset)
 
@@ -886,7 +886,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the seconds subtracted, not null
+   *   an {@code OffsetTime} based on this time with the seconds subtracted, not null
    */
   def minusSeconds(seconds: Long): OffsetTime = `with`(time.minusSeconds(seconds), offset)
 
@@ -901,7 +901,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   an { @code OffsetTime} based on this time with the nanoseconds subtracted, not null
+   *   an {@code OffsetTime} based on this time with the nanoseconds subtracted, not null
    */
   def minusNanos(nanos: Long): OffsetTime = `with`(time.minusNanos(nanos), offset)
 
@@ -1000,7 +1000,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end time, which is converted to an { @code OffsetTime}, not null
+   *   the end time, which is converted to an {@code OffsetTime}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1088,7 +1088,7 @@ final class OffsetTime(private val time: LocalTime, private val offset: ZoneOffs
    * @return
    *   the comparator value, negative if less, positive if greater
    * @throws NullPointerException
-   *   if { @code other} is null
+   *   if {@code other} is null
    */
   def compare(other: OffsetTime): Int =
     if (offset == other.offset)

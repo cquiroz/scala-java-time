@@ -81,7 +81,7 @@ object Chronology {
    * @return
    *   the chronology, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code Chronology}
+   *   if unable to convert to an {@code Chronology}
    */
   def from(temporal: TemporalAccessor): Chronology = {
     Objects.requireNonNull(temporal, "temporal")
@@ -290,7 +290,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoLocalDate}, not null
+   *   the date-time checked and cast to {@code ChronoLocalDate}, not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoLocalDate or the chronology is not equal this Chrono
    */
@@ -309,7 +309,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoLocalDateTime}, not null
+   *   the date-time checked and cast to {@code ChronoLocalDateTime}, not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoLocalDateTimeImpl or the chronology is not equal
    *   this Chrono
@@ -331,7 +331,7 @@ trait Chronology extends Ordered[Chronology] {
    * @param temporal
    *   a date-time to cast, not null
    * @return
-   *   the date-time checked and cast to { @code ChronoZonedDateTimeImpl}, not null
+   *   the date-time checked and cast to {@code ChronoZonedDateTimeImpl}, not null
    * @throws ClassCastException
    *   if the date-time cannot be cast to ChronoZonedDateTimeImpl or the chronology is not equal
    *   this Chrono
@@ -392,7 +392,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def date(era: Era, yearOfEra: Int, month: Int, dayOfMonth: Int): ChronoLocalDate =
     date(prolepticYear(era, yearOfEra), month, dayOfMonth)
@@ -428,7 +428,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): ChronoLocalDate =
     dateYearDay(prolepticYear(era, yearOfEra), dayOfYear)
@@ -681,7 +681,7 @@ trait Chronology extends Ordered[Chronology] {
    * @throws DateTimeException
    *   if unable to convert
    * @throws ClassCastException
-   *   if the { @code era} is not of the correct type for the chronology
+   *   if the {@code era} is not of the correct type for the chronology
    */
   def prolepticYear(era: Era, yearOfEra: Int): Int
 

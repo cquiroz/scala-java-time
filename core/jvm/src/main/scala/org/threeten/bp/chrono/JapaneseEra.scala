@@ -86,13 +86,13 @@ object JapaneseEra {
    * Obtains an instance of {@code JapaneseEra} from an {@code int} value.
    *
    * The {@link #SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1 Later era
-   * is numbered 2 ({@link #HEISEI}). Earlier eras are numbered 0 ({@link #TAISHO}),
-   * -1 ({@link #MEIJI}), only Meiji and later eras are supported.
+   * is numbered 2 ({@link #HEISEI}). Earlier eras are numbered 0 ({@link #TAISHO}), -1 ({@link
+   * #MEIJI}), only Meiji and later eras are supported.
    *
    * @param japaneseEra
    *   the era to represent
    * @return
-   *   the { @code JapaneseEra} singleton, not null
+   *   the {@code JapaneseEra} singleton, not null
    * @throws DateTimeException
    *   if the value is invalid
    */
@@ -112,7 +112,7 @@ object JapaneseEra {
    * @param japaneseEra
    *   the japaneseEra name; non-null
    * @return
-   *   the { @code JapaneseEra} singleton, never null
+   *   the {@code JapaneseEra} singleton, never null
    * @throws IllegalArgumentException
    *   if there is not JapaneseEra with the specified name
    */
