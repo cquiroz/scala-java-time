@@ -110,7 +110,7 @@ object ChronoZonedDateTime {
    * @return
    *   the date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ChronoZonedDateTime}
+   *   if unable to convert to a {@code ChronoZonedDateTime}
    * @see
    *   Chronology#zonedDateTime(TemporalAccessor)
    */
@@ -259,7 +259,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ZoneChronoDateTime} based on this date-time with the earlier offset, not null
+   *   a {@code ZoneChronoDateTime} based on this date-time with the earlier offset, not null
    * @throws DateTimeException
    *   if no rules can be found for the zone
    * @throws DateTimeException
@@ -281,7 +281,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the later offset, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the later offset, not null
    * @throws DateTimeException
    *   if no rules can be found for the zone
    * @throws DateTimeException
@@ -303,7 +303,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * @param zoneId
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null
    */
   def withZoneSameLocal(zoneId: ZoneId): ChronoZonedDateTime[D]
 
@@ -321,7 +321,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * @param zoneId
    *   the time-zone to change to, not null
    * @return
-   *   a { @code ChronoZonedDateTime} based on this date-time with the requested zone, not null
+   *   a {@code ChronoZonedDateTime} based on this date-time with the requested zone, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -377,7 +377,7 @@ trait ChronoZonedDateTime[D <: ChronoLocalDate]
    * #getOffset() offset}.
    *
    * @return
-   *   an { @code Instant} representing the same instant, not null
+   *   an {@code Instant} representing the same instant, not null
    */
   def toInstant: Instant = Instant.ofEpochSecond(toEpochSecond, toLocalTime.getNano.toLong)
 

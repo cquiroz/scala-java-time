@@ -68,7 +68,7 @@ object ZoneOffsetTransitionRule {
    * @param dayOfMonthIndicator
    *   the day of the month-day of the cutover week, positive if the week is that day or later,
    *   negative if the week is that day or earlier, counting from the last day of the month, from
-   * -28 to 31 excluding 0
+   *   -28 to 31 excluding 0
    * @param dayOfWeek
    *   the required day-of-week, null if the month-day should not be changed
    * @param time
