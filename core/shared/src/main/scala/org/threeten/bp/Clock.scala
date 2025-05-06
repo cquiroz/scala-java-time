@@ -184,7 +184,9 @@ object Clock {
     if (tickDuration.isNegative)
       throw new IllegalArgumentException("Tick duration must not be negative")
     val tickNanos: Long = tickDuration.toNanos
-    if (tickNanos % 1000000 == 0) {} else if (1000000000 % tickNanos == 0) {} else
+    if (tickNanos % 1000000 == 0) {}
+    else if (1000000000 % tickNanos == 0) {}
+    else
       throw new IllegalArgumentException("Invalid tick duration")
     if (tickNanos <= 1)
       return baseClock

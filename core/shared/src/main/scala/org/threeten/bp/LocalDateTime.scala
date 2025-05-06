@@ -432,7 +432,7 @@ object LocalDateTime {
    * @return
    *   the local date-time, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code LocalDateTime}
+   *   if unable to convert to a {@code LocalDateTime}
    */
   def from(temporal: TemporalAccessor): LocalDateTime =
     temporal match {
@@ -823,7 +823,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code LocalDateTime} based on { @code this} with the adjustment made, not null
+   *   a {@code LocalDateTime} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -867,7 +867,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code LocalDateTime} based on { @code this} with the specified field set, not null
+   *   a {@code LocalDateTime} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -891,7 +891,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param year
    *   the year to set in the result, from MIN_YEAR to MAX_YEAR
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested year, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested year, not null
    * @throws DateTimeException
    *   if the year value is invalid
    */
@@ -907,7 +907,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param month
    *   the month-of-year to set in the result, from 1 (January) to 12 (December)
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested month, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested month, not null
    * @throws DateTimeException
    *   if the month-of-year value is invalid
    */
@@ -923,7 +923,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param dayOfMonth
    *   the day-of-month to set in the result, from 1 to 28-31
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested day, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-month value is invalid
    * @throws DateTimeException
@@ -940,7 +940,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param dayOfYear
    *   the day-of-year to set in the result, from 1 to 365-366
    * @return
-   *   a { @code LocalDateTime} based on this date with the requested day, not null
+   *   a {@code LocalDateTime} based on this date with the requested day, not null
    * @throws DateTimeException
    *   if the day-of-year value is invalid
    * @throws DateTimeException
@@ -956,7 +956,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param hour
    *   the hour-of-day to set in the result, from 0 to 23
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested hour, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested hour, not null
    * @throws DateTimeException
    *   if the hour value is invalid
    */
@@ -971,7 +971,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param minute
    *   the minute-of-hour to set in the result, from 0 to 59
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested minute, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested minute, not null
    * @throws DateTimeException
    *   if the minute value is invalid
    */
@@ -988,7 +988,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param second
    *   the second-of-minute to set in the result, from 0 to 59
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested second, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested second, not null
    * @throws DateTimeException
    *   if the second value is invalid
    */
@@ -1005,7 +1005,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param nanoOfSecond
    *   the nano-of-second to set in the result, from 0 to 999,999,999
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the requested nanosecond, not null
+   *   a {@code LocalDateTime} based on this date-time with the requested nanosecond, not null
    * @throws DateTimeException
    *   if the nano value is invalid
    */
@@ -1030,7 +1030,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param unit
    *   the unit to truncate to, not null
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the time truncated, not null
+   *   a {@code LocalDateTime} based on this date-time with the time truncated, not null
    * @throws DateTimeException
    *   if unable to truncate
    */
@@ -1049,7 +1049,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the addition made, not null
+   *   a {@code LocalDateTime} based on this date-time with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -1073,7 +1073,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param unit
    *   the unit of the period to add, not null
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the specified period added, not null
+   *   a {@code LocalDateTime} based on this date-time with the specified period added, not null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
    */
@@ -1114,7 +1114,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param years
    *   the years to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the years added, not null
+   *   a {@code LocalDateTime} based on this date-time with the years added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1138,7 +1138,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param months
    *   the months to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the months added, not null
+   *   a {@code LocalDateTime} based on this date-time with the months added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1161,7 +1161,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param weeks
    *   the weeks to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the weeks added, not null
+   *   a {@code LocalDateTime} based on this date-time with the weeks added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1184,7 +1184,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param days
    *   the days to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the days added, not null
+   *   a {@code LocalDateTime} based on this date-time with the days added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1201,7 +1201,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param hours
    *   the hours to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the hours added, not null
+   *   a {@code LocalDateTime} based on this date-time with the hours added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1215,7 +1215,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param minutes
    *   the minutes to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the minutes added, not null
+   *   a {@code LocalDateTime} based on this date-time with the minutes added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1229,7 +1229,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param seconds
    *   the seconds to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the seconds added, not null
+   *   a {@code LocalDateTime} based on this date-time with the seconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1243,7 +1243,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param nanos
    *   the nanos to add, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the nanoseconds added, not null
+   *   a {@code LocalDateTime} based on this date-time with the nanoseconds added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1262,7 +1262,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the subtraction made, not null
+   *   a {@code LocalDateTime} based on this date-time with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -1286,7 +1286,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param unit
    *   the unit of the period to subtract, not null
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the specified period subtracted, not
+   *   a {@code LocalDateTime} based on this date-time with the specified period subtracted, not
    *   null
    * @throws DateTimeException
    *   if the unit cannot be added to this type
@@ -1311,7 +1311,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param years
    *   the years to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the years subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the years subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1334,7 +1334,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param months
    *   the months to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the months subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the months subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1356,7 +1356,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param weeks
    *   the weeks to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the weeks subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the weeks subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1378,7 +1378,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param days
    *   the days to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the days subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the days subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1394,7 +1394,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param hours
    *   the hours to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the hours subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the hours subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1408,7 +1408,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param minutes
    *   the minutes to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the minutes subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the minutes subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1422,7 +1422,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param seconds
    *   the seconds to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the seconds subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the seconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1437,7 +1437,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * @param nanos
    *   the nanos to subtract, may be negative
    * @return
-   *   a { @code LocalDateTime} based on this date-time with the nanoseconds subtracted, not null
+   *   a {@code LocalDateTime} based on this date-time with the nanoseconds subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported date range
    */
@@ -1572,7 +1572,7 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end date-time, which is converted to a { @code LocalDateTime}, not null
+   *   the end date-time, which is converted to a {@code LocalDateTime}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return
@@ -1739,9 +1739,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents a point on the local time-line after the other
    * date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isAfter(b) == false
-   * a.isAfter(a) == false b.isAfter(a) == true </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isAfter(b) == false a.isAfter(a) == false b.isAfter(a) ==
+   * true </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
@@ -1764,9 +1763,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents a point on the local time-line before the other
    * date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isBefore(b) == true
-   * a.isBefore(a) == false b.isBefore(a) == false </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isBefore(b) == true a.isBefore(a) == false
+   * b.isBefore(a) == false </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
@@ -1789,9 +1787,8 @@ final class LocalDateTime private (private val date: LocalDate, private val time
    *
    * This checks to see if this date-time represents the same point on the local time-line as the
    * other date-time. <pre> LocalDate a = LocalDateTime.of(2012, 6, 30, 12, 00); LocalDate b =
-   * LocalDateTime.of(2012, 7, 1, 12, 00);
-   * a.isEqual(b) == false
-   * a.isEqual(a) == true b.isEqual(a) == false </pre>
+   * LocalDateTime.of(2012, 7, 1, 12, 00); a.isEqual(b) == false a.isEqual(a) == true b.isEqual(a) ==
+   * false </pre>
    *
    * This method only considers the position of the two date-times on the local time-line. It does
    * not take into account the chronology, or calendar system. This is different from the comparison
