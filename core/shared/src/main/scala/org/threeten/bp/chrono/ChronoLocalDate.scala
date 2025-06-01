@@ -101,7 +101,7 @@ object ChronoLocalDate {
    * @return
    *   the date, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ChronoLocalDate}
+   *   if unable to convert to a {@code ChronoLocalDate}
    * @see
    *   Chronology#date(TemporalAccessor)
    */

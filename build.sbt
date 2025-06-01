@@ -160,7 +160,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .disablePlugins(TypelevelScalaJSGitHubPlugin)
   .settings(commonSettings)
   .settings(
-    name := "scala-java-time",
+    name                                          := "scala-java-time",
     libraryDependencies += ("org.portable-scala" %%% "portable-scala-reflect" % "1.1.3")
       .cross(CrossVersion.for3Use2_13)
   )

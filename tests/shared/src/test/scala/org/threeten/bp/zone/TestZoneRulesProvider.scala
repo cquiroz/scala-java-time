@@ -61,7 +61,7 @@ object TestZoneRulesProvider {
 
 class TestZoneRulesProvider extends AnyFunSuite with AssertionsHelper {
   test("getAvailableGroupIds") {
-    val zoneIds: java.util.Set[String] = ZoneRulesProvider.getAvailableZoneIds
+    val zoneIds: java.util.Set[String]  = ZoneRulesProvider.getAvailableZoneIds
     assertTrue(zoneIds.contains("Europe/London"))
     try {
       zoneIds.clear()

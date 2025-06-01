@@ -88,7 +88,7 @@ object HijrahDateConfigurator {
           case _: NumberFormatException =>
             throw new ParseException(s"Offset is not properly set at line $num.", num)
         }
-        val separatorIndex: Int = deviationElement.indexOf('-')
+        val separatorIndex: Int  = deviationElement.indexOf('-')
         if (separatorIndex != -1) {
           val startDateStg: String       = deviationElement.substring(0, separatorIndex)
           val endDateStg: String         = deviationElement.substring(separatorIndex + 1, offsetIndex)

@@ -915,7 +915,7 @@ final class DateTimeFormatterBuilder private (
    * @return
    *   this, for chaining, not null
    * @throws IllegalArgumentException
-   *   if style is neither { @link TextStyle#FULL full} nor { @link TextStyle#SHORT short}
+   *   if style is neither {@link TextStyle#FULL full} nor {@link TextStyle#SHORT short}
    */
   def appendLocalizedOffset(style: TextStyle): DateTimeFormatterBuilder = {
     Objects.requireNonNull(style, "style")
@@ -1235,10 +1235,9 @@ final class DateTimeFormatterBuilder private (
    *
    * All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The characters '{' and
    * '}' are reserved for future use. The characters '[' and ']' indicate optional patterns. The
-   * following pattern letters are defined: <pre> Symbol Meaning Presentation Examples
-   * ------ ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004;
-   * 04 D day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month
-   * number 10
+   * following pattern letters are defined: <pre> Symbol Meaning Presentation Examples ------
+   * ------- ------------ ------- G era number/text 1; 01; AD; Anno Domini y year year 2004; 04 D
+   * day-of-year number 189 M month-of-year number/text 7; 07; Jul; July; J d day-of-month number 10
    *
    * Q quarter-of-year number/text 3; 03; Q3 Y week-based-year year 1996; 96 w week-of-year number
    * 27 W week-of-month number 27 e localized day-of-week number 2; Tue; Tuesday; T E day-of-week
@@ -1705,7 +1704,7 @@ final class DateTimeFormatterBuilder private (
    * @return
    *   this, for chaining, not null
    * @throws IllegalStateException
-   *   if there was no previous call to { @code optionalStart}
+   *   if there was no previous call to {@code optionalStart}
    */
   def optionalEnd(): DateTimeFormatterBuilder = {
     if (active.parent == null)

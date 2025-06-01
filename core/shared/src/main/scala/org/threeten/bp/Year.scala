@@ -129,7 +129,7 @@ object Year {
    * 1BC/BCE is represented by 0.<br> The year 2BC/BCE is represented by -1.<br>
    *
    * @param isoYear
-   *   the ISO proleptic year to represent, from { @code MIN_VALUE} to { @code MAX_VALUE}
+   *   the ISO proleptic year to represent, from {@code MIN_VALUE} to {@code MAX_VALUE}
    * @return
    *   the year, not null
    * @throws DateTimeException
@@ -158,7 +158,7 @@ object Year {
    * @return
    *   the year, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Year}
+   *   if unable to convert to a {@code Year}
    */
   def from(temporal: TemporalAccessor): Year = {
     var _temporal = temporal
@@ -281,7 +281,7 @@ final class Year private (private val year: Int)
    * The year returned by this method is proleptic as per {@code get(YEAR)}.
    *
    * @return
-   *   the year, { @code MIN_VALUE} to { @code MAX_VALUE}
+   *   the year, {@code MIN_VALUE} to {@code MAX_VALUE}
    */
   def getValue: Int = year
 
@@ -463,7 +463,7 @@ final class Year private (private val year: Int)
    * @param adjuster
    *   the adjuster to use, not null
    * @return
-   *   a { @code Year} based on { @code this} with the adjustment made, not null
+   *   a {@code Year} based on {@code this} with the adjustment made, not null
    * @throws DateTimeException
    *   if the adjustment cannot be made
    * @throws ArithmeticException
@@ -502,7 +502,7 @@ final class Year private (private val year: Int)
    * @param newValue
    *   the new value of the field in the result
    * @return
-   *   a { @code Year} based on { @code this} with the specified field set, not null
+   *   a {@code Year} based on {@code this} with the specified field set, not null
    * @throws DateTimeException
    *   if the field cannot be set
    * @throws ArithmeticException
@@ -535,7 +535,7 @@ final class Year private (private val year: Int)
    * @param amount
    *   the amount to add, not null
    * @return
-   *   a { @code Year} based on this year with the addition made, not null
+   *   a {@code Year} based on this year with the addition made, not null
    * @throws DateTimeException
    *   if the addition cannot be made
    * @throws ArithmeticException
@@ -547,9 +547,9 @@ final class Year private (private val year: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   def plus(amountToAdd: Long, unit: TemporalUnit): Year =
     unit match {
@@ -574,7 +574,7 @@ final class Year private (private val year: Int)
    * @param yearsToAdd
    *   the years to add, may be negative
    * @return
-   *   a { @code Year} based on this year with the period added, not null
+   *   a {@code Year} based on this year with the period added, not null
    * @throws DateTimeException
    *   if the result exceeds the supported year range
    */
@@ -597,7 +597,7 @@ final class Year private (private val year: Int)
    * @param amount
    *   the amount to subtract, not null
    * @return
-   *   a { @code Year} based on this year with the subtraction made, not null
+   *   a {@code Year} based on this year with the subtraction made, not null
    * @throws DateTimeException
    *   if the subtraction cannot be made
    * @throws ArithmeticException
@@ -609,9 +609,9 @@ final class Year private (private val year: Int)
    * {@inheritDoc}
    *
    * @throws DateTimeException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    * @throws ArithmeticException
-   *   { @inheritDoc}
+   *   {@inheritDoc}
    */
   override def minus(amountToSubtract: Long, unit: TemporalUnit): Year =
     if (amountToSubtract == Long.MinValue) plus(Long.MaxValue, unit).plus(1, unit)
@@ -625,7 +625,7 @@ final class Year private (private val year: Int)
    * @param yearsToSubtract
    *   the years to subtract, may be negative
    * @return
-   *   a { @code Year} based on this year with the period subtracted, not null
+   *   a {@code Year} based on this year with the period subtracted, not null
    * @throws DateTimeException
    *   if the result exceeds the supported year range
    */
@@ -729,7 +729,7 @@ final class Year private (private val year: Int)
    * This instance is immutable and unaffected by this method call.
    *
    * @param endExclusive
-   *   the end year, which is converted to a { @code Year}, not null
+   *   the end year, which is converted to a {@code Year}, not null
    * @param unit
    *   the unit to measure the period in, not null
    * @return

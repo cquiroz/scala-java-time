@@ -1632,7 +1632,7 @@ class TestLocalDateTime
       while (i < 50) {
         {
           t = t.plusHours(1)
-          if ((i + 1)                     % 24 == 0)
+          if ((i + 1) % 24 == 0)
             d = d.plusDays(1)
           assertEquals(t.toLocalDate, d)
           assertEquals(t.getHour, (i + 1) % 24)
@@ -2308,7 +2308,7 @@ class TestLocalDateTime
       while (i < 50) {
         {
           t = t.minusHours(1)
-          if (i                               % 24 == 0)
+          if (i % 24 == 0)
             d = d.minusDays(1)
           assertEquals(t.toLocalDate, d)
           assertEquals(t.getHour, (((-i + 23) % 24) + 24) % 24)

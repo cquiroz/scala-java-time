@@ -354,7 +354,7 @@ class TestChronoLocalDateTime extends AnyFunSuite with AssertionsHelper {
                 .atTime(d.toLocalTime)
                 .asInstanceOf[ChronoLocalDateTime[_ <: ChronoLocalDate]]
             )
-          var i: Int = 0
+          var i: Int                                                                = 0
           while (i < dates.size) {
             val a: ChronoLocalDateTime[_ <: ChronoLocalDate] = dates.get(i)
             var j: Int                                       = 0

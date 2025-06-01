@@ -2234,15 +2234,16 @@ class TestZoneRulesBuilder extends AnyFunSuite with AssertionsHelper {
     assertThrows[NullPointerException] {
       val b: ZoneRulesBuilder = new ZoneRulesBuilder
       b.addWindowForever(TestZoneRulesBuilder.OFFSET_1)
-      b.addRuleToWindow(2000,
-                        Year.MAX_VALUE,
-                        null.asInstanceOf[Month],
-                        31,
-                        SUNDAY,
-                        TestZoneRulesBuilder.time(1, 0),
-                        timeEndOfDay = false,
-                        WALL,
-                        TestZoneRulesBuilder.PERIOD_1HOUR30MIN
+      b.addRuleToWindow(
+        2000,
+        Year.MAX_VALUE,
+        null.asInstanceOf[Month],
+        31,
+        SUNDAY,
+        TestZoneRulesBuilder.time(1, 0),
+        timeEndOfDay = false,
+        WALL,
+        TestZoneRulesBuilder.PERIOD_1HOUR30MIN
       )
     }
   }

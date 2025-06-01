@@ -134,7 +134,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @param value
    *   the value to add, not null
    * @return
-   *   { @code this}, for method chaining
+   *   {@code this}, for method chaining
    * @throws DateTimeException
    *   if the field is already present with a different value
    */
@@ -166,7 +166,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @param resolverStyle
    *   how to resolve
    * @return
-   *   { @code this}, for method chaining
+   *   {@code this}, for method chaining
    */
   def resolve(
     resolverStyle:  ResolverStyle,
@@ -295,14 +295,16 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
     if (fieldValues.containsKey(CLOCK_HOUR_OF_DAY)) {
       val ch: Long = fieldValues.remove(CLOCK_HOUR_OF_DAY)
       if (resolverStyle ne ResolverStyle.LENIENT)
-        if ((resolverStyle eq ResolverStyle.SMART) && ch == 0) {} else
+        if ((resolverStyle eq ResolverStyle.SMART) && ch == 0) {}
+        else
           CLOCK_HOUR_OF_DAY.checkValidValue(ch)
       addFieldValue(HOUR_OF_DAY, if (ch == 24) 0 else ch)
     }
     if (fieldValues.containsKey(CLOCK_HOUR_OF_AMPM)) {
       val ch: Long = fieldValues.remove(CLOCK_HOUR_OF_AMPM)
       if (resolverStyle ne ResolverStyle.LENIENT)
-        if ((resolverStyle eq ResolverStyle.SMART) && ch == 0) {} else
+        if ((resolverStyle eq ResolverStyle.SMART) && ch == 0) {}
+        else
           CLOCK_HOUR_OF_AMPM.checkValidValue(ch)
       addFieldValue(HOUR_OF_AMPM, if (ch == 12) 0 else ch)
     }
@@ -554,7 +556,7 @@ final class DateTimeBuilder() extends TemporalAccessor with Cloneable {
    * @tparam R
    *   the type to return
    * @param type
-   *   the type to invoke { @code from} on, not null
+   *   the type to invoke {@code from} on, not null
    * @return
    *   the extracted value, not null
    * @throws DateTimeException

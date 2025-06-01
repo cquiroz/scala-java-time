@@ -327,7 +327,7 @@ object WeekFields {
      * Returns the week number computed from the reference day and reference dayOfWeek.
      *
      * @param offset
-     *   the offset to align a date with the start of week from { @link #startOfWeekOffset}.
+     *   the offset to align a date with the start of week from {@link #startOfWeekOffset}.
      * @param day
      *   the day for which to compute the week number
      * @return
