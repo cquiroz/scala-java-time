@@ -97,7 +97,7 @@ trait ChronoPeriod extends TemporalAmount {
    * unsupported unit will throw an exception.
    *
    * @param unit
-   *   the { @code TemporalUnit} for which to return the value
+   *   the {@code TemporalUnit} for which to return the value
    * @return
    *   the long value of the unit
    * @throws DateTimeException
@@ -177,7 +177,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param amountToAdd
    *   the period to add, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the requested period added, not null
+   *   a {@code ChronoPeriod} based on this period with the requested period added, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -195,7 +195,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param amountToSubtract
    *   the period to subtract, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the requested period subtracted, not null
+   *   a {@code ChronoPeriod} based on this period with the requested period subtracted, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs
    */
@@ -212,7 +212,7 @@ trait ChronoPeriod extends TemporalAmount {
    * @param scalar
    *   the scalar to multiply by, not null
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts multiplied by the scalar, not
+   *   a {@code ChronoPeriod} based on this period with the amounts multiplied by the scalar, not
    *   null
    * @throws ArithmeticException
    *   if numeric overflow occurs
@@ -227,7 +227,7 @@ trait ChronoPeriod extends TemporalAmount {
    * normalization is performed.
    *
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts negated, not null
+   *   a {@code ChronoPeriod} based on this period with the amounts negated, not null
    * @throws ArithmeticException
    *   if numeric overflow occurs, which only happens if one of the units has the value { @code
    *   Long.MIN_VALUE}
@@ -244,7 +244,7 @@ trait ChronoPeriod extends TemporalAmount {
    * This instance is immutable and unaffected by this method call.
    *
    * @return
-   *   a { @code ChronoPeriod} based on this period with the amounts of each unit normalized, not
+   *   a {@code ChronoPeriod} based on this period with the amounts of each unit normalized, not
    *   null
    * @throws ArithmeticException
    *   if numeric overflow occurs
