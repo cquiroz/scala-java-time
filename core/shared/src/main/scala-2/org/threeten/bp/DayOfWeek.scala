@@ -159,7 +159,7 @@ object DayOfWeek {
    * @return
    *   the day-of-week, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code DayOfWeek}
+   *   if unable to convert to a {@code DayOfWeek}
    */
   def from(temporal: TemporalAccessor): DayOfWeek = {
     temporal match {
@@ -288,7 +288,7 @@ final class DayOfWeek(name: String, ordinal: Int)
    * @throws DateTimeException
    *   if a value for the field cannot be obtained
    * @throws DateTimeException
-   *   if the range of valid values for the field exceeds an { @code int}
+   *   if the range of valid values for the field exceeds an {@code int}
    * @throws DateTimeException
    *   if the value is outside the range of valid values for the field
    * @throws ArithmeticException

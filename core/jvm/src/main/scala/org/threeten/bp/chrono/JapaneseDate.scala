@@ -222,7 +222,7 @@ object JapaneseDate {
    * @return
    *   the date in Japanese calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code JapaneseDate}
+   *   if unable to convert to a {@code JapaneseDate}
    */
   def from(temporal: TemporalAccessor): JapaneseDate = JapaneseChronology.INSTANCE.date(temporal)
 
@@ -418,9 +418,9 @@ final class JapaneseDate private[chrono] (
    * @param yearOfEra
    *   the year-of-era to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year, never null
+   *   a {@code JapaneseDate} based on this date with the requested year, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@code year} is invalid
    */
   private def withYear(era: JapaneseEra, yearOfEra: Int): JapaneseDate = {
     val year: Int = JapaneseChronology.INSTANCE.prolepticYear(era, yearOfEra)
@@ -438,9 +438,9 @@ final class JapaneseDate private[chrono] (
    * @param year
    *   the year to set in the returned date
    * @return
-   *   a { @code JapaneseDate} based on this date with the requested year-of-era, never null
+   *   a {@code JapaneseDate} based on this date with the requested year-of-era, never null
    * @throws DateTimeException
-   *   if { @code year} is invalid
+   *   if {@code year} is invalid
    */
   private def withYear(year: Int): JapaneseDate = withYear(getEra, year)
 

@@ -194,7 +194,7 @@ final class JapaneseChronology private () extends Chronology with Serializable {
    * @throws DateTimeException
    *   if unable to create the date
    * @throws ClassCastException
-   *   if the { @code era} is not a { @code JapaneseEra}
+   *   if the {@code era} is not a {@code JapaneseEra}
    */
   override def dateYearDay(era: Era, yearOfEra: Int, dayOfYear: Int): JapaneseDate =
     if (!era.isInstanceOf[JapaneseEra]) throw new ClassCastException("Era must be JapaneseEra")
@@ -283,9 +283,9 @@ final class JapaneseChronology private () extends Chronology with Serializable {
    * @param eraValue
    *   the era value
    * @return
-   *   the Japanese { @code Era} for the given numeric era value
+   *   the Japanese {@code Era} for the given numeric era value
    * @throws DateTimeException
-   *   if { @code eraValue} is invalid
+   *   if {@code eraValue} is invalid
    */
   def eraOf(eraValue: Int): JapaneseEra = JapaneseEra.of(eraValue)
 

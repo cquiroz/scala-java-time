@@ -182,7 +182,7 @@ object Performance {
       total += dt.getMinute
       total += dt.getSecond
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("LocalDT:   Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("LocalDT-Q", end - start)
   }
@@ -195,7 +195,7 @@ object Performance {
       buf.setLength(0)
       buf.append(format.format(dt))
     }
-    val end: Long = System.nanoTime
+    val end: Long                 = System.nanoTime
     System.out.println("LocalDT:   Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("LocalDT-P", end - start)
   }
@@ -210,7 +210,7 @@ object Performance {
       total += dt.get(HOUR_OF_DAY)
       total += dt.get(MINUTE_OF_HOUR)
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("LocalDT:   Derive: " + NF.format(end - start) + " ns" + " " + total)
     result("LocalDT-V", end - start)
   }
@@ -248,7 +248,7 @@ object Performance {
       total += dt.getMonth.getValue
       total += dt.getDayOfMonth
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("LocalD:    Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("LocalD-Q", end - start)
   }
@@ -261,7 +261,7 @@ object Performance {
       buf.setLength(0)
       buf.append(format.format(dt))
     }
-    val end: Long = System.nanoTime
+    val end: Long                 = System.nanoTime
     System.out.println("LocalD:    Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("LocalD-P", end - start)
   }
@@ -303,7 +303,7 @@ object Performance {
       total += dt.getSecond
       total += dt.getNano
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("LocalT:    Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("LocalT-Q", end - start)
   }
@@ -316,7 +316,7 @@ object Performance {
       buf.setLength(0)
       buf.append(format.format(dt))
     }
-    val end: Long = System.nanoTime
+    val end: Long                 = System.nanoTime
     System.out.println("LocalT:    Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("LocalT-P", end - start)
   }
@@ -330,7 +330,7 @@ object Performance {
       total += dt.get(SECOND_OF_MINUTE)
       total += dt.get(NANO_OF_SECOND)
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("LocalT:    Derive: " + NF.format(end - start) + " ns" + " " + total)
     result("LocalT-V", end - start)
   }
@@ -380,7 +380,7 @@ object Performance {
       total += dt.getMinute
       total += dt.getSecond
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("ZonedDT:   Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("ZonedDT-Q", end - start)
   }
@@ -393,7 +393,7 @@ object Performance {
       buf.setLength(0)
       buf.append(format.format(dt))
     }
-    val end: Long = System.nanoTime
+    val end: Long                 = System.nanoTime
     System.out.println("ZonedDT:   Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("ZonedDT-P", end - start)
   }
@@ -429,7 +429,7 @@ object Performance {
       total += dt.getEpochSecond
       total += dt.getNano
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("Instant:   Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("Instant-Q", end - start)
   }
@@ -441,7 +441,7 @@ object Performance {
       buf.setLength(0)
       buf.append(dt.toString)
     }
-    val end: Long = System.nanoTime
+    val end: Long          = System.nanoTime
     System.out.println("Instant:   Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("Instant-P", end - start)
   }
@@ -475,7 +475,7 @@ object Performance {
     val start: Long = System.nanoTime
     for (dt <- list.asScala)
       total += dt.getTime
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("Date:      Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("JUDate-Q", end - start)
   }
@@ -487,7 +487,7 @@ object Performance {
       buf.setLength(0)
       buf.append(dt.toString)
     }
-    val end: Long = System.nanoTime
+    val end: Long          = System.nanoTime
     System.out.println("Date:      Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("JUDate-P", end - start)
   }
@@ -537,7 +537,7 @@ object Performance {
       total += gcal.get(Calendar.SECOND)
       total += gcal.get(Calendar.SECOND)
     }
-    val end: Long = System.nanoTime
+    val end: Long   = System.nanoTime
     System.out.println("GCalendar: Query:  " + NF.format(end - start) + " ns" + " " + total)
     result("GregCal-Q", end - start)
   }
@@ -550,7 +550,7 @@ object Performance {
       buf.setLength(0)
       buf.append(format.format(gcal.getTime))
     }
-    val end: Long = System.nanoTime
+    val end: Long                = System.nanoTime
     System.out.println("GCalendar: Format: " + NF.format(end - start) + " ns" + " " + buf)
     result("GregCal-P", end - start)
   }
