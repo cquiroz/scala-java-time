@@ -247,7 +247,7 @@ object ZoneOffset {
    * @return
    *   the zone-offset, not null
    * @throws DateTimeException
-   *   if unable to convert to an { @code ZoneOffset}
+   *   if unable to convert to an {@code ZoneOffset}
    */
   def from(temporal: TemporalAccessor): ZoneOffset = {
     val offset: ZoneOffset = temporal.query(TemporalQueries.offset)
@@ -637,7 +637,7 @@ final class ZoneOffset private (private val totalSeconds: Int)
    * @return
    *   the comparator value, negative if less, postive if greater
    * @throws NullPointerException
-   *   if { @code other} is null
+   *   if {@code other} is null
    */
   def compare(other: ZoneOffset): Int = other.totalSeconds - totalSeconds
 

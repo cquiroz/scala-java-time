@@ -334,7 +334,7 @@ class TestChronoLocalDate extends AnyFunSuite with AssertionsHelper {
           import scala.collection.JavaConverters._
           for (d <- dates.asScala)
             otherDates.add(chrono2.date(d))
-          var i: Int = 0
+          var i: Int                                      = 0
           while (i < dates.size) {
             val a: ChronoLocalDate = dates.get(i)
             var j: Int             = 0
