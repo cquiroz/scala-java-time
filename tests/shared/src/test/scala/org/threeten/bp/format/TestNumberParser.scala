@@ -59,7 +59,7 @@ class TestNumberParser extends AnyFunSuite with GenTestPrinterParser with Assert
     data_error.foreach {
       case (pp: TTBPDateTimeFormatterBuilder.NumberPrinterParser) :: (text: String) :: (pos: Int) :: (expected: Class[
             _
-          ]) :: Nil                 =>
+          ]) :: Nil =>
         try pp.parse(parseContext, text, pos)
         catch {
           case ex: RuntimeException =>
