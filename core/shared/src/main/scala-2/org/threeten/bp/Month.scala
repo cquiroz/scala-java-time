@@ -205,7 +205,7 @@ object Month {
    * @return
    *   the month-of-year, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code Month}
+   *   if unable to convert to a {@code Month}
    */
   def from(temporal: TemporalAccessor): Month = {
     var _temporal = temporal
@@ -338,7 +338,7 @@ final class Month private (name: String, ordinal: Int)
    * @throws DateTimeException
    *   if a value for the field cannot be obtained
    * @throws DateTimeException
-   *   if the range of valid values for the field exceeds an { @code int}
+   *   if the range of valid values for the field exceeds an {@code int}
    * @throws DateTimeException
    *   if the value is outside the range of valid values for the field
    * @throws ArithmeticException
