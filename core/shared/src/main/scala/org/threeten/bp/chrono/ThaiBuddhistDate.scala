@@ -138,7 +138,7 @@ object ThaiBuddhistDate {
    * @return
    *   the date in Thai Buddhist calendar system, not null
    * @throws DateTimeException
-   *   if unable to convert to a { @code ThaiBuddhistDate}
+   *   if unable to convert to a {@code ThaiBuddhistDate}
    */
   def from(temporal: TemporalAccessor): ThaiBuddhistDate =
     ThaiBuddhistChronology.INSTANCE.date(temporal)

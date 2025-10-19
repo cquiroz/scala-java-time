@@ -65,7 +65,7 @@ class TestZoneIdParser extends AnyFunSuite with GenTestPrinterParser with Assert
     data_error.foreach {
       case (pp: TTBPDateTimeFormatterBuilder.ZoneIdPrinterParser) :: (text: String) :: (pos: Int) :: (_: Class[
             _
-          ]) :: Nil         =>
+          ]) :: Nil =>
         try pp.parse(parseContext, text, pos)
         catch {
           case _: Throwable =>
