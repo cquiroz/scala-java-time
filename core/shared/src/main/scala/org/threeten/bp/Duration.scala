@@ -1138,8 +1138,7 @@ final class Duration private (private val seconds: Long, private val nanos: Int)
   /**
    * Gets the number of minutes in this duration.
    *
-   * This returns the total number of minutes in the duration by dividing the number of seconds by
-   * 60.
+   * This returns the total number of minutes in the duration by dividing the number of seconds by 60.
    *
    * This instance is immutable and unaffected by this method call.
    *
