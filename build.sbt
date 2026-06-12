@@ -1,5 +1,7 @@
+import org.scalajs.linker.interface.CheckedBehavior
+
 val scala213 = "2.13.18"
-val scala3   = "3.3.7"
+val scala3   = "3.3.8"
 ThisBuild / scalaVersion       := scala213
 ThisBuild / crossScalaVersions := Seq("2.12.21", scala213, scala3)
 
@@ -9,6 +11,8 @@ ThisBuild / githubWorkflowBuildMatrixFailFast := Some(false)
 
 val javaDistro = JavaSpec.corretto("11")
 ThisBuild / githubWorkflowJavaVersions := Seq(javaDistro)
+
+ThisBuild / githubWorkflowOSes := Seq("ubuntu-latest")
 
 ThisBuild / githubWorkflowSbtCommand := "./sbt"
 
@@ -42,7 +46,6 @@ inThisBuild(
                 url("https://github.com/cquiroz")
       )
     ),
-    tlSonatypeUseLegacyHost := true,
     tlMimaPreviousVersions  := Set(),
     tlCiReleaseBranches     := Seq("master"),
     tlCiHeaderCheck         := false
@@ -244,6 +247,14 @@ lazy val tests = crossProject(JVMPlatform, JSPlatform, NativePlatform)
     libraryDependencies ++= Seq(
       "io.github.cquiroz" %%% "locales-full-db" % scalajavaLocalesVersion
     )
+  )
+  .jsSettings(
+    // The tests assert JVM-compliant NullPointerExceptions; since Scala.js 1.21
+    // null dereferences default to UndefinedBehaviorError, so opt the test linker
+    // into compliant null-pointer semantics.
+    Test / scalaJSLinkerConfig ~= {
+      _.withSemantics(_.withNullPointers(CheckedBehavior.Compliant))
+    }
   )
   .dependsOn(core, tzdb)
 

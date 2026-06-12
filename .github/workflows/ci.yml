@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and Test
+    name: Test
     strategy:
       fail-fast: false
       matrix:
@@ -47,14 +47,17 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout current branch (full)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
 
       - name: Setup Java (corretto@11)
         id: setup-java-corretto-11
         if: matrix.java == 'corretto@11'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: corretto
           java-version: 11
@@ -96,7 +99,7 @@ jobs:
 
       - name: Upload target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master')
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-${{ matrix.scala }}-${{ matrix.project }}
           path: targets.tar
@@ -112,14 +115,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout current branch (full)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
 
       - name: Setup Java (corretto@11)
         id: setup-java-corretto-11
         if: matrix.java == 'corretto@11'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: corretto
           java-version: 11
@@ -130,7 +136,7 @@ jobs:
         run: ./sbt +update
 
       - name: Download target directories (2.12, rootJS)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.12-rootJS
 
@@ -140,7 +146,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (2.12, rootJVM)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.12-rootJVM
 
@@ -150,7 +156,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (2.12, rootNative)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.12-rootNative
 
@@ -160,7 +166,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (2.13, rootJS)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.13-rootJS
 
@@ -170,7 +176,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (2.13, rootJVM)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.13-rootJVM
 
@@ -180,7 +186,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (2.13, rootNative)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-2.13-rootNative
 
@@ -190,7 +196,7 @@ jobs:
           rm targets.tar
 
       - name: Download target directories (3, rootJS)
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: target-${{ matrix.os }}-${{ matrix.java }}-3-rootJS
 
@@ -225,22 +231,25 @@ jobs:
 
   dependency-submission:
     name: Submit Dependencies
-    if: github.event_name != 'pull_request'
+    if: github.event.repository.fork == false && github.event_name != 'pull_request'
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-22.04]
         java: [corretto@11]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout current branch (full)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
 
       - name: Setup Java (corretto@11)
         id: setup-java-corretto-11
         if: matrix.java == 'corretto@11'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: corretto
           java-version: 11
