@@ -1408,7 +1408,7 @@ final class DateTimeFormatter private[format] (
     try {
       val builder: DateTimeBuilder =
         parseToBuilder(text, null).resolve(resolverStyle, resolverFields)
-      val it = types.iterator
+      val it                       = types.iterator
       while (it.hasNext) {
         val tpe = it.next()
         try return builder.build(tpe).asInstanceOf[TemporalAccessor]

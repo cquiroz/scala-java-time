@@ -118,9 +118,9 @@ object JapaneseEra {
    */
   def valueOf(japaneseEra: String): JapaneseEra = {
     Objects.requireNonNull(japaneseEra, "japaneseEra")
-    var i = 0
+    var i         = 0
     val knownEras = KNOWN_ERAS.get
-    while(i < knownEras.length) {
+    while (i < knownEras.length) {
       val era = knownEras(i)
       if (japaneseEra == era.name)
         return era

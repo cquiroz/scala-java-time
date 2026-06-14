@@ -54,8 +54,7 @@ object TTBPDateTimeFormatterBuilder {
           }
           i += 1
         }
-      }
-      finally
+      } finally
         if (optional)
           context.endOptional()
       true
@@ -67,7 +66,7 @@ object TTBPDateTimeFormatterBuilder {
       if (optional) {
         context.startOptional()
         var pos: Int = _position
-        var i = 0
+        var i        = 0
         while (i < printerParsers.length) {
           val pp = printerParsers(i)
           pos = pp.parse(context, text, pos)

@@ -277,7 +277,7 @@ final class StandardZoneRules private (
     ) {
       val transArray: Array[ZoneOffsetTransition]        = findTransitionArray(dt.getYear)
       var info: Either[ZoneOffsetTransition, ZoneOffset] = null
-      var i: Int = 0
+      var i: Int                                         = 0
       while (i < transArray.length) {
         val trans = transArray(i)
         info = findOffsetInfo(dt, trans)
