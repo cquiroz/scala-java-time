@@ -1,6 +1,6 @@
 import org.scalajs.linker.interface.CheckedBehavior
 
-val scala213 = "2.13.18"
+val scala213 = "3.10.0"
 // Scala 3.8.0+ compiles `scala.scalajs.LinkingInfo.linkTimeIf` (used by `java.util.TimeZone`
 // on Scala.js); in Scala 3.3.x it is a stub that throws at run time
 val scala3   = "3.9.0"
