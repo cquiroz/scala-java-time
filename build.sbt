@@ -10,7 +10,7 @@ lazy val Scala3TzdbLibrary = config("scala3-tzdb-library").hide
 ThisBuild / scalaVersion       := scala213
 ThisBuild / crossScalaVersions := Seq("2.12.21", scala213, scala3)
 
-ThisBuild / tlBaseVersion := "2.8"
+ThisBuild / tlBaseVersion := "2.9"
 
 ThisBuild / githubWorkflowBuildMatrixFailFast := Some(false)
 
