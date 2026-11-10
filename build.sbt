@@ -4,6 +4,9 @@ val scala213 = "2.13.18"
 // Scala 3.8.0+ compiles `scala.scalajs.LinkingInfo.linkTimeIf` (used by `java.util.TimeZone`
 // on Scala.js); in Scala 3.3.x it is a stub that throws at run time
 val scala3   = "3.9.0"
+// Compiles only the Scala.js tzdb module, see `tzdb` below
+val scala3Tzdb = "3.10.1"
+lazy val Scala3TzdbLibrary = config("scala3-tzdb-library").hide
 ThisBuild / scalaVersion       := scala213
 ThisBuild / crossScalaVersions := Seq("2.12.21", scala213, scala3)
 
@@ -224,6 +227,34 @@ lazy val tzdb = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .jsSettings(
     // Also generate a portable copy of the data, linked only on Wasm targets without a JS host.
     tzdbWasmSupport := true,
+    // The provider's `@EnableReflectiveInstantiation` registration runs in a static initializer,
+    // which the linker always keeps. Scala 3 < 3.10.1 emits it with the js.Array-based
+    // `Reflect.registerInstantiatableClass`, which does not link on Wasm without a JS host.
+    // 3.10.1 emits the Scala-typed `registerInstantiatableClassV2` (scala/scala3@3bb676972,
+    // defined in scalajs-library since 1.20), so only this module uses the newer compiler.
+    crossScalaVersions := (ThisBuild / crossScalaVersions).value.map {
+      case `scala3` => scala3Tzdb
+      case v        => v
+    },
+    // The module still declares the scala3-library of `core`: a declared 3.10.1 library would
+    // evict the library of every Scala 3.9 user (and of `tests`), whose compiler cannot read
+    // its TASTy. The 3.10.1 compiler needs its own library, so that one is resolved in a
+    // hidden configuration and put first on the compile classpath only.
+    ivyConfigurations += Scala3TzdbLibrary,
+    libraryDependencies := {
+      val deps = libraryDependencies.value
+      if (!tlIsScala3.value) deps
+      else
+        deps.map { m =>
+          if (m.organization == "org.scala-lang" && m.name.startsWith("scala3-library_sjs1"))
+            m.withRevision(scala3)
+          else m
+        } :+ ("org.scala-lang" % "scala3-library_sjs1_3" % scalaVersion.value % Scala3TzdbLibrary)
+    },
+    Compile / unmanagedClasspath ++= {
+      if (!tlIsScala3.value) Nil
+      else Attributed.blankSeq(update.value.select(configurationFilter(Scala3TzdbLibrary.name)))
+    },
     Compile / sourceGenerators += Def.task {
       val srcDirs        = (Compile / sourceManaged).value
       val destinationDir = (Compile / sourceManaged).value
