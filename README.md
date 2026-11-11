@@ -22,6 +22,10 @@ The second dependency contains all time zones available from IANA Time Zone Data
 Note that the timezone db is fairly large and due to the characteristics of the API it’s not very ammenable to optimization.
 This database is published every now and then so it may be old. For current version and more possibilities, pleae see the [Time Zone section in the documentation](https://cquiroz.github.io/scala-java-time/#:~:text=Time%20zones).
 
+On Scala.js with Scala 3.10.1 or newer, you can use `scala-java-time-tzdb-scala3-next` instead of `scala-java-time-tzdb`.
+It contains the same time zones, compiled with Scala 3.10.1, and also links on WebAssembly without a JavaScript host.
+Use only one of the two artifacts: they contain the same classes.
+
 
 #### Documentation
 

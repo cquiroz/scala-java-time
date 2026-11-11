@@ -4,6 +4,8 @@ val scala213 = "2.13.18"
 // Scala 3.8.0+ compiles `scala.scalajs.LinkingInfo.linkTimeIf` (used by `java.util.TimeZone`
 // on Scala.js); in Scala 3.3.x it is a stub that throws at run time
 val scala3   = "3.9.0"
+// Compiles only `tzdbScala3Next`, see there
+val scala3Next = "3.10.1"
 ThisBuild / scalaVersion       := scala213
 ThisBuild / crossScalaVersions := Seq("2.12.21", scala213, scala3)
 
@@ -71,7 +73,7 @@ inThisBuild(
   )
 )
 
-lazy val root = tlCrossRootProject.aggregate(core, tzdb, tests, demo)
+lazy val root = tlCrossRootProject.aggregate(core, tzdb, tzdbScala3Next, tests, demo)
 
 lazy val commonSettings = Seq(
   description                     := "java.time API implementation in Scala and Scala.js",
@@ -243,6 +245,45 @@ lazy val tzdb = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   )
   .dependsOn(core)
   .enablePlugins(TzdbPlugin)
+
+// The same Scala.js tzdb as `tzdb`, but compiled with a Scala Next compiler, published as
+// `scala-java-time-tzdb-scala3-next`. `tzdb` stays on the Scala 3 LTS line of `core`.
+//
+// The provider's `@EnableReflectiveInstantiation` registration runs in a static initializer,
+// which the linker always keeps. Scala 3 < 3.10.1 emits it with the js.Array-based
+// `Reflect.registerInstantiatableClass`, which does not link on Wasm without a JS host.
+// 3.10.1 emits the Scala-typed `registerInstantiatableClassV2` (scala/scala3@3bb676972,
+// defined in scalajs-library since 1.20). Use this artifact instead of `tzdb` (never both: they
+// contain the same classes) on such Wasm targets. It requires Scala 3.10.1 or newer.
+lazy val tzdbScala3Next = project
+  .in(file("tzdb-scala3-next"))
+  .enablePlugins(ScalaJSPlugin, TzdbPlugin)
+  .settings(commonSettings)
+  .settings(
+    name               := "scala-java-time-tzdb-scala3-next",
+    scalaVersion       := scala3Next,
+    crossScalaVersions := Seq(scala3Next),
+    // New artifact: no earlier release to check binary compatibility against
+    tlMimaPreviousVersions := Set.empty,
+    // `++ 2.12` / `++ 2.13` cannot switch this project, but it stays in `rootJS`, now next to a
+    // Scala 2 `core`, whose `_sjs1_2.1x` artifact a Scala 3 project cannot resolve or read.
+    // There, drop the dependency on `core` and skip it (compile, publish, publishLocal), so the
+    // `+publish` of a release publishes it only in the Scala 3 runs.
+    projectDependencies := {
+      if ((core.js / tlIsScala3).value) projectDependencies.value
+      else projectDependencies.value.filterNot(_.name == (core.js / moduleName).value)
+    },
+    skip := !(core.js / tlIsScala3).value,
+    includeTTBP        := true,
+    dbVersion          := TzdbPlugin.Version(tzdbVersion),
+    tzdbWasmSupport    := true,
+    Compile / sourceGenerators += Def.task {
+      val srcDirs        = (Compile / sourceManaged).value
+      val destinationDir = (Compile / sourceManaged).value
+      copyAndReplace(Seq(srcDirs), destinationDir)
+    }.taskValue
+  )
+  .dependsOn(core.js)
 
 lazy val tests = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .crossType(CrossType.Full)

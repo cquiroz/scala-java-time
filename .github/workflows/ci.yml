@@ -119,12 +119,12 @@ jobs:
       - name: Make target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master')
         shell: bash
-        run: mkdir -p core/native/target tzdb/js/target core/js/target core/jvm/target tzdb/jvm/target tzdb/native/target project/target
+        run: mkdir -p core/native/target tzdb/js/target core/js/target core/jvm/target tzdb-scala3-next/target tzdb/jvm/target tzdb/native/target project/target
 
       - name: Compress target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master')
         shell: bash
-        run: tar cf targets.tar core/native/target tzdb/js/target core/js/target core/jvm/target tzdb/jvm/target tzdb/native/target project/target
+        run: tar cf targets.tar core/native/target tzdb/js/target core/js/target core/jvm/target tzdb-scala3-next/target tzdb/jvm/target tzdb/native/target project/target
 
       - name: Upload target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master')
