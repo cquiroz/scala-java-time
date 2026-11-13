@@ -274,6 +274,8 @@ lazy val tzdbScala3Next = project
       else projectDependencies.value.filterNot(_.name == (core.js / moduleName).value)
     },
     skip := !(core.js / tlIsScala3).value,
+    // `skip` also skips `update`, which fails unless a cached `+update` result exists
+    update / skip := false,
     includeTTBP        := true,
     dbVersion          := TzdbPlugin.Version(tzdbVersion),
     tzdbWasmSupport    := true,
